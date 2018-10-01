@@ -7,10 +7,13 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const logger = require("morgan");
 
+// Sets the port express will listen to.
 const PORT = process.env.PORT || 3001;
 
+// Sets the location of our database express will use.
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn";
 
+// Where our database models are stored.
 const db = require("./models/index")
 
 const app = express();
@@ -20,6 +23,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Express-session information
 app.use(session({
   key: "user_sid",
   secret: "somerandomstuff",
@@ -29,9 +33,12 @@ app.use(session({
     expires: 600000
   }
 }));
+
+// Sets express to use passport.js
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport.js parameters
 passport.use(new LocalStrategy(
   (username, password, done) => {
     db.User.findOne({ username: username }, (err, user) => {
@@ -47,6 +54,7 @@ passport.use(new LocalStrategy(
   }
 ));
 
+// If our express-session info doesn't match our cookie info clear the cookie info
 app.use((req, res, next) => {
   if (req.cookies.user_sid && !req.session.user) {
     res.clearCookie("user_sid")
@@ -54,6 +62,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Tells express where our API routes are
 require("./routes/apiRoutes")(app);
 
 // Serve up static assets (usually on heroku)
@@ -67,9 +76,11 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+// Tells mongoose.js where our database is
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
+// Tells express to listen to port 3001
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
