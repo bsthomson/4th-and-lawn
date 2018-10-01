@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 3001;
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn";
 
+const db = require("./models/index")
+
 const app = express();
 
 app.use(logger("dev"));
@@ -32,7 +34,7 @@ app.use(passport.session());
 
 passport.use(new LocalStrategy(
   (username, password, done) => {
-    User.findOne({ username: username }, (err, user) => {
+    db.User.findOne({ username: username }, (err, user) => {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
