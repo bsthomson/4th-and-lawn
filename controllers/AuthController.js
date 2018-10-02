@@ -19,7 +19,7 @@ userController.register = (req, res) => {
 userController.doRegister = (req, res) => {
   User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, (err, user) => {
     if (err) {
-      return res.rend("register", { user: user });
+      return res.render("register", { user: user });
     }
 
     passport.authenticate("local")(req, res, function () {
