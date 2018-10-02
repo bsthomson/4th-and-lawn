@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const passport = require("passport")
-  , LocalStrategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const logger = require("morgan");
@@ -39,20 +39,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Passport.js parameters
-passport.use(new LocalStrategy(
-  (username, password, done) => {
-    db.User.findOne({ username: username }, (err, user) => {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
+passport.use(new LocalStrategy(db.User.authenticate()));
+passport.serializeUser(db.User.serializeUser());
+passport.deserializeUser(db.User.deserializeUser());
 
 // If our express-session info doesn't match our cookie info clear the cookie info
 app.use((req, res, next) => {
@@ -64,6 +53,9 @@ app.use((req, res, next) => {
 
 // Tells express where our API routes are
 require("./routes/apiRoutes")(app);
+
+// Tells express where our Authenticator is
+require("./routes/index")(app);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -78,7 +70,9 @@ app.get("*", function(req, res) {
 
 // Tells mongoose.js where our database is
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log("Mongodb connection successful"))
+  .catch((err) => console.error(err));
 
 // Tells express to listen to port 3001
 app.listen(PORT, function() {
