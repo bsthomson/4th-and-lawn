@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 });
 
 // Tells express where our API routes are
-require("./routes/apiRoutes")(app);
+// require("./routes/apiRoutes")(app);
 
 // Tells express where our Authenticator is
 require("./routes/index")(app);

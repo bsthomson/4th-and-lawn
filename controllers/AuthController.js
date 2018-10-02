@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const passport = require("passport");
 
 const db = require("../models");
@@ -33,6 +32,13 @@ userController.doRegister = (req, res) => {
 userController.login = (req, res) => {
   passport.authenticate("local")(req, res, function () {
     res.redirect('/');
+  });
+};
+
+// Post login
+userController.doLogin = (req, res) => {
+  passport.authenticate("local")(req, res, function () {
+    res.redirect("/");
   });
 };
 
