@@ -14,16 +14,16 @@ const UserSchema = new Schema({
     required: true
   },
   firstname: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   lastname: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   phonenumber: {
-    type: Number,
-    required: true
+    type: Number
+    // required: true
   }
 });
 

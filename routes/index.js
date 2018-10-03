@@ -30,17 +30,12 @@ app.route("/register")
           error: `Sorry, already a user with that username: ${username}`
         })
       } else {
-        const newUser = new User({
+        User.create({
           username: req.body.username,
           password: req.body.password,
           firstname: req.body.firstname,
           lastname: req.body.lastname,
           phonenumber: req.body.phonenumber
-        })
-        console.log(newUser)
-        newUser.save((err, savedUser) => {
-          if (err) return res.json(err)
-          res.json(savedUser)
         })
       }
     })
