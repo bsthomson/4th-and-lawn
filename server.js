@@ -15,7 +15,8 @@ const PORT = process.env.PORT || 3001;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn";
 
 // Where our database models are stored.
-const db = require("./models")
+const db = require("./models");
+const User = db.User;
 
 const app = express();
 
@@ -45,7 +46,7 @@ passport.use(new LocalStrategy(
     usernameField: "username"
   },
   function (username, password, done) {
-    db.User.findOne({ username: username }, (err, user) => {
+    User.findOne({ username: username }, (err, user) => {
       if (err) {
         return done(err)
       }
@@ -59,9 +60,10 @@ passport.use(new LocalStrategy(
     })
   }
 ));
+// passport.use(User.createStrategy());
 
-passport.serializeUser(db.User.serializeUser());
-passport.deserializeUser(db.User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // If our express-session info doesn't match our cookie info clear the cookie info
 // app.use((req, res, next) => {
