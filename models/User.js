@@ -24,7 +24,19 @@ const UserSchema = new Schema({
   phonenumber: {
     type: Number
     // required: true
-  }
+  },
+  rentedspaces: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Renter"
+    }
+  ],
+  parkingspots: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "ParkingSpot"
+    }
+  ]
 });
 
 UserSchema.plugin(passportLocalMongoose);
