@@ -31,11 +31,11 @@ app.route("/register")
         })
       } else {
         User.create({
-          username: req.body.username,
-          password: req.body.password,
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
-          phonenumber: req.body.phonenumber
+          username: username,
+          password: password,
+          firstname: firstname,
+          lastname: lastname,
+          phonenumber: phonenumber
         })
       }
     })
