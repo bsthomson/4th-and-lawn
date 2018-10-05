@@ -60,21 +60,12 @@ passport.use(new LocalStrategy(
     })
   }
 ));
-// passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// If our express-session info doesn't match our cookie info clear the cookie info
-// app.use((req, res, next) => {
-//   if (req.cookies.user_sid && !req.session.user) {
-//     res.clearCookie("user_sid")
-//   }
-//   next();
-// });
-
 // Tells express where our API routes are
-// require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes")(app);
 
 // Tells express where our Authenticator is
 require("./routes/index")(app);
