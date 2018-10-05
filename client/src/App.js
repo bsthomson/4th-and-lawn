@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 // components
-import Signup from './components/sign-up'
-import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
-import Home from './components/home'
+import Signup from './components/user-sign-up/sign-up'
+import LoginForm from './components/user-login/login-form'
+import Navbar from './components/navigation/navigation'
+import Home from './components/home/home'
 
 class App extends Component {
   constructor() {
@@ -39,6 +39,7 @@ class App extends Component {
           loggedIn: true,
           username: response.data.user.username
         })
+
       } else {
         console.log('Get user: no user');
         this.setState({

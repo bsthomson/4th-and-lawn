@@ -5,10 +5,12 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
+    "node-sass": "^4.9.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.0.14",
+    "sass-loader": "^7.1.0",
     "spectre.css": "^0.5.3"
   },
   "scripts": {
