@@ -43,10 +43,10 @@ app.use(passport.session());
 // Passport.js parameters
 passport.use(new LocalStrategy(
   {
-    usernameField: "username"
+    usernameField: "email"
   },
-  function (username, password, done) {
-    User.findOne({ username: username }, (err, user) => {
+  function (email, password, done) {
+    User.findOne({ email: email }, (err, user) => {
       if (err) {
         return done(err)
       }

@@ -20,18 +20,18 @@ app.route("/register")
   .post((req, res) => {
     console.log("user signup");
 
-    const { username, password, firstname, lastname, phonenumber } = req.body;
+    const { email, password, firstname, lastname, phonenumber } = req.body;
 
-    User.findOne({ username: username }, (err, user) => {
+    User.findOne({ email: email }, (err, user) => {
       if (err) {
         console.log("User.js post err: ", err)
       } else if (user) {
         res.json({
-          error: `Sorry, already a user with that username: ${username}`
+          error: `Sorry, already a user with that email: ${email}`
         })
       } else {
         User.create({
-          username: username,
+          email: email,
           password: password,
           firstname: firstname,
           lastname: lastname,
@@ -63,7 +63,7 @@ app.post("/login",
   (req, res) => {
     console.log("logged in", req.user);
     let userInfo = {
-      username: req.user.username
+      email: req.user.email
     };
     res.send(userInfo)
   });
