@@ -20,11 +20,12 @@ module.exports = function (app) {
 
   app.post('/parkingspot', (req, res) => {
 
-    const { address, availablespots, date, time } = req.body;
+    const { address, availablespots, destination, date, time } = req.body;
 
     ParkingSpot.create({
       address: address,
       availablespots: availablespots,
+      destination: destination,
       date: date,
       time: time
     })

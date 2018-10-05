@@ -11,6 +11,10 @@ const ParkingSpotSchema = new Schema({
     type: Number,
     required: true
   },
+  destination: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     required: true
