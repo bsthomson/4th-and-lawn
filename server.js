@@ -92,12 +92,10 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
   .then(() => console.log("Mongodb connection successful"))
   .then( () => {
-    if (MONGODB_URI === "mongodb://localhost/4th-and-lawn") {
-      mongoose.deleteModel('User');
-      mongoose.deleteModel('ParkingSpot');
-      mongoose.deleteModel('Renter');
-    }
-  })
+    if (MONGODB_URI === "mongodb://localhost/4th-and-lawn")
+    mongoose.connection.db.dropDatabase();
+    console.log("old database dropped!")
+    })
   .catch((err) => console.error(err));
 
 // Tells express to listen to port 3001
