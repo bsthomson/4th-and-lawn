@@ -4,13 +4,9 @@ const passport = require("passport");
 const db = require("../models");
 
 const User = db.User;
+const Renter = db.Renter;
 
 module.exports = function (app) {
-
-// restrict index for logged in user only
-app.get("/", (req, res) => {
-  res.redirect("/home");
-});
 
 // route to register page
 app.post("/register",
@@ -37,6 +33,47 @@ app.post("/register",
       }
     })
   })
+
+app.post("/rentspot", (req, res) => {
+  console.log("renting a spot")
+
+  const { licenseplate, make, model, date, time } = req.body;
+
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log("User error");
+    } else {
+      Renter.create({
+        licenseplate: licenseplate,
+        make: make,
+        model: model,
+        date: date,
+        time: time
+      })
+    }
+  })
+})
+
+app.post("/postspot", (req, res) => {
+  console.log("posting a spot")
+
+  const { address, availablespots, destination, instruction, date, time } = req.body;
+
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log("User error");
+    } else {
+      Renter.create({
+        address: address,
+        availablespots: availablespots,
+        destination: destination,
+        instruction: instruction,
+        date: date,
+        time: time
+      })
+    }
+  })
+})
 
 // route to login page
 app.get("/login", (req, res, next) => {
