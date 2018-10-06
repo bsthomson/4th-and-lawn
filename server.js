@@ -93,8 +93,8 @@ mongoose.connect(MONGODB_URI)
   .then(() => console.log("Mongodb connection successful"))
   .then( () => {
     if (MONGODB_URI === "mongodb://localhost/4th-and-lawn")
-    mongoose.connection.db.dropDatabase();
-    console.log("old database dropped!")
+      mongoose.connection.db.dropDatabase();
+      console.log("old database dropped!");
     })
   .catch((err) => console.error(err));
 
