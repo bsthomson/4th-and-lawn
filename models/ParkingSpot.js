@@ -11,6 +11,13 @@ const ParkingSpotSchema = new Schema({
     type: Number,
     required: true
   },
+  destination: {
+    type: String,
+    required: true
+  },
+  instructions: {
+    type: String
+  },
   date: {
     type: Date,
     required: true

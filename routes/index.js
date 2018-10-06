@@ -13,29 +13,26 @@ app.get("/", (req, res) => {
 });
 
 // route to register page
-app.route("/register")
-  .get((req, res) => {
-    res.render("register")
-  })
-  .post((req, res) => {
+app.post("/register",
+  (req, res) => {
     console.log("user signup");
 
-    const { username, password, firstname, lastname, phonenumber } = req.body;
+    const { email, password, firstname, lastname, phonenumber } = req.body;
 
-    User.findOne({ username: username }, (err, user) => {
+    User.findOne({ email: email }, (err, user) => {
       if (err) {
         console.log("User.js post err: ", err)
       } else if (user) {
         res.json({
-          error: `Sorry, already a user with that username: ${username}`
+          error: `Sorry, already a user with that email: ${email}`
         })
       } else {
         User.create({
-          username: req.body.username,
-          password: req.body.password,
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
-          phonenumber: req.body.phonenumber
+          email: email,
+          password: password,
+          firstname: firstname,
+          lastname: lastname,
+          phonenumber: phonenumber
         })
       }
     })
@@ -63,7 +60,8 @@ app.post("/login",
   (req, res) => {
     console.log("logged in", req.user);
     let userInfo = {
-      username: req.user.username
+      email: req.user.email,
+      firstname: req.user.firstname
     };
     res.send(userInfo)
   });
