@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
+import { Modal, ModalRoute } from 'react-router-modal';
+import LoginModal from './../modal/modal'
+
 import '../../App.css';
 import axios from 'axios'
+
+
 
 class Navbar extends Component {
     constructor() {
@@ -13,7 +18,7 @@ class Navbar extends Component {
     logout(event) {
         event.preventDefault()
         console.log('logging out')
-        axios.post('/user/logout').then(response => {
+        axios.post('/logout').then(response => {
           console.log(response.data)
           if (response.status === 200) {
             this.props.updateUser({
@@ -26,46 +31,53 @@ class Navbar extends Component {
         })
       }
 
+      state = { show: false }
+
     render() {
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
         
         return (
-            <div>
+            
+            <section>
 
-                <header className="navbar App-header" id="nav-container">
-                    <div className="col-4" >
-                        {loggedIn ? (
-                            <section className="navbar-section">
-                                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                <span className="text-secondary">logout</span></Link>
-
-                            </section>
-                        ) : (
-                                <section className="navbar-section">
-                                    <Link to="/" className="btn btn-link text-secondary">
-                                        <span className="text-secondary">home</span>
-                                        </Link>
-                                    <Link to="/login" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">login</span>
-				</Link>
-                                    <Link to="/signup" className="btn btn-link">
-                                    <span className="text-secondary">sign up</span>
-				</Link>
-                                </section>
-                            )}
-                    </div>
-                    <div className="col-4 col-mr-auto">
-                    <div id="top-filler"></div>
-                        
-                        <h1 className="App-title">MERN Passport</h1>
-                    </div>
-                </header>
-            </div>
-
+                <nav class="navigation__nav">
+                    {loggedIn ? (
+                        <ul class="navigation__list">
+                            <li class="navigation__item">
+                                <Link to="#" className="navigation__link" onClick={this.logout}>
+                                    <span>Logout</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    ) : (
+                        <ul class="navigation__list">
+                            <li class="navigation__item">
+                                <Link to="/" className="navigation__link">
+                                    <span>Home</span>
+                                </Link>
+                            </li>
+                            <li class="navigation__item">
+                                <Link to="/login" className="navigation__link">
+                                    <span>Login</span>
+                                </Link>
+                            </li>
+                            <li class="navigation__item">
+                                <Link to={`/`} className="navigation__link">
+                                    <span onClick={() => this.setState({show: true})}>Signup</span>
+                                    {this.state.show && (
+                                        <Modal onBackdropClick={() => this.setState({show: false})}>
+                                          <LoginModal/>
+                                        </Modal>
+                                      )}
+                                </Link>
+                            </li>
+                        </ul>
+                    )}
+                </nav>
+            </section>
         );
-
     }
 }
 

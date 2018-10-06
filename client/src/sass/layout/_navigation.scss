@@ -1,0 +1,269 @@
+.navigation {
+
+    &__nav {
+        position: absolute; 
+        padding: 3rem;
+        margin: 0 auto;
+        width: 83%;
+        margin-bottom: 4rem;
+        left: 50%;
+        margin-left: -41.5%;
+        text-transform: uppercase;
+    }
+
+    &__list {
+       
+    }
+
+    &__item {
+        display: inline-block;
+        list-style: none;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: .5rem;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            // background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-black 50%);
+            // background-size: 240%;
+            transition: all .6s;
+        }
+
+        &:hover,
+        &:active {
+            // background-position: 100%;
+            // color: $color-white;
+            // transform: translateX(1rem);
+        }
+    }
+
+
+    &__menu {
+        display: block;
+        padding: 3rem;
+        margin: 0 auto;
+        width: 83%;
+        position: absolute;
+        margin-bottom: 4rem;
+        left: 50%;
+        margin-left: -41.5%;
+        color: $color-white;
+        font-size: 1.25rem;
+
+        text-transform: uppercase;
+        letter-spacing: .3rem;
+        border-bottom: 1px solid white
+    }
+
+
+        ul {
+            list-style: none;
+
+            @include breakpoint(phone) {
+                height: 7rem;
+            }
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            text-align: center;
+            // width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+            width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+
+            &:nth-child(n+3) {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &:nth-child(-n+2) {
+                @include breakpoint(phone) {
+                    width: 45%;
+                    display: inline-block;
+                    // margin: 0;
+                    // padding: 0;
+                }
+            }
+        }
+    }
+
+
+.menu-navigation {
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        background-color: $color-white;
+        height: 4rem;
+        width: 4rem;
+        position: fixed;
+        top: 7rem;
+        right: 7rem;
+        border-radius: 50%;
+        // z-index: 5000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
+
+            @include breakpoint(tab-port) {
+                top: 5rem;
+                right: 5rem;
+            }
+            
+            @include breakpoint(phone) {
+                height: 5rem;
+                width: 5rem;
+                top: 4rem;
+                right: 4rem;
+            }
+    }
+
+    &__background {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 7rem;
+        right: 7rem;
+        background-image: linear-gradient(to right, $color-blue-light, $color-primary);
+        // z-index: 4000;
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+
+        @include breakpoint(tab-port) {
+            top: 5rem;
+            right: 5rem;
+        }
+
+        @include breakpoint(phone) {
+            height: 5rem;
+            width: 5rem;
+            top: 4rem;
+            right: 4rem;
+        }
+    }
+
+    &__nav {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        // z-index: 4000;
+        opacity: 0;
+        width: 0;
+        transition: all .8s;
+    }
+
+    &__list {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: .5rem;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-black 50%);
+            background-size: 240%;
+            transition: all .6s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-white;
+            transform: translateX(1rem);
+        }
+    }
+    // Functionality
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    // Icon
+    &__icon {
+        position: relative;
+        margin-top: 2rem;
+
+        @include breakpoint (phone) {
+            margin-top: 2.35rem;
+        }
+
+        &,
+        &::before,
+        &::after {
+            width: 1.5rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before { top: -.6rem }
+        &::after { top: .6rem }
+    }
+
+    &__button:hover &__icon::before {
+        top: -.7rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: .7rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+}
+

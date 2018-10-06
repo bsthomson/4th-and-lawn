@@ -7,6 +7,11 @@ import LoginForm from './components/user-login/login-form'
 import Navbar from './components/navigation/navigation'
 import Home from './components/home/home'
 
+// Modal
+import { ModalContainer } from 'react-router-modal';
+import 'react-router-modal/css/react-router-modal.css';
+
+
 class App extends Component {
   constructor() {
     super()
@@ -51,6 +56,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
    
@@ -73,9 +79,11 @@ class App extends Component {
         <Route
           path="/signup"
           render={() =>
-            <Signup/>}
+            <Signup/>
+          }
         />
-
+       
+        <ModalContainer />
       </div>
     );
   }
