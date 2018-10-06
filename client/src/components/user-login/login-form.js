@@ -6,7 +6,8 @@ class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            username: '',
+            firstname: '',
+            email: '',
             password: '',
             redirectTo: null
         }
@@ -26,7 +27,7 @@ class LoginForm extends Component {
 
         axios
             .post('/login', {
-                username: this.state.username,
+                email: this.state.email,
                 password: this.state.password
             })
             .then(response => {
@@ -36,7 +37,8 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username
+                        email: response.data.email,
+                        firstname: response.data.firstname
                     })
                     // update the state to redirect to home
                     this.setState({
@@ -60,15 +62,15 @@ class LoginForm extends Component {
                     <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="username">Username</label>
+                                <label className="form-label" htmlFor="email">Email</label>
                             </div>
                             <div className="col-3 col-mr-auto">
                                 <input className="form-input"
                                     type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={this.state.email}
                                     onChange={this.handleChange}
                                 />
                             </div>

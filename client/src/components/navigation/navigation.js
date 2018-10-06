@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
-import { Modal, ModalRoute } from 'react-router-modal';
-import LoginModal from './../modal/modal'
+import { Modal, ModalRoute } from 'react-router-modal'
+import Signup from './../user-sign-up/sign-up'
 
 import '../../App.css';
 import axios from 'axios'
@@ -39,7 +39,6 @@ class Navbar extends Component {
         console.log(this.props);
         
         return (
-            
             <section>
 
                 <nav class="navigation__nav">
@@ -68,9 +67,9 @@ class Navbar extends Component {
                                     <span onClick={() => this.setState({show: true})}>Signup</span>
                                     {this.state.show && (
                                         <Modal onBackdropClick={() => this.setState({show: false})}>
-                                          <LoginModal/>
+                                            <Signup/>
                                         </Modal>
-                                      )}
+                                    )}
                                 </Link>
                             </li>
                         </ul>

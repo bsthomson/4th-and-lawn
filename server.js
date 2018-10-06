@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy;
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser")
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const logger = require("morgan");
@@ -22,11 +23,14 @@ const app = express();
 
 app.use(logger("dev"));
 
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Express-session information
 app.use(session({
+  key: 'user_sid',
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   secret: "somerandomstuff",
   resave: false,
@@ -36,6 +40,13 @@ app.use(session({
   }
 }));
 
+app.use((req, res, next) => {
+  if (req.cookies.user_sid && !req.session.user) {
+    res.clearCookie('user_sid')
+  }
+  next();
+});
+
 // Sets express to use passport.js
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,10 +54,10 @@ app.use(passport.session());
 // Passport.js parameters
 passport.use(new LocalStrategy(
   {
-    usernameField: "username"
+    usernameField: "email"
   },
-  function (username, password, done) {
-    User.findOne({ username: username }, (err, user) => {
+  function (email, password, done) {
+    User.findOne({ email: email }, (err, user) => {
       if (err) {
         return done(err)
       }
@@ -60,21 +71,18 @@ passport.use(new LocalStrategy(
     })
   }
 ));
-// passport.use(User.createStrategy());
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-// If our express-session info doesn't match our cookie info clear the cookie info
-// app.use((req, res, next) => {
-//   if (req.cookies.user_sid && !req.session.user) {
-//     res.clearCookie("user_sid")
-//   }
-//   next();
-// });
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  })
+});
 
 // Tells express where our API routes are
-// require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes")(app);
 
 // Tells express where our Authenticator is
 require("./routes/index")(app);
@@ -94,6 +102,11 @@ app.get("*", function(req, res) {
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
   .then(() => console.log("Mongodb connection successful"))
+  .then( () => {
+    if (MONGODB_URI === "mongodb://localhost/4th-and-lawn")
+      mongoose.connection.db.dropDatabase();
+      console.log("old database dropped!");
+    })
   .catch((err) => console.error(err));
 
 // Tells express to listen to port 3001

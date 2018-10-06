@@ -4,69 +4,101 @@ const passport = require("passport");
 const db = require("../models");
 
 const User = db.User;
+const Renter = db.Renter;
 
 module.exports = function (app) {
-
-// restrict index for logged in user only
-app.get("/", (req, res) => {
-  res.redirect("/home");
-});
+  // const sessionChecker
 
 // route to register page
 app.route("/register")
   .get((req, res) => {
-    res.render("register")
+    // console.log("req.user " + req.user.firstname);
+    if (req.user) {
+      res.json({ user: req.user.firstname })
+    } else {
+      res.json({ user: null })
+    }
   })
   .post((req, res) => {
     console.log("user signup");
 
-    const { username, password, firstname, lastname, phonenumber } = req.body;
+    const { email, password, firstname, lastname, phonenumber } = req.body;
 
-    User.findOne({ username: username }, (err, user) => {
+    User.findOne({ email: email }, (err, user) => {
       if (err) {
         console.log("User.js post err: ", err)
       } else if (user) {
         res.json({
-          error: `Sorry, already a user with that username: ${username}`
+          error: `Sorry, already a user with that email: ${email}`
         })
       } else {
         User.create({
-          username: req.body.username,
-          password: req.body.password,
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
-          phonenumber: req.body.phonenumber
+          email: email,
+          password: password,
+          firstname: firstname,
+          lastname: lastname,
+          phonenumber: phonenumber
         })
       }
     })
   })
 
-// route to login page
-app.get("/login", (req, res, next) => {
-  console.log('==== user!!====')
-  console.log(req.user)
-  if (req.user) {
-    res.json({ user: req.user })
-  } else {
-    res.json({ user: null })
-  }
+app.post("/rent", (req, res) => {
+  console.log("renting a spot")
+
+  const { licenseplate, make, model, date, time } = req.body;
+
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log("User error");
+    } else {
+      Renter.create({
+        licenseplate: licenseplate,
+        make: make,
+        model: model,
+        date: date,
+        time: time
+      })
+    }
+  })
+})
+
+app.post("/parkingspot", (req, res) => {
+  console.log("posting a spot")
+
+  const { address, availablespots, destination, instruction, date, time } = req.body;
+
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log("User error");
+    } else {
+      Renter.create({
+        address: address,
+        availablespots: availablespots,
+        destination: destination,
+        instruction: instruction,
+        date: date,
+        time: time
+      })
+    }
+  })
 })
 
 // route for login action
 app.post("/login",
   function (req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body)
     next()
   },
   passport.authenticate("local"),
   (req, res) => {
     console.log("logged in", req.user);
     let userInfo = {
-      username: req.user.username
+      email: req.user.email,
+      firstname: req.user.firstname
     };
     res.send(userInfo)
-  });
+  }
+);
 
 // route for logout action
 app.post("/logout", (req, res) => {
