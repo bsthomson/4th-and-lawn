@@ -60,7 +60,8 @@ app.post("/login",
   (req, res) => {
     console.log("logged in", req.user);
     let userInfo = {
-      email: req.user.email
+      email: req.user.email,
+      firstname: req.user.firstname
     };
     res.send(userInfo)
   });
