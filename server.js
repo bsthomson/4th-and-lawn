@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy;
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser")
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const logger = require("morgan");
@@ -22,11 +23,14 @@ const app = express();
 
 app.use(logger("dev"));
 
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Express-session information
 app.use(session({
+  key: 'user_sid',
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   secret: "somerandomstuff",
   resave: false,
@@ -35,6 +39,13 @@ app.use(session({
     expires: 600000
   }
 }));
+
+app.use((req, res, next) => {
+  if (req.cookies.user_sid && !req.session.user) {
+    res.clearCookie('user_sid')
+  }
+  next();
+});
 
 // Sets express to use passport.js
 app.use(passport.initialize());

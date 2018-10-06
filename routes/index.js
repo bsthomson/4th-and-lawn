@@ -4,17 +4,22 @@ const passport = require("passport");
 const db = require("../models");
 
 const User = db.User;
+const Renter = db.Renter;
 
 module.exports = function (app) {
-
-// restrict index for logged in user only
-app.get("/", (req, res) => {
-  res.redirect("/home");
-});
+  // const sessionChecker
 
 // route to register page
-app.post("/register",
-  (req, res) => {
+app.route("/register")
+  .get((req, res) => {
+    // console.log("req.user " + req.user.firstname);
+    if (req.user) {
+      res.json({ user: req.user.firstname })
+    } else {
+      res.json({ user: null })
+    }
+  })
+  .post((req, res) => {
     console.log("user signup");
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
@@ -38,22 +43,50 @@ app.post("/register",
     })
   })
 
-// route to login page
-app.get("/login", (req, res, next) => {
-  console.log('==== user!!====')
-  console.log(req.user)
-  if (req.user) {
-    res.json({ user: req.user })
-  } else {
-    res.json({ user: null })
-  }
+app.post("/rent", (req, res) => {
+  console.log("renting a spot")
+
+  const { licenseplate, make, model, date, time } = req.body;
+
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log("User error");
+    } else {
+      Renter.create({
+        licenseplate: licenseplate,
+        make: make,
+        model: model,
+        date: date,
+        time: time
+      })
+    }
+  })
+})
+
+app.post("/parkingspot", (req, res) => {
+  console.log("posting a spot")
+
+  const { address, availablespots, destination, instruction, date, time } = req.body;
+
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log("User error");
+    } else {
+      Renter.create({
+        address: address,
+        availablespots: availablespots,
+        destination: destination,
+        instruction: instruction,
+        date: date,
+        time: time
+      })
+    }
+  })
 })
 
 // route for login action
 app.post("/login",
   function (req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body)
     next()
   },
   passport.authenticate("local"),
@@ -64,7 +97,8 @@ app.post("/login",
       firstname: req.user.firstname
     };
     res.send(userInfo)
-  });
+  }
+);
 
 // route for logout action
 app.post("/logout", (req, res) => {
