@@ -7,10 +7,19 @@ const User = db.User;
 const Renter = db.Renter;
 
 module.exports = function (app) {
+  // const sessionChecker
 
 // route to register page
-app.post("/register",
-  (req, res) => {
+app.route("/register")
+  .get((req, res) => {
+    // console.log("req.user " + req.user.firstname);
+    if (req.user) {
+      res.json({ user: req.user.firstname })
+    } else {
+      res.json({ user: null })
+    }
+  })
+  .post((req, res) => {
     console.log("user signup");
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
@@ -34,7 +43,7 @@ app.post("/register",
     })
   })
 
-app.post("/rentspot", (req, res) => {
+app.post("/rent", (req, res) => {
   console.log("renting a spot")
 
   const { licenseplate, make, model, date, time } = req.body;
@@ -54,7 +63,7 @@ app.post("/rentspot", (req, res) => {
   })
 })
 
-app.post("/postspot", (req, res) => {
+app.post("/parkingspot", (req, res) => {
   console.log("posting a spot")
 
   const { address, availablespots, destination, instruction, date, time } = req.body;
@@ -75,22 +84,9 @@ app.post("/postspot", (req, res) => {
   })
 })
 
-// route to login page
-app.get("/login", (req, res, next) => {
-  console.log('==== user!!====')
-  console.log(req.user)
-  if (req.user) {
-    res.json({ user: req.user })
-  } else {
-    res.json({ user: null })
-  }
-})
-
 // route for login action
 app.post("/login",
   function (req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body)
     next()
   },
   passport.authenticate("local"),
@@ -101,7 +97,8 @@ app.post("/login",
       firstname: req.user.firstname
     };
     res.send(userInfo)
-  });
+  }
+);
 
 // route for logout action
 app.post("/logout", (req, res) => {

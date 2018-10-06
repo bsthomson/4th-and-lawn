@@ -31,13 +31,13 @@ class App extends Component {
   getUser() {
     axios.get('/register').then(response => {
       console.log('Get user response: ')
-      console.log(response.data)
+      console.log(response)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
         this.setState({
           loggedIn: true,
-          email: response.data.user.firstname
+          firstname: response.data.user.firstname
         })
       } else {
         console.log('Get user: no user');
