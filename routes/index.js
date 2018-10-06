@@ -13,11 +13,8 @@ app.get("/", (req, res) => {
 });
 
 // route to register page
-app.route("/register")
-  .get((req, res) => {
-    res.render("register")
-  })
-  .post((req, res) => {
+app.post("/register",
+  (req, res) => {
     console.log("user signup");
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
