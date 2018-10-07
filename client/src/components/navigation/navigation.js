@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
 import { Modal, ModalRoute } from 'react-router-modal'
-import Signup from './../user-sign-up/sign-up'
+import Signup from './../form-sign-up/sign-up'
+import PostParkingSpot from './../form-post-parking/post-parking'
 
 import '../../App.css';
 import axios from 'axios'
@@ -62,9 +63,10 @@ class Navbar extends Component {
                                     <span>Login</span>
                                 </Link>
                             </li>
+
                             <li class="navigation__item">
                                 <Link to={`/`} className="navigation__link">
-                                    <span onClick={() => this.setState({show: true})}>Signup</span>
+                                    <span onClick={() => this.setState({show: true})}>Sign up</span>
                                     {this.state.show && (
                                         <Modal onBackdropClick={() => this.setState({show: false})}>
                                             <Signup/>

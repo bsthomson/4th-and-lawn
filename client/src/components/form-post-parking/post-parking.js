@@ -56,44 +56,33 @@ class PostParkingSpot extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             <div className="postParkingSpotForm">
-                <h4>Post Your Parking Spot</h4>
-                <form className="form-horizontal">
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="address">Address</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
-                                type="text"
-                                id="address"
-                                name="address"
-                                placeholder="address"
-                                value={this.state.address}
-                                onChange={this.handleChange}
-                             />
-                        </div>
+                <div className="heading-form">
+                    <span className="heading-form--title">Want to host your parking spots on gameday?</span>
+                </div>
+
+                <form>
+                    <div class="form__group">
+                        <input className="form__input"
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder="Address"
+                            value={this.state.address}
+                            onChange={this.handleChange}
+                        />
                     </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="availableSpots">Number of Available Sports</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
-                                type="number"
-                                id="availableSpots"
-                                name="availableSpots"
-                                placeholder="Number of Avaliable Spots"
-                                value={this.state.availableSpots}
-                                onChange={this.handleChange}
-                             />
-                        </div>
+                    <div className="form__group">
+                        <input className="form__input"
+                            type="number"
+                            id="availableSpots"
+                            name="availableSpots"
+                            placeholder="Number of avaliable spots"
+                            value={this.state.availableSpots}
+                            onChange={this.handleChange}
+                         />
                     </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="destination">Destination</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
+                    <div className="form__group">
+                            <input className="form__input"
                                 type="text"
                                 id="destination"
                                 name="destination"
@@ -101,7 +90,6 @@ class PostParkingSpot extends Component {
                                 value={this.state.destination}
                                 onChange={this.handleChange}
                              />
-                        </div>
                     </div>
                     <div className="form-group">
                         <div className="col-1 col-ml-auto">
@@ -156,6 +144,13 @@ class PostParkingSpot extends Component {
                                 Submit
                             </button>
                     </div>
+
+                    <hr className="form-break" />
+
+					<div className="heading-form">
+						<span className="heading-form--text">Already have an account? Login</span>
+                    </div>
+                        
                 </form>
             </div>
         }
