@@ -2,15 +2,14 @@
     &,
     &:link,
     &:visited {
-        text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem;
         display: inline-block;
         border-radius: 10rem;
         transition: all .2s;
         position: relative;
-        font-size: 1.4rem;
-        letter-spacing: .1rem;
+        font-size: 1.6rem;
+        // letter-spacing: .1rem;
 
         // Change for the button element
         border: none;
@@ -66,9 +65,9 @@
         display: block !important;
         width: 80%;
         margin: 0 auto;
-        background-color: $color-black;
+        background-color: $color-secondary-dark;
         color: $color-white;
-        font-weight: bold;
+        font-weight: 500;
         border-radius: .7rem;
 
         &::after {

@@ -151,11 +151,33 @@ body {
 }
 
 .heading-form {
-    font-size: 1.7rem;
+    
     text-align: center;
+    padding-bottom: 2rem;
+    letter-spacing: .1px;
 
     &--title {
-        color: $color-black;
-        font-weight: bold;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $color-grey-dark-3;
     }
+
+    &--text {
+        font-size: 1.3rem;
+        color: $color-black;
+        font-weight: normal;
+        
+    }
+}
+
+.form-break {
+    height: 1px;
+    background-color: $color-grey-light-2;
+    border: 0;
+    width: 250px;
+    margin: 3rem auto;
+}
+
+.icon-form {
+
 }

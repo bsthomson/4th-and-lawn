@@ -60,7 +60,7 @@ render() {
 		<a href="#section-games" class="popup__close">&times;</a>
 
 					<div className="heading-form">
-						<span className="heading-form--title">Register</span>
+						<span className="heading-form--title">Sign up</span>
 					</div>
 					
 					<form id="signup" name="signup">
@@ -75,18 +75,20 @@ render() {
 								onChange={this.handleChange}
 								required
 							/>
+							
 						</div>
 
 						<div class="form__group">
 							<input
 								name="firstname"
-								class="form__input"
+								class="form__input icon-form far fa-envelope"
 								type="text"
 								placeholder="First name"
 								value={this.state.firstname}
 								onChange={this.handleChange}
 								required
 							/>
+							
 						</div>
 
 						<div class="form__group">
@@ -116,9 +118,15 @@ render() {
 						<input
 							class="btn btn--form"
 							type="submit"
-							value="Register"
+							value="Sign up"
 							onClick={this.handleSubmit}
 						/>
+
+						<hr className="form-break" />
+
+						<div className="heading-form">
+							<span className="heading-form--text">Already have an account? Login</span>
+						</div>
 
 					</form>
 				</div>

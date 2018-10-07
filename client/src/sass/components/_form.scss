@@ -3,7 +3,8 @@
 }
 
 .form {
-
+    position: relative;
+    
     &__group:not(:last-child) {
         margin-bottom: 2rem;
     }
@@ -15,7 +16,7 @@
         padding: 1rem 2rem;
         border-radius: 2px;
         background-color: rgba($color-white, .5);
-        border: 1px solid $color-grey-dark-2;
+        border: 1px solid $color-grey-light-2;
         width: 80%;
         display: block;
         transition: all .3s;
@@ -48,7 +49,7 @@
         transition: all .3s;
         text-align: center;
         color: $color-black;
-        text-transform: uppercase;
+        // text-transform: uppercase;
     }
 
     &__input:placeholder-shown + &__label {
