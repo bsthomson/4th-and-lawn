@@ -3,7 +3,16 @@
 }
 
 .form {
-    position: relative;
+    
+
+    &__container {
+        width: 400px;
+        background-color: $color-white;
+        position: relative;
+        left: 10%;
+        top: 150px;
+        padding: 3rem;
+    }
     
     &__group:not(:last-child) {
         margin-bottom: 2rem;
@@ -17,7 +26,7 @@
         border-radius: 2px;
         background-color: rgba($color-white, .5);
         border: 1px solid $color-grey-light-2;
-        width: 80%;
+        width: 100%;
         display: block;
         transition: all .3s;
         margin: 0 auto;
@@ -58,4 +67,9 @@
         transform: translateY(-4rem);
     }
 
+}
+
+select {
+    padding: 10rem;
+    margin: 10rem;
 }

@@ -108,6 +108,21 @@ body {
     animation-fill-mode: backwards;
     margin-bottom: 1.5rem;
     text-align: left; }
+  .heading-primary--form {
+    display: block;
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -.4rem;
+    line-height: 3.5rem;
+    letter-spacing: .2px;
+    color: #000; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--form {
+        letter-spacing: -.2rem;
+        font-size: 8rem;
+        line-height: 7rem;
+        text-align: center; } }
 
 .heading-secondary {
   font-size: 11rem;
@@ -338,46 +353,59 @@ body {
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
 
-.form {
-  position: relative; }
-  .form__group:not(:last-child) {
-    margin-bottom: 2rem; }
-  .form__input {
-    color: inherit;
-    font-family: inherit;
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
-    border-radius: 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #eee;
-    width: 80%;
-    display: block;
-    transition: all .3s;
-    margin: 0 auto;
-    text-align: left;
-    color: #000; }
-    .form__input:focus {
-      outline: none;
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid #55c57a; }
-    .form__input:focus:invalid {
-      border-bottom: 1px solid #ff7730; }
-    .form__input::-webkit-input-placeholder {
-      color: #999; }
-  .form__label {
-    font-size: 1rem;
-    font-weight: 300;
-    letter-spacing: .3rem;
-    margin-left: 2rem;
-    margin-top: .7rem;
-    display: block;
-    transition: all .3s;
-    text-align: center;
-    color: #000; }
-  .form__input:placeholder-shown + .form__label {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4rem); }
+.form__container {
+  width: 400px;
+  background-color: #fff;
+  position: relative;
+  left: 10%;
+  top: 150px;
+  padding: 3rem; }
+
+.form__group:not(:last-child) {
+  margin-bottom: 2rem; }
+
+.form__input {
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #eee;
+  width: 100%;
+  display: block;
+  transition: all .3s;
+  margin: 0 auto;
+  text-align: left;
+  color: #000; }
+  .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #55c57a; }
+  .form__input:focus:invalid {
+    border-bottom: 1px solid #ff7730; }
+  .form__input::-webkit-input-placeholder {
+    color: #999; }
+
+.form__label {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: .3rem;
+  margin-left: 2rem;
+  margin-top: .7rem;
+  display: block;
+  transition: all .3s;
+  text-align: center;
+  color: #000; }
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem); }
+
+select {
+  padding: 10rem;
+  margin: 10rem; }
 
 .game-card {
   perspective: 150rem;

@@ -13,12 +13,9 @@ class Home extends Component {
         return (
             
             <section className="section-home">
-            
+                <PostParkingSpot/>
                 <div class="header__text-box--left">
-                    <h1 class="heading-primary">
-                        <span class="heading-primary--main left">Game day parking</span>
-                        <span class="heading-primary--main left">made easy.</span>
-                    </h1>     
+                         
                 </div>
             </section>
         )

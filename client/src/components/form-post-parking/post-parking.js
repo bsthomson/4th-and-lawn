@@ -54,79 +54,107 @@ class PostParkingSpot extends Component {
             return (
             <div className="PostParkingSpotForm">
 
-                <div className="heading-form">
-                    <span className="heading-form--title">Want to host your parking spots on gameday?</span>
-                </div>
-
                 <form>
-                    <div class="form__group">
-                        <input className="form__input"
-                            type="text"
-                            id="address"
-                            name="address"
-                            placeholder="Address"
-                            value={this.state.address}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="form__group">
-                        <input className="form__input"
-                            type="number"
-                            id="availableSpots"
-                            name="availableSpots"
-                            placeholder="Number of avaliable spots"
-                            value={this.state.availableSpots}
-                            onChange={this.handleChange}
-                         />
-                    </div>
-                    <div className="form__group">
+                    <div className="form__container">
+
+                    <h1 class="heading-primary">
+                        <span class="heading-primary--form left">Game day parking made easy. For everyone.</span>
+                    </h1>
+
+                        <div class="form__group">
                             <input className="form__input"
                                 type="text"
-                                id="destination"
-                                name="destination"
-                                placeholder="Destination"
-                                value={this.state.destination}
-                                onChange={this.handleChange}
-                             />
-                    </div>
-                    <div className="form__group">
-                            <input className="form__input"
-                                type="text"
-                                id="instructions"
-                                name="instructions"
-                                placeholder="Parking Insturctions"
-                                value={this.state.instructions}
-                                onChange={this.handleChange}
-                             />
-                    </div>
-                    <div className="form__group">
-                            <input className="form__input"
-                                type="date"
-                                id="date"
-                                name="date"
-                                placeholder="MM/DD/YYYY"
-                                value={this.state.value}
-                                onChange={this.handleChange}
-                             />
-                    </div>
-                    <div className="form__group">
-                            <input className="form__input"
-                                type="time"
-                                id="time"
-                                name="time"
-                                placeholder="HH:MM"
-                                value={this.state.value}
+                                id="address"
+                                name="address"
+                                placeholder="Address"
+                                value={this.state.address}
                                 onChange={this.handleChange}
                             />
-                    </div>
-                    <div className="form__group">
-                            <button className="btn btn-primary col-1 col-mr-auto"
+                        </div>
+                        <div className="form__group">
+                            <input className="form__input"
+                                type="number"
+                                id="availableSpots"
+                                name="availableSpots"
+                                placeholder="Parking spots available"
+                                value={this.state.availableSpots}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        {/* <div className="form__group">
+                                <input className="form__input"
+                                    type="text"
+                                    id="destination"
+                                    name="destination"
+                                    placeholder="Destination"
+                                    value={this.state.destination}
+                                    onChange={this.handleChange}
+                                />
+                        </div>*/}
+                        <div className="form__group">
+                                <input className="form__input"
+                                    type="text"
+                                    id="instructions"
+                                    name="instructions"
+                                    placeholder="Parking instructions"
+                                    value={this.state.instructions}
+                                    onChange={this.handleChange}
+                                />
+                        </div>
+                        <div className="form__group">
+                        <select name="game" className="form__input">
+                            <option 
+                                id="game"
+                                name="game"
+                                value={this.state.value}
+                                onChange={this.handleChange}>
+                                    Fri, Oct 26 vs TCU (TBA)
+                            </option>
+                            <option 
+                                id="game"
+                                name="game"
+                                value={this.state.value}
+                                onChange={this.handleChange}>
+                                    Fri, Nov 2 vs Iowa State (TBA)
+                            </option>
+                            <option 
+                                id="game"
+                                name="game"
+                                value={this.state.value}
+                                onChange={this.handleChange}>
+                                    Fri, Nov 23 vs Texas (11:00 AM)
+                            </option>
+                        </select>
+                        </div>
+                        {/*<div className="form__group">
+                                <input className="form__input"
+                                    type="date"
+                                    id="date"
+                                    name="date"
+                                    placeholder="MM/DD/YYYY"
+                                    value={this.state.value}
+                                    onChange={this.handleChange}
+                                />
+                        </div>
+                        <div className="form__group">
+                                <input className="form__input"
+                                    type="time"
+                                    id="time"
+                                    name="time"
+                                    placeholder="HH:MM"
+                                    value={this.state.value}
+                                    onChange={this.handleChange}
+                                />
+                    </div>*/}
+                        <div className="form__group">
+                            <input
+                                class="btn btn--form"
+                                type="submit"
+                                value="Submit"
                                 onClick={this.handleSubmit}
-                                type="submit">
-                                Submit
-                            </button>
-                    </div>
-                        
+                            />
+                        </div>
+                    </div>   
                 </form>
             </div>
             )

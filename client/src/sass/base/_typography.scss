@@ -52,6 +52,24 @@ body {
         margin-bottom: 1.5rem;
         text-align: left;
     }
+
+    &--form {
+        display: block;
+        width: 100%;
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -.4rem;
+        line-height: 3.5rem;
+        letter-spacing: .2px;
+        color: $color-black;
+
+        @include breakpoint(phone) {
+            letter-spacing: -.2rem;
+            font-size: 8rem;
+            line-height: 7rem;
+            text-align: center;
+        }
+    }
 }
 
 .heading-secondary {
