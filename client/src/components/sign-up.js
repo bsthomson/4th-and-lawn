@@ -18,15 +18,18 @@ class Signup extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
+
 	handleSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.email)
 		event.preventDefault()
+		// console.log('sign-up handleSubmit, username: ')
+		// console.log(this.state)
+
 
 		//request to server to add a new username/password
 		axios.post('/register', {
@@ -39,15 +42,17 @@ class Signup extends Component {
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
+				if (response.status === 200) {
 					this.props.updateUser({
 						loggedIn: true,
-						email: response.data.email
+						email: response.data.email,
+						firstname: response.data.firstname
 					})
 					console.log('successful signup')
 					this.setState({ //redirect to login page
 						redirectTo: '/'
 					})
+					console.log(this.state)
 				} else {
 					console.log('username already taken')
 				}
