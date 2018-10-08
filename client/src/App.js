@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-
+    const url = `/`;
     return (
       <div className="App">
    
@@ -79,15 +79,6 @@ class App extends Component {
               updateUser={this.updateUser}
             />}
         />
-        <Route
-          path="/signup"
-          render={() =>
-            <Signup
-            updateUser={this.updateUser}
-            />
-          }
-        />
-       
         <ModalContainer />
       </div>
     );

@@ -35,6 +35,9 @@ class Navbar extends Component {
       state = { show: false }
 
     render() {
+
+        const { match } = this.props;
+
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
@@ -63,16 +66,15 @@ class Navbar extends Component {
                                     <span>Login</span>
                                 </Link>
                             </li>
-
                             <li class="navigation__item">
                                 <Link to={`/`} className="navigation__link">
                                     <span onClick={() => this.setState({show: true})}>Sign up</span>
-                                    {this.state.show && (
-                                        <Modal onBackdropClick={() => this.setState({show: false})}>
-                                            <Signup/>
-                                        </Modal>
-                                    )}
                                 </Link>
+                                {this.state.show && (
+                                    <Modal onBackdropClick={() => this.setState({show: false})}>
+                                        <Signup/>
+                                    </Modal>
+                                )}
                             </li>
                         </ul>
                     )}

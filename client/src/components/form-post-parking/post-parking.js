@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 class PostParkingSpot extends Component {
@@ -52,10 +51,9 @@ class PostParkingSpot extends Component {
     }
 
     render() {
-        if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
-        } else {
-            <div className="postParkingSpotForm">
+            return (
+            <div className="PostParkingSpotForm">
+
                 <div className="heading-form">
                     <span className="heading-form--title">Want to host your parking spots on gameday?</span>
                 </div>
@@ -91,12 +89,8 @@ class PostParkingSpot extends Component {
                                 onChange={this.handleChange}
                              />
                     </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="instructions">Parking Instructions</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
+                    <div className="form__group">
+                            <input className="form__input"
                                 type="text"
                                 id="instructions"
                                 name="instructions"
@@ -104,14 +98,9 @@ class PostParkingSpot extends Component {
                                 value={this.state.instructions}
                                 onChange={this.handleChange}
                              />
-                        </div>
                     </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="date">Date Parking Spot is Available</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
+                    <div className="form__group">
+                            <input className="form__input"
                                 type="date"
                                 id="date"
                                 name="date"
@@ -119,14 +108,9 @@ class PostParkingSpot extends Component {
                                 value={this.state.value}
                                 onChange={this.handleChange}
                              />
-                        </div>
                     </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="time">Time Parking Spot is Available</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
+                    <div className="form__group">
+                            <input className="form__input"
                                 type="time"
                                 id="time"
                                 name="time"
@@ -134,27 +118,19 @@ class PostParkingSpot extends Component {
                                 value={this.state.value}
                                 onChange={this.handleChange}
                             />
-                        </div>
                     </div>
-                    <div className="form-group">
-                        <div className="col-7"></div>
+                    <div className="form__group">
                             <button className="btn btn-primary col-1 col-mr-auto"
                                 onClick={this.handleSubmit}
                                 type="submit">
                                 Submit
                             </button>
                     </div>
-
-                    <hr className="form-break" />
-
-					<div className="heading-form">
-						<span className="heading-form--text">Already have an account? Login</span>
-                    </div>
                         
                 </form>
             </div>
+            )
         }
-    }
 }
 
 export default PostParkingSpot;

@@ -66,7 +66,7 @@ body {
       padding: 0; } }
 
 body {
-  font-family: '', sans-serif;
+  font-family: 'Muli', sans-serif;
   font-weight: 400;
   line-height: 1.7;
   color: #777; }
@@ -79,20 +79,20 @@ body {
 
 .heading-primary {
   color: #fff;
-  text-transform: uppercase;
   /* Shaking animation bug fix */
   backface-visibility: hidden;
   margin-bottom: 3rem; }
   .heading-primary--main {
     display: block;
     width: 100%;
-    font-size: 6rem;
-    font-weight: 700;
+    font-size: 5rem;
+    font-weight: 800;
     letter-spacing: -.4rem;
     animation: moveInTop 1.5s ease-out .75s;
     animation-fill-mode: backwards;
-    line-height: 10rem;
-    text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8); }
+    line-height: 6rem;
+    text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+    letter-spacing: .2px; }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
         letter-spacing: -.2rem;
@@ -779,7 +779,7 @@ body {
   .header__text-box--left {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 30%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 0; }
@@ -835,8 +835,7 @@ body {
   width: 83%;
   margin-bottom: 4rem;
   left: 50%;
-  margin-left: -41.5%;
-  text-transform: uppercase; }
+  margin-left: -41.5%; }
 
 .navigation__item {
   display: inline-block;
@@ -844,13 +843,12 @@ body {
 
 .navigation__link:link, .navigation__link:visited {
   display: inline-block;
-  font-size: 1rem;
-  font-weight: 300;
-  letter-spacing: .5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: .2px;
   padding: 1rem 2rem;
   color: #fff;
   text-decoration: none;
-  text-transform: uppercase;
   transition: all .6s; }
 
 .navigation__menu {
