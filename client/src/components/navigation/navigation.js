@@ -43,30 +43,30 @@ class Navbar extends Component {
         console.log(this.props);
         
         return (
-            <section>
+            <section className="navigation">
 
-                <nav class="navigation__nav">
+                <nav className="navigation__nav">
                     {loggedIn ? (
-                        <ul class="navigation__list">
-                            <li class="navigation__item">
+                        <ul className="navigation__list">
+                            <li className="navigation__item">
                                 <Link to="#" className="navigation__link" onClick={this.logout}>
                                     <span>Logout</span>
                                 </Link>
                             </li>
                         </ul>
                     ) : (
-                        <ul class="navigation__list">
-                            <li class="navigation__item">
+                        <ul className="navigation__list">
+                            <li className="navigation__item">
                                 <Link to="/" className="navigation__link">
                                     <span>Home</span>
                                 </Link>
                             </li>
-                            <li class="navigation__item">
+                            <li className="navigation__item">
                                 <Link to="/login" className="navigation__link">
                                     <span>Login</span>
                                 </Link>
                             </li>
-                            <li class="navigation__item">
+                            <li className="navigation__item">
                                 <Link to={`/`} className="navigation__link">
                                     <span onClick={() => this.setState({show: true})}>Sign up</span>
                                 </Link>

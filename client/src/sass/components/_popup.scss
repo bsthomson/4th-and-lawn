@@ -18,12 +18,12 @@
     &__close {
         &:link, 
         &:visited {
-            color: $color-secondary-dark;
+            color: $color-red;
             position: absolute;
             top: 2.5rem;
             left: 2.5rem;
             font-size: 2.5rem;
-            font-weight: 100;
+            font-weight: 900;
             text-decoration: none;
             display: inline-block;
             transition: all .2s;

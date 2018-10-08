@@ -1,33 +1,38 @@
 .navigation {
+    position: relative;
+    display: block;
+    height: 80px;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-grey-dark-3;
 
-    &__nav {
-        position: absolute; 
-        padding: 3rem;
-        margin: 0 auto;
-        width: 83%;
+    &__nav { 
+        position: absolute;
+        width: 50%;
+        float: right;
+        padding: 2rem 2rem;
         margin-bottom: 4rem;
-        left: 50%;
-        margin-left: -41.5%;
+        top: 0;
+        right: 0;
+        // margin-right: -41.5%;
     }
 
     &__list {
-       
+        text-align: right;
     }
 
     &__item {
-        display: inline-block;
-        list-style: none;
+
     }
 
     &__link {
         &:link,
         &:visited {
             display: inline-block;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
             letter-spacing: .2px;
-            padding: 1rem 2rem;
-            color: $color-white;
+            padding: 1rem 1rem;
+            color: $color-grey-dark-3;
             text-decoration: none;
             // background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-black 50%);
             // background-size: 240%;

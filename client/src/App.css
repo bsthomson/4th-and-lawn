@@ -111,10 +111,10 @@ body {
   .heading-primary--form {
     display: block;
     width: 100%;
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2.7rem;
+    font-weight: 900;
     letter-spacing: -.4rem;
-    line-height: 3.5rem;
+    line-height: 3.25rem;
     letter-spacing: .2px;
     color: #000; }
     @media only screen and (max-width: 37.5em) {
@@ -275,9 +275,9 @@ body {
 
 .btn--form {
   display: block !important;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  background-color: #ff7730;
+  background-color: #cf1f1f;
   color: #fff;
   font-weight: 500;
   border-radius: .7rem; }
@@ -358,7 +358,7 @@ body {
   background-color: #fff;
   position: relative;
   left: 10%;
-  top: 150px;
+  top: 100px;
   padding: 3rem; }
 
 .form__group:not(:last-child) {
@@ -634,12 +634,12 @@ select {
     opacity: 1;
     visibility: visible; }
   .popup__close:link, .popup__close:visited {
-    color: #ff7730;
+    color: #cf1f1f;
     position: absolute;
     top: 2.5rem;
     left: 2.5rem;
     font-size: 2.5rem;
-    font-weight: 100;
+    font-weight: 900;
     text-decoration: none;
     display: inline-block;
     transition: all .2s;
@@ -856,65 +856,65 @@ select {
     .index-navigation__menu li:nth-child(4n) {
       margin-right: 0; }
 
-.navigation__nav {
-  position: absolute;
-  padding: 3rem;
-  margin: 0 auto;
-  width: 83%;
-  margin-bottom: 4rem;
-  left: 50%;
-  margin-left: -41.5%; }
-
-.navigation__item {
-  display: inline-block;
-  list-style: none; }
-
-.navigation__link:link, .navigation__link:visited {
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: .2px;
-  padding: 1rem 2rem;
-  color: #fff;
-  text-decoration: none;
-  transition: all .6s; }
-
-.navigation__menu {
+.navigation {
+  position: relative;
   display: block;
-  padding: 3rem;
-  margin: 0 auto;
-  width: 83%;
-  position: absolute;
-  margin-bottom: 4rem;
-  left: 50%;
-  margin-left: -41.5%;
-  color: #fff;
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: .3rem;
-  border-bottom: 1px solid white; }
-
-.navigation ul {
-  list-style: none; }
-  @media only screen and (max-width: 37.5em) {
-    .navigation ul {
-      height: 7rem; } }
-
-.navigation li {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  text-align: center;
-  width: calc((100% - 3 * 4rem) / 4); }
-  .navigation li:nth-child(4n) {
-    margin-right: 0; }
-  .navigation li:nth-child(n+3) {
-    opacity: 1;
-    visibility: visible; }
-  @media only screen and (max-width: 37.5em) {
-    .navigation li:nth-child(-n+2) {
-      width: 45%;
-      display: inline-block; } }
+  height: 80px;
+  background-color: #fff;
+  border-bottom: 1px solid #202020; }
+  .navigation__nav {
+    position: absolute;
+    width: 50%;
+    float: right;
+    padding: 2rem 2rem;
+    margin-bottom: 4rem;
+    top: 0;
+    right: 0; }
+  .navigation__list {
+    text-align: right; }
+  .navigation__link:link, .navigation__link:visited {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: .2px;
+    padding: 1rem 1rem;
+    color: #202020;
+    text-decoration: none;
+    transition: all .6s; }
+  .navigation__menu {
+    display: block;
+    padding: 3rem;
+    margin: 0 auto;
+    width: 83%;
+    position: absolute;
+    margin-bottom: 4rem;
+    left: 50%;
+    margin-left: -41.5%;
+    color: #fff;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    border-bottom: 1px solid white; }
+  .navigation ul {
+    list-style: none; }
+    @media only screen and (max-width: 37.5em) {
+      .navigation ul {
+        height: 7rem; } }
+  .navigation li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    width: calc((100% - 3 * 4rem) / 4); }
+    .navigation li:nth-child(4n) {
+      margin-right: 0; }
+    .navigation li:nth-child(n+3) {
+      opacity: 1;
+      visibility: visible; }
+    @media only screen and (max-width: 37.5em) {
+      .navigation li:nth-child(-n+2) {
+        width: 45%;
+        display: inline-block; } }
 
 .menu-navigation__checkbox {
   display: none; }
@@ -1046,9 +1046,9 @@ select {
   transform: rotate(-45deg); }
 
 .section-home {
-  height: 95vh;
-  min-height: 600;
-  background-image: url(img/parking-garage.jpg);
-  background-position: center;
+  height: 85vh;
+  min-height: 60rem;
+  background-image: url(img/background.jpg);
+  background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat; }
