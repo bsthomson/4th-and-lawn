@@ -59,7 +59,7 @@ class PostParkingSpot extends Component {
                     <div className="form__container">
 
                     <h1 class="heading-primary">
-                        <span class="heading-primary--form left">Game day parking made easy. For everyone.</span>
+                        <span class="heading-primary--form left">Game day parking made easy for everyone.</span>
                     </h1>
 
                         <div class="form__group">

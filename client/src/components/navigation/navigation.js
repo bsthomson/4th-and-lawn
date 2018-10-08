@@ -62,8 +62,8 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="/login" className="navigation__link">
-                                    <span>Login</span>
+                                <Link to="/parking-spots" className="navigation__link">
+                                    <span>Parking spots</span>
                                 </Link>
                             </li>
                             <li className="navigation__item">
@@ -75,6 +75,11 @@ class Navbar extends Component {
                                         <Signup/>
                                     </Modal>
                                 )}
+                            </li>
+                            <li className="navigation__item">
+                                <Link to="/login" className="navigation__link">
+                                    <span>Log in</span>
+                                </Link>
                             </li>
                         </ul>
                     )}

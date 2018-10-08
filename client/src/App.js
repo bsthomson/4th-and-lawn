@@ -79,6 +79,13 @@ class App extends Component {
               updateUser={this.updateUser}
             />}
         />
+        <Route
+          path="/parking-spots"
+          render={() =>
+            <LoginForm
+              updateUser={this.updateUser}
+            />}
+        />
         <ModalContainer />
       </div>
     );
