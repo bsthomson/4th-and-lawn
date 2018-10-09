@@ -27,6 +27,12 @@ const RenterSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "User"
     }
+  ],
+  parkingspot: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "ParkingSpot"
+    }
   ]
 })
 
