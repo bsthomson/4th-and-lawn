@@ -9,17 +9,10 @@ const Renter = db.Renter;
 module.exports = function (app) {
   // const sessionChecker
 
+const passportLocal = passport.authenticate("local");
+
 // route to register page
-app.route("/register")
-  .get((req, res) => {
-    // console.log("req.user " + req.user.firstname);
-    if (req.user) {
-      res.json({ user: req.user.firstname })
-    } else {
-      res.json({ user: null })
-    }
-  })
-  .post((req, res) => {
+app.post("/register", (req, res) => {
     console.log("user signup");
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
@@ -32,12 +25,27 @@ app.route("/register")
           error: `Sorry, already a user with that email: ${email}`
         })
       } else {
+        console.log("created new user!")
         User.create({
           email: email,
           password: password,
           firstname: firstname,
           lastname: lastname,
           phonenumber: phonenumber
+        })
+          .then((err, user) => {
+            passport.authenticate('local')(req, res, function () {
+              console.log("signed up", req.user);
+              let userInfo = {
+                email: req.user.email,
+                firstname: req.user.firstname
+              };
+              req.session.user = userInfo.email
+              res.send(userInfo)
+            })
+        })
+        .catch(error => {
+          console.log("error: ", error)
         })
       }
     })
@@ -89,16 +97,33 @@ app.post("/login",
   function (req, res, next) {
     next()
   },
-  passport.authenticate("local"),
+  passportLocal,
   (req, res) => {
     console.log("logged in", req.user);
     let userInfo = {
       email: req.user.email,
       firstname: req.user.firstname
     };
+    req.session.user = userInfo.email
     res.send(userInfo)
   }
 );
+
+app.get('/user', (req, res) =>{
+  console.log("req.session.passport")
+  console.log(req.session.passport)
+  if (req.session.passport !== undefined) {
+    console.log(req.session.passport.user);
+    User.findOne({ _id: req.session.passport.user })
+      .then( (user) => {
+        console.log("user")
+        console.log(user)
+        res.json({ user: user })  
+      })
+  } else {
+    res.json({ user: null })
+  }
+})
 
 // route for logout action
 app.post("/logout", (req, res) => {
