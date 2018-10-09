@@ -33,6 +33,20 @@ app.post("/register", (req, res) => {
           lastname: lastname,
           phonenumber: phonenumber
         })
+          .then((err, user) => {
+            passport.authenticate('local')(req, res, function () {
+              console.log("signed up", req.user);
+              let userInfo = {
+                email: req.user.email,
+                firstname: req.user.firstname
+              };
+              req.session.user = userInfo.email
+              res.send(userInfo)
+            })
+        })
+        .catch(error => {
+          console.log("error: ", error)
+        })
       }
     })
   })
@@ -90,6 +104,7 @@ app.post("/login",
       email: req.user.email,
       firstname: req.user.firstname
     };
+    req.session.user = userInfo.email
     res.send(userInfo)
   }
 );
