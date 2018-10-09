@@ -5,7 +5,7 @@ const ParkingSpot = db.ParkingSpot;
 module.exports = function (app) {
 
   // Posts login information to passport
-  app.post('/rent', (req, res) => {
+  app.post('/api/rentedspots', (req, res) => {
 
     const { licenseplate, make, model, date, time } = req.body;
 
@@ -18,7 +18,7 @@ module.exports = function (app) {
     })
   });
 
-  app.post('/parkingspot', (req, res) => {
+  app.post('/api/parkingspots', (req, res) => {
 
     const { address, availablespots, destination, instructions, date, time } = req.body;
 
