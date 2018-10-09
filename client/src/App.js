@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // components
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
+import NoMatch from "./components/Pages/NoMatch"
 
 class App extends Component {
   constructor() {
@@ -54,31 +55,38 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-   
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>Join the party, {this.state.email}!</p>
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/"
-          component={Home} />
-        <Route
-          path="/login"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-          path="/signup"
-          render={() =>
-            <Signup
-              updateUser={this.updateUser}
-            />}
-        />
-
+        <Router>
+          <div>
+            <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+              <Switch>
+                {/* greet user if logged in: */}
+                {this.state.loggedIn &&
+                  <p>Join the party, {this.state.firstname}!</p> &&
+                  console.log("firstname: " + this.state.firstname)
+                }
+                {/* Routes to different components */}
+                <Route
+                  exact path="/"
+                  component={Home} 
+                />
+                <Route
+                  path="/login"
+                  render={() =>
+                    <LoginForm
+                      updateUser={this.updateUser}
+                    />}
+                />
+                <Route
+                  path="/signup"
+                  render={() =>
+                    <Signup
+                      updateUser={this.updateUser}
+                    />}
+                />
+                <Route component={NoMatch} />
+              </Switch>
+          </div>
+        </Router>
       </div>
     );
   }
