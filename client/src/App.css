@@ -357,8 +357,9 @@ body {
   background-color: #fff;
   position: relative;
   left: 10%;
-  top: 100px;
-  padding: 3rem; }
+  top: 90px;
+  padding: 3rem;
+  border-radius: 6px; }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -882,10 +883,11 @@ select {
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: .2px;
-    padding: 1rem 0rem;
+    padding: 1rem 0 2.3rem 0;
     color: #202020;
-    text-decoration: none;
-    transition: all .6s; }
+    text-decoration: none; }
+  .navigation__link:hover, .navigation__link:active {
+    border-bottom: 3px solid #cf1f1f; }
 
 .section-home {
   height: 85vh;

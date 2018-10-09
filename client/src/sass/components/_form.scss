@@ -9,8 +9,9 @@
         background-color: $color-white;
         position: relative;
         left: 10%;
-        top: 100px;
+        top: 90px;
         padding: 3rem;
+        border-radius: 6px;
     }
     
     &__group:not(:last-child) {
