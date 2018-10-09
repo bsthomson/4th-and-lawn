@@ -18,7 +18,7 @@ export default {
 
   // Saves a parking spot to the database
   saveParkingSpot: parkingSpotData => {
-    return axios.post("/api/books", parkingSpotData);
+    return axios.post("/api/parkingspots", parkingSpotData);
   },
 
   // Gets all spots rented
@@ -38,6 +38,6 @@ export default {
 
   // Saves a parking spot to the database
   saveRentedSpot: rentedSpotData => {
-    return axios.post("/api/books", rentedSpotData);
+    return axios.post("/api/rentedspots", rentedSpotData);
   }
 }
