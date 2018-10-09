@@ -16,6 +16,15 @@ module.exports = function (app) {
       date: date,
       time: time
     })
+      .then( dbRenter => {
+        return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
+      })
+      .then( dbUser => {
+        res.json(dbUser)
+      })
+      .catch( err => {
+        res.json(err)
+      })
   });
 
   app.post('/api/parkingspots', (req, res) => {
