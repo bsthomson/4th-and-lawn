@@ -55,7 +55,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
         <Router>
           <div>
             <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
@@ -88,33 +87,6 @@ class App extends Component {
               </Switch>
           </div>
         </Router>
-=======
-   
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>Join the party, {this.state.email}!</p>
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/"
-          component={Home} />
-        <Route
-          path="/login"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-          path="/signup"
-          render={() =>
-            <Signup
-              updateUser={this.updateUser}
-            />}
-        />
-
->>>>>>> master
       </div>
     );
   }
