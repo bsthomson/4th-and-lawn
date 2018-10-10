@@ -1,8 +1,22 @@
 const db = require("../models");
 const Renter = db.Renter;
 const ParkingSpot = db.ParkingSpot;
+const User = db.User;
 
 module.exports = function (app) {
+
+  app.get('/parking-spots', (req, res) => {
+    const { address, availablespots, destination, instructions, date, time } = req.body
+
+    ParkingSpot.find({})
+      .then( dbParkingSpot => {
+        res.json(dbParkingSpot)
+      })
+      .catch( err => {
+        res.json(err)
+      })
+
+  })
 
   // Posts login information to passport
   app.post('/parkingspots/:id', (req, res) => {
@@ -17,10 +31,10 @@ module.exports = function (app) {
       time: time
     })
       .then( dbRenter => {
-        return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
+        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
       })
-      .then( dbParkingSport => {
-        return db.ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: dbParkingSport._id } }, { new: true });
+      .then( dbParkingSpot => {
+        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: dbParkingSpot._id } }, { new: true });
       })
       .then( dbUser => {
         res.json(dbUser)
