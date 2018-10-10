@@ -16,14 +16,14 @@ class Signup extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
+
 	handleSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.username)
 		event.preventDefault()
 
 		//request to server to add a new username/password
@@ -38,11 +38,17 @@ class Signup extends Component {
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
+				if (response.status === 200) {
+					this.props.updateUser({
+						loggedIn: true,
+						email: response.data.email,
+						firstname: response.data.firstname
+					})
 					console.log('successful signup')
 					this.setState({ //redirect to login page
 						redirectTo: '/login'
 					})
+					console.log(this.state)
 				} else {
 					console.log('username already taken')
 				}
@@ -75,7 +81,6 @@ render() {
 								onChange={this.handleChange}
 								required
 							/>
-							
 						</div>
 
 						<div class="form__group">
@@ -88,7 +93,6 @@ render() {
 								onChange={this.handleChange}
 								required
 							/>
-							
 						</div>
 
 						<div class="form__group">

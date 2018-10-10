@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
-// components
-import Signup from './components/form-sign-up/sign-up'
-import LoginForm from './components/form-login/login'
-import PostParkingSpot from './components/form-post-parking/post-parking'
-
-import Navbar from './components/navigation/navigation'
-import Home from './components/home/home'
+import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// Components
+import Signup from './components/form-sign-up/sign-up';
+import LoginForm from './components/form-login/login';
+import Navbar from './components/navigation/navigation';
+import Home from './components/home/home';
+import NoMatch from './components/Pages/NoMatch';
 
 // Modal
 import { ModalContainer } from 'react-router-modal';
@@ -19,7 +18,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      firstname: null
+      firstname: null,
+      email: null
     }
 
     this.getUser = this.getUser.bind(this)
@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/register').then(response => {
+    axios.get('/user').then(response => {
       console.log('Get user response: ')
       console.log(response)
       if (response.data.user) {
@@ -44,7 +44,8 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          firstname: response.data.user.firstname
+          firstname: response.data.user.firstname,
+          email: response.data.user.email
         })
 
       } else {
@@ -58,35 +59,45 @@ class App extends Component {
   }
 
   render() {
-    const url = `/`;
     return (
       <div className="App">
-   
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>Join the party, {this.state.firstname}!</p> &&
-          console.log("firstname: " + this.state.firstname)
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/"
-          component={Home} />
-        <Route
-          path="/login"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-          path="/parking-spots"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
-        />
-        <ModalContainer />
+        <Router>
+          <div>
+            <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+              <Switch>
+                {/* greet user if logged in: */}
+                {this.state.loggedIn &&
+                  <p>Join the party, {this.state.firstname}!</p> &&
+                  console.log("firstname: " + this.state.firstname)
+                }
+                {/* Routes to different components */}
+                <Route
+                  exact path="/"
+                  component={Home} 
+                />
+                <Route
+                  path="/login"
+                  render={() =>
+                    <LoginForm
+                      updateUser={this.updateUser}
+                    />}
+                />
+                <Route
+                  path="/signup"
+                  render={() =>
+                    <Signup
+                      updateUser={this.updateUser}
+                    />}
+                />
+                <Route
+                  path="/parking-spots"
+                  
+                />
+                <Route component={NoMatch} />
+                <ModalContainer/>
+              </Switch>
+          </div>
+        </Router>
       </div>
     );
   }

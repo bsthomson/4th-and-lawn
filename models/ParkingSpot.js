@@ -24,7 +24,19 @@ const ParkingSpotSchema = new Schema({
   },
   time: {
     type: Number,
-  }
+  },
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
+  renter: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Renter"
+    }
+  ]
 });
 
 const ParkingSpot =mongoose.model("ParkingSpot", ParkingSpotSchema);

@@ -21,7 +21,19 @@ const RenterSchema = new Schema({
   },
   time: {
     type: Number
-  }
+  },
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
+  parkingspot: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "ParkingSpot"
+    }
+  ]
 })
 
 const Renter = mongoose.model("Renter", RenterSchema);
