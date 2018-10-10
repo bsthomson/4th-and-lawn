@@ -5,7 +5,7 @@ const ParkingSpot = db.ParkingSpot;
 module.exports = function (app) {
 
   // Posts login information to passport
-  app.post('/api/rentedspots', (req, res) => {
+  app.post('/parkingspots/:id', (req, res) => {
 
     const { licenseplate, make, model, date, time } = req.body;
 
@@ -18,6 +18,9 @@ module.exports = function (app) {
     })
       .then( dbRenter => {
         return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
+      })
+      .then( dbParkingSport => {
+        return db.ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: dbParkingSport._id } }, { new: true });
       })
       .then( dbUser => {
         res.json(dbUser)
@@ -39,5 +42,14 @@ module.exports = function (app) {
       date: date,
       time: time
     })
+      .then( dbParkingSpotPoster => {
+        return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, {new: true });
+      })
+      .then( dbUser => {
+        res.json(dbUser)
+      })
+      .catch( err => {
+        res.json(err)
+      })
   });
 }
