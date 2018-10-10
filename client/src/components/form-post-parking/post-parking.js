@@ -38,7 +38,7 @@ class PostParkingSpot extends Component {
         })
         .then(response => {
             console.log("parking spot info: ");
-            console.log(response);
+            console.log(response.data);
             if (response.status === 200) {
                 console.log("Post Sent")
                 this.setState({

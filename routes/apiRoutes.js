@@ -56,10 +56,11 @@ module.exports = function (app) {
       date: date,
       time: time
     })
-      .then( dbParkingSpotPoster => {
-        return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, {new: true });
-      })
+      // .then( dbParkingSpotPoster => {
+      //   return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, {new: true });
+      // })
       .then( dbUser => {
+        console.log("sent: ", dbUser);
         res.json(dbUser)
       })
       .catch( err => {
