@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class Signup extends Component {
 	constructor() {
 		super()
 		this.state = {
-			email: '',
+			username: '',
 			password: '',
 			confirmPassword: '',
 			firstname: '',
 			lastname: '',
 			address: '',
-			phonenumber: '',
-			redirectTo: null
+			phonenumber: ''
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -27,12 +25,10 @@ class Signup extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-		// console.log('sign-up handleSubmit, username: ')
-		// console.log(this.state)
-
 
 		//request to server to add a new username/password
 		axios.post('/register', {
+			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password,
 			firstname: this.state.firstname,
@@ -50,7 +46,7 @@ class Signup extends Component {
 					})
 					console.log('successful signup')
 					this.setState({ //redirect to login page
-						redirectTo: '/'
+						redirectTo: '/login'
 					})
 					console.log(this.state)
 				} else {
@@ -65,55 +61,81 @@ class Signup extends Component {
 
 
 render() {
-	if (this.state.redirectTo) {
-		return <Redirect to={{ pathname: this.state.redirectTo }} />
-	} else {
-		return (
-			<div className="SignupForm">
-				<h4>Sign up</h4>
-				<form className="form-horizontal">
-					<div className="form-group">
-						<div className="col-1 col-ml-auto">
-							<label className="form-label" htmlFor="email">Email</label>
-						</div>
-						<div className="col-3 col-mr-auto">
-							<input className="form-input"
-								type="text"
-								id="email"
-								name="email"
-								placeholder="Email"
+	return (
+		<div className="SignupForm">
+		<a href="#section-games" class="popup__close">&times;</a>
+
+					<div className="heading-form">
+						<span className="heading-form--title">Sign up</span>
+					</div>
+					
+					<form id="signup" name="signup">
+
+						<div class="form__group">
+							<input
+								class="form__input"
+								name="email" 
+								type="email"
+								placeholder="Email address"
 								value={this.state.email}
 								onChange={this.handleChange}
+								required
 							/>
 						</div>
-					</div>
-					<div className="form-group">
-						<div className="col-1 col-ml-auto">
-							<label className="form-label" htmlFor="password">Password: </label>
+
+						<div class="form__group">
+							<input
+								name="firstname"
+								class="form__input icon-form far fa-envelope"
+								type="text"
+								placeholder="First name"
+								value={this.state.firstname}
+								onChange={this.handleChange}
+								required
+							/>
 						</div>
-						<div className="col-3 col-mr-auto">
-							<input className="form-input"
-								placeholder="password"
-								type="password"
+
+						<div class="form__group">
+							<input
+								name="lastname"
+								class="form__input"
+								type="text"
+								placeholder="Last name"
+								value={this.state.lastname}
+								onChange={this.handleChange}
+								required
+							/>
+						</div>
+
+						<div class="form__group">
+							<input
 								name="password"
+								class="form__input"
+								type="password"
+								placeholder="Password"
 								value={this.state.password}
 								onChange={this.handleChange}
+								required
 							/>
 						</div>
-					</div>
-					<div className="form-group ">
-						<div className="col-7"></div>
-						<button
-							className="btn btn-primary col-1 col-mr-auto"
-							onClick={this.handleSubmit}
-							type="submit"
-						>Sign up</button>
-					</div>
-				</form>
-			</div>
 
-		)
-		}
+						<input
+							class="btn btn--form"
+							type="submit"
+							value="Sign up"
+							onClick={this.handleSubmit}
+						/>
+
+						<hr className="form-break" />
+
+						<div className="heading-form">
+							<span className="heading-form--text">Already have an account? Login</span>
+						</div>
+
+					</form>
+				</div>
+
+	)
 }
 }
 

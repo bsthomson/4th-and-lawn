@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // Default font-size = 16px
+    // 10 / 16 * 100 = 62.5
+    // 1rem = 10px
+    font-size: 62.5%;
+
+    @include breakpoint(tab-port) {
+        font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%
+    }
+
+    @include breakpoint(phone) {
+        font-size: 50%; // 1 rem = 8px, 8/16 = 50%
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 0rem;
+
+    @include breakpoint(tab-port) { //width < 900?
+        padding: 0;
+    }
+}

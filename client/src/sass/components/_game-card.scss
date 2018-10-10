@@ -1,0 +1,189 @@
+.game-card {
+    // Functionality
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 30rem;
+    margin-bottom: 3rem;
+    z-index: 1000;
+
+    &__side {
+        font-size: 2rem;
+        height: 30rem;
+        transition: all .8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+        border-radius: $default-border-radius;
+        overflow: hidden;
+        box-shadow: 0 .5rem 1.5rem rgba($color-black, .15);
+
+        &--front {
+            background-color: $color-grey-dark-3;
+        }
+    
+        &--back {
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-blue-light, $color-primary);
+            }
+
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateX(0);
+    }
+
+    // Front-side styling
+
+    &__picture {
+        float: left;
+        width: 30%;
+        height: 100%;
+        // background-blend-mode: screen;
+        // -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        // clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        // border-top-left-radius: 3px;
+        // border-top-right-radius: 3px;
+        
+
+        &--1 {
+            height: 100%;
+            // background-image: url(../img/game-background-03.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+    }
+
+
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: left;
+        color: $color-white;
+        position: absolute;
+        top: 15rem;
+        left: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-color: $color-secondary-light;
+            // background-image: linear-gradient(to right bottom,
+            // rgba($color-secondary-light, .95),
+            // rgba($color-secondary-dark, .95));
+        }
+
+    }
+
+    &__game-details {
+        width: 70%;
+        height: 100%;
+        float: left;
+        padding: 3rem;
+        text-transform: uppercase;
+
+        &--button-top {
+            height: 5rem;
+            width: 70%;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            color: $color-white;
+            line-height: 3.5rem;
+            padding-top: 4rem;
+        }
+
+        &--button-bottom {
+            height: 5rem;
+            width: 70%;
+            // background-color: $color-blue;
+            background-image: linear-gradient(to right, $color-blue, $color-primary);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    &__container {
+        position: relative;
+        top: 40%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 4rem;
+        margin: 0 auto;
+    }
+
+  
+
+    &__details {
+        width: 75%;
+        padding: 2rem;
+        float: left;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: left;
+                font-size: 1.5rem;
+                font-weight: 200;
+                padding: 1rem;
+                color: $color-white;
+                text-transform: uppercase;
+                letter-spacing: .3rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+
+    // Back-side styling
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: $color-white;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+}
