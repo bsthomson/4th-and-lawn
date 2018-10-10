@@ -1,0 +1,149 @@
+.player-card {
+    // Functionality
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 46rem;
+    margin-bottom: 4.5rem;
+    z-index: 1000;
+
+    @include breakpoint(phone) {
+        height: 40rem;
+    }
+
+    &__side {
+        font-size: 2rem;
+        height: 46rem;
+        transition: all .8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+        border-radius: $default-border-radius;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        @include breakpoint(phone) {
+            height: 40rem;
+        }
+
+        &--front {
+            background-color: $color-grey-dark-3;
+            // background-image: linear-gradient($color-blue, $color-primary);
+        }
+    
+        &--back {
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-blue-light, $color-primary);
+            }
+
+        }
+    }
+
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    // Front-side styling
+    &__picture {
+        background-size: cover;
+        height: 38rem;
+        background-position: center;
+        // background-blend-mode: screen;
+        // -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        // clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+
+        @include breakpoint(phone) {
+            background-position: top;
+            height: 30rem;
+        }
+        
+
+        &--1 {
+            // background-image: url(../../img/player-profile-01.jpg);
+        }
+
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 25rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-color: $color-secondary-light;
+            // background-image: linear-gradient(to right bottom,
+            // rgba($color-secondary-light, .95),
+            // rgba($color-secondary-dark, .95));
+        }
+
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+
+    // Back-side styling
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        margin-bottom: 8rem;
+        color: $color-white;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+}
