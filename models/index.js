@@ -1,3 +1,5 @@
 module.exports = {
-  User: require("./User")
+  User: require("./User"),
+  ParkingSpot: require("./ParkingSpot"),
+  Renter: require("./Renter")
 }

@@ -48,7 +48,7 @@ module.exports = function (app) {
 
     const { address, availablespots, destination, instructions, date, time } = req.body;
 
-    ParkingSpot.create({
+    db.ParkingSpot.create({
       address: address,
       availablespots: availablespots,
       destination: destination,

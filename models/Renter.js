@@ -38,4 +38,4 @@ const RenterSchema = new Schema({
 
 const Renter = mongoose.model("Renter", RenterSchema);
 
-model.exports = Renter;
+module.exports = Renter;

@@ -28,7 +28,7 @@ class PostParkingSpot extends Component {
         event.preventDefault();
         console.log("handleSubmit");
 
-        axios.post('/parkingspot', {
+        axios.post('/api/parkingspots', {
             address: this.state.address,
             availableSpots: this.state.availablespots,
             destination: this.state.destination,
