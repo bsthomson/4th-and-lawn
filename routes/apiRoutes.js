@@ -32,19 +32,14 @@ module.exports = function (app) {
       date: date,
       time: time,
       user: req.session.passport.user,
-      parkingspot: req.params._id
+      parkingspot: req.params.id
     })
       .then( dbRenter => {
-        console.log("updating user", dbRenter)
-        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params._id } }, { new: true });
+        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }, { new: true });
       })
-      .then( dbRentInfo => {
-        console.log("user again", dbRentInfo)
-        return User.findOneAndUpdate({ _id: req.session.passport.user }), { $push: { rentinfo: dbRentInfo._id}}
-      })
-      .then( () => {
+      .then( (dbRenter) => {
         console.log("updating Parking Spot")
-        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user } }, { new: true });
+        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }, { new: true });
       })
       .then( dbUser => {
         console.log("sending user info", dbUser)
@@ -78,18 +73,21 @@ module.exports = function (app) {
     });
 
   app.get('/api/postedspots', (req, res) => {
-    User.find({ user: req.session.passport.user })
+    User.find({ _id: req.session.passport.user })
       .populate('parkingspots')
       .then( dbPostedSpot => {
         res.json(dbPostedSpot)
+        console.log('Got The Spots')
+        console.log(dbPostedSpot)
       })
       .catch( err => {
         res.json(err)
+        console.log('No Spots')
       })
   })
   
   app.get('/api/rentedspots', (req, res) => {
-    User.find({ user: req.session.passport.user })
+    User.find({ _id: req.session.passport.user })
       .populate('rentedspots')
       .then ( dbRentedSpot => {
         res.json(dbRentedSpot)

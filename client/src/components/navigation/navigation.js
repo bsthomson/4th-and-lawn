@@ -68,6 +68,11 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
+                                <Link to="/posted-spots" className="navigation__link">
+                                    <span>My Spots</span>
+                                </Link>
+                            </li>
+                            <li className="navigation__item">
                                 <Link to="/parking-spots" className="navigation__link">
                                     <span>Parking spots</span>
                                 </Link>
@@ -85,6 +90,7 @@ class Navbar extends Component {
                                     <span>Home</span>
                                 </Link>
                             </li>
+                            
                             <li className="navigation__item">
                                 <Link to="/parking-spots" className="navigation__link">
                                     <span>Parking spots</span>
