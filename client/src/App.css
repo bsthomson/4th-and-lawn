@@ -65,6 +65,9 @@ body {
     body {
       padding: 0; } }
 
+a {
+  text-decoration: none; }
+
 body {
   font-family: 'Muli', sans-serif;
   font-weight: 400;
@@ -123,6 +126,19 @@ body {
         line-height: 7rem;
         text-align: center; } }
 
+.heading-page {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2.5rem 0; }
+  .heading-page--title {
+    display: block;
+    width: 100%;
+    font-size: 2.7rem;
+    font-weight: 900;
+    line-height: 3.5rem;
+    letter-spacing: 0px;
+    color: #000; }
+
 .heading-secondary {
   font-size: 11rem;
   text-transform: uppercase;
@@ -141,38 +157,33 @@ body {
   text-transform: uppercase;
   letter-spacing: -.2rem; }
 
-.game-details {
+.parking-details {
   color: #fff;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   display: block;
   width: 100%; }
-  .game-details--main {
+  .parking-details--main {
     color: #fff;
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: -.2rem; }
-  .game-details--sub {
+  .parking-details--sub {
     font-size: 1.1rem;
     letter-spacing: .3rem;
     padding-left: 1rem;
-    color: #777; }
-  .game-details--icon {
+    color: #fff; }
+  .parking-details--icon {
     font-size: 1.1rem;
     letter-spacing: .3rem;
     padding-left: 1rem; }
-  .game-details--name {
+  .parking-details--name {
     font-size: 1.1rem;
     letter-spacing: .3rem;
     padding-left: 1rem; }
     @media only screen and (max-width: 37.5em) {
-      .game-details--name {
+      .parking-details--name {
         font-size: 1.8rem; } }
-  .game-details--location {
-    color: #fff;
-    font-size: 4rem;
-    font-weight: 700;
-    letter-spacing: -.1rem; }
 
 .icon {
   color: #fff; }
@@ -257,12 +268,6 @@ body {
   .btn--white::after {
     background-color: #fff; }
 
-.btn--green {
-  background-color: #55c57a;
-  color: #fff; }
-  .btn--green::after {
-    background-color: #55c57a; }
-
 .btn--header {
   display: block !important;
   width: 100%;
@@ -283,20 +288,16 @@ body {
   .btn--form::after {
     background-color: #fff; }
 
-.btn--blue {
-  background-color: #007CC2;
-  color: white;
-  animation: moveInBottom 1.5s ease; }
-  .btn--blue::after {
-    background-color: #007CC2; }
-
-.btn--gradient {
-  background-color: transparent;
-  color: white; }
-  .btn--gradient:hover {
-    background-image: linear-gradient(to right, #007CC2, #55c57a); }
-  .btn--gradient::after {
-    background-image: linear-gradient(to right, #007CC2, #55c57a); }
+.btn--rent {
+  display: block !important;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #cf1f1f;
+  color: #fff;
+  font-weight: 500;
+  border-radius: .7rem; }
+  .btn--rent::after {
+    background-color: #fff; }
 
 .btn::after {
   content: "";
@@ -407,14 +408,14 @@ select {
   padding: 10rem;
   margin: 10rem; }
 
-.game-card {
+.parking-card {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
   height: 30rem;
   margin-bottom: 3rem;
   z-index: 1000; }
-  .game-card__side {
+  .parking-card__side {
     font-size: 2rem;
     height: 30rem;
     transition: all .8s ease;
@@ -426,25 +427,23 @@ select {
     border-radius: 3px;
     overflow: hidden;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15); }
-    .game-card__side--front {
+    .parking-card__side--front {
       background-color: #202020; }
-    .game-card__side--back {
+    .parking-card__side--back {
       transform: rotateY(180deg); }
-      .game-card__side--back-1 {
+      .parking-card__side--back-1 {
         background-image: linear-gradient(to right bottom, #25abf8, #55c57a); }
-  .game-card:hover .game-card__side--front {
-    transform: rotateY(-180deg); }
-  .game-card:hover .game-card__side--back {
-    transform: rotateX(0); }
-  .game-card__picture {
+  .parking-card__picture {
     float: left;
-    width: 30%;
-    height: 100%; }
-    .game-card__picture--1 {
+    width: 100%;
+    height: 200px; }
+    .parking-card__picture--1 {
       height: 100%;
+      background-image: url(img/house.jpg);
       background-size: cover;
-      background-position: center; }
-  .game-card__heading {
+      background-position: center;
+      background-color: #eee; }
+  .parking-card__heading {
     font-size: 2.8rem;
     font-weight: 300;
     text-transform: uppercase;
@@ -454,19 +453,18 @@ select {
     top: 15rem;
     left: 2rem;
     width: 75%; }
-  .game-card__heading-span {
+  .parking-card__heading-span {
     padding: 1rem 1.5rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone; }
-    .game-card__heading-span--1 {
+    .parking-card__heading-span--1 {
       background-color: #ffb900; }
-  .game-card__game-details {
-    width: 70%;
-    height: 100%;
+  .parking-card__game-details {
+    width: 100%;
     float: left;
-    padding: 3rem;
+    padding: 2rem;
     text-transform: uppercase; }
-    .game-card__game-details--button-top {
+    .parking-card__game-details--button-top {
       height: 5rem;
       width: 70%;
       background-color: transparent;
@@ -477,30 +475,22 @@ select {
       color: #fff;
       line-height: 3.5rem;
       padding-top: 4rem; }
-    .game-card__game-details--button-bottom {
+    .parking-card__game-details--button-bottom {
       height: 5rem;
       width: 70%;
       background-image: linear-gradient(to right, #007CC2, #55c57a);
       position: absolute;
       bottom: 0;
       left: 0; }
-  .game-card__container {
-    position: relative;
-    top: 40%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    line-height: 4rem;
-    margin: 0 auto; }
-  .game-card__details {
+  .parking-card__details {
     width: 75%;
     padding: 2rem;
     float: left; }
-    .game-card__details ul {
+    .parking-card__details ul {
       list-style: none;
       width: 80%;
       margin: 0 auto; }
-      .game-card__details ul li {
+      .parking-card__details ul li {
         text-align: left;
         font-size: 1.5rem;
         font-weight: 200;
@@ -508,114 +498,23 @@ select {
         color: #fff;
         text-transform: uppercase;
         letter-spacing: .3rem; }
-        .game-card__details ul li:not(:last-child) {
+        .parking-card__details ul li:not(:last-child) {
           border-bottom: 1px solid #eee; }
-  .game-card__cta {
+  .parking-card__cta {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
     text-align: center; }
-  .game-card__price-box {
+  .parking-card__price-box {
     text-align: center;
     margin-bottom: 1rem;
     color: #fff; }
-  .game-card__price-only {
+  .parking-card__price-only {
     font-size: 1.4rem;
     text-transform: uppercase; }
-  .game-card__price-value {
-    font-size: 6rem;
-    font-weight: 100; }
-
-.player-card {
-  perspective: 150rem;
-  -moz-perspective: 150rem;
-  position: relative;
-  height: 46rem;
-  margin-bottom: 4.5rem;
-  z-index: 1000; }
-  @media only screen and (max-width: 37.5em) {
-    .player-card {
-      height: 40rem; } }
-  .player-card__side {
-    font-size: 2rem;
-    height: 46rem;
-    transition: all .8s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    backface-visibility: hidden;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
-    @media only screen and (max-width: 37.5em) {
-      .player-card__side {
-        height: 40rem; } }
-    .player-card__side--front {
-      background-color: #202020; }
-    .player-card__side--back {
-      transform: rotateY(180deg); }
-      .player-card__side--back-1 {
-        background-image: linear-gradient(to right bottom, #25abf8, #55c57a); }
-  .player-card:hover .player-card__side--front {
-    transform: rotateY(-180deg); }
-  .player-card:hover .player-card__side--back {
-    transform: rotateY(0); }
-  .player-card__picture {
-    background-size: cover;
-    height: 38rem;
-    background-position: center;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px; }
-    @media only screen and (max-width: 37.5em) {
-      .player-card__picture {
-        background-position: top;
-        height: 30rem; } }
-  .player-card__heading {
-    font-size: 2.8rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    text-align: right;
-    color: #fff;
-    position: absolute;
-    top: 25rem;
-    right: 2rem;
-    width: 75%; }
-  .player-card__heading-span {
-    padding: 1rem 1.5rem;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone; }
-    .player-card__heading-span--1 {
-      background-color: #ffb900; }
-  .player-card__details {
-    padding: 3rem; }
-    .player-card__details ul {
-      list-style: none;
-      width: 80%;
-      margin: 0 auto; }
-      .player-card__details ul li {
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 1rem; }
-        .player-card__details ul li:not(:last-child) {
-          border-bottom: 1px solid #eee; }
-  .player-card__cta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    text-align: center; }
-  .player-card__price-box {
-    text-align: center;
-    margin-bottom: 8rem;
-    color: #fff; }
-  .player-card__price-only {
-    font-size: 1.4rem;
-    text-transform: uppercase; }
-  .player-card__price-value {
+  .parking-card__price-value {
     font-size: 6rem;
     font-weight: 100; }
 
@@ -706,67 +605,36 @@ select {
   .row .col-3-of-4 {
     width: calc(3 * ((100% - 3 * 4rem) / 4) + 2 * 4rem); }
 
-.players-container {
+.parking-container {
   max-width: 90%;
   margin: 0 auto; }
-  @media (max-width: 56.25em) {
-    .players-container {
-      max-width: 50rem; } }
-  .players-container:not(:last-child) {
+  .parking-container:not(:last-child) {
     margin-bottom: 8rem; }
     @media (max-width: 56.25em) {
-      .players-container:not(:last-child) {
+      .parking-container:not(:last-child) {
         margin-bottom: 6rem; } }
-  .players-container::after {
+  .parking-container::after {
     content: "";
     display: table;
     clear: both; }
-  .players-container [class^="col-"] {
-    float: left;
-    margin-right: 4rem; }
-    .players-container [class^="col-"]:nth-child(3n) {
-      margin-right: 0; }
-      @media (max-width: 56.25em) {
-        .players-container [class^="col-"]:nth-child(3n) {
-          margin-bottom: 6rem; } }
-    @media (max-width: 56.25em) {
-      .players-container [class^="col-"] {
-        width: 100% !important; } }
-  .players-container .col-1-of-3 {
-    width: calc((100% - 2 * 4rem) / 3); }
-
-.games-container {
-  max-width: 90%;
-  margin: 0 auto; }
-  .games-container:not(:last-child) {
-    margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
-      .games-container:not(:last-child) {
-        margin-bottom: 6rem; } }
-  .games-container::after {
-    content: "";
-    display: table;
-    clear: both; }
-  .games-container [class^="col-"] {
+  .parking-container [class^="col-"] {
     float: left;
     margin-right: 2.5rem; }
-  .games-container .col-1-of-1 {
+  .parking-container .col-1-of-1 {
     width: calc((100% - 2 * 4rem)); }
-  .games-container .col-1-of-2 {
+  .parking-container .col-1-of-2 {
     width: calc((100% - 4rem) / 2); }
+  .parking-container .col-1-of-3 {
+    width: calc((100% - 2 * 4rem) / 3); }
+    .parking-container .col-1-of-3:nth-child(3n) {
+      margin-right: 0; }
     @media (max-width: 56.25em) {
-      .games-container .col-1-of-2 {
+      .parking-container .col-1-of-3 {
         width: 100% !important; } }
     @media only screen and (max-width: 37.5em) {
-      .games-container .col-1-of-2 {
+      .parking-container .col-1-of-3 {
         width: 100% !important;
         margin: 0 auto !important; } }
-    .games-container .col-1-of-2:nth-child(2n) {
-      margin-right: 0; }
-  .games-container .col-1-of-3 {
-    width: calc((100% - 2 * 4rem) / 3); }
-    .games-container .col-1-of-3:nth-child(3n) {
-      margin-right: 0; }
 
 .header {
   height: 95vh;
@@ -904,3 +772,6 @@ select {
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat; }
+
+.section-parking {
+  padding-top: 5rem; }

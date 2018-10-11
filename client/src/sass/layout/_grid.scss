@@ -70,48 +70,8 @@
     }
 }
 
-.players-container {
-    max-width: $grid-width;
-    margin: 0 auto;
 
-    @include breakpoint(tab-port) {
-        max-width: 50rem;
-    }
-
-    &:not(:last-child) {
-        margin-bottom: $gutter-vertical;
-
-        @include breakpoint(tab-port) {
-            margin-bottom: $gutter-vertical-sm;
-        }
-    }
-
-    @include clearfix;
-
-    [class^="col-"] {
-        float: left;
-        margin-right: $gutter-horizontal;
-
-        &:nth-child(3n) {
-            margin-right: 0;
-
-            @include breakpoint(tab-port) {
-                margin-bottom: $gutter-vertical-sm;
-            }
-        }
-
-        @include breakpoint(tab-port) {
-            width: 100% !important;
-        }
-    }
-
-    .col-1-of-3 {
-        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
-    }
-}
-
-
-.games-container {
+.parking-container {
     max-width: $grid-width;
     margin: 0 auto;
 
@@ -122,7 +82,6 @@
             margin-bottom: $gutter-vertical-sm;
         }
     }
-
 
     @include clearfix;
 
@@ -137,6 +96,14 @@
 
     .col-1-of-2 {
         width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
 
         @include breakpoint(tab-port) {
             width: 100% !important;
@@ -147,17 +114,6 @@
             margin: 0 auto !important;
         }
 
-        &:nth-child(2n) {
-            margin-right: 0;
-        }
-    }
-
-    .col-1-of-3 {
-        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
-
-        &:nth-child(3n) {
-            margin-right: 0;
-        }
     }
 
 }

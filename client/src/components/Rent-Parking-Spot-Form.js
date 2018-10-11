@@ -55,44 +55,35 @@ class RentParkingSpot extends Component {
             return (
                 <div>
                     <div className="rentParkingSpotForm">
-                        <h4>Rent A Parking Spot</h4>
-                        <form className="form-horizontal">
-                            <div className="form-group">
-                                <div className="col-1 col-ml-auto">
-                                    <label className="form-label" htmlFor="licensePlate">License Plate Number</label>
-                                </div>
-                                <div className="col-3 col-mr-auto">
-                                    <input className="form-input"
+                        <form>
+                            <div className="form__container">
+
+                                <h1 className="heading-primary">
+                                    <span className="heading-primary--form left">Reserve your spot</span>
+                                </h1>
+
+                                <div className="form__group">
+                                    <input className="form__input"
                                         type="text"
                                         id="licensePlate"
                                         name="licensePlate"
-                                        placeholder="License Plate Number"
+                                        placeholder="License plate number"
                                         value={this.state.licensePlate}
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-1 col-ml-auto">
-                                    <label className="form-label" htmlFor="model">Car Model</label>
-                                </div>
-                                <div className="col-3 col-mr-auto">
-                                    <input className="form-input"
+                                <div className="form__group">
+                                    <input className="form__input"
                                         type="text"
                                         id="model"
                                         name="model"
-                                        placeholder="Car Model"
+                                        placeholder="Car model"
                                         value={this.state.carModel}
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-1 col-ml-auto">
-                                    <label className="form-label" htmlFor="date">Date</label>
-                                </div>
-                                <div className="col-3 col-mr-auto">
-                                    <input className="form-input"
+                                <div className="form__group">
+                                    <input className="form__input"
                                         type="text"
                                         id="date"
                                         name="date"
@@ -101,13 +92,8 @@ class RentParkingSpot extends Component {
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-1 col-ml-auto">
-                                    <label className="form-label" htmlFor="time">Time</label>
-                                </div>
-                                <div className="col-3 col-mr-auto">
-                                    <input className="form-input"
+                                <div className="form__group">
+                                    <input className="form__input"
                                         type="text"
                                         id="time"
                                         name="time"
@@ -116,14 +102,14 @@ class RentParkingSpot extends Component {
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-7"></div>
-                                    <button className="btn btn-primary col-1 col-mr-auto" 
+                                <div className="form__group">
+                                    <input
+                                        className="btn btn--form"
+                                        type="submit"
+                                        value="Submit"
                                         onClick={this.handleSubmit}
-                                        type="submit">
-                                        Submit
-                                    </button>
+                                    />
+                                </div>
                             </div>
                         </form>
                     </div>

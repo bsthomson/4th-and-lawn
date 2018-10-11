@@ -71,6 +71,22 @@ body {
     }
 }
 
+.heading-page {
+    max-width: $grid-width;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+
+    &--title {
+        display: block;
+        width: 100%;
+        font-size: 2.7rem;
+        font-weight: 900;
+        line-height: 3.5rem;
+        letter-spacing: 0px;
+        color: $color-black;
+    }
+}
+
 .heading-secondary {
     font-size: 11rem;
     text-transform: uppercase;
@@ -95,16 +111,16 @@ body {
     letter-spacing: -.2rem;
 }
 
-.game-details {
+.parking-details {
     color: $color-white;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     display: block;
     width: 100%;
 
     &--main {
         color: $color-white;
-        font-size: 5rem;
+        font-size: 3rem;
         font-weight: 700;
         letter-spacing: -.2rem;
     }
@@ -113,7 +129,7 @@ body {
         font-size: 1.1rem;
         letter-spacing: .3rem;
         padding-left: 1rem;
-        color: $color-grey-dark;
+        color: $color-white;
     }
 
     &--icon {
@@ -130,13 +146,6 @@ body {
         @include breakpoint(phone) {
             font-size: 1.8rem;
         }
-    }
-
-    &--location {
-        color: $color-white;
-        font-size: 4rem;
-        font-weight: 700;
-        letter-spacing: -.1rem;
     }
 }
 

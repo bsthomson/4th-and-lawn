@@ -1,19 +1,15 @@
-.player-card {
+.parking-card {
     // Functionality
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
-    height: 46rem;
-    margin-bottom: 4.5rem;
+    height: 30rem;
+    margin-bottom: 3rem;
     z-index: 1000;
-
-    @include breakpoint(phone) {
-        height: 40rem;
-    }
 
     &__side {
         font-size: 2rem;
-        height: 46rem;
+        height: 30rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
@@ -22,15 +18,10 @@
         backface-visibility: hidden;
         border-radius: $default-border-radius;
         overflow: hidden;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-
-        @include breakpoint(phone) {
-            height: 40rem;
-        }
+        box-shadow: 0 .5rem 1.5rem rgba($color-black, .15);
 
         &--front {
             background-color: $color-grey-dark-3;
-            // background-image: linear-gradient($color-blue, $color-primary);
         }
     
         &--back {
@@ -43,47 +34,45 @@
         }
     }
 
+    // &:hover &__side--front {
+    //     transform: rotateY(-180deg);
+    // }
 
-    &:hover &__side--front {
-        transform: rotateY(-180deg);
-    }
-
-    &:hover &__side--back {
-        transform: rotateY(0);
-    }
+    // &:hover &__side--back {
+    //     transform: rotateX(0);
+    // }
 
     // Front-side styling
+
     &__picture {
-        background-size: cover;
-        height: 38rem;
-        background-position: center;
+        float: left;
+        width: 100%;
+        height: 200px;
         // background-blend-mode: screen;
         // -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         // clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-
-        @include breakpoint(phone) {
-            background-position: top;
-            height: 30rem;
-        }
+        // border-top-left-radius: 3px;
+        // border-top-right-radius: 3px;
         
 
         &--1 {
-            // background-image: url(../../img/player-profile-01.jpg);
+            height: 100%;
+            background-image: url(img/house.jpg);
+            background-size: cover;
+            background-position: center;
+            background-color: $color-grey-light-2;
         }
-
     }
 
     &__heading {
         font-size: 2.8rem;
         font-weight: 300;
         text-transform: uppercase;
-        text-align: right;
+        text-align: left;
         color: $color-white;
         position: absolute;
-        top: 25rem;
-        right: 2rem;
+        top: 15rem;
+        left: 2rem;
         width: 75%;
     }
 
@@ -101,8 +90,40 @@
 
     }
 
+    &__game-details {
+        width: 100%;
+        float: left;
+        padding: 2rem;
+        text-transform: uppercase;
+
+        &--button-top {
+            height: 5rem;
+            width: 70%;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            color: $color-white;
+            line-height: 3.5rem;
+            padding-top: 4rem;
+        }
+
+        &--button-bottom {
+            height: 5rem;
+            width: 70%;
+            // background-color: $color-blue;
+            background-image: linear-gradient(to right, $color-blue, $color-primary);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
     &__details {
-        padding: 3rem;
+        width: 75%;
+        padding: 2rem;
+        float: left;
 
         ul {
             list-style: none;
@@ -110,9 +131,13 @@
             margin: 0 auto;
 
             li {
-                text-align: center;
+                text-align: left;
                 font-size: 1.5rem;
+                font-weight: 200;
                 padding: 1rem;
+                color: $color-white;
+                text-transform: uppercase;
+                letter-spacing: .3rem;
 
                 &:not(:last-child) {
                     border-bottom: 1px solid $color-grey-light-2;
@@ -133,7 +158,7 @@
 
     &__price-box {
         text-align: center;
-        margin-bottom: 8rem;
+        margin-bottom: 1rem;
         color: $color-white;
     }
 

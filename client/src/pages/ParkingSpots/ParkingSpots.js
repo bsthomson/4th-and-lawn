@@ -23,23 +23,52 @@ class ParkingSpots extends Component {
 
     render() {
         return (
-            <section>
-            {this.state.parkingspots.length ? (
-                <ul>
-                  {this.state.parkingspots.map(parkingspot => (
-                    <ListItem key={parkingspot._id}>
-                      <Link to={"/rentthisspot/" + parkingspot._id}>
-                        <strong>
-                          {parkingspot.address} by {parkingspot.instructions} {parkingspot.game} {parkingspot.availablespots}
-                        </strong>
-                      </Link>
-                     </ListItem>
-                  ))}
-                </ul>
-              ) : (
+            <section className="section-parking">
+
+            <h1 className="heading-page">
+                <span className="heading-page--title">Available spots near Memorial Stadium</span>
+            </h1>
+
+              {this.state.parkingspots.length ? (
+
+                <div className="parking-container">
+
+                    {this.state.parkingspots.map(parkingspot => (
+                        <div className="col-1-of-3">
+                            <div className="parking-card">
+                                <div className="parking-card__side parking-card__side--front">
+
+                                    <div className="parking-card__picture">
+                                        <div className="parking-card__picture--1">&nbsp;</div>
+                                    </div>
+
+                                    <div className="parking-card__game-details">
+                                            <div className="col-1-of-1">
+                                                <span className="parking-details parking-details--sub" key={parkingspot._id}>{parkingspot.address}</span>
+                                            </div>
+                                            <div className="col-1-of-1">
+                                                <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots}</span>                                            </div>
+                                            <div className="col-1-of-1">
+                                                <span clasNames="parking-details parking-details--sub"></span>                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <Link to={"/rentthisspot/" + parkingspot._id}>
+                                <input
+                                    className="btn btn--form"
+                                    type="submit"
+                                    value="Reserve"
+                                    onClick={this.handleSubmit}
+                                />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                    ) : (
                 <h3>No Results to Display</h3>
-              )}
-              </section>
+                )}
+            </section>
         );
     }
 }
