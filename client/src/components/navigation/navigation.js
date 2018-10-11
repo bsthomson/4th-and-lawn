@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
 import Signup from './../form-sign-up/sign-up';
 
@@ -64,6 +63,16 @@ class Navbar extends Component {
                     {loggedIn ? (
                         <ul className="navigation__list">
                             <li className="navigation__item">
+                                <Link to="/" className="navigation__link">
+                                    <span>Home</span>
+                                </Link>
+                            </li>
+                            <li className="navigation__item">
+                                <Link to="/parking-spots" className="navigation__link">
+                                    <span>Parking spots</span>
+                                </Link>
+                            </li>
+                            <li className="navigation__item">
                                 <Link to="#" className="navigation__link" onClick={this.logout}>
                                     <span>Logout</span>
                                 </Link>
@@ -92,7 +101,7 @@ class Navbar extends Component {
                                 onRequestClose={this.closeModal}
                                 contentLabel="Example Modal"
                             >
-                            <Signup />
+                            <Signup updateUser={this.props.updateUser}/>
                             </Modal>
                             <li className="navigation__item">
                                 <Link to="/login" className="navigation__link">

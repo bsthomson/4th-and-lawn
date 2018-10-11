@@ -13,7 +13,7 @@ class PostParkingSpot extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-
+    
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -23,19 +23,19 @@ class PostParkingSpot extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('/parkingspot', {
+        axios.post('/api/parkingspots', {
             address: this.state.address,
             availableSpots: this.state.availablespots,
-            destination: this.state.destination,
             instructions: this.state.instructions,
             game: this.state.game
         })
         .then(response => {
-            console.log(response);
+            console.log("parking spot info: ");
+            console.log(response.data);
             if (response.status === 200) {
                 console.log("Post Sent")
                 this.setState({
-                    redirectTo: "/"
+                    redirectTo: "/parking-spots"
                 })
             }
         }).catch(error => {
@@ -51,11 +51,11 @@ class PostParkingSpot extends Component {
                 <form>
                     <div className="form__container">
 
-                    <h1 class="heading-primary">
-                        <span class="heading-primary--form left">Game day parking made easy for everyone.</span>
+                    <h1 className="heading-primary">
+                        <span className="heading-primary--form left">Game day parking made easy for everyone.</span>
                     </h1>
 
-                        <div class="form__group">
+                        <div className="form__group">
                             <input className="form__input"
                                 type="text"
                                 id="address"
@@ -68,10 +68,10 @@ class PostParkingSpot extends Component {
                         <div className="form__group">
                             <input className="form__input"
                                 type="number"
-                                id="availableSpots"
-                                name="availableSpots"
+                                id="availablespots"
+                                name="availablespots"
                                 placeholder="Parking spots available"
-                                value={this.state.availableSpots}
+                                value={this.state.availablespots}
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -142,7 +142,7 @@ class PostParkingSpot extends Component {
                     </div>*/}
                         <div className="form__group">
                             <input
-                                class="btn btn--form"
+                                className="btn btn--form"
                                 type="submit"
                                 value="Submit"
                                 onClick={this.handleSubmit}

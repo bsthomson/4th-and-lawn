@@ -4,9 +4,6 @@ import '../../img/parking-garage.jpg'
 import PostParkingSpot from './../../components/form-post-parking/post-parking'
 
 class Home extends Component {
-    constructor() {
-        super()
-    }
 
     render() {
         return (

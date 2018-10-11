@@ -72,7 +72,7 @@ render() {
 
 						<div class="form__group">
 							<input
-								class="form__input"
+								className="form__input"
 								name="email" 
 								type="email"
 								placeholder="Email address"
@@ -85,7 +85,7 @@ render() {
 						<div class="form__group">
 							<input
 								name="firstname"
-								class="form__input icon-form far fa-envelope"
+								className="form__input icon-form far fa-envelope"
 								type="text"
 								placeholder="First name"
 								value={this.state.firstname}
@@ -97,7 +97,7 @@ render() {
 						<div class="form__group">
 							<input
 								name="lastname"
-								class="form__input"
+								className="form__input"
 								type="text"
 								placeholder="Last name"
 								value={this.state.lastname}
@@ -109,7 +109,7 @@ render() {
 						<div class="form__group">
 							<input
 								name="password"
-								class="form__input"
+								className="form__input"
 								type="password"
 								placeholder="Password"
 								value={this.state.password}
@@ -119,7 +119,7 @@ render() {
 						</div>
 
 						<input
-							class="btn btn--form"
+							className="btn btn--form"
 							type="submit"
 							value="Sign up"
 							onClick={this.handleSubmit}

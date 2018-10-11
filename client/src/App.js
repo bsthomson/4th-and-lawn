@@ -6,6 +6,7 @@ import Signup from './components/form-sign-up/sign-up';
 import LoginForm from './components/form-login/login';
 import Navbar from './components/navigation/navigation';
 import Home from './pages/Home';
+import ParkingSpots from './pages/ParkingSpots';
 import NoMatch from './pages/NoMatch';
 
 
@@ -87,7 +88,7 @@ class App extends Component {
                 />
                 <Route
                   path="/parking-spots"
-                  
+                  component={ParkingSpots}
                 />
                 <Route component={NoMatch} />
               </Switch>
