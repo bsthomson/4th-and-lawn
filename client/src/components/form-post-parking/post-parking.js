@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 class PostParkingSpot extends Component {
@@ -8,11 +7,8 @@ class PostParkingSpot extends Component {
         this.state = {
             address: '',
             availablespots: '',
-            destination: '',
             instructions: '',
-            date: '',
-            time: '',
-            redirectTo: null
+            game: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -26,18 +22,15 @@ class PostParkingSpot extends Component {
     // talk to Jolie about this...
     handleSubmit(event) {
         event.preventDefault();
-        console.log("handleSubmit");
 
         axios.post('/parkingspot', {
             address: this.state.address,
             availableSpots: this.state.availablespots,
             destination: this.state.destination,
             instructions: this.state.instructions,
-            date: this.state.date,
-            time: this.state.time
+            game: this.state.game
         })
         .then(response => {
-            console.log("parking spot info: ");
             console.log(response);
             if (response.status === 200) {
                 console.log("Post Sent")

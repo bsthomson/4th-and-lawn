@@ -33,7 +33,6 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
-    "react-modal": "^3.6.1",
-    "react-router-modal": "^1.5.1"
+    "react-modal": "^3.6.1"
   }
 }

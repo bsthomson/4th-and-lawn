@@ -585,7 +585,6 @@ content-type@~1.0.4:
 cookie-parser@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.3.tgz#0fe31fa19d000b95f4aadf1f53fdc2b8a203baa5"
-  integrity sha1-D+MfoZ0AC5X0qt8fU/3CuKIDuqU=
   dependencies:
     cookie "0.3.1"
     cookie-signature "1.0.6"
@@ -2843,10 +2842,6 @@ react-modal@^3.6.1:
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
-
-react-router-modal@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/react-router-modal/-/react-router-modal-1.5.1.tgz#c01a6f7e7d9ea11feef9510a374e50b429345ea0"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"

@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = {
-  findall: (req, res) => {
+  findAll: (req, res) => {
     db.Renter
       .find(req.query)
       .sort({ date: -1 })

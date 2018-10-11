@@ -53,8 +53,6 @@ class Navbar extends Component {
 
     render() {
 
-        const { match } = this.props;
-
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
@@ -84,9 +82,9 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="" className="navigation__link" onClick={this.openModal}>
+                                <span className="navigation__link" onClick={this.openModal}>
                                     Sign up
-                                </Link>
+                                </span>
                             </li>
                             <Modal
                                 isOpen={this.state.modalIsOpen}
@@ -101,7 +99,6 @@ class Navbar extends Component {
                                     <span>Log in</span>
                                 </Link>
                             </li>
-                            
                         </ul>
                     )}
                 </nav>

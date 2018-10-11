@@ -5,12 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Signup from './components/form-sign-up/sign-up';
 import LoginForm from './components/form-login/login';
 import Navbar from './components/navigation/navigation';
-import Home from './components/home/home';
-import NoMatch from './components/Pages/NoMatch';
-
-// Modal
-import { ModalContainer } from 'react-router-modal';
-import 'react-router-modal/css/react-router-modal.css';
+import Home from './pages/Home';
+import NoMatch from './pages/NoMatch';
 
 
 class App extends Component {
@@ -94,7 +90,6 @@ class App extends Component {
                   
                 />
                 <Route component={NoMatch} />
-                <ModalContainer/>
               </Switch>
           </div>
         </Router>

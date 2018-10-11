@@ -92,6 +92,7 @@ app.post("/parkingspot", (req, res) => {
   })
 })
 
+
 // route for login action
 app.post("/login",
   function (req, res, next) {
@@ -134,4 +135,5 @@ app.post("/logout", (req, res) => {
     res.send({ msg: "no user to log out" })
   }
 });
+
 };
