@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './../../App.css';
 import API from "./../../utils/API";
-import { List, ListItem } from "./../../components/List";
-import { Link } from "react-router-dom";
+
+import CardParkingSpot from './../../components/CardParkingSpot/CardParkingSpot'
 
 class ParkingSpots extends Component {
     state = {
@@ -23,23 +23,14 @@ class ParkingSpots extends Component {
 
     render() {
         return (
-            <section>
-            {this.state.parkingspots.length ? (
-                <ul>
-                  {this.state.parkingspots.map(parkingspot => (
-                    <ListItem key={parkingspot._id}>
-                      <Link to={"/rentthisspot/" + parkingspot._id}>
-                        <strong>
-                          {parkingspot.address} by {parkingspot.availablespots}
-                        </strong>
-                      </Link>
-                    </ListItem>
-                  ))}
-                </ul>
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-              </section>
+            <section className="section-parking">
+
+            <h1 className="heading-page">
+                <span className="heading-page--title">Available spots near Memorial Stadium</span>
+            </h1>
+
+              <CardParkingSpot />
+            </section>
         );
     }
 }

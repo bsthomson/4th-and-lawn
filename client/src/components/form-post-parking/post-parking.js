@@ -25,7 +25,7 @@ class PostParkingSpot extends Component {
 
         axios.post('/api/parkingspots', {
             address: this.state.address,
-            availableSpots: this.state.availablespots,
+            availablespots: this.state.availablespots,
             instructions: this.state.instructions,
             game: this.state.game
         })

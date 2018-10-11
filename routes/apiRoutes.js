@@ -6,7 +6,7 @@ const User = db.User;
 module.exports = function (app) {
 
   app.get('/api/parkingspots', (req, res) => {
-    const { address, availablespots, destination, instructions, date, time } = req.body
+    const { address, availablespots, instructions } = req.body
 
     ParkingSpot.find({})
       .then( dbParkingSpot => {
