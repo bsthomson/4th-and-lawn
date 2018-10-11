@@ -29,7 +29,8 @@ module.exports = function (app) {
       model: model,
       date: date,
       time: time,
-      // parkingspot: _id of parkingspot
+      user: req.passport.session.user,
+      parkingspot: req.params._id
     })
       .then( dbRenter => {
         return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
