@@ -58,11 +58,11 @@ class PostParkingSpot extends Component {
                 <form>
                     <div className="form__container">
 
-                    <h1 class="heading-primary">
-                        <span class="heading-primary--form left">Game day parking made easy for everyone.</span>
+                    <h1 className="heading-primary">
+                        <span className="heading-primary--form left">Game day parking made easy for everyone.</span>
                     </h1>
 
-                        <div class="form__group">
+                        <div className="form__group">
                             <input className="form__input"
                                 type="text"
                                 id="address"
@@ -149,7 +149,7 @@ class PostParkingSpot extends Component {
                     </div>*/}
                         <div className="form__group">
                             <input
-                                class="btn btn--form"
+                                className="btn btn--form"
                                 type="submit"
                                 value="Submit"
                                 onClick={this.handleSubmit}
