@@ -27,36 +27,38 @@ render() {
 		    {this.state.parkingspots.length ? (
                 <div className="parking-container">
                     {this.state.parkingspots.map(parkingspot => (
-                        <div className="col-1-of-3">
-                            <div className="parking-card">
-                                <div className="parking-card__side parking-card__side--front">
+                        <li key={parkingspot._id}>
+                            <div className="col-1-of-3">
+                                <div className="parking-card">
+                                    <div className="parking-card__side parking-card__side--front">
 
-                                    <div className="parking-card__picture">
-                                        <div className="parking-card__picture--1">&nbsp;</div>
-                                    </div>
-
-                                    <div className="parking-card__game-details">
-                                        <div className="col-1-of-1">
-                                            <span className="parking-details parking-details--sub" key={parkingspot._id}>{parkingspot.address}</span>
+                                        <div className="parking-card__picture">
+                                            <div className="parking-card__picture--1">&nbsp;</div>
                                         </div>
-                                        <div className="col-1-of-1">
-                                            <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots}</span>                                            </div>
-                                        <div className="col-1-of-1">
-                                            <span clasNames="parking-details parking-details--sub"></span>                             
+
+                                        <div className="parking-card__game-details">
+                                            <div className="col-1-of-1">
+                                                <span className="parking-details parking-details--sub">{parkingspot.address}</span>
+                                            </div>
+                                            <div className="col-1-of-1">
+                                                <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots}</span>                                            </div>
+                                            <div className="col-1-of-1">
+                                                <span className="parking-details parking-details--sub"></span>                             
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <Link to={"/rentthisspot/" + parkingspot._id}>
-                                <input
-                                    className="btn btn--form"
-                                    type="submit"
-                                    value="Reserve"
-                                    onClick={this.handleSubmit}
-                                />
-                            </Link>
-                        </div>
+                                <Link to={"/rentthisspot/" + parkingspot._id}>
+                                    <input
+                                        className="btn btn--form"
+                                        type="submit"
+                                        value="Reserve"
+                                        onClick={this.handleSubmit}
+                                    />
+                                </Link>
+                            </div>
+                        </li>
                     ))}
                 </div>
             ) : (
