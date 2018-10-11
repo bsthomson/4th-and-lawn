@@ -62,7 +62,7 @@ class Signup extends Component {
 render() {
 	return (
 		<div className="SignupForm">
-		<a href="#section-games" class="popup__close">&times;</a>
+		<a href="#section-games" className="popup__close">&times;</a>
 
 					<div className="heading-form">
 						<span className="heading-form--title">Sign up</span>
@@ -70,7 +70,7 @@ render() {
 					
 					<form id="signup" name="signup">
 
-						<div class="form__group">
+						<div className="form__group">
 							<input
 								className="form__input"
 								name="email" 
@@ -82,7 +82,7 @@ render() {
 							/>
 						</div>
 
-						<div class="form__group">
+						<div className="form__group">
 							<input
 								name="firstname"
 								className="form__input icon-form far fa-envelope"
@@ -94,7 +94,7 @@ render() {
 							/>
 						</div>
 
-						<div class="form__group">
+						<div className="form__group">
 							<input
 								name="lastname"
 								className="form__input"
@@ -106,7 +106,7 @@ render() {
 							/>
 						</div>
 
-						<div class="form__group">
+						<div className="form__group">
 							<input
 								name="password"
 								className="form__input"

@@ -1,0 +1,6 @@
+{
+  "name": "RentThisSpot",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./RentThisSpot.js"
+}

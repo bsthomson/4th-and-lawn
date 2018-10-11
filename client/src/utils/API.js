@@ -38,6 +38,6 @@ export default {
 
   // Saves a parking spot to the database
   saveRentedSpot: rentedSpotData => {
-    return axios.post("/api/rentedspots", rentedSpotData);
+    return axios.post("/api/rentedspot", rentedSpotData);
   }
 }

@@ -8,6 +8,7 @@ import Navbar from './components/navigation/navigation';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
 import NoMatch from './pages/NoMatch';
+import RentThisSpot from "./pages/RentThisSpot";
 
 
 class App extends Component {
@@ -85,6 +86,10 @@ class App extends Component {
                     <Signup
                       updateUser={this.updateUser}
                     />}
+                />
+                <Route
+                    path="/rentthisspot"
+                    component={RentThisSpot}
                 />
                 <Route
                   path="/parking-spots"

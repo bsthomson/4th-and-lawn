@@ -20,7 +20,7 @@ const RenterSchema = new Schema({
     // required: true
   },
   time: {
-    type: Number
+    type: String
   },
   user: [
     {

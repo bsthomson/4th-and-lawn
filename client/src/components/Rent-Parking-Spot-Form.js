@@ -7,7 +7,7 @@ class RentParkingSpot extends Component {
         super()
         this.state = {
             licensePlate: '',
-            modelCar: '',
+            model: '',
             date: '',
             time: '',
             redirectTo: null
@@ -26,9 +26,9 @@ class RentParkingSpot extends Component {
         event.preventDefault();
         console.log("handleSubmit");
 
-        axios.post("/rent", {
+        axios.post("/api" + window.location.pathname, {
             licensePlate: this.state.licensePlate,
-            modelCar: this.state.modelCar,
+            model: this.state.model,
             date: this.state.date,
             time: this.state.time
         })
@@ -74,13 +74,13 @@ class RentParkingSpot extends Component {
                             </div>
                             <div className="form-group">
                                 <div className="col-1 col-ml-auto">
-                                    <label className="form-label" htmlFor="carModel">Car Model</label>
+                                    <label className="form-label" htmlFor="model">Car Model</label>
                                 </div>
                                 <div className="col-3 col-mr-auto">
                                     <input className="form-input"
                                         type="text"
-                                        id="carModel"
-                                        name="carModel"
+                                        id="model"
+                                        name="model"
                                         placeholder="Car Model"
                                         value={this.state.carModel}
                                         onChange={this.handleChange}
