@@ -73,18 +73,21 @@ module.exports = function (app) {
     });
 
   app.get('/api/postedspots', (req, res) => {
-    User.find({ user: req.session.passport.user })
+    User.find({ _id: req.session.passport.user })
       .populate('parkingspots')
       .then( dbPostedSpot => {
         res.json(dbPostedSpot)
+        console.log('Got The Spots')
+        console.log(dbPostedSpot)
       })
       .catch( err => {
         res.json(err)
+        console.log('No Spots')
       })
   })
   
   app.get('/api/rentedspots', (req, res) => {
-    User.find({ user: req.session.passport.user })
+    User.find({ _id: req.session.passport.user })
       .populate('rentedspots')
       .then ( dbRentedSpot => {
         res.json(dbRentedSpot)

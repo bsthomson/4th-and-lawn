@@ -1,35 +1,39 @@
-import React, { Component } from 'react'
-import API from "./../../utils/API";
+import React, { Component } from "react";
+import './../../App.css';
+import axios from 'axios';
 import { Link } from "react-router-dom";
 
-class CardParkingSpot extends Component {
 
-	state = {
-        parkingspots: [],
+class UserSpot extends Component {
+
+    state = {
+        postedspots: [],
+        rentedspots: []
     };
 
-	componentDidMount() {
-        this.loadParkingSpots();
+    componentDidMount() {
+        this.loadPostedSpots();
     }
 
-    loadParkingSpots = () => {
-        API.getParkingSpots()
-        .then(response => this.setState({ 
-            parkingspots: response.data
-        }))
-        .catch(err => console.log(err));
+    loadPostedSpots = () => {
+        axios.get("/api/postedspots")
+            .then(response => this.setState({
+             
+                postedspots: response.data
+            }), console.log(this.response))
+ 
+            .catch(err => console.log(err));
     };
 
-
-render() {
-	return (
-		<div>
-		    {this.state.parkingspots.length ? (
+    render() {
+        return (
+            <div>
+		    {this.state.postedspots.length ? (
                 <div className="parking-container">
-                    {this.state.parkingspots.map(parkingspot => (
-                       
+                    {this.state.postedspots.map(postedspot => (
+                        <li key={postedspot._id}>
                             <div className="col-1-of-3">
-                                <div className="parking-card" key={parkingspot._id}>
+                                <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
 
                                         <div className="parking-card__picture">
@@ -38,10 +42,10 @@ render() {
 
                                         <div className="parking-card__game-details">
                                             <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">{parkingspot.address}</span>
+                                                <span className="parking-details parking-details--sub">{postedspot.address}</span>
                                             </div>
                                             <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots}</span>                                            </div>
+                                                <span className="parking-details parking-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub"></span>                             
                                             </div>
@@ -49,7 +53,7 @@ render() {
                                     </div>
                                 </div>
 
-                                <Link to={"/rentthisspot/" + parkingspot._id}>
+                                <Link to={"/rentthisspot/" + postedspot._id}>
                                     <input
                                         className="btn btn--form"
                                         type="submit"
@@ -58,7 +62,7 @@ render() {
                                     />
                                 </Link>
                             </div>
-                       
+                        </li>
                     ))}
                 </div>
             ) : (
@@ -66,8 +70,8 @@ render() {
             )}
 		</div>
 
-	)
-}
+        );
+    }
 }
 
-export default CardParkingSpot
+export default UserSpot;

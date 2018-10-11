@@ -7,6 +7,7 @@ import LoginForm from './components/form-login/login';
 import Navbar from './components/navigation/navigation';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
+import UserSpots from './pages/UserSpots';
 import NoMatch from './pages/NoMatch';
 import RentThisSpot from "./pages/RentThisSpot";
 
@@ -94,6 +95,10 @@ class App extends Component {
                 <Route
                   path="/parking-spots"
                   component={ParkingSpots}
+                />
+                <Route
+                  path="/posted-spots"
+                  component={UserSpots}
                 />
                 <Route component={NoMatch} />
               </Switch>
