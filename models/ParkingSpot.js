@@ -36,6 +36,12 @@ const ParkingSpotSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Renter"
     }
+  ],
+  rentinfo: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "RentInfo"
+    }
   ]
 });
 
