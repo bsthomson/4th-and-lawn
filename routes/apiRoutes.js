@@ -19,7 +19,7 @@ module.exports = function (app) {
   })
 
   // Posts login information to passport
-  app.post('/parkingspots/:id', (req, res) => {
+  app.post('/parking-spots/:id', (req, res) => {
 
     const { licenseplate, make, model, date, time } = req.body;
 
@@ -28,13 +28,15 @@ module.exports = function (app) {
       make: make,
       model: model,
       date: date,
-      time: time
+      time: time,
+      user: req.passport.session.user,
+      parkingspot: req.params._id
     })
       .then( dbRenter => {
         return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
       })
-      .then( dbParkingSpot => {
-        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: dbParkingSpot._id } }, { new: true });
+      .then( () => {
+        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user } }, { new: true });
       })
       .then( dbUser => {
         res.json(dbUser)
@@ -48,23 +50,49 @@ module.exports = function (app) {
 
     const { address, availablespots, destination, instructions, date, time } = req.body;
 
-    db.ParkingSpot.create({
+    ParkingSpot.create({
       address: address,
       availablespots: availablespots,
       destination: destination,
       instructions: instructions,
       date: date,
-      time: time
+      time: time,
+      user: req.session.passport.user
     })
-      // .then( dbParkingSpotPoster => {
-      //   return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, {new: true });
-      // })
+      .then( dbParkingSpotPoster => {
+        return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, {new: true });
+      })
       .then( dbUser => {
         console.log("sent: ", dbUser);
         res.json(dbUser)
       })
       .catch( err => {
         res.json(err)
+      })  
+    });
+
+  app.get('/api/postedspots', (req, res) => {
+    User.find({ user: req.session.passport.user })
+      .populate('parkingspots')
+      .then( dbPostedSpot => {
+        res.json(dbPostedSpot)
       })
-  });
+      .catch( err => {
+        res.json(err)
+      })
+  })
+  
+  app.get('/api/rentedspots', (req, res) => {
+    User.find({ user: req.session.passport.user })
+      .populate('rentedspots')
+      .then ( dbRentedSpot => {
+        res.json(dbRentedSpot)
+      })
+      .catch( err => {
+        res.json(err)
+      })
+  
+  })
 }
+
+
