@@ -11,10 +11,10 @@ class RentThisSpot extends Component {
         return (
             <section>
                 <RentParkingSpot />
+                <div className="footer-reservation">Test</div>
             </section>
         );
     }
 }
-
 
 export default RentThisSpot;

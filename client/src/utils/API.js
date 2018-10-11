@@ -21,6 +21,11 @@ export default {
     return axios.post("/api/parkingspots", parkingSpotData);
   },
 
+   // Gets all posted spots by user
+   getPostedSpots: () => {
+    return axios.get("/api/postedspots");
+  },
+
   // Gets all spots rented
   getRentedSpots: () => {
     return axios.get("/api/rentedspots");

@@ -557,6 +557,13 @@ select {
     border-radius: 3px;
     text-align: center; }
 
+.footer-reservation {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 8rem;
+  box-shadow: 0 0 0 .5rem #888888; }
+
 .row {
   max-width: 90%;
   margin: 0 auto; }
