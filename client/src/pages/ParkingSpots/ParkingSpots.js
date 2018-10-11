@@ -28,7 +28,7 @@ class ParkingSpots extends Component {
                 <ul>
                   {this.state.parkingspots.map(parkingspot => (
                     <ListItem key={parkingspot._id}>
-                      <Link to={"/books/" + parkingspot._id}>
+                      <Link to={"/rentthisspot/" + parkingspot._id}>
                         <strong>
                           {parkingspot.address} by {parkingspot.availablespots}
                         </strong>

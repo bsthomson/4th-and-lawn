@@ -19,7 +19,9 @@ module.exports = function (app) {
   })
 
   // Posts login information to passport
-  app.post('/api/parkingspots/:id', (req, res) => {
+  app.post('/api/rentthisspot/:id', (req, res) => {
+
+    console.log("stuff recieved", req.params)
 
     const { licenseplate, make, model, date, time } = req.body;
 
@@ -29,16 +31,23 @@ module.exports = function (app) {
       model: model,
       date: date,
       time: time,
-      user: req.passport.session.user,
+      user: req.session.passport.user,
       parkingspot: req.params._id
     })
       .then( dbRenter => {
-        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: dbRenter._id } }, { new: true });
+        console.log("updating user", dbRenter)
+        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params._id } }, { new: true });
+      })
+      .then( dbRentInfo => {
+        console.log("user again", dbRentInfo)
+        return User.findOneAndUpdate({ _id: req.session.passport.user }), { $push: { rentinfo: dbRentInfo._id}}
       })
       .then( () => {
+        console.log("updating Parking Spot")
         return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user } }, { new: true });
       })
       .then( dbUser => {
+        console.log("sending user info", dbUser)
         res.json(dbUser)
       })
       .catch( err => {
