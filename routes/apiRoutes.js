@@ -5,7 +5,7 @@ const User = db.User;
 
 module.exports = function (app) {
 
-  app.get('/parking-spots', (req, res) => {
+  app.get('/api/parkingspots', (req, res) => {
     const { address, availablespots, destination, instructions, date, time } = req.body
 
     ParkingSpot.find({})
@@ -19,7 +19,7 @@ module.exports = function (app) {
   })
 
   // Posts login information to passport
-  app.post('/parking-spots/:id', (req, res) => {
+  app.post('/api/parkingspots/:id', (req, res) => {
 
     const { licenseplate, make, model, date, time } = req.body;
 
@@ -48,15 +48,12 @@ module.exports = function (app) {
 
   app.post('/api/parkingspots', (req, res) => {
 
-    const { address, availablespots, destination, instructions, date, time } = req.body;
+    const { address, availablespots, instructions, game } = req.body;
 
     ParkingSpot.create({
       address: address,
       availablespots: availablespots,
-      destination: destination,
       instructions: instructions,
-      date: date,
-      time: time,
       user: req.session.passport.user
     })
       .then( dbParkingSpotPoster => {

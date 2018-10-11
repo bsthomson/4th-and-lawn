@@ -29,6 +29,15 @@
     }
 
     &__link {
+
+        display: inline-block;
+        font-size: 1.4rem;
+        font-weight: bold;
+        letter-spacing: .2px;
+        padding: 1rem 0 2.3rem 0;
+        color: $color-grey-dark-3;
+        text-decoration: none;
+
         &:link,
         &:visited {
             display: inline-block;

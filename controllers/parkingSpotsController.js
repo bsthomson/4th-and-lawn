@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = {
-  findall: (req, res) => {
+  findAll: (req, res) => {
     db.ParkingSpot
       .find(req.query)
       .sort({ date: -1 })

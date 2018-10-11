@@ -878,7 +878,7 @@ select {
     padding: 0 1.5rem;
     display: inline-block;
     white-space: nowrap; }
-  .navigation__link:link, .navigation__link:visited {
+  .navigation__link {
     display: inline-block;
     font-size: 1.4rem;
     font-weight: bold;
@@ -886,8 +886,16 @@ select {
     padding: 1rem 0 2.3rem 0;
     color: #202020;
     text-decoration: none; }
-  .navigation__link:hover, .navigation__link:active {
-    border-bottom: 3px solid #cf1f1f; }
+    .navigation__link:link, .navigation__link:visited {
+      display: inline-block;
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: .2px;
+      padding: 1rem 0 2.3rem 0;
+      color: #202020;
+      text-decoration: none; }
+    .navigation__link:hover, .navigation__link:active {
+      border-bottom: 3px solid #cf1f1f; }
 
 .section-home {
   height: 85vh;

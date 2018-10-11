@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 class PostParkingSpot extends Component {
@@ -8,16 +7,13 @@ class PostParkingSpot extends Component {
         this.state = {
             address: '',
             availablespots: '',
-            destination: '',
             instructions: '',
-            date: '',
-            time: '',
-            redirectTo: null
+            game: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-
+    
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -26,15 +22,12 @@ class PostParkingSpot extends Component {
     // talk to Jolie about this...
     handleSubmit(event) {
         event.preventDefault();
-        console.log("handleSubmit");
 
         axios.post('/api/parkingspots', {
             address: this.state.address,
             availableSpots: this.state.availablespots,
-            destination: this.state.destination,
             instructions: this.state.instructions,
-            date: this.state.date,
-            time: this.state.time
+            game: this.state.game
         })
         .then(response => {
             console.log("parking spot info: ");
@@ -42,7 +35,7 @@ class PostParkingSpot extends Component {
             if (response.status === 200) {
                 console.log("Post Sent")
                 this.setState({
-                    redirectTo: "/"
+                    redirectTo: "/parking-spots"
                 })
             }
         }).catch(error => {
@@ -75,10 +68,10 @@ class PostParkingSpot extends Component {
                         <div className="form__group">
                             <input className="form__input"
                                 type="number"
-                                id="availableSpots"
-                                name="availableSpots"
+                                id="availablespots"
+                                name="availablespots"
                                 placeholder="Parking spots available"
-                                value={this.state.availableSpots}
+                                value={this.state.availablespots}
                                 onChange={this.handleChange}
                             />
                         </div>

@@ -46,7 +46,7 @@ class Signup extends Component {
 					})
 					console.log('successful signup')
 					this.setState({ //redirect to login page
-						redirectTo: '/login'
+						redirectTo: '/'
 					})
 					console.log(this.state)
 				} else {
@@ -55,7 +55,6 @@ class Signup extends Component {
 			}).catch(error => {
 				console.log('signup error: ')
 				console.log(error)
-
 			})
 	}
 

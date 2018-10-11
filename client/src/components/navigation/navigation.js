@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
 import Signup from './../form-sign-up/sign-up';
 
@@ -53,8 +52,6 @@ class Navbar extends Component {
 
     render() {
 
-        const { match } = this.props;
-
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
@@ -65,6 +62,16 @@ class Navbar extends Component {
                 <nav className="navigation__nav">
                     {loggedIn ? (
                         <ul className="navigation__list">
+                            <li className="navigation__item">
+                                <Link to="/" className="navigation__link">
+                                    <span>Home</span>
+                                </Link>
+                            </li>
+                            <li className="navigation__item">
+                                <Link to="/parking-spots" className="navigation__link">
+                                    <span>Parking spots</span>
+                                </Link>
+                            </li>
                             <li className="navigation__item">
                                 <Link to="#" className="navigation__link" onClick={this.logout}>
                                     <span>Logout</span>
@@ -84,9 +91,9 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="" className="navigation__link" onClick={this.openModal}>
+                                <span className="navigation__link" onClick={this.openModal}>
                                     Sign up
-                                </Link>
+                                </span>
                             </li>
                             <Modal
                                 isOpen={this.state.modalIsOpen}
@@ -101,7 +108,6 @@ class Navbar extends Component {
                                     <span>Log in</span>
                                 </Link>
                             </li>
-                            
                         </ul>
                     )}
                 </nav>

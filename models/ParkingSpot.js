@@ -11,19 +11,8 @@ const ParkingSpotSchema = new Schema({
     type: Number,
     // required: true
   },
-  destination: {
-    type: String,
-    // required: true
-  },
   instructions: {
     type: String
-  },
-  date: {
-    type: Date,
-    // required: true
-  },
-  time: {
-    type: Number,
   },
   user: [
     {
@@ -45,6 +34,6 @@ const ParkingSpotSchema = new Schema({
   ]
 });
 
-const ParkingSpot =mongoose.model("ParkingSpot", ParkingSpotSchema);
+const ParkingSpot = mongoose.model("ParkingSpot", ParkingSpotSchema);
 
 module.exports = ParkingSpot;
