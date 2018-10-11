@@ -15,9 +15,9 @@ class Navbar extends Component {
             modalIsOpen: false
           };
        
-          this.openModal = this.openModal.bind(this);
-          this.afterOpenModal = this.afterOpenModal.bind(this);
-          this.closeModal = this.closeModal.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     logout(event) {

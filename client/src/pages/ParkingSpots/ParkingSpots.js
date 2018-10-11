@@ -27,13 +27,13 @@ class ParkingSpots extends Component {
             {this.state.parkingspots.length ? (
                 <ul>
                   {this.state.parkingspots.map(parkingspot => (
-                    <ListItem key={parkingspot._id}>
+                    <div>
                       <Link to={"/books/" + parkingspot._id}>
                         <strong>
-                          {parkingspot.address} by {parkingspot.availablespots}
+                          {parkingspot.address} by {parkingspot.instructions} {parkingspot.game} {parkingspot.availablespots}
                         </strong>
                       </Link>
-                    </ListItem>
+                      </div>
                   ))}
                 </ul>
               ) : (
