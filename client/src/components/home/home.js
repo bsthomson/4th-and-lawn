@@ -14,7 +14,7 @@ class Home extends Component {
             
             <section className="section-home">
                 <PostParkingSpot/>
-                <div class="header__text-box--left">
+                <div className="header__text-box--left">
                          
                 </div>
             </section>

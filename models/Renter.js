@@ -5,19 +5,19 @@ const Schema = mongoose.Schema;
 const RenterSchema = new Schema({
   licenseplate: {
     type: String,
-    required: true
+    // required: true
   },
   make: {
     type: String,
-    required: true
+    // required: true
   },
   model: {
     type: String,
-    required: true
+    // required: true
   },
   date: {
     type: Date,
-    required: true
+    // required: true
   },
   time: {
     type: Number
@@ -38,4 +38,4 @@ const RenterSchema = new Schema({
 
 const Renter = mongoose.model("Renter", RenterSchema);
 
-model.exports = Renter;
+module.exports = Renter;

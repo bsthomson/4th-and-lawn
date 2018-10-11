@@ -94,7 +94,7 @@ class Navbar extends Component {
                                 onRequestClose={this.closeModal}
                                 contentLabel="Example Modal"
                             >
-                            <Signup />
+                            <Signup updateUser={this.props.updateUser}/>
                             </Modal>
                             <li className="navigation__item">
                                 <Link to="/login" className="navigation__link">
