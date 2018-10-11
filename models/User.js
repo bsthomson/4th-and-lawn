@@ -25,7 +25,7 @@ const UserSchema = new Schema({
     type: Number
     // required: true
   },
-  rentedspaces: [
+  rentedspots: [
     {
       type: Schema.Types.ObjectId,
       ref: "Renter"

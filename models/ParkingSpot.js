@@ -5,22 +5,22 @@ const Schema = mongoose.Schema;
 const ParkingSpotSchema = new Schema({
   address: {
     type: String,
-    required: true
+    // required: true
   },
   availablespots: {
     type: Number,
-    required: true
+    // required: true
   },
   destination: {
     type: String,
-    required: true
+    // required: true
   },
   instructions: {
     type: String
   },
   date: {
     type: Date,
-    required: true
+    // required: true
   },
   time: {
     type: Number,
