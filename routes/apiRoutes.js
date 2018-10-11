@@ -69,3 +69,13 @@ module.exports = function (app) {
       })
   });
 }
+
+app.get('/api/rentedspots', (req, res) => {
+  User.find({ user: req.session.passport.user })
+    .then( dbParkingSpot => {
+      res.json(dbParkingSpot)
+    })
+    .catch( err => {
+      res.json(err)
+    })
+})
