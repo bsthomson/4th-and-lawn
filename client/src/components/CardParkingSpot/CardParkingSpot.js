@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 class CardParkingSpot extends Component {
 
-		state = {
-            parkingspots: [],
-        };
+	state = {
+        parkingspots: [],
+    };
 
 	componentDidMount() {
         this.loadParkingSpots();
@@ -14,10 +14,10 @@ class CardParkingSpot extends Component {
 
     loadParkingSpots = () => {
         API.getParkingSpots()
-            .then(response => this.setState({ 
-                parkingspots: response.data
-            }))
-            .catch(err => console.log(err));
+        .then(response => this.setState({ 
+            parkingspots: response.data
+        }))
+        .catch(err => console.log(err));
     };
 
 
