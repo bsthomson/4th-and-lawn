@@ -6,8 +6,14 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, "Email required"],
+    unique: true,
+    validate: {
+      validator: v => {
+        return /.+?@.+?\w{2,3}/.test(v);
+      },
+      message: props => `${props.value} is not a valid email address!`
+    }
   },
   password: {
     type: String,
@@ -15,15 +21,14 @@ const UserSchema = new Schema({
   },
   firstname: {
     type: String
-    // required: true
   },
   lastname: {
     type: String
-    // required: true
   },
   phonenumber: {
-    type: Number
-    // required: true
+    type: Number,
+    min: 10,
+    max: 10
   },
   rentinfo: [
     {
