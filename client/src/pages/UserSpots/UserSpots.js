@@ -17,10 +17,9 @@ class UserSpot extends Component {
 
     loadPostedSpots = () => {
         axios.get("/api/postedspots")
-            .then(response => this.setState({
-             
-                postedspots: response.data
-            }), console.log(this.response))
+            .then(response => this.setState({             
+                postedspots: response.data[0].parkingspots
+            }))
  
             .catch(err => console.log(err));
     };
