@@ -4,20 +4,16 @@ const Schema = mongoose.Schema;
 
 const RenterSchema = new Schema({
   licenseplate: {
-    type: String,
-    // required: true
+    type: String
   },
   make: {
-    type: String,
-    // required: true
+    type: String
   },
   model: {
-    type: String,
-    // required: true
+    type: String
   },
   date: {
-    type: Date,
-    // required: true
+    type: Date
   },
   time: {
     type: String
