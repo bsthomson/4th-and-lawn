@@ -19,7 +19,7 @@ class PostParkingSpot extends Component {
             [event.target.name]: event.target.value
         });
     };
-    // talk to Jolie about this...
+
     handleSubmit(event) {
         event.preventDefault();
 

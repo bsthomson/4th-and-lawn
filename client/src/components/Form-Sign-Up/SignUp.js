@@ -61,7 +61,7 @@ class Signup extends Component {
 render() {
 	return (
 		<div className="SignupForm">
-		<a href="#section-games" className="popup__close">&times;</a>
+		{/*<a href="#section-games" className="popup__close">&times;</a>*/}
 
 					<div className="heading-form">
 						<span className="heading-form--title">Sign up</span>

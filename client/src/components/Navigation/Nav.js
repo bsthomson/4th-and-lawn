@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Modal from 'react-modal';
-import Signup from '../Form-Sign-Up/SignUp';
+import Modal from 'react-responsive-modal';
+import Signup from './../Form-Sign-Up/SignUp';
+import Login  from './../Form-Login/Login';
 
 import '../../App.css';
 import axios from 'axios'
@@ -10,14 +11,6 @@ class Navbar extends Component {
     constructor() {
         super()
         this.logout = this.logout.bind(this)
-
-        this.state = {
-            modalIsOpen: false
-          };
-       
-        this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
 
     logout(event) {
@@ -36,25 +29,32 @@ class Navbar extends Component {
         })
       }
 
+      state = {
+        openFirstModal: false,
+        openSecondModal: false,
+      };
 
-      openModal() {
-        this.setState({modalIsOpen: true});
-      }
-     
-      afterOpenModal() {
-        // references are now sync'd and can be accessed.
-      }
-     
-      closeModal() {
-        this.setState({modalIsOpen: false});
-      }
+      onOpenFirstModal = () => {
+        this.setState({ openFirstModal: true });
+      };
+    
+      onCloseFirstModal = () => {
+        this.setState({ openFirstModal: false });
+      };
+    
+      onOpenSecondModal = () => {
+        this.setState({ openSecondModal: true });
+      };
+    
+      onCloseSecondModal = () => {
+        this.setState({ openSecondModal: false });
+      };
     
 
     render() {
 
         const loggedIn = this.props.loggedIn;
-        console.log('navbar render, props: ')
-        console.log(this.props);
+        const { openFirstModal, openSecondModal } = this.state;
         
         return (
             <section className="navigation">
@@ -78,7 +78,7 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="#" className="navigation__link" onClick={this.logout}>
+                                <Link to="/" className="navigation__link" onClick={this.logout}>
                                     <span>Logout</span>
                                 </Link>
                             </li>
@@ -97,23 +97,24 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <span className="navigation__link" onClick={this.openModal}>
+                                <span className="navigation__link" onClick={this.onOpenFirstModal}>
                                     Sign up
                                 </span>
                             </li>
-                            <Modal
-                                isOpen={this.state.modalIsOpen}
-                                onAfterOpen={this.afterOpenModal}
-                                onRequestClose={this.closeModal}
-                                contentLabel="Example Modal"
-                            >
-                            <Signup updateUser={this.props.updateUser}/>
+
+                            <Modal open={openFirstModal} onClose={this.onCloseFirstModal} center>
+                                <Signup updateUser={this.props.updateUser}/>
                             </Modal>
+                            
                             <li className="navigation__item">
-                                <Link to="/login" className="navigation__link">
-                                    <span>Log in</span>
-                                </Link>
+                                <span className="navigation__link" onClick={this.onOpenSecondModal}>
+                                    Login
+                                </span>
                             </li>
+
+                            <Modal open={openSecondModal} onClose={this.onCloseSecondModal} center>
+                                <Login updateUser={this.props.updateUser}/>
+                            </Modal>
                         </ul>
                     )}
                 </nav>

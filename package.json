@@ -36,7 +36,7 @@
     "passport-local-mongoose": "^5.0.1",
     "path": "^0.12.7",
     "react-modal": "^3.6.1",
-    "react-router-modal": "^1.5.1",
+    "react-responsive-modal": "^3.4.0",
     "session": "^0.1.0"
   }
 }
