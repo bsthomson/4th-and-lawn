@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
-import Signup from './../form-sign-up/sign-up';
+import Signup from '../Form-Sign-Up/SignUp';
 
 import '../../App.css';
 import axios from 'axios'
