@@ -408,6 +408,12 @@ select {
   padding: 10rem;
   margin: 10rem; }
 
+.modal {
+  padding: 3rem; }
+
+.popup-content {
+  width: 370px !important; }
+
 .parking-card {
   perspective: 150rem;
   -moz-perspective: 150rem;

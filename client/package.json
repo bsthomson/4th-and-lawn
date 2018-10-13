@@ -52,7 +52,6 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "compile:sass": "node-sass src/sass/main.scss src/App.css -w"
-
   },
   "jest": {
     "collectCoverageFrom": [

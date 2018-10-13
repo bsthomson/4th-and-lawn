@@ -127,7 +127,7 @@ render() {
 						<hr className="form-break" />
 
 						<div className="heading-form">
-							<span className="heading-form--text">Already have an account? Login</span>
+							<span className="heading-form--text">Already have an account? Log in</span>
 						</div>
 
 					</form>
