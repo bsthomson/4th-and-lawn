@@ -4,15 +4,16 @@ const Schema = mongoose.Schema;
 
 const ParkingSpotSchema = new Schema({
   address: {
-    type: String,
-    // required: true
+    type: String
   },
   availablespots: {
-    type: Number,
-    // required: true
+    type: Number
   },
   instructions: {
     type: String
+  },
+  price: {
+    type: Number
   },
   user: [
     {
