@@ -49,12 +49,8 @@ module.exports = function (app) {
   })
 
   // route to post login information to see if they match with User db
-  app.post("/login",
-    function (req, res, next) {
-      next()
-    },
-    passportLocal,
-    (req, res) => {
+  app.post("/login", (req, res) => {
+    passportLocal, (req, res) => {
       console.log("logged in", req.user);
       let userInfo = {
         email: req.user.email,
@@ -63,12 +59,10 @@ module.exports = function (app) {
       req.session.user = userInfo.email
       res.send(userInfo)
     }
-  );
+  });
 
   // route to see if a user is logged in already
   app.get('/user', (req, res) =>{
-    console.log("req.session.passport")
-    console.log(req.session.passport)
     if (req.session.passport !== undefined) {
       console.log(req.session.passport.user);
       User.findOne({ _id: req.session.passport.user })
