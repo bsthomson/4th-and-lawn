@@ -5,6 +5,7 @@ const ParkingSpot = db.ParkingSpot;
 
 module.exports = function (app) {
 
+  // route that finds all of the posted parking spots
   app.get('/api/parkingspots', (req, res) => {
 
     ParkingSpot.find({})
@@ -17,9 +18,10 @@ module.exports = function (app) {
 
   })
 
+  // route that posts parking spots
   app.post('/api/parkingspots', (req, res) => {
 
-    const { address, availablespots, instructions, game } = req.body;
+    const { address, availablespots, instructions } = req.body;
 
     ParkingSpot.create({
       address: address,
@@ -39,6 +41,7 @@ module.exports = function (app) {
       })  
     });
 
+  // routes that finds all of a users posted spots
   app.get('/api/postedspots', (req, res) => {
     User.find({ _id: req.session.passport.user })
       .populate('parkingspots')
@@ -53,17 +56,6 @@ module.exports = function (app) {
       })
   })
   
-  app.get('/api/rentedspots', (req, res) => {
-    User.find({ _id: req.session.passport.user })
-      .populate('rentedspots')
-      .then ( dbRentedSpot => {
-        res.json(dbRentedSpot)
-      })
-      .catch( err => {
-        res.json(err)
-      })
-  
-  })
 }
 
 

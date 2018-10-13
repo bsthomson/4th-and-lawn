@@ -6,27 +6,7 @@ const ParkingSpot = db.ParkingSpot
 
 module.exports = function (app) {
 
-  app.post("/parkingspot", (req, res) => {
-    console.log("posting a spot")
-
-    const { address, availablespots, destination, instruction, date, time } = req.body;
-
-    User.findOne({ email: email }, (err, user) => {
-      if (err) {
-        console.log("User error");
-      } else {
-        Renter.create({
-          address: address,
-          availablespots: availablespots,
-          destination: destination,
-          instruction: instruction,
-          date: date,
-          time: time
-        })
-      }
-    })
-  })
-
+  // route for posting your rental information for renting a parking spot
   app.post('/api/rentthisspot/:id', (req, res) => {
 
     console.log("stuff recieved", req.params)
@@ -57,5 +37,17 @@ module.exports = function (app) {
         res.json(err)
       })
   });
+
+  // route that gets all of the users rented spots
+  app.get('/api/rentedspots', (req, res) => {
+    User.find({ _id: req.session.passport.user })
+      .populate('rentedspots')
+      .then ( dbRentedSpot => {
+        res.json(dbRentedSpot)
+      })
+      .catch( err => {
+        res.json(err)
+      })  
+  })
 
 };

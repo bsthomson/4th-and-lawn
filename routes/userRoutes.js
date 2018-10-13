@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   const passportLocal = passport.authenticate("local");
 
-  // route to register page
+  // route to post user info after they register
   app.post("/register", (req, res) => {
     console.log("user signup");
 
@@ -48,7 +48,7 @@ module.exports = function (app) {
     })
   })
 
-  // route for login action
+  // route to post login information to see if they match with User db
   app.post("/login",
     function (req, res, next) {
       next()
@@ -65,6 +65,7 @@ module.exports = function (app) {
     }
   );
 
+  // route to see if a user is logged in already
   app.get('/user', (req, res) =>{
     console.log("req.session.passport")
     console.log(req.session.passport)
@@ -81,7 +82,7 @@ module.exports = function (app) {
     }
   })
 
-  // route for logout action
+  // route to log User out
   app.post("/logout", (req, res) => {
     if (req.user) {
       req.logout()
