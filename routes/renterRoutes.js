@@ -9,8 +9,6 @@ module.exports = function (app) {
   // route for posting your rental information for renting a parking spot
   app.post('/api/rentthisspot/:id', (req, res) => {
 
-    console.log("stuff recieved", req.params)
-
     const { licenseplate, make, model, date, time } = req.body;
 
     Renter.create({
