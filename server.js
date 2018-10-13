@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 // Express-session information
 app.use(session({
   key: 'user_sid',
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  // store: new MongoStore({ mongooseConnection: mongoose.connection }),
   secret: "somerandomstuff",
   resave: false,
   saveUnitialized: false,

@@ -11,6 +11,7 @@ module.exports = function (app) {
   // route to post user info after they register
   app.post("/register", (req, res) => {
     console.log("user signup");
+    console.log(req.body);
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
 
@@ -78,9 +79,10 @@ module.exports = function (app) {
 
   // route to log User out
   app.post("/logout", (req, res) => {
-    if (req.user) {
-      req.logout()
+    if (req.session.passport.user) {
       res.send({ msg: "logging out" })
+      req.logout()
+      console.log(req.session.passport.user)
     } else {
       res.send({ msg: "no user to log out" })
     }
