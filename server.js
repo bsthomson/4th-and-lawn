@@ -81,11 +81,14 @@ passport.deserializeUser(function(id, done) {
   })
 });
 
-// Tells express where our API routes are
-require("./routes/apiRoutes")(app);
+// Tells express where our renter API routes are
+require("./routes/renterRoutes")(app);
 
-// Tells express where our Authenticator is
-require("./routes/index")(app);
+// Tells express where our parking spot API routes are
+require("./routes/parkingSpotRoutes")(app);
+
+// Tell express where where our user API routes are
+require("./routes/userRoutes")(app);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

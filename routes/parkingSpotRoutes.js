@@ -1,7 +1,8 @@
 const db = require("../models");
+
+const User = db.User;
 const Renter = db.Renter;
 const ParkingSpot = db.ParkingSpot;
-const User = db.User;
 
 module.exports = function (app) {
 
@@ -17,38 +18,6 @@ module.exports = function (app) {
       })
 
   })
-
-  // Posts login information to passport
-  app.post('/api/rentthisspot/:id', (req, res) => {
-
-    console.log("stuff recieved", req.params)
-
-    const { licenseplate, make, model, date, time } = req.body;
-
-    Renter.create({
-      licenseplate: licenseplate,
-      make: make,
-      model: model,
-      date: date,
-      time: time,
-      user: req.session.passport.user,
-      parkingspot: req.params.id
-    })
-      .then( dbRenter => {
-        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }, { new: true });
-      })
-      .then( (dbRenter) => {
-        console.log("updating Parking Spot")
-        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }, { new: true });
-      })
-      .then( dbUser => {
-        console.log("sending user info", dbUser)
-        res.json(dbUser)
-      })
-      .catch( err => {
-        res.json(err)
-      })
-  });
 
   app.post('/api/parkingspots', (req, res) => {
 
