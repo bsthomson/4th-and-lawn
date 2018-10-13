@@ -45,8 +45,6 @@ module.exports = function (app) {
       .populate('parkingspots')
       .then( dbPostedSpot => {
         res.json(dbPostedSpot)
-        console.log('Got The Spots')
-        console.log(dbPostedSpot)
       })
       .catch( err => {
         res.json(err)

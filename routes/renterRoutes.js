@@ -8,6 +8,7 @@ module.exports = function (app) {
 
   // route for posting your rental information for renting a parking spot
   app.post('/api/rentthisspot/:id', (req, res) => {
+    console.log(req.body)
 
     const { licenseplate, make, model, date, time } = req.body;
 
@@ -20,16 +21,11 @@ module.exports = function (app) {
       user: req.session.passport.user,
       parkingspot: req.params.id
     })
-      .then( dbRenter => {
-        return User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }, { new: true });
-      })
-      .then( (dbRenter) => {
-        console.log("updating Parking Spot")
-        return ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }, { new: true });
-      })
-      .then( dbUser => {
-        console.log("sending user info", dbUser)
-        res.json(dbUser)
+      .then(dbRenter => {
+        console.log("User: ", dbRenter)
+        User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec();
+        ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec();
+        res.send(dbRenter)
       })
       .catch( err => {
         res.json(err)

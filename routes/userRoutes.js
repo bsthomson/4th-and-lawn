@@ -10,8 +10,7 @@ module.exports = function (app) {
 
   // route to post user info after they register
   app.post("/register", (req, res) => {
-    console.log("user signup");
-    console.log(req.body);
+    console.log("registering")
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
 
@@ -33,7 +32,6 @@ module.exports = function (app) {
         })
           .then((err, user) => {
             passport.authenticate('local')(req, res, function () {
-              console.log("signed up", req.user);
               let userInfo = {
                 email: req.user.email,
                 firstname: req.user.firstname
@@ -52,7 +50,6 @@ module.exports = function (app) {
   // route to post login information to see if they match with User db
   app.post("/login", (req, res) => {
     passportLocal, (req, res) => {
-      console.log("logged in", req.user);
       let userInfo = {
         email: req.user.email,
         firstname: req.user.firstname
@@ -65,11 +62,8 @@ module.exports = function (app) {
   // route to see if a user is logged in already
   app.get('/user', (req, res) =>{
     if (req.session.passport !== undefined) {
-      console.log(req.session.passport.user);
       User.findOne({ _id: req.session.passport.user })
         .then( (user) => {
-          console.log("user")
-          console.log(user)
           res.json({ user: user })  
         })
     } else {
@@ -82,10 +76,8 @@ module.exports = function (app) {
     if (req.session.passport.user) {
       res.send({ msg: "logging out" })
       req.logout()
-      console.log(req.session.passport.user)
     } else {
       res.send({ msg: "no user to log out" })
     }
   });
-
-}
+};
