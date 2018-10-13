@@ -1,6 +1,3 @@
-const express = require("express");
-const passport = require("passport");
-
 const db = require("../models");
 
 const User = db.User;

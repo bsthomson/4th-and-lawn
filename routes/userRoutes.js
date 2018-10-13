@@ -1,11 +1,8 @@
-const express = require("express");
 const passport = require("passport");
 
 const db = require("../models");
 
 const User = db.User;
-const Renter = db.Renter;
-const ParkingSpot = db.ParkingSpot
 
 module.exports = function (app) {
 

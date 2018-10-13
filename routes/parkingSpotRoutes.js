@@ -1,13 +1,11 @@
 const db = require("../models");
 
 const User = db.User;
-const Renter = db.Renter;
 const ParkingSpot = db.ParkingSpot;
 
 module.exports = function (app) {
 
   app.get('/api/parkingspots', (req, res) => {
-    const { address, availablespots, instructions } = req.body
 
     ParkingSpot.find({})
       .then( dbParkingSpot => {
