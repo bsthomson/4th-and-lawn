@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 class CardParkingSpot extends Component {
 
@@ -20,16 +21,14 @@ class CardParkingSpot extends Component {
         .catch(err => console.log(err));
     };
 
-
 render() {
 	return (
 		<div>
 		    {this.state.parkingspots.length ? (
                 <div className="parking-container">
                     {this.state.parkingspots.map(parkingspot => (
-                       
-                            <div className="col-1-of-3">
-                                <div className="parking-card" key={parkingspot._id}>
+                            <div className="col-1-of-3" key={parkingspot._id}>
+                                <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
 
                                         <div className="parking-card__picture">

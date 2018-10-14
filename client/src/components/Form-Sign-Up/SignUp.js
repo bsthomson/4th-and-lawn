@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class Signup extends Component {
 	constructor() {
@@ -11,7 +11,8 @@ class Signup extends Component {
 			firstname: '',
 			lastname: '',
 			address: '',
-			phonenumber: ''
+			phonenumber: '',
+			message: ''
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -24,7 +25,7 @@ class Signup extends Component {
 	}
 
 	handleSubmit(event) {
-		event.preventDefault()
+		event.preventDefault();
 
 		//request to server to add a new email/password
 		axios.post('/register', {
@@ -55,10 +56,13 @@ class Signup extends Component {
 				console.log('signup error: ')
 				console.log(error)
 			})
-	}
+		}
+
+		
 
 
 render() {
+
 	return (
 		<div className="SignupForm">
 		{/*<a href="#section-games" className="popup__close">&times;</a>*/}
