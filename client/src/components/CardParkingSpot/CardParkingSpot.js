@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import API from "./../../utils/API";
 import { Link } from "react-router-dom";
+import { MapContainer } from '../GoogleMap/GoogleMaps';
 
 class CardParkingSpot extends Component {
 
@@ -42,7 +43,7 @@ render() {
                                         <div className="col-1-of-1">
                                             <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots}</span>                                            </div>
                                         <div className="col-1-of-1">
-                                            <span clasNames="parking-details parking-details--sub"></span>                             
+                                            <span className="parking-details parking-details--sub"></span>                             
                                         </div>
                                     </div>
                                 </div>
@@ -62,6 +63,7 @@ render() {
             ) : (
             <h3>No Results to Display</h3>
             )}
+            <div><MapContainer/></div>
 		</div>
 
 	)
