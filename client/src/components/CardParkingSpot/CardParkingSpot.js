@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import API from "./../../utils/API";
 import { Link } from "react-router-dom";
-import { MapContainer } from '../GoogleMap/GoogleMaps';
+import GoogleApiWrapper from "../GoogleMap";
 
 class CardParkingSpot extends Component {
 
@@ -63,7 +63,7 @@ render() {
             ) : (
             <h3>No Results to Display</h3>
             )}
-            <div><MapContainer/></div>
+            <div><GoogleMap /></div>
 		</div>
 
 	)
