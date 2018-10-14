@@ -12,12 +12,6 @@ const RenterSchema = new Schema({
   model: {
     type: String
   },
-  date: {
-    type: Date
-  },
-  time: {
-    type: String
-  },
   user: [
     {
       type: Schema.Types.ObjectId,
