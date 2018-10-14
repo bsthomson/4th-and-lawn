@@ -51,7 +51,25 @@ module.exports = function (app) {
         console.log('No Spots')
       })
   })
-  
+
+  // routes that delete and update parking spots
+  app.route('/api/postedspots/:id')
+    .delete( (req, res) => {
+      ParkingSpot.findByIdAndDelete({ _id: req.params.id })
+        .then( dbParkingSpot => {
+          res.json(dbParkingSpot)
+        })
+        .catch( err => {
+          res.json(err)
+        })
+    })
+    .put( (req, res) => {
+      ParkingSpot.findByIdAndUpdate({ _id: req.params.id }, req.body)
+        .then( dbParkingSpot => {
+          res.json(dbParkingSpot)
+        })
+        .catch( err => {
+          res.json(err)
+        })
+    })
 }
-
-

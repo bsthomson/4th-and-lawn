@@ -21,7 +21,7 @@ module.exports = function (app) {
       user: req.session.passport.user,
       parkingspot: req.params.id
     })
-      .then(dbRenter => {
+      .then( dbRenter => {
         console.log("User: ", dbRenter)
         User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec();
         ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec();
@@ -30,7 +30,7 @@ module.exports = function (app) {
       .catch( err => {
         res.json(err)
       })
-  });
+  })
 
   // route that gets all of the users rented spots
   app.get('/api/rentedspots', (req, res) => {
@@ -43,5 +43,26 @@ module.exports = function (app) {
         res.json(err)
       })  
   })
+
+  // route that deletes a renters info
+  app.route('/api/rentedspots/:id')
+    .delete( (req, res) => {
+      Renter.findByIdAndDelete({ _id: req.params.id })
+      .then( dbRenter => {
+        res.json(dbRenter)
+      })
+      .catch( err => {
+        res.json(err)
+      })
+    })
+    .put( (req, res) => {
+      Renter.findByIdAndUpdate({ _id: req.params.id }, req.body )
+      .then( dbRenter => {
+        res.json(dbRenter)
+      })
+      .catch( err => {
+        res.json(err)
+      })
+    })
 
 };
