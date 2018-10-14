@@ -3,5 +3,5 @@ module.exports = {
   ParkingSpot: require("./ParkingSpot"),
   Renter: require("./Renter"),
   Jayhawk: require("./Jayhawk"),
-  JayhawkSeed: require("./JayhawkSeed"),
+  // JayhawkSeed: require("./JayhawkSeed"),
 }

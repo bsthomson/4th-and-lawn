@@ -1,5 +1,12 @@
 const mongoose = require("mongoose");
 
+const db = require("../models")
+const Jayhawk = db.Jayhawk;
+
+const JayhawkSeed = mongoose.model("Jayhawk", Jayhawk.JayhawkSchema);
+
+console.log(db.Jayhawk)
+
 Jayhawk.insertMany([
   {
     address: "1101 Mississippi St, Lawrence, KS 66044",
@@ -32,7 +39,5 @@ Jayhawk.insertMany([
     date: "11/23/2018"
   }
 ])
-
-const JayhawkSeed = mongoose.model("Jayhawk", JayhawkSchema);
 
 module.exports = JayhawkSeed;
