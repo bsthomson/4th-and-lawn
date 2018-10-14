@@ -9,9 +9,6 @@ const JayhawkSchema = new Schema({
   event: {
     type: String
   },
-  hometeam: {
-    type: String
-  },
   date: {
     type: date
   }
