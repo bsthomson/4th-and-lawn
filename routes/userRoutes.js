@@ -48,15 +48,13 @@ module.exports = function (app) {
   })
 
   // route to post login information to see if they match with User db
-  app.post("/login", (req, res) => {
-    passportLocal, (req, res) => {
-      let userInfo = {
-        email: req.user.email,
-        firstname: req.user.firstname
-      };
-      req.session.user = userInfo.email
-      res.send(userInfo)
-    }
+  app.post("/login", passportLocal, (req, res) => {
+    let userInfo = {
+      email: req.user.email,
+      firstname: req.user.firstname
+    };
+    req.session.user = userInfo.email
+    res.send(userInfo)
   });
 
   // route to see if a user is logged in already
