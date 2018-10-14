@@ -30,8 +30,8 @@ module.exports = function (app) {
           lastname: lastname,
           phonenumber: phonenumber
         })
-          .then((err, user) => {
-            passport.authenticate('local')(req, res, function () {
+          .then( (err, user) => {
+            passport.authenticate('local')(req, res, () => {
               let userInfo = {
                 email: req.user.email,
                 firstname: req.user.firstname
@@ -40,7 +40,7 @@ module.exports = function (app) {
               res.send(userInfo)
             })
         })
-        .catch(error => {
+        .catch( error => {
           console.log("error: ", error)
         })
       }
