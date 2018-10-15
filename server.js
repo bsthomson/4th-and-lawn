@@ -81,6 +81,9 @@ passport.deserializeUser(function(id, done) {
   })
 });
 
+// Tells express where our jayhawk AP route is
+require("./routes/jayhawkRoutes")(app);
+
 // Tells express where our renter API routes are
 require("./routes/renterRoutes")(app);
 

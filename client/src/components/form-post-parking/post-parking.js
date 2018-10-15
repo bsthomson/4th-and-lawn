@@ -13,6 +13,16 @@ class PostParkingSpot extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount() {
+        axios.get('/api/jayhawk')
+            .then( response => {
+                console.log(response);
+            })
+            .catch( error => {
+                console.log(error)
+            })
+    };
     
     handleChange(event) {
         this.setState({
