@@ -1,17 +1,15 @@
 import axios from "axios";
 
-export default { 
-  events: () => {
-    axios.get('/api/jayhawk')
-    .then( response => {
-        console.log(response)
-        this.setState(response => ({
-            jayhawk: response.data
-        }))
-        console.log(this.state)
-    })
-    .catch( error => {
-        console.log(error)
-    })
-  }
+const eventcall = async () => {
+    try {
+        const response = await axios.get("/api/jayhawk")
+        const events = await response.data
+        return await events
+    } catch (err) {
+        throw new Error(err)
+    }
 }
+
+console.log("eventcall: ", eventcall)
+
+export default { eventcall }

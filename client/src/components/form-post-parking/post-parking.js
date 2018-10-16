@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import moment from "moment";
+// import eventcall from "../../utils/eventcall";
 
 class PostParkingSpot extends Component {
     constructor() {
@@ -9,31 +11,20 @@ class PostParkingSpot extends Component {
             availablespots: '',
             instructions: '',
             game: '',
-            jayhawk: ''
+            events: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-        console.log("Component mounted")
-        this.events();
-    }
-
-    events = () => {
-        axios.get('/api/jayhawk')
-        .then( response => {
-            console.log(response)
-            this.setState({
-                jayhawk: response.data
+        axios.get("/api/jayhawk")
+            .then( response => {
+                this.setState(
+                    { events: response.data }
+                )
             })
-            console.log(this.state)
-        })
-        .catch( error => {
-            console.log(error)
-        })
     }
-    
 
     handleChange(event) {
         this.setState({
@@ -43,12 +34,14 @@ class PostParkingSpot extends Component {
     // talk to Jolie about this...
     handleSubmit(event) {
         event.preventDefault();
+        
+        console.log(this.state)
 
         axios.post('/api/parkingspots', {
             address: this.state.address,
             availablespots: this.state.availablespots,
             instructions: this.state.instructions,
-            game: this.state.game
+            event: this.state.game
         })
         .then(response => {
             console.log("parking spot info: ");
@@ -116,16 +109,18 @@ class PostParkingSpot extends Component {
                                 onChange={this.handleChange}
                             />
                     </div>
-                    {this.state.jayhawk.length ? (
+                    {this.state.events.length ? (
                         <div className="form__group">
                             <select name="game" className="form__input">
-                                {this.state.jayhawk.map(game => (
+                                {this.state.events.map(game => (
                                     <option
                                         key={game._id}
-                                        id={game._id}
-                                        name={game.event}
-                                        value={game._id}>
-                                            {game.event} {game.date}
+                                        id="game"
+                                        name="game"
+                                        placeholder="Game"
+                                        value={this.state.game._id}
+                                        onChange={this.handleChange}>
+                                            {game.event} {moment(game.date).format("MM-DD")}
                                     </option>
                                 ))}
                             </select>
