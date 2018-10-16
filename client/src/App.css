@@ -557,6 +557,13 @@ select {
     border-radius: 3px;
     text-align: center; }
 
+.footer-reservation {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 8rem;
+  box-shadow: 0 0 0 .5rem #888888; }
+
 .row {
   max-width: 90%;
   margin: 0 auto; }
@@ -737,7 +744,7 @@ select {
     margin-bottom: 4rem;
     top: 0;
     right: 0;
-    width: 400px; }
+    width: 500px; }
   .navigation__list {
     text-align: center;
     list-style: none;

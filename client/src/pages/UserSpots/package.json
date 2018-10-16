@@ -1,0 +1,6 @@
+{
+  "name": "UserSpots",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./UserSpots.js"
+}

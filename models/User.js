@@ -1,13 +1,20 @@
 const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
+const bcrypt = require("bcryptjs");
 
+const saltRounds = 10;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, "Email required"],
+    unique: true,
+    validate: {
+      validator: v => {
+        return /.+?@.+?\w{2,3}/.test(v);
+      },
+      message: props => `${props.value} is not a valid email address!`
+    }
   },
   password: {
     type: String,
@@ -15,15 +22,14 @@ const UserSchema = new Schema({
   },
   firstname: {
     type: String
-    // required: true
   },
   lastname: {
     type: String
-    // required: true
   },
   phonenumber: {
-    type: Number
-    // required: true
+    type: Number,
+    min: 10,
+    max: 10
   },
   rentinfo: [
     {
@@ -45,7 +51,22 @@ const UserSchema = new Schema({
   ]
 });
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.pre('save', function(next) {
+  let user = this;
+  if (!user.isModified('password')) return next()
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    if (err) return next(err)
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if (err) return next (err)
+      user.password = hash
+      next()
+    })
+  })
+})
+
+UserSchema.methods.comparePassword = (candidatePassword) => {
+  return bcrypt.compareSync(candidatePassword, this.password)
+}
 
 const User = mongoose.model("User", UserSchema);
 

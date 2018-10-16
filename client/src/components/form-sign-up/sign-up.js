@@ -5,7 +5,7 @@ class Signup extends Component {
 	constructor() {
 		super()
 		this.state = {
-			username: '',
+			email: '',
 			password: '',
 			confirmPassword: '',
 			firstname: '',
@@ -26,9 +26,8 @@ class Signup extends Component {
 	handleSubmit(event) {
 		event.preventDefault()
 
-		//request to server to add a new username/password
+		//request to server to add a new email/password
 		axios.post('/register', {
-			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password,
 			firstname: this.state.firstname,
@@ -50,7 +49,7 @@ class Signup extends Component {
 					})
 					console.log(this.state)
 				} else {
-					console.log('username already taken')
+					console.log('email address already taken')
 				}
 			}).catch(error => {
 				console.log('signup error: ')
