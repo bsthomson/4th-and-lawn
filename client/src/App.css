@@ -42,6 +42,46 @@
   100% {
     opacity: 1; } }
 
+@keyframes transition {
+  0% {
+    opacity: 1;
+    transform: translateY(100%); }
+  100% {
+    opacity: 1;
+    transform: translateY(-100%); } }
+
+.page-transition {
+  animation: fadeIn 3s ease .75s;
+  animation-fill-mode: backwards; }
+
+.fade-appear, .fade-enter {
+  opacity: 0;
+  z-index: 1; }
+
+.fade-appear-active,
+.fade-enter .fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms; }
+
+.fade-exit {
+  opacity: 0; }
+
+.fade-exit .fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear; }
+
+.background-test {
+  background-color: black;
+  top: 900;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  z-index: 9999;
+  position: absolute;
+  opacity: 0;
+  animation: transition 2s ease;
+  animation-fill-mode: backwards; }
+
 *,
 *::after,
 *::before {
@@ -243,12 +283,13 @@ body {
 
 .btn, .btn:link, .btn:visited {
   text-decoration: none;
-  padding: 1.5rem 4rem;
+  padding: 1.5rem 1rem;
   display: inline-block;
-  border-radius: 10rem;
+  border-radius: .6rem;
   transition: all .2s;
   position: relative;
   font-size: 1.6rem;
+  text-align: center;
   border: none;
   cursor: pointer; }
 
@@ -284,20 +325,20 @@ body {
   background-color: #cf1f1f;
   color: #fff;
   font-weight: 500;
-  border-radius: .7rem; }
+  border-radius: .5rem; }
   .btn--form::after {
     background-color: #fff; }
 
 .btn--rent {
   display: block !important;
-  width: 100%;
+  width: 20rem;
   margin: 0 auto;
   background-color: #cf1f1f;
   color: #fff;
-  font-weight: 500;
-  border-radius: .7rem; }
-  .btn--rent::after {
-    background-color: #fff; }
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: 1px; }
 
 .btn::after {
   content: "";
@@ -405,8 +446,7 @@ body {
   transform: translateY(-4rem); }
 
 select {
-  padding: 10rem;
-  margin: 10rem; }
+  height: 4.5rem; }
 
 .errorMsg {
   color: #cc0000;
@@ -576,7 +616,8 @@ select {
   width: 100%;
   bottom: 0;
   height: 8rem;
-  box-shadow: 0 0 0 .5rem #888888; }
+  box-shadow: 0 0 1rem 0.5rem rgba(153, 153, 153, 0.15);
+  padding: 1.4rem 0; }
 
 .row {
   max-width: 90%;
@@ -795,4 +836,5 @@ select {
   background-repeat: no-repeat; }
 
 .section-parking {
-  padding-top: 5rem; }
+  padding-top: 5rem;
+  position: relative; }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class ValidateForm extends Component {
     constructor() {
       super();
@@ -34,7 +33,6 @@ class ValidateForm extends Component {
           this.setState({fields:fields});
           alert("Form submitted");
       }
-
     }
 
     validateForm() {
@@ -57,7 +55,7 @@ class ValidateForm extends Component {
 
       if (!fields["emailid"]) {
         formIsValid = false;
-        errors["emailid"] = "*Please enter your email-ID.";
+        errors["emailid"] = "*Please enter your email.";
       }
 
       if (typeof fields["emailid"] !== "undefined") {
@@ -65,7 +63,7 @@ class ValidateForm extends Component {
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (!pattern.test(fields["emailid"])) {
           formIsValid = false;
-          errors["emailid"] = "*Please enter valid email-ID.";
+          errors["emailid"] = "*Please enter valid email.";
         }
       }
 
@@ -110,7 +108,7 @@ class ValidateForm extends Component {
 						<span className="heading-form--title">Sign up</span>
 				</div>
 
-        <form method="post"  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm} >
+        <form  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm}>
         <div className="form__group">
           <input 
             type="text" 
@@ -122,6 +120,7 @@ class ValidateForm extends Component {
           />
         </div>
         <div className="errorMsg">{this.state.errors.username}</div>
+
         <div className="form__group">
           <input 
             className="form__input"
@@ -133,6 +132,7 @@ class ValidateForm extends Component {
           />
         </div>
         <div className="errorMsg">{this.state.errors.emailid}</div>
+
         <div className="form__group">
           <input 
             className="form__input"
@@ -144,6 +144,7 @@ class ValidateForm extends Component {
           />
         </div>
         <div className="errorMsg">{this.state.errors.mobileno}</div>
+
         <div className="form__group">
           <input 
             className="form__input"

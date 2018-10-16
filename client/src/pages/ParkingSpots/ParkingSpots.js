@@ -24,6 +24,7 @@ class ParkingSpots extends Component {
     render() {
         return (
             <section className="section-parking">
+             {/* <div className="page-transition background-test"></div> */}
 
             <h1 className="heading-page">
                 <span className="heading-page--title">Available spots near Memorial Stadium</span>

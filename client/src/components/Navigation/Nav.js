@@ -96,10 +96,8 @@ class Navbar extends Component {
                                       close()
                                     }}
                                   >
-                                  
                                   </button>
                               </div>
-                            
                             )}
                           </Popup>
                             </li>
