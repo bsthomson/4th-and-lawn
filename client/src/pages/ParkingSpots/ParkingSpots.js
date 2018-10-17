@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import './../../App.css';
 import API from "./../../utils/API";
-
 import CardParkingSpot from './../../components/Card-Parking-Spot/ParkingSpot';
 
 class ParkingSpots extends Component {
@@ -35,6 +34,5 @@ class ParkingSpots extends Component {
         );
     }
 }
-
 
 export default ParkingSpots;

@@ -20,7 +20,6 @@ class UserSpot extends Component {
             .then(response => this.setState({             
                 postedspots: response.data[0].parkingspots
             }))
- 
             .catch(err => console.log(err));
     };
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import moment from "moment";
 
 class PostParkingSpot extends Component {
     constructor() {
@@ -8,12 +9,23 @@ class PostParkingSpot extends Component {
             address: '',
             availablespots: '',
             instructions: '',
+            price: '',
             game: '',
+            events: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    
+
+    componentDidMount() {
+        axios.get("/api/jayhawk")
+            .then( response => {
+                this.setState(
+                    { events: response.data }
+                )
+            })
+    }
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -22,12 +34,14 @@ class PostParkingSpot extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        
+        console.log(this.state)
 
         axios.post('/api/parkingspots', {
             address: this.state.address,
             availablespots: this.state.availablespots,
             instructions: this.state.instructions,
-            game: this.state.game
+            event: this.state.game
         })
         .then(response => {
             console.log("parking spot info: ");
@@ -45,114 +59,92 @@ class PostParkingSpot extends Component {
     }
 
     render() {
-            return (
-            <div className="PostParkingSpotForm">
+        return (
+        <div className="PostParkingSpotForm">
 
-                <form>
-                    <div className="form__container">
+            <form>
+                <div className="form__container">
 
                     <h1 className="heading-primary">
                         <span className="heading-primary--form left">List your parking spots before game day.</span>
                     </h1>
 
-                        <div className="form__group">
+                    <div className="form__group">
+                        <input className="form__input"
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder="Address"
+                            value={this.state.address}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form__group">
+                        <input className="form__input-sm"
+                            type="number"
+                            id="availablespots"
+                            name="availablespots"
+                            placeholder="Number of spots"
+                            value={this.state.availablespots}
+                            onChange={this.handleChange}
+                        />
+                        <input className="form__input-sm"
+                            type="number"
+                            id="price"
+                            name="price"
+                            placeholder="Price"
+                            value={this.state.price}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form__group">
                             <input className="form__input"
                                 type="text"
-                                id="address"
-                                name="address"
-                                placeholder="Address"
-                                value={this.state.address}
+                                id="instructions"
+                                name="instructions"
+                                placeholder="Parking instructions"
+                                value={this.state.instructions}
                                 onChange={this.handleChange}
                             />
-                        </div>
+                    </div>
+                    {this.state.events.length ? (
                         <div className="form__group">
-                            <input className="form__input"
-                                type="number"
-                                id="availablespots"
-                                name="availablespots"
-                                placeholder="Parking spots available"
-                                value={this.state.availablespots}
-                                onChange={this.handleChange}
-                            />
+                            <select name="game" className="form__input">
+                                {this.state.events.map(game => (
+                                    <option
+                                        key={game._id}
+                                        id="game"
+                                        name="game"
+                                        placeholder="Game"
+                                        value={this.state.game._id}
+                                        onChange={this.handleChange}>
+                                            {game.event} {moment(game.date).format("MM-DD")}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
-                        {/* <div className="form__group">
-                                <input className="form__input"
-                                    type="text"
-                                    id="destination"
-                                    name="destination"
-                                    placeholder="Destination"
-                                    value={this.state.destination}
-                                    onChange={this.handleChange}
-                                />
-                        </div>*/}
+                    ) : (
                         <div className="form__group">
-                                <input className="form__input"
-                                    type="text"
-                                    id="instructions"
-                                    name="instructions"
-                                    placeholder="Parking instructions"
-                                    value={this.state.instructions}
-                                    onChange={this.handleChange}
-                                />
-                        </div>
-                        <div className="form__group">
-                        <select name="game" className="form__input">
-                            <option 
-                                id="game"
-                                name="game"
-                                value={this.state.value}
-                                onChange={this.handleChange}>
-                                    Fri, Oct 26 vs TCU (TBA)
-                            </option>
-                            <option 
-                                id="game"
-                                name="game"
-                                value={this.state.value}
-                                onChange={this.handleChange}>
-                                    Fri, Nov 2 vs Iowa State (TBA)
-                            </option>
-                            <option 
-                                id="game"
-                                name="game"
-                                value={this.state.value}
-                                onChange={this.handleChange}>
-                                    Fri, Nov 23 vs Texas (11:00 AM)
-                            </option>
+                        <select name="game" className="form__input">                                
+                            <option>
+                                No Games Available
+                            </option>                            
                         </select>
-                        </div>
-                        {/*<div className="form__group">
-                                <input className="form__input"
-                                    type="date"
-                                    id="date"
-                                    name="date"
-                                    placeholder="MM/DD/YYYY"
-                                    value={this.state.value}
-                                    onChange={this.handleChange}
-                                />
-                        </div>
-                        <div className="form__group">
-                                <input className="form__input"
-                                    type="time"
-                                    id="time"
-                                    name="time"
-                                    placeholder="HH:MM"
-                                    value={this.state.value}
-                                    onChange={this.handleChange}
-                                />
-                    </div>*/}
-                        <div className="form__group">
-                            <input
-                                className="btn btn--form"
-                                type="submit"
-                                value="Submit"
-                                onClick={this.handleSubmit}
-                            />
-                        </div>
-                    </div>   
-                </form>
-            </div>
-            )
-        }
+                    </div>
+                    )}
+                    <div className="form__group">
+                        <input
+                            className="btn btn--form"
+                            type="submit"
+                            value="Submit"
+                            onClick={this.handleSubmit}
+                        />
+                    </div>
+                </div>   
+            </form>
+        </div>
+        )
+    }
 }
 
 export default PostParkingSpot;

@@ -80,26 +80,6 @@ class RentParkingSpot extends Component {
                                     />
                                 </div>
                                 <div className="form__group">
-                                    <input className="form__input"
-                                        type="text"
-                                        id="date"
-                                        name="date"
-                                        placeholder="MM/DD/YYYY"
-                                        value={this.state.date}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                <div className="form__group">
-                                    <input className="form__input"
-                                        type="text"
-                                        id="time"
-                                        name="time"
-                                        placeholder="HH:MM"
-                                        value={this.state.time}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                <div className="form__group">
                                     <input
                                         className="btn btn--form"
                                         type="submit"
