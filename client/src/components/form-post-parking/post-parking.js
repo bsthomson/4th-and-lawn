@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
-// import eventcall from "../../utils/eventcall";
 
 class PostParkingSpot extends Component {
     constructor() {
