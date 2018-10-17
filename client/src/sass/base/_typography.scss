@@ -13,6 +13,8 @@ body {
     text-align: center;
 }
 
+
+
 .heading-primary {
     
     color: $color-white;
@@ -61,6 +63,24 @@ body {
         line-height: 3.5rem;
         letter-spacing: 0px;
         color: $color-black;
+
+        @include breakpoint(phone) {
+            letter-spacing: -.2rem;
+            font-size: 8rem;
+            line-height: 7rem;
+            text-align: center;
+        }
+    }
+
+    &--page {
+        display: block;
+        width: 100%;
+        font-size: 4rem;
+        font-weight: 500;
+        line-height: 5rem;
+        letter-spacing: 0px;
+        color: $color-black;
+        margin: 2rem 0;
 
         @include breakpoint(phone) {
             letter-spacing: -.2rem;
@@ -118,6 +138,15 @@ body {
     display: block;
     width: 100%;
 
+    &--address {
+        font-size: 1.25rem;
+        line-height: 5rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
     &--main {
         color: $color-white;
         font-size: 3rem;
@@ -130,12 +159,6 @@ body {
         letter-spacing: .3rem;
         padding-left: 1rem;
         color: $color-white;
-    }
-
-    &--icon {
-        font-size: 1.1rem;
-        letter-spacing: .3rem;
-        padding-left: 1rem;
     }
 
     &--name {
@@ -205,6 +228,3 @@ body {
     margin: 3rem auto;
 }
 
-.icon-form {
-
-}

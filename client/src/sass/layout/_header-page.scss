@@ -1,0 +1,19 @@
+.header-page {
+    position: relative;
+    height: 50rem;
+
+    &__background {
+        height: 100%;
+        background-color: $color-grey-light-1;
+        padding: 4rem;
+    }
+
+    &__background-image {
+        height: 100%;
+        background-image: url(img/house.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+
+    
+}

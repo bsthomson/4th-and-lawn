@@ -54,13 +54,10 @@ class RentParkingSpot extends Component {
         } else {
             return (
                 <div>
-                    <div className="rentParkingSpotForm">
-                        <form>
-                            <div className="form__container">
-
-                                <h1 className="heading-primary">
-                                    <span className="heading-primary--form left">Reserve your spot</span>
-                                </h1>
+                    <form>
+                        <p className="heading-primary">
+                            <span className="heading-primary--form">Reserve your spot</span>
+                        </p>
 
                                 <div className="form__group">
                                     <input className="form__input"
@@ -83,26 +80,6 @@ class RentParkingSpot extends Component {
                                     />
                                 </div>
                                 <div className="form__group">
-                                    <input className="form__input"
-                                        type="text"
-                                        id="date"
-                                        name="date"
-                                        placeholder="MM/DD/YYYY"
-                                        value={this.state.date}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                <div className="form__group">
-                                    <input className="form__input"
-                                        type="text"
-                                        id="time"
-                                        name="time"
-                                        placeholder="HH:MM"
-                                        value={this.state.time}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                <div className="form__group">
                                     <input
                                         className="btn btn--form"
                                         type="submit"
@@ -110,9 +87,7 @@ class RentParkingSpot extends Component {
                                         onClick={this.handleSubmit}
                                     />
                                 </div>
-                            </div>
                         </form>
-                    </div>
                 </div>
             )
         }

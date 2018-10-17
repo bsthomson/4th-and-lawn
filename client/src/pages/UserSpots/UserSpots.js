@@ -20,9 +20,14 @@ class UserSpot extends Component {
             .then(response => this.setState({             
                 postedspots: response.data[0].parkingspots
             }))
- 
             .catch(err => console.log(err));
     };
+
+    deletePostedSpot = id => {
+        axios.delete("/api/postedspots/" + id)
+        .then(response => this.loadPostedSpots())
+        .catch(err => console.log(err));
+    }
 
     render() {
         return (
@@ -30,8 +35,7 @@ class UserSpot extends Component {
 		    {this.state.postedspots.length ? (
                 <div className="parking-container">
                     {this.state.postedspots.map(postedspot => (
-                        <li key={postedspot._id}>
-                            <div className="col-1-of-3">
+                            <div className="col-1-of-3" key={postedspot._id}>
                                 <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
 
@@ -46,7 +50,14 @@ class UserSpot extends Component {
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>
                                             <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub"></span>                             
+                                                <span className="parking-details parking-details--sub">
+                                                <input
+                                                    className="btn btn--form"
+                                                    type="button"
+                                                    value="Remove"
+                                                    onClick={() => this.deletePostedSpot(postedspot._id)}
+                                                />
+                                                </span>                             
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +72,6 @@ class UserSpot extends Component {
                                     />
                                 </Link>
                             </div>
-                        </li>
                     ))}
                 </div>
             ) : (

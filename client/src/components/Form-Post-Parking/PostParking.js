@@ -9,6 +9,7 @@ class PostParkingSpot extends Component {
             address: '',
             availablespots: '',
             instructions: '',
+            price: '',
             game: '',
             events: []
         }
@@ -30,7 +31,7 @@ class PostParkingSpot extends Component {
             [event.target.name]: event.target.value
         });
     };
-    // talk to Jolie about this...
+
     handleSubmit(event) {
         event.preventDefault();
         
@@ -64,9 +65,9 @@ class PostParkingSpot extends Component {
             <form>
                 <div className="form__container">
 
-                <h1 className="heading-primary">
-                    <span className="heading-primary--form left">Game day parking made easy for everyone.</span>
-                </h1>
+                    <h1 className="heading-primary">
+                        <span className="heading-primary--form left">List your parking spots before game day.</span>
+                    </h1>
 
                     <div className="form__group">
                         <input className="form__input"
@@ -79,25 +80,23 @@ class PostParkingSpot extends Component {
                         />
                     </div>
                     <div className="form__group">
-                        <input className="form__input"
+                        <input className="form__input-sm"
                             type="number"
                             id="availablespots"
                             name="availablespots"
-                            placeholder="Parking spots available"
+                            placeholder="Number of spots"
                             value={this.state.availablespots}
                             onChange={this.handleChange}
                         />
+                        <input className="form__input-sm"
+                            type="number"
+                            id="price"
+                            name="price"
+                            placeholder="Price"
+                            value={this.state.price}
+                            onChange={this.handleChange}
+                        />
                     </div>
-                    {/* <div className="form__group">
-                            <input className="form__input"
-                                type="text"
-                                id="destination"
-                                name="destination"
-                                placeholder="Destination"
-                                value={this.state.destination}
-                                onChange={this.handleChange}
-                            />
-                    </div>*/}
                     <div className="form__group">
                             <input className="form__input"
                                 type="text"
@@ -135,26 +134,6 @@ class PostParkingSpot extends Component {
                         </select>
                     </div>
                     )}
-                    {/*<div className="form__group">
-                            <input className="form__input"
-                                type="date"
-                                id="date"
-                                name="date"
-                                placeholder="MM/DD/YYYY"
-                                value={this.state.value}
-                                onChange={this.handleChange}
-                            />
-                    </div>
-                    <div className="form__group">
-                            <input className="form__input"
-                                type="time"
-                                id="time"
-                                name="time"
-                                placeholder="HH:MM"
-                                value={this.state.value}
-                                onChange={this.handleChange}
-                            />
-                </div>*/}
                     <div className="form__group">
                         <input
                             className="btn btn--form"
