@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
+import GoogleMap from "../GoogleMap/GoogleMap";
 
 class CardParkingSpot extends Component {
 
@@ -62,10 +63,11 @@ render() {
             ) : (
             <h3>No Results to Display</h3>
             )}
+            <div><GoogleMap /></div>
 		</div>
 
 	)
 }
 }
 
-export default CardParkingSpot
+export default CardParkingSpot;

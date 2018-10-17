@@ -15,6 +15,12 @@ const ParkingSpotSchema = new Schema({
   price: {
     type: Number
   },
+  event: [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Jayhawks"
+    }
+  ],
   user: [
     {
       type: Schema.Types.ObjectId,
