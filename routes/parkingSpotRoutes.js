@@ -20,12 +20,13 @@ module.exports = function (app) {
     // route that posts parking spots
     .post( (req, res) => {
 
-      const { address, availablespots, instructions } = req.body;
+      const { address, availablespots, instructions, event } = req.body;
 
       ParkingSpot.create({
         address: address,
         availablespots: availablespots,
         instructions: instructions,
+        event: event,
         user: req.session.passport.user
       })
         .then( dbParkingSpotPoster => {

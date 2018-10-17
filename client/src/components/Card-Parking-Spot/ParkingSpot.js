@@ -40,7 +40,7 @@ render() {
                                                 <span className="parking-details parking-details--sub">{parkingspot.address}</span>
                                             </div>
                                             <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots}</span>                                            </div>
+                                                <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "No available spots"}</span>                                            </div>
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub"></span>                             
                                             </div>
@@ -49,12 +49,23 @@ render() {
                                 </div>
 
                                 <Link to={"/rentthisspot/" + parkingspot._id}>
-                                    <input
-                                        className="btn btn--form"
-                                        type="submit"
-                                        value="Reserve"
-                                        onClick={this.handleSubmit}
-                                    />
+                                    {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
+                                        <input
+                                            className="btn btn--form"
+                                            type="submit"
+                                            value="Reserve"
+                                            onClick={this.handleSubmit}
+                                        />
+                                    ) : (
+                                        <input
+                                            className="btn btn--form"
+                                            type="submit"
+                                            value="No Vacancy"
+                                            onClick={this.handleSubmit}
+                                            disabled
+                                        />
+                                    )
+                                    }
                                 </Link>
                             </div>
                        

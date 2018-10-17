@@ -109,15 +109,17 @@ class PostParkingSpot extends Component {
                     </div>
                     {this.state.events.length ? (
                         <div className="form__group">
-                            <select name="game" className="form__input">
+                            <select name="game" className="form__input" value={this.state.game} onChange={this.handleChange}>
+                                <option>
+                                    Pick a game to park at!
+                                </option>
                                 {this.state.events.map(game => (
                                     <option
                                         key={game._id}
                                         id="game"
-                                        name="game"
+                                        name="event"
                                         placeholder="Game"
-                                        value={this.state.game._id}
-                                        onChange={this.handleChange}>
+                                        value={game._id}>
                                             {game.event} {moment(game.date).format("MM-DD")}
                                     </option>
                                 ))}
