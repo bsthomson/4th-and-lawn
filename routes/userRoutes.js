@@ -3,6 +3,7 @@ const passport = require("passport");
 const db = require("../models");
 
 const User = db.User;
+const Jayhawk = db.Jayhawk;
 
 module.exports = function (app) {
 
@@ -59,6 +60,7 @@ module.exports = function (app) {
 
   // route to see if a user is logged in already
   app.get('/user', (req, res) =>{
+    
     if (req.session.passport !== undefined) {
       User.findOne({ _id: req.session.passport.user })
         .then( (user) => {
