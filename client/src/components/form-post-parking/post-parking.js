@@ -25,10 +25,6 @@ class PostParkingSpot extends Component {
             })
     }
 
-    componentDidUpdate() {
-        console.log(this.state)
-    }
-
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -115,6 +111,9 @@ class PostParkingSpot extends Component {
                     {this.state.events.length ? (
                         <div className="form__group">
                             <select name="game" className="form__input" value={this.state.game} onChange={this.handleChange}>
+                                <option>
+                                    Pick a game to park at!
+                                </option>
                                 {this.state.events.map(game => (
                                     <option
                                         key={game._id}
