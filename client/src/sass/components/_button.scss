@@ -3,12 +3,13 @@
     &:link,
     &:visited {
         text-decoration: none;
-        padding: 1.5rem 4rem;
+        padding: 1.5rem 1rem;
         display: inline-block;
-        border-radius: 10rem;
+        border-radius: .6rem;
         transition: all .2s;
         position: relative;
         font-size: 1.6rem;
+        text-align: center;
         // letter-spacing: .1rem;
 
         // Change for the button element
@@ -59,9 +60,8 @@
         background-color: $color-red;
         color: $color-white;
         font-weight: 500;
-        border-radius: .7rem;
-        
-
+        border-radius: .5rem;
+    
         &::after {
             background-color: $color-white;
         }
@@ -69,18 +69,16 @@
 
     &--rent {
         display: block !important;
-        width: 100%;
+        width: 20rem;
         margin: 0 auto;
         background-color: $color-red;
         color: $color-white;
-        font-weight: 500;
-        border-radius: .7rem;
-
-        &::after {
-            background-color: $color-white;
-        }
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
     }
-    
+
     &::after {
         content: "";
         display: inline-block;

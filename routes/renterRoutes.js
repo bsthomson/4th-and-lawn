@@ -13,6 +13,7 @@ module.exports = function (app) {
 
     const { licenseplate, make, model, date, time } = req.body;
 
+<<<<<<< HEAD
     Renter.create({
       licenseplate: licenseplate,
       make: make,
@@ -20,6 +21,39 @@ module.exports = function (app) {
       date: date,
       user: req.session.passport.user,
       parkingspot: req.params.id
+=======
+          Renter.create({
+            licenseplate: licenseplate,
+            make: make,
+            model: model,
+            user: req.session.passport.user,
+            event: event,
+            parkingspot: req.params.id,
+          })
+          .then( dbRenter => {
+            console.log("User: ", dbRenter)
+            User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec();
+            ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec();
+            res.send(dbRenter)
+          })
+          .catch( err => {
+            res.json(err)
+          })
+        })
+        .catch ( err => {
+          res.json(err)
+        })
+    })
+    .get( (req, res) => {
+      ParkingSpot.findOne({ _id: req.params.id})
+        .populate("event")
+        .then( dbParkingSpot => {
+          res.json(dbParkingSpot)
+        })
+        .catch( err => {
+          res.json(err)
+        })
+>>>>>>> c035bde95921effd8410d541eba0906f4d6734b3
     })
       .then( dbRenter => {
         console.log("User: ", dbRenter)

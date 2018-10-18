@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const style = {
-    height: '75vh',
-    width: '100vh',
-
-
+    height: '40rem',
+    width: '90%',
   }
 
 class GoogleMap extends Component {
@@ -23,7 +21,6 @@ class GoogleMap extends Component {
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'}
                   initialCenter = {{ lat: 38.9629 , lng: -95.2464 }} 
-  
             />
    
           <InfoWindow onClose={this.onInfoWindowClose}>

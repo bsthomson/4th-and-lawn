@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 
@@ -8,9 +9,12 @@ class PostParkingSpot extends Component {
         this.state = {
             address: '',
             availablespots: '',
+            price: '',
             instructions: '',
+            price: '',
             game: '',
-            events: []
+            events: [],
+            redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -30,16 +34,18 @@ class PostParkingSpot extends Component {
             [event.target.name]: event.target.value
         });
     };
-    // talk to Jolie about this...
+
     handleSubmit(event) {
         event.preventDefault();
-        
+
         console.log(this.state)
 
         axios.post('/api/parkingspots', {
             address: this.state.address,
             availablespots: this.state.availablespots,
+            price: this.state.price,
             instructions: this.state.instructions,
+            price: this.state.price,
             event: this.state.game
         })
         .then(response => {
@@ -48,7 +54,7 @@ class PostParkingSpot extends Component {
             if (response.status === 200) {
                 console.log("Post Sent")
                 this.setState({
-                    redirectTo: "/parking-spots"
+                    redirectTo: "/posted-spots"
                 })
             }
         }).catch(error => {
@@ -58,15 +64,18 @@ class PostParkingSpot extends Component {
     }
 
     render() {
-        return (
-        <div className="PostParkingSpotForm">
+        if (this.state.redirectTo) {
+            return <Redirect to ={{ pathname: this.state.redirectTo }} />
+        } else {
+            return (
+            <div className="PostParkingSpotForm">
 
-            <form>
-                <div className="form__container">
+                <form>
+                    <div className="form__container" id="parkingspotform">
 
-                <h1 className="heading-primary">
-                    <span className="heading-primary--form left">Game day parking made easy for everyone.</span>
-                </h1>
+                    <h1 className="heading-primary">
+                        <span className="heading-primary--form left">List your parking spots before game day.</span>
+                    </h1>
 
                     <div className="form__group">
                         <input className="form__input"
@@ -79,40 +88,38 @@ class PostParkingSpot extends Component {
                         />
                     </div>
                     <div className="form__group">
-                        <input className="form__input"
+                        <input className="form__input-sm"
                             type="number"
                             id="availablespots"
                             name="availablespots"
-                            placeholder="Parking spots available"
+                            placeholder="Number of spots"
                             value={this.state.availablespots}
                             onChange={this.handleChange}
                         />
+                        <input className="form__input-sm"
+                            type="number"
+                            id="price"
+                            name="price"
+                            placeholder="Price"
+                            value={this.state.price}
+                            onChange={this.handleChange}
+                        />
                     </div>
-                    {/* <div className="form__group">
-                            <input className="form__input"
-                                type="text"
-                                id="destination"
-                                name="destination"
-                                placeholder="Destination"
-                                value={this.state.destination}
-                                onChange={this.handleChange}
-                            />
-                    </div>*/}
                     <div className="form__group">
-                            <input className="form__input"
-                                type="text"
-                                id="instructions"
-                                name="instructions"
-                                placeholder="Parking instructions"
-                                value={this.state.instructions}
-                                onChange={this.handleChange}
-                            />
+                        <input className="form__input"
+                            type="text"
+                            id="instructions"
+                            name="instructions"
+                            placeholder="Parking instructions"
+                            value={this.state.instructions}
+                            onChange={this.handleChange}
+                        />
                     </div>
                     {this.state.events.length ? (
                         <div className="form__group">
                             <select name="game" className="form__input" value={this.state.game} onChange={this.handleChange}>
                                 <option>
-                                    Pick a game to park at!
+                                    Select a game
                                 </option>
                                 {this.state.events.map(game => (
                                     <option
@@ -121,40 +128,20 @@ class PostParkingSpot extends Component {
                                         name="event"
                                         placeholder="Game"
                                         value={game._id}>
-                                            {game.event} {moment(game.date).format("MM-DD")}
+                                        {game.event} {moment(game.date).format("MM-DD")}
                                     </option>
                                 ))}
                             </select>
                         </div>
                     ) : (
                         <div className="form__group">
-                        <select name="game" className="form__input">                                
-                            <option>
-                                No Games Available
-                            </option>                            
-                        </select>
-                    </div>
+                            <select name="game" className="form__input">                                
+                                <option>
+                                    No Games Available
+                                </option>                            
+                             </select>
+                        </div>
                     )}
-                    {/*<div className="form__group">
-                            <input className="form__input"
-                                type="date"
-                                id="date"
-                                name="date"
-                                placeholder="MM/DD/YYYY"
-                                value={this.state.value}
-                                onChange={this.handleChange}
-                            />
-                    </div>
-                    <div className="form__group">
-                            <input className="form__input"
-                                type="time"
-                                id="time"
-                                name="time"
-                                placeholder="HH:MM"
-                                value={this.state.value}
-                                onChange={this.handleChange}
-                            />
-                </div>*/}
                     <div className="form__group">
                         <input
                             className="btn btn--form"
@@ -163,10 +150,11 @@ class PostParkingSpot extends Component {
                             onClick={this.handleSubmit}
                         />
                     </div>
-                </div>   
-            </form>
-        </div>
-        )
+                    </div>   
+                </form>
+            </div>
+            )
+        }
     }
 }
 

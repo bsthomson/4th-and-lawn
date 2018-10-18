@@ -1,6 +1,3 @@
-.SignupForm {
-    
-}
 
 .form {
 
@@ -22,7 +19,7 @@
         color: inherit;
         font-family: inherit;
         font-size: 1.5rem;
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         border-radius: 2px;
         background-color: rgba($color-white, .5);
         border: 1px solid $color-grey-light-2;
@@ -32,6 +29,40 @@
         margin: 0 auto;
         text-align: left;
         color: $color-black;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 1px solid $color-primary;
+        }
+
+        &:focus:invalid {
+            border-bottom: 1px solid $color-secondary-dark;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+    }
+
+    &__input-sm {
+        color: inherit;
+        font-family: inherit;
+        font-size: 1.5rem;
+        padding: 1rem 1rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: 1px solid $color-grey-light-2;
+        width: 47%;
+        display: inline-block;
+        transition: all .3s;
+        text-align: left;
+        color: $color-black;
+        margin-right: 2rem;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
 
         &:focus {
             outline: none;
@@ -70,6 +101,15 @@
 }
 
 select {
-    padding: 10rem;
-    margin: 10rem;
+    height: 4.5rem;
 }
+
+.errorMsg {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }
+  
+  .sucessMsg {
+    color: #6B8E23;
+    margin-bottom: 10px;
+  }
