@@ -7,9 +7,8 @@ class RentParkingSpot extends Component {
         super()
         this.state = {
             licensePlate: '',
+            make: '',
             model: '',
-            date: '',
-            time: '',
             redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,9 +27,8 @@ class RentParkingSpot extends Component {
 
         axios.post("/api" + window.location.pathname, {
             licensePlate: this.state.licensePlate,
-            model: this.state.model,
-            date: this.state.date,
-            time: this.state.time
+            make: this.state.make,
+            model: this.state.model
         })
         .then(response => {
             console.log('Renters info: ');
@@ -72,10 +70,20 @@ class RentParkingSpot extends Component {
                                 <div className="form__group">
                                     <input className="form__input"
                                         type="text"
+                                        id="make"
+                                        name="make"
+                                        placeholder="Car make"
+                                        value={this.state.make}
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <div className="form__group">
+                                    <input className="form__input"
+                                        type="text"
                                         id="model"
                                         name="model"
                                         placeholder="Car model"
-                                        value={this.state.carModel}
+                                        value={this.state.model}
                                         onChange={this.handleChange}
                                     />
                                 </div>

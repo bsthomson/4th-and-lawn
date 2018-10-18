@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './../../App.css';
 import API from "./../../utils/API";
-import CardParkingSpot from './../../components/Card-Parking-Spot/ParkingSpot';
+import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
 
 class ParkingSpots extends Component {
     state = {
