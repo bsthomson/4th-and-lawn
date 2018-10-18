@@ -21,8 +21,8 @@ class ParkingSpots extends Component {
             .catch(err => console.log(err));
     };
 
-    sortDates = (game) => {
-        console.log(game)
+    sortDates = () => {
+        moment(this.state.parkingspots.event.date).sort((a, b) => {return a - b})
     }
 
     render() {

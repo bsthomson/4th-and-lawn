@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Popup from 'reactjs-popup';
 import Signup from './../FormSignUp/SignUp';
 import Login  from './../FormLogin/Login';
-// import ValidateForm  from './../FormSignUp/Validate';
+import ValidateForm  from './../FormSignUp/Validate';
 
 import '../../App.css';
 import axios from 'axios'
