@@ -16,10 +16,9 @@ class ParkingSpots extends Component {
 
     loadParkingSpots = () => {
         API.getParkingSpots()
-            .then(response => {
-                this.setState({ parkingspots: response.data })
-                console.log(this.state.parkingspots)
-            })
+            .then(response => this.setState({ 
+                parkingspots: response.data
+            }))
             .catch(err => console.log(err));
     };
 
