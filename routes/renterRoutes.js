@@ -43,7 +43,7 @@ module.exports = function (app) {
     })
     .get( (req, res) => {
       ParkingSpot.findOne({ _id: req.params.id})
-        .populate("Jayhawk")
+        .populate("event")
         .then( dbParkingSpot => {
           res.json(dbParkingSpot)
         })

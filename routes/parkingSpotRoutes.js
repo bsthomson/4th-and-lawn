@@ -10,7 +10,7 @@ module.exports = function (app) {
     .get( (req, res) => {
 
       ParkingSpot.find({})
-        .populate("Jayhawk")
+        .populate("event")
         .then( dbParkingSpot => {
           res.json(dbParkingSpot)
         })
