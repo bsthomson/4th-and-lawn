@@ -47,12 +47,12 @@ class ParkingSpots extends Component {
                                     </option>
                                     {this.state.parkingspots.map(game => (
                                         <option
-                                            key={game}
+                                            key={game._id}
                                             id="game"
                                             name="event"
                                             placeholder="Game"
-                                            value={game}>
-                                                {game} {moment(game).format("MM-DD")}
+                                            value={game._id}>
+                                                {game.event[0].event} {moment(game.event[0].date).format("MM-DD")}
                                         </option>
                                     ))}
                                 </select>
