@@ -44,7 +44,7 @@ render() {
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "No available spots"}</span>                                            </div>
                                             <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub"></span>                             
+                                                <span className="parking-details parking-details--sub">Price: {parkingspot.price}</span>                             
                                             </div>
                                         </div>
                                     </div>

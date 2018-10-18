@@ -10,6 +10,7 @@ module.exports = function (app) {
     .get( (req, res) => {
 
       ParkingSpot.find({})
+        .populate("Jayhawk")
         .then( dbParkingSpot => {
           res.json(dbParkingSpot)
         })
@@ -20,11 +21,12 @@ module.exports = function (app) {
     // route that posts parking spots
     .post( (req, res) => {
 
-      const { address, availablespots, instructions, event } = req.body;
+      const { address, availablespots, price, instructions, event } = req.body;
 
       ParkingSpot.create({
         address: address,
         availablespots: availablespots,
+        price: price,
         instructions: instructions,
         event: event,
         user: req.session.passport.user
