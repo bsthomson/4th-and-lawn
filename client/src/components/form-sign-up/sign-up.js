@@ -12,8 +12,7 @@ class Signup extends Component {
 			firstname: '',
 			lastname: '',
 			address: '',
-			phonenumber: '',
-			redirectTo: null
+			phonenumber: ''
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -61,9 +60,6 @@ class Signup extends Component {
 
 
 render() {
-	if (this.state.redirectTo) {
-		return <Redirect to = {{ pathname: this.state.redirectTo }} />
-	} else {
 		return (
 			<div className="SignupForm">
 			<a href="#section-games" className="popup__close">&times;</a>
@@ -139,7 +135,6 @@ render() {
 					</div>
 
 		)
-	}
 }
 }
 
