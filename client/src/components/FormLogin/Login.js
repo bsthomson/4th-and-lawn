@@ -58,14 +58,12 @@ class LoginForm extends Component {
         } else {
             return (
                 <div>
-                    <h4>Login</h4>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="email">Email</label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
+                    <div className="heading-form">
+                        <span className="heading-form--title">Log in</span>
+                    </div>
+                    <form>
+                        <div className="form__group">
+                                <input className="form__input"
                                     type="text"
                                     id="email"
                                     name="email"
@@ -73,30 +71,28 @@ class LoginForm extends Component {
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                 />
-                            </div>
                         </div>
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="password">Password: </label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
+                        <div className="form__group">
+                                <input className="form__input"
                                     placeholder="password"
                                     type="password"
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                 />
-                            </div>
                         </div>
-                        <div className="form-group ">
-                            <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
-                               
-                                onClick={this.handleSubmit}
-                                type="submit">Login</button>
-                        </div>
+                        <input
+							className="btn btn--form"
+							type="submit"
+							value="Log in"
+							onClick={this.handleSubmit}
+						/>
+
+						<hr className="form-break" />
+
+						<div className="heading-form">
+							<span className="heading-form--text">Don't have an account? Sign up</span>
+						</div>
                     </form>
                 </div>
             )

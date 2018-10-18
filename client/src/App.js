@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// Components
-import Signup from './components/form-sign-up/sign-up';
-import LoginForm from './components/form-login/login';
-import Navbar from './components/navigation/navigation';
+import { BrowserRouter as 
+  Router, 
+  Route, 
+  Switch 
+} from 'react-router-dom';
+import Navbar from './components/Navigation/Nav';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
 import UserSpots from './pages/UserSpots';
 import NoMatch from './pages/NoMatch';
 import RentThisSpot from "./pages/RentThisSpot";
+import {
+  CSSTransition,
+  TransitionGroup
+} from 'react-transition-group';
+import './App.css';
 
 
 class App extends Component {
@@ -63,45 +69,41 @@ class App extends Component {
         <Router>
           <div>
             <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-              <Switch>
-                {/* greet user if logged in: */}
-                {this.state.loggedIn &&
-                  <p>Join the party, {this.state.firstname}!</p> &&
-                  console.log("firstname: " + this.state.firstname)
-                }
-                {/* Routes to different components */}
-                <Route
-                  exact path="/"
-                  component={Home} 
-                />
-                <Route
-                  path="/login"
-                  render={() =>
-                    <LoginForm
-                      updateUser={this.updateUser}
-                    />}
-                />
-                <Route
-                  path="/signup"
-                  render={() =>
-                    <Signup
-                      updateUser={this.updateUser}
-                    />}
-                />
-                <Route
-                    path="/rentthisspot"
-                    component={RentThisSpot}
-                />
-                <Route
-                  path="/parking-spots"
-                  component={ParkingSpots}
-                />
-                <Route
-                  path="/posted-spots"
-                  component={UserSpots}
-                />
-                <Route component={NoMatch} />
-              </Switch>
+            <Route render={({location}) => (
+            <TransitionGroup>
+            <CSSTransition
+              key={location.key}
+              timeout={0}
+              classNames="fade"
+              >
+                <Switch location={location}>
+                  {/* greet user if logged in: */}
+                  {this.state.loggedIn &&
+                    <p>Join the party, {this.state.firstname}!</p> &&
+                    console.log("firstname: " + this.state.firstname)
+                  }
+                  {/* Routes to different components */}
+                  <Route
+                    exact path="/"
+                    component={Home} 
+                  />
+                  <Route
+                      path="/rentthisspot"
+                      component={RentThisSpot}
+                  />
+                  <Route
+                    path="/parking-spots"
+                    component={ParkingSpots}
+                  />
+                  <Route
+                    path="/posted-spots"
+                    component={UserSpots}
+                  />
+                  <Route component={NoMatch} />
+                </Switch>
+              </CSSTransition>
+              </TransitionGroup>
+            )} />
           </div>
         </Router>
       </div>
