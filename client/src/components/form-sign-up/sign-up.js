@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Redirect } from "react-router-dom"
 
 class Signup extends Component {
 	constructor() {
@@ -11,7 +12,8 @@ class Signup extends Component {
 			firstname: '',
 			lastname: '',
 			address: '',
-			phonenumber: ''
+			phonenumber: '',
+			redirectTo: null
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -59,81 +61,85 @@ class Signup extends Component {
 
 
 render() {
-	return (
-		<div className="SignupForm">
-		<a href="#section-games" className="popup__close">&times;</a>
-
-					<div className="heading-form">
-						<span className="heading-form--title">Sign up</span>
-					</div>
-					
-					<form id="signup" name="signup">
-
-						<div className="form__group">
-							<input
-								className="form__input"
-								name="email" 
-								type="email"
-								placeholder="Email address"
-								value={this.state.email}
-								onChange={this.handleChange}
-								required
-							/>
-						</div>
-
-						<div className="form__group">
-							<input
-								name="firstname"
-								className="form__input icon-form far fa-envelope"
-								type="text"
-								placeholder="First name"
-								value={this.state.firstname}
-								onChange={this.handleChange}
-								required
-							/>
-						</div>
-
-						<div className="form__group">
-							<input
-								name="lastname"
-								className="form__input"
-								type="text"
-								placeholder="Last name"
-								value={this.state.lastname}
-								onChange={this.handleChange}
-								required
-							/>
-						</div>
-
-						<div className="form__group">
-							<input
-								name="password"
-								className="form__input"
-								type="password"
-								placeholder="Password"
-								value={this.state.password}
-								onChange={this.handleChange}
-								required
-							/>
-						</div>
-
-						<input
-							className="btn btn--form"
-							type="submit"
-							value="Sign up"
-							onClick={this.handleSubmit}
-						/>
-
-						<hr className="form-break" />
+	if (this.state.redirectTo) {
+		return <Redirect to = {{ pathname: this.state.redirectTo }} />
+	} else {
+		return (
+			<div className="SignupForm">
+			<a href="#section-games" className="popup__close">&times;</a>
 
 						<div className="heading-form">
-							<span className="heading-form--text">Already have an account? Login</span>
+							<span className="heading-form--title">Sign up</span>
 						</div>
+						
+						<form id="signup" name="signup">
 
-					</form>
-				</div>
+							<div className="form__group">
+								<input
+									className="form__input"
+									name="email" 
+									type="email"
+									placeholder="Email address"
+									value={this.state.email}
+									onChange={this.handleChange}
+									required
+								/>
+							</div>
 
-	)
+							<div className="form__group">
+								<input
+									name="firstname"
+									className="form__input icon-form far fa-envelope"
+									type="text"
+									placeholder="First name"
+									value={this.state.firstname}
+									onChange={this.handleChange}
+									required
+								/>
+							</div>
+
+							<div className="form__group">
+								<input
+									name="lastname"
+									className="form__input"
+									type="text"
+									placeholder="Last name"
+									value={this.state.lastname}
+									onChange={this.handleChange}
+									required
+								/>
+							</div>
+
+							<div className="form__group">
+								<input
+									name="password"
+									className="form__input"
+									type="password"
+									placeholder="Password"
+									value={this.state.password}
+									onChange={this.handleChange}
+									required
+								/>
+							</div>
+
+							<input
+								className="btn btn--form"
+								type="submit"
+								value="Sign up"
+								onClick={this.handleSubmit}
+							/>
+
+							<hr className="form-break" />
+
+							<div className="heading-form">
+								<span className="heading-form--text">Already have an account? Login</span>
+							</div>
+
+						</form>
+					</div>
+
+		)
+	}
 }
 }
 

@@ -13,7 +13,7 @@ const ParkingSpotSchema = new Schema({
     type: String
   },
   price: {
-    type: Number
+    type: String
   },
   event: [
     {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Signup from './../form-sign-up/sign-up';
 import Modal from 'react-modal';
+import { Redirect } from "react-router-dom";
 
 
 class SignUpModal extends Component {
@@ -22,7 +23,10 @@ class SignUpModal extends Component {
     }
      
     closeModal() {
-        this.setState({modalIsOpen: false});
+        this.setState({
+            modalIsOpen: false,
+            redirectTo: "/"
+        });
     }
 
     render() {
