@@ -41,6 +41,7 @@ class PostParkingSpot extends Component {
             address: this.state.address,
             availablespots: this.state.availablespots,
             instructions: this.state.instructions,
+            price: this.state.price,
             event: this.state.game
         })
         .then(response => {

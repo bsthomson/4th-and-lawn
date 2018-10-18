@@ -21,7 +21,6 @@ class GoogleMap extends Component {
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'}
                   initialCenter = {{ lat: 38.9629 , lng: -95.2464 }} 
-  
             />
    
           <InfoWindow onClose={this.onInfoWindowClose}>

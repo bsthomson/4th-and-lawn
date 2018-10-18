@@ -43,7 +43,7 @@ class UserSpot extends Component {
                                             <div className="parking-card__picture--1">&nbsp;</div>
                                         </div>
 
-                                        <div className="parking-card__game-details">
+                                        <div className="parking-card__details">
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub">{postedspot.address}</span>
                                             </div>
@@ -62,15 +62,6 @@ class UserSpot extends Component {
                                         </div>
                                     </div>
                                 </div>
-
-                                <Link to={"/rentthisspot/" + postedspot._id}>
-                                    <input
-                                        className="btn btn--form"
-                                        type="submit"
-                                        value="Reserve"
-                                        onClick={this.handleSubmit}
-                                    />
-                                </Link>
                             </div>
                     ))}
                 </div>

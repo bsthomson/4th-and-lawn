@@ -38,7 +38,7 @@ class RentParkingSpot extends Component {
             if(response === 200) {
                 console.log("Post Sent")
                 this.setState({
-                    redirectTo: "/"
+                    redirectTo: "/posted-spots"
                 })
             }
         }).catch(error => {

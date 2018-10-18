@@ -2,7 +2,7 @@ body {
     font-family: 'Muli', sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: $color-grey-dark;
+    color: $color-black;
 }
 
 .left {
@@ -107,38 +107,13 @@ body {
     }
 }
 
-.heading-secondary {
-    font-size: 11rem;
+.renter {
+    color: $color-black !important;
     text-transform: uppercase;
-    font-weight: 700;
-    display: inline-block;
-    // background-image: linear-gradient(to right, $color-blue-light, $color-blue-dark);
-    color: white;
-    -webkit-background-clip: text;
-    transition: all .2s;
-    letter-spacing: .2rem;
-
-    &:hover {
-        // transform: skewY(2deg) skewX(15deg) scale(1.1);
-        text-shadow: .5rem 1rem 2rem rgba($color-black, .2)
-    }
-}
-
-.heading-tertiary {
-    font-size: 5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: -.2rem;
-}
-
-.parking-details {
-    color: $color-white;
-    text-transform: uppercase;
-    text-align: left;
     display: block;
     width: 100%;
 
-    &--address {
+    &--title {
         font-size: 1.25rem;
         line-height: 5rem;
         color: $color-black;
@@ -147,18 +122,59 @@ body {
         font-weight: bold;
     }
 
-    &--main {
-        color: $color-white;
-        font-size: 3rem;
-        font-weight: 700;
-        letter-spacing: -.2rem;
+    &--value-xl {
+        display: block;
+        width: 100%;
+        font-size: 8rem;
+        font-weight: 500;
+        line-height: 5rem;
+        letter-spacing: 0px;
+        color: $color-black;
+        margin: 2rem 0;
+
+        @include breakpoint(phone) {
+            letter-spacing: -.2rem;
+            font-size: 8rem;
+            line-height: 7rem;
+            text-align: center;
+        }
+    }
+}
+
+.spot-container {
+    padding: 2rem 0;
+}
+.spot {
+    color: $color-black !important;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+
+    // Parking Card
+
+    &--title {
+        font-size: 1.2rem;
+        letter-spacing: .1rem;
+        padding-left: 1rem;
+        line-height: 1.5rem;
+        text-align: center;
     }
 
-    &--sub {
-        font-size: 1.1rem;
-        letter-spacing: .3rem;
+    &--value {
+        font-size: 2rem;
+        letter-spacing: .1rem;
         padding-left: 1rem;
-        color: $color-white;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &--address {
+        font-size: 1.25rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: center;
     }
 
     &--name {

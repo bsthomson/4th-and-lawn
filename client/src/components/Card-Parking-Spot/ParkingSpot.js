@@ -5,9 +5,14 @@ import GoogleMap from "../GoogleMap/GoogleMap";
 
 class CardParkingSpot extends Component {
 
-	state = {
-        parkingspots: [],
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            parkingspots: [],
+            gameday: []
+        };
+    }
+	
 
 	componentDidMount() {
         this.loadParkingSpots();
@@ -16,7 +21,7 @@ class CardParkingSpot extends Component {
     loadParkingSpots = () => {
         API.getParkingSpots()
         .then(response => this.setState({ 
-            parkingspots: response.data
+            parkingspots: response.data,
         }))
         .catch(err => console.log(err));
     };
@@ -30,19 +35,44 @@ render() {
                             <div className="col-1-of-3" key={parkingspot._id}>
                                 <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
-
+                                        {/* <div className="parking-card__marker">
+                                            <span className="parking-card--street">{parkingspot.address}</span>
+                                        </div> */}
                                         <div className="parking-card__picture">
                                             <div className="parking-card__picture--1">&nbsp;</div>
                                         </div>
 
-                                        <div className="parking-card__game-details">
-                                            <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">{parkingspot.address}</span>
+                                        <div className="parking-card__details">
+                                            <div className="row-container">
+                                                <div className="col-1-of-1">
+                                                    <p className="spot--address">
+                                                        {parkingspot.event[0].event}
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">Available spots: {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "No available spots"}</span>                                            </div>
-                                            <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub"></span>                             
+                                            <div className="row">
+                                                <div className="col-1-of-3">
+                                                    <div className="spot-container">
+                                                        <p className="spot--title">Distance</p>
+                                                        <p className="spot--value">N/A</p>
+                                                    </div>         
+                                                </div>
+                                                <div className="col-1-of-3">
+                                                    {/* <p className="spot--address">
+                                                        {parkingspot.address}
+                                                    </p> */}
+                                                    <div className="spot-container">
+                                                        <p className="spot--title">Price</p>
+                                                        <p className="spot--value">${parkingspot.price}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-1-of-3">
+                                                    <div className="spot-container">
+                                                        <p className="spot--title">Spots</p>
+                                                        <p className="spot--value"> {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</p>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +104,6 @@ render() {
             ) : (
             <h3>No Results to Display</h3>
             )}
-            <div><GoogleMap /></div>
 		</div>
 
 	)

@@ -112,7 +112,7 @@ body {
   font-family: 'Muli', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: #777; }
+  color: #000; }
 
 .left {
   text-align: left; }
@@ -194,53 +194,67 @@ body {
     letter-spacing: 0px;
     color: #000; }
 
-.heading-secondary {
-  font-size: 11rem;
+.renter {
+  color: #000 !important;
   text-transform: uppercase;
-  font-weight: 700;
-  display: inline-block;
-  color: white;
-  -webkit-background-clip: text;
-  transition: all .2s;
-  letter-spacing: .2rem; }
-  .heading-secondary:hover {
-    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.heading-tertiary {
-  font-size: 5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: -.2rem; }
-
-.parking-details {
-  color: #fff;
-  text-transform: uppercase;
-  text-align: left;
   display: block;
   width: 100%; }
-  .parking-details--address {
+  .renter--title {
     font-size: 1.25rem;
     line-height: 5rem;
     color: #000;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: bold; }
-  .parking-details--main {
-    color: #fff;
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -.2rem; }
-  .parking-details--sub {
-    font-size: 1.1rem;
-    letter-spacing: .3rem;
+  .renter--value-xl {
+    display: block;
+    width: 100%;
+    font-size: 8rem;
+    font-weight: 500;
+    line-height: 5rem;
+    letter-spacing: 0px;
+    color: #000;
+    margin: 2rem 0; }
+    @media only screen and (max-width: 37.5em) {
+      .renter--value-xl {
+        letter-spacing: -.2rem;
+        font-size: 8rem;
+        line-height: 7rem;
+        text-align: center; } }
+
+.spot-container {
+  padding: 2rem 0; }
+
+.spot {
+  color: #000 !important;
+  text-transform: uppercase;
+  display: block;
+  width: 100%; }
+  .spot--title {
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
     padding-left: 1rem;
-    color: #fff; }
-  .parking-details--name {
+    line-height: 1.5rem;
+    text-align: center; }
+  .spot--value {
+    font-size: 2rem;
+    letter-spacing: .1rem;
+    padding-left: 1rem;
+    text-align: center;
+    font-weight: bold; }
+  .spot--address {
+    font-size: 1.25rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center; }
+  .spot--name {
     font-size: 1.1rem;
     letter-spacing: .3rem;
     padding-left: 1rem; }
     @media only screen and (max-width: 37.5em) {
-      .parking-details--name {
+      .spot--name {
         font-size: 1.8rem; } }
 
 .icon {
@@ -509,23 +523,22 @@ select {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 30rem;
-  margin-bottom: 3rem;
-  z-index: 1000; }
+  height: 40rem;
+  margin-bottom: 3rem; }
   .parking-card__side {
     font-size: 2rem;
-    height: 30rem;
+    height: 40rem;
     transition: all .8s ease;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     backface-visibility: hidden;
-    border-radius: 3px;
+    border-radius: 2rem;
     overflow: hidden;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15); }
+    box-shadow: 0 0.5rem 1rem rgba(48, 48, 48, 0.15); }
     .parking-card__side--front {
-      background-color: #202020; }
+      background-color: #fff; }
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
@@ -533,70 +546,18 @@ select {
   .parking-card__picture {
     float: left;
     width: 100%;
-    height: 200px; }
+    height: 25rem; }
     .parking-card__picture--1 {
       height: 100%;
       background-image: url(img/house.jpg);
       background-size: cover;
       background-position: center;
       background-color: #eee; }
-  .parking-card__heading {
-    font-size: 2.8rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    text-align: left;
-    color: #fff;
-    position: absolute;
-    top: 15rem;
-    left: 2rem;
-    width: 75%; }
-  .parking-card__heading-span {
-    padding: 1rem 1.5rem;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone; }
-    .parking-card__heading-span--1 {
-      background-color: #ffb900; }
-  .parking-card__game-details {
+  .parking-card__details {
     width: 100%;
     float: left;
     padding: 2rem;
     text-transform: uppercase; }
-    .parking-card__game-details--button-top {
-      height: 5rem;
-      width: 70%;
-      background-color: transparent;
-      position: absolute;
-      top: 0;
-      left: 0;
-      text-align: center;
-      color: #fff;
-      line-height: 3.5rem;
-      padding-top: 4rem; }
-    .parking-card__game-details--button-bottom {
-      height: 5rem;
-      width: 70%;
-      background-image: linear-gradient(to right, #007CC2, #55c57a);
-      position: absolute;
-      bottom: 0;
-      left: 0; }
-  .parking-card__details {
-    width: 75%;
-    padding: 2rem;
-    float: left; }
-    .parking-card__details ul {
-      list-style: none;
-      width: 80%;
-      margin: 0 auto; }
-      .parking-card__details ul li {
-        text-align: left;
-        font-size: 1.5rem;
-        font-weight: 200;
-        padding: 1rem;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: .3rem; }
-        .parking-card__details ul li:not(:last-child) {
-          border-bottom: 1px solid #eee; }
   .parking-card__cta {
     position: absolute;
     top: 50%;
@@ -604,16 +565,6 @@ select {
     transform: translate(-50%, -50%);
     width: 90%;
     text-align: center; }
-  .parking-card__price-box {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #fff; }
-  .parking-card__price-only {
-    font-size: 1.4rem;
-    text-transform: uppercase; }
-  .parking-card__price-value {
-    font-size: 6rem;
-    font-weight: 100; }
 
 .popup {
   height: 100vh;
@@ -676,7 +627,7 @@ select {
       overflow: scroll;
       height: 60rem; } }
   .row:not(:last-child) {
-    margin-bottom: 8rem; }
+    margin-bottom: 2rem; }
     @media (max-width: 56.25em) {
       .row:not(:last-child) {
         margin-bottom: 6rem; } }
@@ -711,11 +662,15 @@ select {
   .row .col-3-of-4 {
     width: calc(3 * ((100% - 3 * 2rem) / 4) + 2 * 2rem); }
 
+.row-container {
+  width: 90%;
+  margin: 0 auto; }
+
 .parking-container {
   max-width: 90%;
   margin: 0 auto; }
   .parking-container:not(:last-child) {
-    margin-bottom: 8rem; }
+    margin-bottom: 2rem; }
     @media (max-width: 56.25em) {
       .parking-container:not(:last-child) {
         margin-bottom: 6rem; } }
@@ -727,7 +682,7 @@ select {
     float: left;
     margin-right: 2.5rem; }
   .parking-container .col-1-of-1 {
-    width: calc((100% - 2 * 2rem)); }
+    width: 100%; }
   .parking-container .col-1-of-2 {
     width: calc((100% - 2rem) / 2); }
   .parking-container .col-1-of-3 {
@@ -806,14 +761,14 @@ select {
     .header__menu ul {
       list-style: none; }
 
-.header-page {
+.header-renter {
   position: relative;
   height: 50rem; }
-  .header-page__background {
+  .header-renter__background {
     height: 100%;
     background-color: #f7f7f7;
     padding: 4rem; }
-  .header-page__background-image {
+  .header-renter__background-image {
     height: 100%;
     background-image: url(img/house.jpg);
     background-size: cover;
@@ -896,5 +851,21 @@ select {
   padding-top: 5rem;
   position: relative; }
 
-.section-rent {
-  padding: 2rem 0; }
+.section-renter {
+  padding: 2rem 0;
+  position: relative; }
+
+.data-renter {
+  position: relative;
+  height: 30rem; }
+  .data-renter__background {
+    height: 100%;
+    background-color: #f7f7f7;
+    padding: 4rem;
+    width: 100%; }
+  .data-renter__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }

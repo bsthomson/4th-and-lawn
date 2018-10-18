@@ -84,7 +84,7 @@ class Navbar extends Component {
                             <Popup trigger={<span className="navigation__link">Log in</span>} modal>
                             {close => (
                               <div className="modal">
-                                <a href="#" className="popup__close" onClick={close}>
+                                <a href="#" className="popup__close" onClick={close} >
                                   &times;
                                 </a>
                                 
