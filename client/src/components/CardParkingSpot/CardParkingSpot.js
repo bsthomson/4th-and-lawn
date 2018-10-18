@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import API from "./../../utils/API";
 import { Link } from "react-router-dom";
 import GoogleMap from "../GoogleMap/GoogleMap";
+import Geocode from "react-geocode";
+
 
 class CardParkingSpot extends Component {
 
 	state = {
         parkingspots: [],
     };
+
 
 	componentDidMount() {
         this.loadParkingSpots();
@@ -65,7 +68,7 @@ render() {
             ) : (
             <h3>No Results to Display</h3>
             )}
-            <div><GoogleMap /></div>
+            <div><GoogleMap markers={[{ lat: 38.964551 , lng: -95.246552, name: "spot 1" }, { name: "spot 2", lat: 38.964551 , lng: -96.246552 }]}/></div>
 		</div>
 
 	)

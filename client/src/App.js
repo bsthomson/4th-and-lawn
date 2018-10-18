@@ -10,6 +10,8 @@ import ParkingSpots from './pages/ParkingSpots';
 import UserSpots from './pages/UserSpots';
 import NoMatch from './pages/NoMatch';
 import RentThisSpot from "./pages/RentThisSpot";
+require('dotenv').config()
+
 
 
 class App extends Component {
