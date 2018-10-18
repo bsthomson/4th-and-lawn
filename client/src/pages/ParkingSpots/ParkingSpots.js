@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import './../../App.css';
 import API from "./../../utils/API";
+import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
 import moment from "moment";
-
-import CardParkingSpot from './../../components/CardParkingSpot/CardParkingSpot'
 
 class ParkingSpots extends Component {
     state = {
@@ -29,6 +28,7 @@ class ParkingSpots extends Component {
     render() {
         return (
             <section className="section-parking">
+             {/* <div className="page-transition background-test"></div> */}
 
             <h1 className="heading-page">
                 <span className="heading-page--title">Available spots near Memorial Stadium</span>
@@ -74,6 +74,5 @@ class ParkingSpots extends Component {
         );
     }
 }
-
 
 export default ParkingSpots;

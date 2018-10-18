@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Modal from 'react-modal';
-import Signup from './../form-sign-up/sign-up';
+import Popup from 'reactjs-popup';
+import Signup from './../FormSignUp/SignUp';
+import Login  from './../FormLogin/Login';
+// import ValidateForm  from './../FormSignUp/Validate';
 
 import '../../App.css';
 import axios from 'axios'
@@ -10,21 +12,11 @@ class Navbar extends Component {
     constructor() {
         super()
         this.logout = this.logout.bind(this)
-
-        this.state = {
-            modalIsOpen: false
-          };
-       
-        this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
 
     logout(event) {
         event.preventDefault()
-        console.log('logging out')
         axios.post('/logout').then(response => {
-          console.log(response.data)
           if (response.status === 200) {
             this.props.updateUser({
               loggedIn: false,
@@ -32,29 +24,14 @@ class Navbar extends Component {
             })
           }
         }).catch(error => {
-            console.log('Logout error')
+            console.log('Logout Error')
         })
-      }
-
-
-      openModal() {
-        this.setState({modalIsOpen: true});
-      }
-     
-      afterOpenModal() {
-        // references are now sync'd and can be accessed.
-      }
-     
-      closeModal() {
-        this.setState({modalIsOpen: false});
-      }
+    }
     
 
     render() {
 
         const loggedIn = this.props.loggedIn;
-        console.log('navbar render, props: ')
-        console.log(this.props);
         
         return (
             <section className="navigation">
@@ -78,9 +55,9 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="#" className="navigation__link" onClick={this.logout}>
-                                    <span>Logout</span>
-                                </Link>
+                                <span className="navigation__link" onClick={this.logout}>
+                                    Logout
+                                </span>
                             </li>
                         </ul>
                     ) : (
@@ -97,22 +74,32 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <span className="navigation__link" onClick={this.openModal}>
-                                    Sign up
-                                </span>
+                                <Popup trigger={<span className="navigation__link">Sign up</span>}>
+                                    <div className="modal">
+                                        <Signup updateUser={this.props.updateUser}/>
+                                    </div>
+                                </Popup>
                             </li>
-                            <Modal
-                                isOpen={this.state.modalIsOpen}
-                                onAfterOpen={this.afterOpenModal}
-                                onRequestClose={this.closeModal}
-                                contentLabel="Example Modal"
-                            >
-                            <Signup updateUser={this.props.updateUser}/>
-                            </Modal>
                             <li className="navigation__item">
-                                <Link to="/login" className="navigation__link">
-                                    <span>Log in</span>
-                                </Link>
+                            <Popup trigger={<span className="navigation__link">Log in</span>} modal>
+                            {close => (
+                              <div className="modal">
+                                <a href="#" className="popup__close" onClick={close} >
+                                  &times;
+                                </a>
+                                
+                                <Login updateUser={this.props.updateUser}/>
+                                  <button
+                                    className="button"
+                                    onClick={() => {
+                                      console.log('modal closed ')
+                                      close()
+                                    }}
+                                  >
+                                  </button>
+                              </div>
+                            )}
+                          </Popup>
                             </li>
                         </ul>
                     )}
