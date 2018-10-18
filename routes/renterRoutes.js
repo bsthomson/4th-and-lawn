@@ -13,15 +13,6 @@ module.exports = function (app) {
 
     const { licenseplate, make, model, date, time } = req.body;
 
-<<<<<<< HEAD
-    Renter.create({
-      licenseplate: licenseplate,
-      make: make,
-      model: model,
-      date: date,
-      user: req.session.passport.user,
-      parkingspot: req.params.id
-=======
           Renter.create({
             licenseplate: licenseplate,
             make: make,
@@ -43,7 +34,7 @@ module.exports = function (app) {
         .catch ( err => {
           res.json(err)
         })
-    })
+    
     .get( (req, res) => {
       ParkingSpot.findOne({ _id: req.params.id})
         .populate("event")
@@ -53,7 +44,6 @@ module.exports = function (app) {
         .catch( err => {
           res.json(err)
         })
->>>>>>> c035bde95921effd8410d541eba0906f4d6734b3
     })
       .then( dbRenter => {
         console.log("User: ", dbRenter)
@@ -78,7 +68,7 @@ module.exports = function (app) {
       .catch( err => {
         res.json(err)
       })
-  })
+  
 
   // route that gets all of the users rented spots
   app.get('/api/rentedspots', (req, res) => {
