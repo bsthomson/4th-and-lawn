@@ -21,10 +21,6 @@ class ParkingSpots extends Component {
             .catch(err => console.log(err));
     };
 
-    sortDates = () => {
-        moment(this.state.parkingspots.event.date).sort((a, b) => {return a - b})
-    }
-
     render() {
         return (
             <section className="section-parking">
@@ -52,7 +48,7 @@ class ParkingSpots extends Component {
                                             name="event"
                                             placeholder="Game"
                                             value={game._id}>
-                                                {game.event[0].event} {moment(game.event[0].date).format("MM-DD")}
+                                            {moment(game.event[0].date).format("MM-DD")} {game.event[0].event}
                                         </option>
                                     ))}
                                 </select>
