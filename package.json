@@ -30,6 +30,7 @@
     "express-session": "^1.15.6",
     "google-maps-react": "^2.0.2",
     "if-env": "^1.0.4",
+    "moment": "^2.22.2",
     "mongoose": "^5.3.2",
     "morgan": "^1.9.1",
     "node-sass": "^4.9.3",
