@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 class CardParkingSpot extends Component {
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './../../App.css';
 import '../../img/parking-garage.jpg';
 import PostParkingSpot from '../../components/FormPostParking/PostParking';
+import "animate.css/animate.min.css";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 class Home extends Component {
 
@@ -35,9 +37,24 @@ class Home extends Component {
                     <PostParkingSpot />
                     </section>
                 ) : (
-                    <section className="section-home">
-                    
+                    <div>
+                    <section className="header">
+                        <div class="header__text-box">
+                            <h1 class="header-primary">
+                                <span class="header-primary--main">Game day parking made easy.</span>
+                            </h1>
+                        </div>
                     </section>
+                    {/* <section className="section-home">
+                    <ScrollAnimation animateIn="zoomIn" offset="0">
+                        <div class="header__text-box">
+                            <h1 class="heading-primary">
+                                <span class="heading-primary--main">Game day parking made easy.</span>
+                            </h1>
+                        </div>
+                    </ScrollAnimation>
+                    </section> */}
+                    </div>
                 )}
             </div>
         )

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "parking web app",
   "main": "server.js",
-  "engines" : { 
-    "node" : ">=8.12.0" 
-  }, 
+  "engines": {
+    "node": ">=8.12.0"
+  },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -24,6 +24,7 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
+    "animate.css": "^3.7.0",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
