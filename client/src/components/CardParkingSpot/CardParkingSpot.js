@@ -5,6 +5,29 @@ import GoogleMap from "../GoogleMap/GoogleMap";
 import Geocode from "react-geocode";
 
 
+    // getting longitudes and latitudes from addresses
+    // set Google Maps Geocoding API for purposes of quota management.
+    Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+
+    // Get latitudes and Longitudes from addresses
+    // Geocode.fromAddress("Lawrence, Ks").then(
+    //     response => {
+    //         const { lat, lng } = response.results[0].geometry.location;
+    //         return {lat: lat, lng:lng};
+    //     },
+    //     error => console.error
+    // );
+
+function getGeocode(address){
+    return Geocode.fromAddress(address).then(
+        response => {
+            const { lat, lng } = response.results[0].geometry.location;
+            return {lat: lat, lng:lng};
+        },
+        error => console.error
+    );
+}
+
 class CardParkingSpot extends Component {
 
 	state = {
@@ -18,9 +41,32 @@ class CardParkingSpot extends Component {
 
     loadParkingSpots = () => {
         API.getParkingSpots()
-        .then(response => this.setState({ 
-            parkingspots: response.data
-        }))
+        .then(response =>{
+            console.log(response);
+            const spots = response.data;
+            const geocodes = [];
+            spots.forEach(spot=>{
+                geocodes.push(getGeocode(spot.address));
+            })
+
+            Promise.all(geocodes)
+            .then(geoCodeResults =>{
+                console.log(geoCodeResults);
+                // TODO: set geoCode data on spot
+                geoCodeResults.forEach((res, idx)=>{
+                    const spot = spots[idx];
+                    const {lat, lng} = res;
+                    spot.lat = lat;
+                    spot.lng = lng;
+                })
+            }).then(()=>{
+                this.setState({ 
+                    parkingspots: spots
+                });
+            })
+
+            
+        })
         .catch(err => console.log(err));
     };
 
@@ -68,7 +114,7 @@ render() {
             ) : (
             <h3>No Results to Display</h3>
             )}
-            <div><GoogleMap markers={[{ lat: 38.964551 , lng: -95.246552, name: "spot 1" }, { name: "spot 2", lat: 38.964551 , lng: -96.246552 }]}/></div>
+            <div><GoogleMap markers={this.state.parkingspots}/></div>
 		</div>
 
 	)

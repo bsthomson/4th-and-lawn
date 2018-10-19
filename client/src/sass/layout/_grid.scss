@@ -70,6 +70,10 @@
     }
 }
 
+.row-container {
+    width: $grid-width;
+    margin: 0 auto;
+}
 
 .parking-container {
     max-width: $grid-width;
@@ -91,7 +95,7 @@
     }
 
     .col-1-of-1 {
-        width: calc((100% - 2 * #{$gutter-horizontal}));
+        width: 100%;
     }
 
     .col-1-of-2 {

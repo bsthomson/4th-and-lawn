@@ -7,30 +7,50 @@ const ParkingSpot = db.ParkingSpot
 module.exports = function (app) {
 
   // route for posting your rental information for renting a parking spot
-  app.post('/api/rentthisspot/:id', (req, res) => {
-    console.log(req.body)
+  app.route('/api/rentthisspot/:id')
+    .post( (req, res) => {
+      
+      ParkingSpot.findById({ _id: req.params.id })
+        .then( dbParkingSpot => {
+          return event = dbParkingSpot.event
+        })
+        .then( () => {
+          const { licenseplate, make, model } = req.body;
 
-    const { licenseplate, make, model, date, time } = req.body;
+          console.log(event)
 
-    Renter.create({
-      licenseplate: licenseplate,
-      make: make,
-      model: model,
-      date: date,
-      time: time,
-      user: req.session.passport.user,
-      parkingspot: req.params.id
+          Renter.create({
+            licenseplate: licenseplate,
+            make: make,
+            model: model,
+            user: req.session.passport.user,
+            event: event,
+            parkingspot: req.params.id,
+          })
+          .then( dbRenter => {
+            console.log("User: ", dbRenter)
+            User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec();
+            ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec();
+            res.send(dbRenter)
+          })
+          .catch( err => {
+            res.json(err)
+          })
+        })
+        .catch ( err => {
+          res.json(err)
+        })
     })
-      .then( dbRenter => {
-        console.log("User: ", dbRenter)
-        User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec();
-        ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec();
-        res.send(dbRenter)
-      })
-      .catch( err => {
-        res.json(err)
-      })
-  })
+    .get( (req, res) => {
+      ParkingSpot.findOne({ _id: req.params.id})
+        .populate("event")
+        .then( dbParkingSpot => {
+          res.json(dbParkingSpot)
+        })
+        .catch( err => {
+          res.json(err)
+        })
+    })
 
   // route that gets all of the users rented spots
   app.get('/api/rentedspots', (req, res) => {
