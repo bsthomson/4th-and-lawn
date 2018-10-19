@@ -9,7 +9,7 @@ module.exports = function (app) {
 
   const passportLocal = passport.authenticate("local");
 
-  // route to post user info after they register
+  // Route to post user info after they register
   app.post("/register", (req, res) => {
     console.log("registering")
 
@@ -48,7 +48,7 @@ module.exports = function (app) {
     })
   })
 
-  // route to post login information to see if they match with User db
+  // Route to post login information to see if they match with User db
   app.post("/login", passportLocal, (req, res) => {
     let userInfo = {
       email: req.user.email,
@@ -58,7 +58,7 @@ module.exports = function (app) {
     res.send(userInfo)
   });
 
-  // route to see if a user is logged in already
+  // Route to see if a user is logged in already
   app.get('/user', (req, res) =>{
     
     if (req.session.passport !== undefined) {
@@ -71,13 +71,12 @@ module.exports = function (app) {
     }
   })
 
-  // route to log User out
+  // Route to log out user
   app.post("/logout", (req, res) => {
-    if (req.session.passport.user) {
-      res.send({ msg: "logging out" })
-      req.logout()
-    } else {
-      res.send({ msg: "no user to log out" })
-    }
+    req.session.destroy( (err) => {
+      req.logout();
+      res.redirect('/');
+    })
   });
+
 };

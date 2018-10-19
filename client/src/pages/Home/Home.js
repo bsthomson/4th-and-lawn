@@ -1,24 +1,48 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './../../App.css';
 import '../../img/parking-garage.jpg';
 import PostParkingSpot from '../../components/FormPostParking/PostParking';
+import Signup from './../../components/FormSignUp/SignUp';
 import axios from 'axios';
 
 class Home extends Component {
 
-    loadParkingSpots = () => {
-        axios.get('')
-        .then(response => this.setState({ 
-            parkingspots: response.data,
-        }))
-        .catch(err => console.log(err));
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+          loggedIn: false,
+        };
+      }
+
+    componentDidMount() {
+        console.log("********",this.props.loggedIn);
+        if (this.props.loggedIn === false) {
+            this.setState({
+                loggedIn: false
+            })
+        } else {
+            this.setState ({
+                loggedIn: true
+            })
+        }
+    }
 
     render() {
+
         return (
-            <section className="section-home">
-                <PostParkingSpot/>
-            </section>
+            <div>
+                {this.props.loggedIn ? (
+                    <section className="section-home">
+                    <PostParkingSpot />
+                    </section>
+                ) : (
+                    <section className="section-home">
+                    
+                    </section>
+                )}
+            </div>
         )
     }
 }
