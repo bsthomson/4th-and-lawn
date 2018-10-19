@@ -1,8 +1,11 @@
 {
-  "name": "mern",
+  "name": "4th-and-lawn",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "parking web app",
   "main": "server.js",
+  "engines" : { 
+    "node" : ">=8.12.0" 
+  }, 
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -30,6 +33,7 @@
     "express-session": "^1.15.6",
     "google-maps-react": "^2.0.2",
     "if-env": "^1.0.4",
+    "moment": "^2.22.2",
     "mongoose": "^5.3.2",
     "morgan": "^1.9.1",
     "node-sass": "^4.9.3",

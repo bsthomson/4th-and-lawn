@@ -13,7 +13,6 @@ class PostParkingSpot extends Component {
             zipcode: '',
             availablespots: '',
             instructions: '',
-            price: '',
             game: '',
             events: [],
             redirectTo: null

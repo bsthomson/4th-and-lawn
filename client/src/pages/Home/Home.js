@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import './../../App.css';
 import '../../img/parking-garage.jpg';
 import PostParkingSpot from '../../components/FormPostParking/PostParking';
-import Signup from './../../components/FormSignUp/SignUp';
-import axios from 'axios';
 
 class Home extends Component {
 
