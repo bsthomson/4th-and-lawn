@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-// import GoogleMap from "../GoogleMap/GoogleMap";
+import GoogleMap from "../GoogleMap/GoogleMap";
 
 class CardParkingSpot extends Component {
 
@@ -9,10 +9,10 @@ class CardParkingSpot extends Component {
         super(props)
         this.state = {
             parkingspots: [],
-            gameday: []
+            gameday: [],
+            game: ''
         };
-    }
-	
+    }	
 
 	componentDidMount() {
         this.loadParkingSpots();
@@ -26,12 +26,34 @@ class CardParkingSpot extends Component {
         .catch(err => console.log(err));
     };
 
+    componentDidUpdate() {
+        console.log("this.props.game: " + this.props.game)
+        console.log("this.state.game: " + this.state.game)
+        if (this.props.game !== this.state.game) {
+        this.selectDates();
+        }
+    }
+
+    selectDates() {
+        let parkingSpotsArray = [];
+        this.state.parkingspots.forEach(parkingspot => {
+            console.log(this.state.parkingspots)
+            if (parkingspot.event[0]._id === this.props.game) {
+                parkingSpotsArray.push(parkingspot)
+            }
+        })
+        this.setState({
+            gameday: parkingSpotsArray,
+            game: this.props.game
+        })
+    }
+
 render() {
 	return (
 		<div>
-		    {this.state.parkingspots.length ? (
+		    {this.state.gameday.length ? (
                 <div className="parking-container">
-                    {this.state.parkingspots.map(parkingspot => (
+                    {this.state.gameday.map(parkingspot => (
                             <div className="col-1-of-3" key={parkingspot._id}>
                                 <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">

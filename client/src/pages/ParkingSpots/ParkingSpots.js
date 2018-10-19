@@ -7,10 +7,13 @@ import moment from "moment";
 class ParkingSpots extends Component {
     state = {
         parkingspots: [],
+        events: [],
+        game: ""
     };
 
     componentDidMount() {
         this.loadParkingSpots()
+        this.loadEvents()
     }
 
     loadParkingSpots = () => {
@@ -19,6 +22,20 @@ class ParkingSpots extends Component {
                 parkingspots: response.data
             }))
             .catch(err => console.log(err));
+    };
+
+    loadEvents = () => {
+        API.getJayhawkEvents()
+            .then(response => this.setState({
+                events: response.data
+            }))
+            .catch(err => console.log(err))
+    }
+
+    handleChange = event => {
+        this.setState({
+            game: event.target.value
+        });
     };
 
     render() {
@@ -34,21 +51,21 @@ class ParkingSpots extends Component {
 
                     <h1 className="heading-primary">
                         <span className="heading-primary--form left">Which game do you need parking for?</span>
-                    </h1>
-                        {this.state.parkingspots.length ? (
+                    </h1>                        
+                        {this.state.events.length ? (                    
                             <div className="form__group">
-                                <select name="game" className="form__input" value={this.state.game} onChange={this.handleChange}>
+                                <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
                                     <option>
                                         Pick a game to park at!
                                     </option>
-                                    {this.state.parkingspots.map(game => (
+                                    {this.state.events.map(game => (
                                         <option
                                             key={game._id}
                                             id="game"
                                             name="event"
                                             placeholder="Game"
                                             value={game._id}>
-                                            {moment(game.event[0].date).format("MM-DD")} {game.event[0].event}
+                                            {moment(game.date).format("MM-DD")} {game.event}
                                         </option>
                                     ))}
                                 </select>
@@ -60,12 +77,11 @@ class ParkingSpots extends Component {
                                     No Games Available
                                 </option>                            
                             </select>
-                        </div>
+                            </div>
                         )}
                     </div>   
                 </form>
-
-              <CardParkingSpot />
+              <CardParkingSpot game={this.state.game}/>
             </section>
         );
     }
