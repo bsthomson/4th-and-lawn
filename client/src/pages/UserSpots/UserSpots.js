@@ -29,7 +29,7 @@ class UserSpot extends Component {
 
     render() {
         return (
-            <div>
+            <div className="section-parking">
 		    {this.state.postedspots.length ? (
                 <div className="parking-container">
                     {this.state.postedspots.map(postedspot => (
@@ -43,7 +43,7 @@ class UserSpot extends Component {
 
                                         <div className="parking-card__details">
                                             <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">{postedspot.address}</span>
+                                                <span className="parking-details parking-details--sub">{postedspot.streetaddress}</span>
                                             </div>
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>

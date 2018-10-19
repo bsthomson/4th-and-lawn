@@ -23,7 +23,8 @@ class RentParkingSpot extends Component {
     // confirm with jolie
     handleSubmit(event) {
         event.preventDefault();
-        console.log("handleSubmit");
+
+        console.log(this.state);
 
         axios.post("/api" + window.location.pathname, {
             licensePlate: this.state.licensePlate,
@@ -32,7 +33,7 @@ class RentParkingSpot extends Component {
         })
         .then(response => {
             console.log('Renters info: ');
-            console.log(response);
+            console.log(response.data);
             if(response === 200) {
                 console.log("Post Sent")
                 this.setState({

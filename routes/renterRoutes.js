@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const User = db.User;
 const Renter = db.Renter;
 const ParkingSpot = db.ParkingSpot
+const moment = require("moment");
 
 module.exports = function (app) {
 
@@ -17,7 +18,7 @@ module.exports = function (app) {
         .then( () => {
           const { licenseplate, make, model } = req.body;
 
-          console.log(event)
+          // console.log(event.date)
 
           Renter.create({
             licenseplate: licenseplate,
@@ -28,17 +29,17 @@ module.exports = function (app) {
             parkingspot: req.params.id,
           })
           .then( dbRenter => {
-            console.log("User: ", dbRenter)
+            // console.log("User: ", dbRenter)
             User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec().then((user) => {
               User.findOne({ _id: req.session.passport.user }).then(name =>{
                 ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec().then((ruse) => {
-                  ParkingSpot.findOne({_id: req.params.id}).then((spot) => {
-                    var address = spot.address;
+                  ParkingSpot.findOne({_id: req.params.id}).populate('event').then((spot) => {
+                    var streetaddress = spot.streetaddress;
                     var instructions = spot.instructions;
-                    var event = dbRenter.event;
+                    var event = moment(spot.event[0].date).format("dddd, MMMM Do YYYY");
                     var firstname = name.firstname;
                     var email = name.email;
-                    sendEmail(firstname, email, address, event, instructions);
+                    sendEmail(firstname, email, streetaddress, event, instructions);
                   });
                 });
               });
@@ -99,7 +100,7 @@ module.exports = function (app) {
       })
     })
 
-    var sendEmail = function(firstname, email, address, event, instructions) {
+    var sendEmail = function(firstname, email, streetaddress, event, instructions) {
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -109,9 +110,7 @@ module.exports = function (app) {
       });
 
       var subject = "4th and Lawn Reservation Confirmation";
-      var content ="<h1>Congrats " + firstname + " Your Reservation Was Succesful</h1><br>" + 
-      "<h3>You reserved a spot at " + address + " on " + event + "</h3><br>" + 
-      "<h3>Parking Instructions: " + instructions + "</h3>";
+      var content =`<h1>Congrats ${firstname} Your Reservation Was Succesful</h1><br> <h3>You reserved a spot at ${streetaddress} on ${event}</h3><br> <h3>Parking Instructions: ${instructions}</h3>`;
 
       var mailOptions = {
         from: '4thandLawnParking@gmail.com',
