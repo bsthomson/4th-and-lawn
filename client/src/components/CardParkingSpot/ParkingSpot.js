@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 class CardParkingSpot extends Component {
 
@@ -80,7 +79,7 @@ render() {
                                                     <div className="spot-container">
                                                         <p className="spot--title">Price</p>
                                                         <div className="parking-card__button">
-                                                            <span className="spot--test">$20</span>
+                                                            <span className="spot--test">${parkingspot.price}</span>
                                                         </div>
                                                     </div>         
                                                 </div>

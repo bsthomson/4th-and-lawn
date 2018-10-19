@@ -1,51 +1,21 @@
 .header {
-    height: 95vh;
-    background-color: black;
-    // background-image: linear-gradient(to bottom, $color-blue-light, $color-primary);
-    background-size: cover;
+    height: 85vh;
+    min-height: 60rem;
+    background-image: url(img/background.jpg);
     background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
     position: relative;
     // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    @include breakpoint(phone) {
-        height: 100vh;
-    }
 
-    &__background-layer-01 {
-        // background-image: url(../../img/king.png);
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        background-position: bottom;
-        position: absolute;
-        display: inline-block;
-        @include breakpoint (phone) {
-            height: 65%;
-            bottom: 0;
-        }
-    }
-
-    &__background-layer-02 {
-        background-image: linear-gradient(
-            120deg,
-            transparent 0%,
-            transparent 49%,
-            $color-blue 49%,
-            $color-primary 90%);
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        background-position: bottom;
-        animation: fadeIn 3s ease .75s;
-        animation-fill-mode: backwards;
-        position: absolute;
-    }
 
     &__logo-box {
         position: absolute;
         top: 4rem;
         left: 4rem;
+        height: 10rem;
     }
 
     &__logo {
@@ -53,28 +23,9 @@
     }
 
     &__text-box {
-
-        &--left {
-            position: absolute;
-            top: 50%;
-            left: 30%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 0;
-
-            @include breakpoint(phone) {
-                left: 50%;
-                top: 28%;
-            }
-        }
-
-        &--right {
-            position: absolute;
-            top: 50%;
-            right: 0%;
-            transform: translate(-50%, -50%);
-            text-align: right;
-        }
+        position: relative;
+        width: 60%;
+        z-index: 1000;
   
     }
 

@@ -2,13 +2,15 @@
 .form {
 
     &__container {
-        width: 400px;
+        width: 40rem;
         background-color: $color-white;
         position: relative;
         left: 10%;
-        top: 90px;
+        top: 4rem;
         padding: 3rem;
         border-radius: 6px;
+        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
+
     }
     
     &__group:not(:last-child) {

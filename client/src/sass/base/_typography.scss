@@ -13,27 +13,28 @@ body {
     text-align: center;
 }
 
-
-
-.heading-primary {
+.header-primary {
     
-    color: $color-white;
-    // text-transform: uppercase;
+    color: $color-black;
     /* Shaking animation bug fix */
     backface-visibility: hidden;
+    position: absolute;
+    width: 70%;
+    left: 11rem;
+    top: 7rem;
     margin-bottom: 3rem;
     
 
     &--main {
         display: block;
         width: 100%;
-        font-size: 5rem;
-        font-weight: 800;
-        letter-spacing: -.4rem;
+        font-size: 6.5rem;
+        font-weight: 900;
+        text-align: left;
+        // letter-spacing: -.4rem;
         animation: moveInTop 1.5s ease-out .75s;
         animation-fill-mode: backwards;
-        line-height: 6rem;
-        text-shadow: 0  1rem 2rem rgba($color-black, .8);
+        line-height: 6.5rem;
         letter-spacing: .2px;
 
         @include breakpoint(phone) {
@@ -43,6 +44,16 @@ body {
             text-align: center;
         }
     }
+}
+
+
+.heading-primary {
+    
+    color: $color-white;
+    // text-transform: uppercase;
+    /* Shaking animation bug fix */
+    backface-visibility: hidden;
+    margin-bottom: 3rem;
     
     &--sub {
         display: block;

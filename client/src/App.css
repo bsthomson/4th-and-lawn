@@ -120,28 +120,37 @@ body {
 .center {
   text-align: center; }
 
+.header-primary {
+  color: #000;
+  /* Shaking animation bug fix */
+  backface-visibility: hidden;
+  position: absolute;
+  width: 70%;
+  left: 11rem;
+  top: 7rem;
+  margin-bottom: 3rem; }
+  .header-primary--main {
+    display: block;
+    width: 100%;
+    font-size: 6.5rem;
+    font-weight: 900;
+    text-align: left;
+    animation: moveInTop 1.5s ease-out .75s;
+    animation-fill-mode: backwards;
+    line-height: 6.5rem;
+    letter-spacing: .2px; }
+    @media only screen and (max-width: 37.5em) {
+      .header-primary--main {
+        letter-spacing: -.2rem;
+        font-size: 8rem;
+        line-height: 7rem;
+        text-align: center; } }
+
 .heading-primary {
   color: #fff;
   /* Shaking animation bug fix */
   backface-visibility: hidden;
   margin-bottom: 3rem; }
-  .heading-primary--main {
-    display: block;
-    width: 100%;
-    font-size: 5rem;
-    font-weight: 800;
-    letter-spacing: -.4rem;
-    animation: moveInTop 1.5s ease-out .75s;
-    animation-fill-mode: backwards;
-    line-height: 6rem;
-    text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
-    letter-spacing: .2px; }
-    @media only screen and (max-width: 37.5em) {
-      .heading-primary--main {
-        letter-spacing: -.2rem;
-        font-size: 8rem;
-        line-height: 7rem;
-        text-align: center; } }
   .heading-primary--sub {
     display: block;
     font-size: 1.5rem;
@@ -450,13 +459,14 @@ body {
     transform: translateY(-1.5rem) scale(1.03); }
 
 .form__container {
-  width: 400px;
+  width: 40rem;
   background-color: #fff;
   position: relative;
   left: 10%;
-  top: 90px;
+  top: 4rem;
   padding: 3rem;
-  border-radius: 6px; }
+  border-radius: 6px;
+  box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -762,58 +772,25 @@ select {
         margin: 0 auto !important; } }
 
 .header {
-  height: 95vh;
-  background-color: black;
-  background-size: cover;
+  height: 85vh;
+  min-height: 60rem;
+  background-image: url(img/background.jpg);
   background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
   position: relative; }
-  @media only screen and (max-width: 37.5em) {
-    .header {
-      height: 100vh; } }
-  .header__background-layer-01 {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: bottom;
-    position: absolute;
-    display: inline-block; }
-    @media only screen and (max-width: 37.5em) {
-      .header__background-layer-01 {
-        height: 65%;
-        bottom: 0; } }
-  .header__background-layer-02 {
-    background-image: linear-gradient(120deg, transparent 0%, transparent 49%, #007CC2 49%, #55c57a 90%);
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: bottom;
-    animation: fadeIn 3s ease .75s;
-    animation-fill-mode: backwards;
-    position: absolute; }
   .header__logo-box {
     position: absolute;
     top: 4rem;
-    left: 4rem; }
+    left: 4rem;
+    height: 10rem; }
   .header__logo {
     height: 3.5rem; }
-  .header__text-box--left {
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 0; }
-    @media only screen and (max-width: 37.5em) {
-      .header__text-box--left {
-        left: 50%;
-        top: 28%; } }
-  .header__text-box--right {
-    position: absolute;
-    top: 50%;
-    right: 0%;
-    transform: translate(-50%, -50%);
-    text-align: right; }
+  .header__text-box {
+    position: relative;
+    width: 60%;
+    z-index: 1000; }
   .header__menu {
     padding: 3rem;
     margin: 0 auto;
@@ -867,8 +844,7 @@ select {
   display: fixed;
   width: 100%;
   height: 80px;
-  background-color: #fff;
-  border-bottom: 1px solid #202020; }
+  background-color: #fff; }
   .navigation__nav {
     position: absolute;
     padding: 2rem 2rem;
@@ -909,7 +885,8 @@ select {
   background-image: url(img/background.jpg);
   background-position: bottom;
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  z-index: 0; }
 
 .section-parking {
   padding-top: 5rem;
