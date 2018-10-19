@@ -79,7 +79,7 @@ render() {
                                                     <div className="spot-container">
                                                         <p className="spot--title">Price</p>
                                                         <div className="parking-card__button">
-                                                            <span className="spot--test">$20</span>
+                                                            <span className="spot--test">${parkingspot.price}</span>
                                                         </div>
                                                     </div>         
                                                 </div>

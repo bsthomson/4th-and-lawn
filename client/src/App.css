@@ -135,6 +135,8 @@ body {
     font-size: 6.5rem;
     font-weight: 900;
     text-align: left;
+    animation: moveInTop 1.5s ease-out .75s;
+    animation-fill-mode: backwards;
     line-height: 6.5rem;
     letter-spacing: .2px; }
     @media only screen and (max-width: 37.5em) {
