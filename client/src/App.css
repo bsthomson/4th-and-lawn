@@ -226,22 +226,37 @@ body {
   padding: 2rem 0; }
 
 .spot {
-  color: #000 !important;
+  color: #000;
   text-transform: uppercase;
   display: block;
   width: 100%; }
   .spot--title {
     font-size: 1.2rem;
     letter-spacing: .1rem;
-    padding-left: 1rem;
     line-height: 1.5rem;
-    text-align: center; }
-  .spot--value {
-    font-size: 2rem;
-    letter-spacing: .1rem;
-    padding-left: 1rem;
     text-align: center;
-    font-weight: bold; }
+    margin-bottom: 1rem; }
+  .spot--value {
+    font-size: 2.25rem;
+    letter-spacing: .1rem;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    z-index: 9999; }
+  .spot--test {
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; }
   .spot--address {
     font-size: 1.25rem;
     color: #000;
@@ -249,6 +264,14 @@ body {
     letter-spacing: 1px;
     font-weight: bold;
     text-align: center; }
+  .spot--banner {
+    font-size: 1.25rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 4rem; }
   .spot--name {
     font-size: 1.1rem;
     letter-spacing: .3rem;
@@ -486,6 +509,31 @@ body {
   .form__input-sm::-webkit-input-placeholder {
     color: #999; }
 
+.form__input-xs {
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 1rem 1rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #eee;
+  width: 29%;
+  display: inline-block;
+  transition: all .3s;
+  text-align: left;
+  color: #000;
+  margin-right: 2rem; }
+  .form__input-xs:nth-child(3n) {
+    margin-right: 0; }
+  .form__input-xs:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #55c57a; }
+  .form__input-xs:focus:invalid {
+    border-bottom: 1px solid #ff7730; }
+  .form__input-xs::-webkit-input-placeholder {
+    color: #999; }
+
 .form__label {
   font-size: 1rem;
   font-weight: 300;
@@ -523,11 +571,11 @@ select {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 40rem;
+  height: 43rem;
   margin-bottom: 3rem; }
   .parking-card__side {
     font-size: 2rem;
-    height: 40rem;
+    height: 43rem;
     transition: all .8s ease;
     position: absolute;
     top: 0;
@@ -543,15 +591,31 @@ select {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
         background-image: linear-gradient(to right bottom, #25abf8, #55c57a); }
+  .parking-card__button {
+    height: 7rem;
+    width: 7rem;
+    background-color: #000;
+    border-radius: 4rem;
+    margin: 0 auto;
+    position: relative; }
+  .parking-card__link {
+    position: relative;
+    margin: 0 auto;
+    text-align: center; }
+  .parking-card__banner {
+    float: left;
+    width: 100%;
+    height: 4rem;
+    background-color: #000; }
   .parking-card__picture {
     float: left;
     width: 100%;
-    height: 25rem; }
+    height: 20rem; }
     .parking-card__picture--1 {
       height: 100%;
       background-image: url(img/house.jpg);
       background-size: cover;
-      background-position: center;
+      background-position: bottom;
       background-color: #eee; }
   .parking-card__details {
     width: 100%;
