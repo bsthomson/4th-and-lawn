@@ -42,7 +42,6 @@ class ParkingSpots extends Component {
         return (
             <section className="section-parking">
              {/* <div className="page-transition background-test"></div> */}
-<<<<<<< HEAD
 
             <h1 className="heading-page">
                 <span className="heading-page--title">Available spots near Memorial Stadium</span>
@@ -83,9 +82,6 @@ class ParkingSpots extends Component {
                     </div>   
                 </form>
               <CardParkingSpot game={this.state.game}/>
-=======
-              <CardParkingSpot />
->>>>>>> master
             </section>
         );
     }

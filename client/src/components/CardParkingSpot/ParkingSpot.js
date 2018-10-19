@@ -12,11 +12,7 @@ class CardParkingSpot extends Component {
             gameday: [],
             game: ''
         };
-<<<<<<< HEAD
-    }	
-=======
     }
->>>>>>> master
 
 	componentDidMount() {
         this.loadParkingSpots();
