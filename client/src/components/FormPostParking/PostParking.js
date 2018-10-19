@@ -7,9 +7,11 @@ class PostParkingSpot extends Component {
     constructor() {
         super()
         this.state = {
-            address: '',
+            streetaddress: '',
+            city: '',
+            state: '',
+            zipcode: '',
             availablespots: '',
-            price: '',
             instructions: '',
             game: '',
             events: [],
@@ -40,7 +42,10 @@ class PostParkingSpot extends Component {
         console.log(this.state)
 
         axios.post('/api/parkingspots', {
-            address: this.state.address,
+            streetaddress: this.state.streetaddress,
+            city: this.state.city,
+            state: this.state.state,
+            zipcode: this.state.zipcode,
             availablespots: this.state.availablespots,
             price: this.state.price,
             instructions: this.state.instructions,
@@ -78,10 +83,36 @@ class PostParkingSpot extends Component {
                     <div className="form__group">
                         <input className="form__input"
                             type="text"
-                            id="address"
-                            name="address"
+                            id="streetaddress"
+                            name="streetaddress"
                             placeholder="Address"
-                            value={this.state.address}
+                            value={this.state.streetaddress}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form__group">
+                        <input className="form__input-xs"
+                            type="city"
+                            id="city"
+                            name="city"
+                            placeholder="City"
+                            value={this.state.city}
+                            onChange={this.handleChange}
+                        />
+                        <input className="form__input-xs"
+                            type="text"
+                            id="state"
+                            name="state"
+                            placeholder="State"
+                            value={this.state.state}
+                            onChange={this.handleChange}
+                        />
+                        <input className="form__input-xs"
+                            type="text"
+                            id="zipcode"
+                            name="zipcode"
+                            placeholder="Zip code"
+                            value={this.state.zipcode}
                             onChange={this.handleChange}
                         />
                     </div>

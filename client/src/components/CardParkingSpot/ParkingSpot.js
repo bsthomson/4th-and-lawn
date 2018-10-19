@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import GoogleMap from "../GoogleMap/GoogleMap";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 class CardParkingSpot extends Component {
 
@@ -12,7 +12,11 @@ class CardParkingSpot extends Component {
             gameday: [],
             game: ''
         };
+<<<<<<< HEAD
     }	
+=======
+    }
+>>>>>>> master
 
 	componentDidMount() {
         this.loadParkingSpots();
@@ -50,6 +54,7 @@ class CardParkingSpot extends Component {
 
 render() {
 	return (
+        
 		<div>
 		    {this.state.gameday.length ? (
                 <div className="parking-container">
@@ -57,9 +62,11 @@ render() {
                             <div className="col-1-of-3" key={parkingspot._id}>
                                 <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
-                                        {/* <div className="parking-card__marker">
-                                            <span className="parking-card--street">{parkingspot.address}</span>
-                                        </div> */}
+
+                                        <div className="parking-card__banner">
+                                            <p className="spot--banner">{parkingspot.event[0].event}</p>
+                                        </div>
+
                                         <div className="parking-card__picture">
                                             <div className="parking-card__picture--1">&nbsp;</div>
                                         </div>
@@ -68,15 +75,17 @@ render() {
                                             <div className="row-container">
                                                 <div className="col-1-of-1">
                                                     <p className="spot--address">
-                                                        {parkingspot.event[0].event}
+                                                        {parkingspot.streetaddress}
                                                     </p>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-1-of-3">
                                                     <div className="spot-container">
-                                                        <p className="spot--title">Distance</p>
-                                                        <p className="spot--value">N/A</p>
+                                                        <p className="spot--title">Price</p>
+                                                        <div className="parking-card__button">
+                                                            <span className="spot--test">$20</span>
+                                                        </div>
                                                     </div>         
                                                 </div>
                                                 <div className="col-1-of-3">
@@ -84,14 +93,38 @@ render() {
                                                         {parkingspot.address}
                                                     </p> */}
                                                     <div className="spot-container">
-                                                        <p className="spot--title">Price</p>
-                                                        <p className="spot--value">${parkingspot.price}</p>
+                                                        <p className="spot--title">Spots</p>
+                                                        <div className="parking-card__button">
+                                                            <span className="spot--test">{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "FULL"}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-1-of-3">
                                                     <div className="spot-container">
-                                                        <p className="spot--title">Spots</p>
-                                                        <p className="spot--value"> {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</p>
+                                                    <p className="spot--title">Details</p>
+                                                        <div className="parking-card__link">
+                                                            <Link to={"/rentthisspot/" + parkingspot._id}>
+                                                                <i class="fas fa-home spot--value"></i>
+                                                                {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
+                                                                    <input
+                                                                        className="parking-card__button"
+                                                                        type="submit"
+                                                                        value=""
+                                                                        onClick={this.handleSubmit}
+                                                                    />
+                                                                ) : (
+                                                                    <input
+                                                                        className="btn btn--form"
+                                                                        type="submit"
+                                                                        value=""
+                                                                        onClick={this.handleSubmit}
+                                                                        disabled
+                                                                    />
+                                                                )
+                                                                }
+                                                            </Link>
+                                                        </div>
+                                                            
                                                     </div>
                                                 </div>
                                                 
@@ -99,37 +132,18 @@ render() {
                                         </div>
                                     </div>
                                 </div>
-
-                                <Link to={"/rentthisspot/" + parkingspot._id}>
-                                    {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
-                                        <input
-                                            className="btn btn--form"
-                                            type="submit"
-                                            value="Reserve"
-                                            onClick={this.handleSubmit}
-                                        />
-                                    ) : (
-                                        <input
-                                            className="btn btn--form"
-                                            type="submit"
-                                            value="No Vacancy"
-                                            onClick={this.handleSubmit}
-                                            disabled
-                                        />
-                                    )
-                                    }
-                                </Link>
+                                
                             </div>
-                       
                     ))}
                 </div>
             ) : (
             <h3>No Results to Display</h3>
             )}
+         
 		</div>
-
+        
 	)
-}
+    }
 }
 
 export default CardParkingSpot;
