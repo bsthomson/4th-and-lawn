@@ -127,24 +127,65 @@ body {
   position: absolute;
   width: 70%;
   left: 11rem;
-  top: 7rem;
+  top: 15rem;
   margin-bottom: 3rem; }
+  @media only screen and (max-width: 37.5em) {
+    .header-primary {
+      width: 100%;
+      top: 2rem;
+      left: 6rem; } }
   .header-primary--main {
     display: block;
     width: 100%;
-    font-size: 6.5rem;
+    font-size: 6.25rem;
     font-weight: 900;
     text-align: left;
     animation: moveInTop 1.5s ease-out .75s;
     animation-fill-mode: backwards;
-    line-height: 6.5rem;
+    line-height: 6.75rem;
     letter-spacing: .2px; }
     @media only screen and (max-width: 37.5em) {
       .header-primary--main {
         letter-spacing: -.2rem;
-        font-size: 8rem;
-        line-height: 7rem;
-        text-align: center; } }
+        font-size: 7rem;
+        line-height: 6.5rem;
+        margin-top: 7rem; } }
+
+.section-primary {
+  color: #fff;
+  /* Shaking animation bug fix */
+  backface-visibility: hidden;
+  width: 100%;
+  margin-bottom: 2.25rem; }
+  @media only screen and (max-width: 37.5em) {
+    .section-primary {
+      width: 100%;
+      top: 2rem;
+      left: 6rem; } }
+  .section-primary--main {
+    display: block;
+    width: 100%;
+    font-size: 5.25rem;
+    font-weight: 900;
+    text-align: left;
+    line-height: 6.75rem;
+    letter-spacing: .2px;
+    margin-bottom: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .section-primary--main {
+        letter-spacing: -.2rem;
+        font-size: 7rem;
+        line-height: 6.5rem;
+        margin-top: 7rem; } }
+  .section-primary--body {
+    display: block;
+    width: 100%;
+    font-size: 2.25rem;
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: .5px;
+    line-height: 4rem;
+    letter-spacing: .2px; }
 
 .heading-primary {
   color: #fff;
@@ -382,6 +423,17 @@ body {
   .btn--header::after {
     background-color: #007CC2; }
 
+.btn--main {
+  display: block !important;
+  width: 20rem;
+  background-color: #cf1f1f;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 5rem;
+  letter-spacing: .5px; }
+  .btn--main::after {
+    background-color: #cf1f1f; }
+
 .btn--form {
   display: block !important;
   width: 100%;
@@ -452,7 +504,7 @@ body {
     font-size: 6rem;
     margin-bottom: .5rem;
     display: inline-block;
-    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    background-image: linear-gradient(to right, #7ed56f, #20b573);
     -webkit-background-clip: text;
     color: transparent; }
   .feature-box:hover {
@@ -772,14 +824,19 @@ select {
         margin: 0 auto !important; } }
 
 .header {
-  height: 85vh;
-  min-height: 60rem;
+  height: 90vh;
+  min-height: 70rem;
   background-image: url(img/background.jpg);
-  background-position: bottom;
+  background-position: left;
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 0;
   position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      background-position: right;
+      background-size: cover;
+      background-position: bottom; } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -791,6 +848,16 @@ select {
     position: relative;
     width: 60%;
     z-index: 1000; }
+    @media only screen and (max-width: 37.5em) {
+      .header__text-box {
+        width: 80%; } }
+  .header__section-box {
+    position: relative;
+    width: 60%;
+    z-index: 1000; }
+    @media only screen and (max-width: 37.5em) {
+      .header__section-box {
+        width: 80%; } }
   .header__menu {
     padding: 3rem;
     margin: 0 auto;
@@ -801,6 +868,19 @@ select {
     border-bottom: 1px solid white; }
     .header__menu ul {
       list-style: none; }
+
+.section__text-box {
+  padding: 22rem 5rem;
+  text-align: left; }
+  @media only screen and (max-width: 37.5em) {
+    .section__text-box {
+      width: 80%; } }
+
+.section__container {
+  padding-top: 10rem;
+  height: 100%;
+  width: 40rem;
+  margin: 0 auto; }
 
 .header-renter {
   position: relative;
@@ -887,6 +967,11 @@ select {
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 0; }
+
+.section-about {
+  height: 70rem;
+  background-color: #20b573;
+  position: relative; }
 
 .section-parking {
   padding-top: 5rem;

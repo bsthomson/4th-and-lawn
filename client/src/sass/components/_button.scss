@@ -53,6 +53,21 @@
         }
     }
 
+    &--main {
+        display: block !important;
+        width: 20rem;
+        background-color: $color-red;
+        color: $color-white;
+        font-weight: 500;
+        border-radius: 5rem;
+        letter-spacing: .5px;
+
+    
+        &::after {
+            background-color: $color-red;
+        }
+    }
+
     &--form {
         display: block !important;
         width: 100%;

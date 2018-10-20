@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import Signup from './../FormSignUp/SignUp';
 import Login  from './../FormLogin/Login';

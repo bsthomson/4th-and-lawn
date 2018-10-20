@@ -1,14 +1,21 @@
 .header {
-    height: 85vh;
-    min-height: 60rem;
+    height: 90vh;
+    min-height: 70rem;
     background-image: url(img/background.jpg);
-    background-position: bottom;
+    background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
     position: relative;
     // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    @include breakpoint(phone) {
+        background-position: right;
+        background-size: cover;
+        background-position: bottom;
+
+    }
 
 
     &__logo-box {
@@ -26,7 +33,20 @@
         position: relative;
         width: 60%;
         z-index: 1000;
-  
+
+        @include breakpoint(phone) {
+            width: 80%;
+        }
+    }
+
+    &__section-box {
+        position: relative;
+        width: 60%;
+        z-index: 1000;
+
+        @include breakpoint(phone) {
+            width: 80%;
+        }
     }
 
     &__menu {
@@ -41,5 +61,25 @@
         ul {
             list-style: none;
         }
+    }
+}
+
+
+.section {
+
+    &__text-box {
+        padding: 22rem 5rem;
+        text-align: left;
+
+        @include breakpoint(phone) {
+            width: 80%;
+        }
+    }
+
+    &__container {
+        padding-top: 10rem;
+        height: 100%;
+        width: 40rem;
+        margin: 0 auto;
     }
 }
