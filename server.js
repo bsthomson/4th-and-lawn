@@ -109,42 +109,6 @@ app.get("*", function(req, res) {
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
   .then(() => console.log("Mongodb connection successful"))
-  .then( () => {
-    if (MONGODB_URI === "mongodb://localhost/4th-and-lawn")
-      mongoose.connection.db.dropDatabase();
-      Jayhawk.insertMany([
-        {
-          address: "1101 Mississippi St, Lawrence, KS 66044",
-          event: "KU Hosting Nicholls 6 P.M. Kickoff",
-          date: "09/01/2018"
-        },
-        {
-          address: "1101 Mississippi St, Lawrence, KS 66044",
-          event: "KU Hosting Rutgers 11 A.M. Kickoff",
-          date: "09/15/2018"
-        },
-        {
-          address: "1101 Mississippi St, Lawrence, KS 66044",
-          event: "KU Hosting OSU 11 A.M. Kickoff",
-          date: "09/29/2018"
-        },
-        {
-          address: "1101 Mississippi St, Lawrence, KS 66044",
-          event: "KU Hosting TCU TBA Kickoff",
-          date: "10/27/2018"
-        },
-        {
-          address: "1101 Mississippi St, Lawrence, KS 66044",
-          event: "KU Hosting ISU TBA Kickoff",
-          date: "11/03/2018"
-        },
-        {
-          address: "1101 Mississippi St, Lawrence, KS 66044",
-          event: "KU Hosting TU 11 A.M. Kickoff",
-          date: "11/23/2018"
-        }
-      ])
-    })
   .catch((err) => console.error(err));
 
 // Tells express to listen to port 3001
