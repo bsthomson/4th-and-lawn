@@ -90,7 +90,7 @@ class RentThisSpot extends Component {
                         <h3 className="heading-primary">
                             <span className="heading-primary--page">Location</span>
                         </h3>
-                        <GoogleMap />
+                        <GoogleMap markers={[this.state.parkingspots]} />
                     </div>
                 </div>
 

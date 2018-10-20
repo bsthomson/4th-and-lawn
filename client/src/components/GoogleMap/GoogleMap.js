@@ -10,18 +10,30 @@ class GoogleMap extends Component {
     
 
     render() {
+      // console.log('GooleMap props',   this.props.markers)
+      // const initial = this.props.markers[0];
+      const initial = { lat: 38.9629, lng: -95.2464 }
+      let markers = this.props.markers
       return (
         
         <Map 
           style = {style}
-          initialCenter = {{ lat: 38.9629 , lng: -95.2464 }}
+          initialCenter = {initial}
           google={this.props.google} 
-          zoom={17}>
+          zoom={16}>
    
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'}
-                  initialCenter = {{ lat: 38.9629 , lng: -95.2464 }} 
-            />
+          {markers.map((m, i) => {
+            console.log(m, i);
+            return (
+
+              <Marker key={`marker-${i}`} onClick={this.onMarkerClick}
+                title={m.address}
+                position={m}
+
+              />
+            )
+          })
+          }
    
           <InfoWindow onClose={this.onInfoWindowClose}>
           </InfoWindow>
@@ -31,6 +43,6 @@ class GoogleMap extends Component {
   }
   
   export default GoogleApiWrapper({
-    apiKey: ('AIzaSyD657yqfrr4YzIO0dmHh__RQ_jvN3yqWMc')
+    apiKey: (process.env.REACT_APP_GOOGLE_API_KEY)
   })(GoogleMap)
   
