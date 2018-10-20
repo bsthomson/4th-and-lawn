@@ -232,6 +232,20 @@ body {
         font-size: 8rem;
         line-height: 7rem;
         text-align: center; } }
+  .heading-primary--form-white {
+    display: block;
+    width: 100%;
+    font-size: 2.7rem;
+    font-weight: 900;
+    line-height: 3.5rem;
+    letter-spacing: 0px;
+    color: #fff; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--form-white {
+        letter-spacing: -.2rem;
+        font-size: 8rem;
+        line-height: 7rem;
+        text-align: center; } }
   .heading-primary--page {
     display: block;
     width: 100%;
@@ -314,6 +328,17 @@ body {
     transform: translate(-50%, -50%);
     color: #fff;
     z-index: 9999; }
+  .spot--icon {
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    z-index: 9999; }
   .spot--test {
     font-size: 1.5rem;
     letter-spacing: .1rem;
@@ -346,13 +371,6 @@ body {
     @media only screen and (max-width: 37.5em) {
       .spot--name {
         font-size: 1.8rem; } }
-
-.icon {
-  color: #fff; }
-
-.icon-back {
-  color: #fff;
-  padding-top: 1.5rem; }
 
 .paragraph {
   font-size: 1.6rem; }
@@ -416,14 +434,14 @@ body {
   cursor: pointer; }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
   /* x, y, blur */ }
 
 .btn:active, .btn:focus {
   outline: none;
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0.5rem 1rem rgba(48, 48, 48, 0.15); }
 
 .btn--white {
   background-color: #fff;
@@ -451,14 +469,36 @@ body {
   .btn--main::after {
     background-color: #cf1f1f; }
 
+.btn--delete {
+  height: 5rem;
+  width: 5rem;
+  background-image: linear-gradient(120deg, #cf1f1f, #a81818);
+  border-radius: 4rem;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer; }
+  .btn--delete::after {
+    background-color: #cf1f1f; }
+
+.btn--spot {
+  height: 5rem;
+  width: 5rem;
+  background-image: linear-gradient(120deg, #55c57a, #1a9960);
+  border-radius: 4rem;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer; }
+  .btn--spot::after {
+    background-color: #55c57a; }
+
 .btn--form {
   display: block !important;
   width: 100%;
   margin: 0 auto;
-  background-color: #cf1f1f;
+  background-image: linear-gradient(120deg, #cf1f1f, #a81818);
   color: #fff;
   font-weight: 500;
-  border-radius: .5rem; }
+  border-radius: 5rem; }
   .btn--form::after {
     background-color: #fff; }
 
@@ -521,7 +561,7 @@ body {
     font-size: 6rem;
     margin-bottom: .5rem;
     display: inline-block;
-    background-image: linear-gradient(to right, #67bd58, #20b573);
+    background-image: linear-gradient(to right, #67bd58, #1a9960);
     -webkit-background-clip: text;
     color: transparent; }
   .feature-box:hover {
@@ -987,7 +1027,7 @@ select {
 
 .section-about {
   height: 70rem;
-  background-image: linear-gradient(180deg, #20b573, #67bd58);
+  background-image: linear-gradient(180deg, #1a9960, #67bd58);
   position: relative; }
 
 .section-dashboard {
@@ -1002,26 +1042,33 @@ select {
   float: left;
   height: 100%;
   width: 20%;
-  background-image: linear-gradient(120deg, #55c57a, #20b573); }
+  background-image: linear-gradient(120deg, #55c57a, #1a9960); }
 
 .dashboard__main {
   width: 80%;
   height: 100%;
   float: left;
-  padding: 5rem;
   position: relative; }
+
+.dashboard__container {
+  width: 100%;
+  padding: 3rem; }
 
 .dashboard-card {
   position: relative;
   height: 10rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
-  .dashboard-card__side {
-    font-size: 2rem;
-    height: 10rem;
-    transition: all .8s ease; }
+  .dashboard-card__details {
+    width: 100%;
+    padding: 2rem;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
   .dashboard-card__button {
     height: 7rem;
     width: 7rem;
@@ -1031,13 +1078,14 @@ select {
     position: relative; }
   .dashboard-card__link {
     position: relative;
-    margin: 0 auto;
-    text-align: center; }
-  .dashboard-card__details {
-    width: 100%;
-    float: left;
-    padding: 2rem;
-    text-transform: uppercase; }
+    float: right;
+    padding: 0 1rem;
+    background-color: transparent; }
+  .dashboard-card__ {
+    position: relative;
+    float: right;
+    padding: 0 1rem;
+    background-color: transparent; }
   .dashboard-card__cta {
     position: absolute;
     top: 50%;
@@ -1047,11 +1095,11 @@ select {
     text-align: center; }
 
 .section-parking {
-  padding-top: 5rem;
+  padding: 3rem;
   position: relative; }
 
 .section-renter {
-  padding: 2rem 0;
+  padding: 3rem;
   position: relative; }
 
 .data-renter {

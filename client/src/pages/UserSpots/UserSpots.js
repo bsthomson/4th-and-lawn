@@ -4,10 +4,29 @@ import axios from 'axios';
 
 class UserSpot extends Component {
 
-    state = {
-        postedspots: [],
-        rentedspots: []
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+          loggedIn: false,
+          postedspots: [],
+          rentedspots: []
+        };
+      }
+
+    componentDidMount() {
+        console.log("********",this.props.loggedIn);
+        if (this.props.loggedIn === false) {
+            this.setState({
+                loggedIn: false
+            })
+        } else {
+            this.setState ({
+                loggedIn: true
+            })
+        }
+    }
+
 
     componentDidMount() {
         this.loadPostedSpots();
@@ -32,41 +51,54 @@ class UserSpot extends Component {
             <div className="section-dashboard">
                 <div className="dashboard__sidebar">
 
+                    <div className="dashboard__container">
+                        <h1 className="heading-primary">
+                            <span className="heading-primary--form-white">Dashboard</span>
+                        </h1>
+                    </div>
+
                 </div>
+
                 <div className="dashboard__main">
                     <div className="row">
-
-                        <h1 className="heading-primary">
-                            <span className="heading-primary--form">Dashboard</span>
-                        </h1>
-
                         <div className="col-1-of-1">
+                        
+                            <div className="dashboard__container">
+                                <h1 className="heading-primary">
+                                    <span className="heading-primary--form">Parking spots</span>
+                                </h1>
+
                             {/* START */}
                             {this.state.postedspots.length ? (
                                 <div className="row">
                                     {this.state.postedspots.map(postedspot => (
                                             <div className="col-1-of-1" key={postedspot._id}>
                                                 <div className="dashboard-card">
-                                                    <div className="dashboard-card__side">
 
                                                         <div className="dashboard-card__details">
                                                             <div className="col-1-of-3">
                                                                 <span className="dashboard-details dashboard-details--sub">{postedspot.streetaddress}</span>
                                                             </div>
+
                                                             <div className="col-1-of-3">
-                                                                <span className="dashboard-details dashboard-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>
+                                                                <span className="dashboard-details dashboard-details--sub">Available spots: {postedspot.availablespots}</span> 
+                                                            </div>
+
                                                             <div className="col-1-of-3">
-                                                                <span className="dashboard-details dashboard-details--sub">
-                                                                    <input
-                                                                        className="btn btn--form"
-                                                                        type="button"
-                                                                        value="Remove"
-                                                                        onClick={() => this.deletePostedSpot(postedspot._id)}
-                                                                    />
-                                                                </span>                             
+                                                            <div className="dashboard-card__link" >
+                                                                    <div className="btn btn--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
+                                                                        <i class="fas fa-trash-alt spot--icon"></i>
+                                                                    </div>
+                                                                </div>     
+
+                                                                <div className="dashboard-card__link" >
+                                                                    <div className="btn btn--spot" onClick={() => this.deletePostedSpot(postedspot._id)}>
+                                                                        <i class="fas fa-home spot--icon"></i>
+                                                                    </div>
+                                                                </div>                             
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                   
                                                 </div>
                                             </div>
                                     ))}
@@ -75,10 +107,19 @@ class UserSpot extends Component {
                             <h3>No Results to Display</h3>
                             )}
                             {/* END */}
+                            </div>
                         </div>
-                        <div className="col-1-of-1">Test</div>
+
+                    <div className="col-1-of-1">
+                        <div className="dashboard__container">
+                            <h1 className="heading-primary">
+                                <span className="heading-primary--form">Rented spots</span>
+                            </h1>
+                        </div>
                     </div>
+
                 </div>
+            </div>
         </div>
         );
     }

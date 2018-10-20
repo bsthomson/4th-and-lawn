@@ -18,8 +18,8 @@
     }
 
     &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        transform: translateY(-2px);
+        box-shadow: 0 .75rem 1.5rem rgba($color-black, .2);
         /* x, y, blur */
     }
     
@@ -27,7 +27,7 @@
     &:focus {
         outline: none;
         transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        box-shadow: 0 .5rem 1rem rgba(48, 48, 48, 0.15);
     }
     
     &--white {
@@ -62,9 +62,44 @@
         border-radius: 5rem;
         letter-spacing: .5px;
 
+        &::after {
+            background-color: $color-red;
+        }
+    }
+
+    &--delete {
+        height: 5rem;
+        width: 5rem;
+        background-image: linear-gradient(
+            120deg,
+            $color-red,
+            $color-red-dark
+        );
+        border-radius: 4rem;
+        margin: 0 auto;
+        position: relative;
+        cursor: pointer;
     
         &::after {
             background-color: $color-red;
+        }
+    }
+
+    &--spot {
+        height: 5rem;
+        width: 5rem;
+        background-image: linear-gradient(
+            120deg,
+            $color-primary,
+            $color-primary-dark
+        );
+        border-radius: 4rem;
+        margin: 0 auto;
+        position: relative;
+        cursor: pointer;
+    
+        &::after {
+            background-color: $color-primary;
         }
     }
 
@@ -72,10 +107,15 @@
         display: block !important;
         width: 100%;
         margin: 0 auto;
-        background-color: $color-red;
+        // background-color: $color-red;
+        background-image: linear-gradient(
+            120deg,
+            $color-red,
+            $color-red-dark
+        );
         color: $color-white;
         font-weight: 500;
-        border-radius: .5rem;
+        border-radius: 5rem;
     
         &::after {
             background-color: $color-white;
