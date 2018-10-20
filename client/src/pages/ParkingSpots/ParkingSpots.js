@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './../../App.css';
 import API from "./../../utils/API";
-import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
+import CardParkingSpot from './../../components/CardParkingSpot/CardParkingSpot';
 import moment from "moment";
 
 class ParkingSpots extends Component {

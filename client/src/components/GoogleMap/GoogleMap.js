@@ -10,8 +10,10 @@ class GoogleMap extends Component {
     
 
     render() {
+      // console.log('GooleMap props',   this.props.markers)
       // const initial = this.props.markers[0];
       const initial = { lat: 38.9629, lng: -95.2464 }
+      let markers = this.props.markers
       return (
         
         <Map 
@@ -20,7 +22,7 @@ class GoogleMap extends Component {
           google={this.props.google} 
           zoom={16}>
    
-          {this.props.markers.map((m, i) => {
+          {markers.map((m, i) => {
             console.log(m, i);
             return (
 

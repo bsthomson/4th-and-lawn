@@ -4,31 +4,13 @@ import { Link } from "react-router-dom";
 import GoogleMap from "../GoogleMap/GoogleMap";
 import Geocode from "react-geocode";
 
-
-    // getting longitudes and latitudes from addresses
-    // set Google Maps Geocoding API for purposes of quota management.
-    Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-
-    // Get latitudes and Longitudes from addresses
-    // Geocode.fromAddress("Lawrence, Ks").then(
-    //     response => {
-    //         const { lat, lng } = response.results[0].geometry.location;
-    //         return {lat: lat, lng:lng};
-    //     },
-    //     error => console.error
-    // );
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 
 function getGeocode(address){
     console.log(address);
     return Geocode.fromAddress(address).then(
         response => {
             console.log(response)
-            // TODO
-            // IF !partialMatch take the first one
-            // If partialMacth
-            // loop through results
-            // check address components for city and state
-            // if both match, return result[idx]
             const { lat, lng } = response.results[0].geometry.location;
             return {lat: lat, lng:lng};
         },
