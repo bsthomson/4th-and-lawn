@@ -18,7 +18,6 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn
 // Where our database models are stored.
 const db = require("./models");
 const User = db.User;
-const Jayhawk = db.Jayhawk;
 
 const app = express();
 
@@ -32,7 +31,7 @@ app.use(bodyParser.json());
 // Express-session information
 app.use(session({
   key: 'user_sid',
-  // store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
   secret: "somerandomstuff",
   resave: false,
   saveUnitialized: false,
