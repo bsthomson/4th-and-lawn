@@ -24,7 +24,65 @@
         width: 80%;
         height: 100%;
         float: left;
-        padding: 3rem;
+        padding: 5rem;
         position: relative;
     }
 }
+
+.dashboard-card {
+    // Functionality
+    position: relative;
+    height: 10rem;
+    margin-bottom: 3rem;
+    background-color: $color-white;
+    border-radius: 1rem;
+    box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
+
+    &__side {
+        font-size: 2rem;
+        height: 10rem;
+        transition: all .8s ease;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        
+    }
+
+    // Front-side styling
+
+    &__button {
+        height: 7rem;
+        width: 7rem;
+        background-color: $color-black;
+        border-radius: 4rem;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &__link {
+        position: relative;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    
+
+    &__details {
+        width: 100%;
+        float: left;
+        padding: 2rem;
+        text-transform: uppercase;
+    }
+
+    // Back-side styling
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+}
+

@@ -35,47 +35,48 @@ class UserSpot extends Component {
                 </div>
                 <div className="dashboard__main">
                     <div className="row">
-                        <div className="col-1-of-2">
+
+                        <h1 className="heading-primary">
+                            <span className="heading-primary--form">Dashboard</span>
+                        </h1>
+
+                        <div className="col-1-of-1">
                             {/* START */}
                             {this.state.postedspots.length ? (
-                <div className="parking-container">
-                    {this.state.postedspots.map(postedspot => (
-                            <div className="col-1-of-2" key={postedspot._id}>
-                                <div className="parking-card">
-                                    <div className="parking-card__side parking-card__side--front">
+                                <div className="row">
+                                    {this.state.postedspots.map(postedspot => (
+                                            <div className="col-1-of-1" key={postedspot._id}>
+                                                <div className="dashboard-card">
+                                                    <div className="dashboard-card__side">
 
-                                        <div className="parking-card__picture">
-                                            <div className="parking-card__picture--1">&nbsp;</div>
-                                        </div>
-
-                                        <div className="parking-card__details">
-                                            <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">{postedspot.streetaddress}</span>
+                                                        <div className="dashboard-card__details">
+                                                            <div className="col-1-of-3">
+                                                                <span className="dashboard-details dashboard-details--sub">{postedspot.streetaddress}</span>
+                                                            </div>
+                                                            <div className="col-1-of-3">
+                                                                <span className="dashboard-details dashboard-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>
+                                                            <div className="col-1-of-3">
+                                                                <span className="dashboard-details dashboard-details--sub">
+                                                                    <input
+                                                                        className="btn btn--form"
+                                                                        type="button"
+                                                                        value="Remove"
+                                                                        onClick={() => this.deletePostedSpot(postedspot._id)}
+                                                                    />
+                                                                </span>                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>
-                                            <div className="col-1-of-1">
-                                                <span className="parking-details parking-details--sub">
-                                                    <input
-                                                        className="btn btn--form"
-                                                        type="button"
-                                                        value="Remove"
-                                                        onClick={() => this.deletePostedSpot(postedspot._id)}
-                                                    />
-                                                </span>                             
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
-                            </div>
-                    ))}
-                </div>
-            ) : (
-            <h3>No Results to Display</h3>
-            )}
+                            ) : (
+                            <h3>No Results to Display</h3>
+                            )}
                             {/* END */}
                         </div>
-                        <div className="col-1-of-2">Test</div>
+                        <div className="col-1-of-1">Test</div>
                     </div>
                 </div>
         </div>

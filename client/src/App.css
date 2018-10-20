@@ -152,7 +152,6 @@ body {
         margin-top: 7rem; } }
 
 .section-primary {
-  color: #fff;
   /* Shaking animation bug fix */
   backface-visibility: hidden;
   width: 100%;
@@ -164,6 +163,7 @@ body {
       left: 6rem; } }
   .section-primary--main {
     display: block;
+    color: #fff;
     width: 100%;
     font-size: 5.25rem;
     font-weight: 900;
@@ -177,8 +177,25 @@ body {
         font-size: 7rem;
         line-height: 6.5rem;
         margin-top: 7rem; } }
+  .section-primary--main-black {
+    display: block;
+    color: #000;
+    width: 100%;
+    font-size: 5.25rem;
+    font-weight: 900;
+    text-align: left;
+    line-height: 6.75rem;
+    letter-spacing: .2px;
+    margin-bottom: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .section-primary--main-black {
+        letter-spacing: -.2rem;
+        font-size: 7rem;
+        line-height: 6.5rem;
+        margin-top: 7rem; } }
   .section-primary--body {
     display: block;
+    color: #fff;
     width: 100%;
     font-size: 2.25rem;
     font-weight: 500;
@@ -232,7 +249,7 @@ body {
         text-align: center; } }
 
 .heading-page {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2.5rem 0; }
   .heading-page--title {
@@ -741,7 +758,7 @@ select {
   background-color: #fff; }
 
 .row {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto; }
   @media (max-width: 56.25em) {
     .row {
@@ -789,11 +806,11 @@ select {
     width: calc(3 * ((100% - 3 * 2rem) / 4) + 2 * 2rem); }
 
 .row-container {
-  width: 90%;
+  width: 100%;
   margin: 0 auto; }
 
 .parking-container {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto; }
   .parking-container:not(:last-child) {
     margin-bottom: 2rem; }
@@ -991,8 +1008,43 @@ select {
   width: 80%;
   height: 100%;
   float: left;
-  padding: 3rem;
+  padding: 5rem;
   position: relative; }
+
+.dashboard-card {
+  position: relative;
+  height: 10rem;
+  margin-bottom: 3rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
+  .dashboard-card__side {
+    font-size: 2rem;
+    height: 10rem;
+    transition: all .8s ease; }
+  .dashboard-card__button {
+    height: 7rem;
+    width: 7rem;
+    background-color: #000;
+    border-radius: 4rem;
+    margin: 0 auto;
+    position: relative; }
+  .dashboard-card__link {
+    position: relative;
+    margin: 0 auto;
+    text-align: center; }
+  .dashboard-card__details {
+    width: 100%;
+    float: left;
+    padding: 2rem;
+    text-transform: uppercase; }
+  .dashboard-card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center; }
 
 .section-parking {
   padding-top: 5rem;
