@@ -19,8 +19,16 @@ import Geocode from "react-geocode";
     // );
 
 function getGeocode(address){
+    console.log(address);
     return Geocode.fromAddress(address).then(
         response => {
+            console.log(response)
+            // TODO
+            // IF !partialMatch take the first one
+            // If partialMacth
+            // loop through results
+            // check address components for city and state
+            // if both match, return result[idx]
             const { lat, lng } = response.results[0].geometry.location;
             return {lat: lat, lng:lng};
         },
@@ -42,16 +50,15 @@ class CardParkingSpot extends Component {
     loadParkingSpots = () => {
         API.getParkingSpots()
         .then(response =>{
-            console.log(response);
             const spots = response.data;
             const geocodes = [];
             spots.forEach(spot=>{
+                spot.address = `${spot.streetaddress}, ${spot.city}, ${spot.state} ${spot.zipcode}`;
                 geocodes.push(getGeocode(spot.address));
             })
 
             Promise.all(geocodes)
             .then(geoCodeResults =>{
-                console.log(geoCodeResults);
                 // TODO: set geoCode data on spot
                 geoCodeResults.forEach((res, idx)=>{
                     const spot = spots[idx];

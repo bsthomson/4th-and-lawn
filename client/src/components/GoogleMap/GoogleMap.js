@@ -10,7 +10,8 @@ class GoogleMap extends Component {
     
 
     render() {
-      const initial = this.props.markers[0];
+      // const initial = this.props.markers[0];
+      const initial = { lat: 38.9629, lng: -95.2464 }
       return (
         
         <Map 
