@@ -74,8 +74,15 @@ dropModels = () => {
   .catch( err => console.log(err))
 }
 
+restartDb = () => {
+  dropModels()
+    .then( insertJayhawk())
+    .catch( err => (console.log(err)))
+}
+
 module.exports = {
   insertJayhawk,
   dropDb,
-  dropModels
+  dropModels,
+  restartDb
 }
