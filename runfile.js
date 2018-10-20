@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
-const Jayhawk = require("./models/Jayhawk")
+const db = require("./models")
+const Jayhawk = db.Jayhawk
+const User = db.User
+const Renter = db.Renter
+const ParkingSpot = db.Renter
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn";
 
@@ -41,7 +45,7 @@ insertJayhawk = () => {
           event: "KU Hosting TU 11 A.M. Kickoff",
           date: "11/23/2018"
         }
-      ])  
+      ]) 
     })
     .then( () => Jayhawk.find().then( response => console.log(response)))
     .then( () => mongoose.disconnect(MONGODB_URI))
@@ -58,7 +62,20 @@ dropDb = () => {
     .catch( err => console.log(err))
 }
 
+dropModels = () => {
+  mongoose.connect(MONGODB_URI)
+  .then( () => console.log("Mongodb connection successful"))
+  .then( () => Jayhawk.deleteMany({ address: "1101 Mississippi St, Lawrence, KS 66044"}).then( err => console.log(err)))
+  .then( () => Renter.deleteMany().then( err => console.log(err)))
+  .then( () => User.deleteMany().then( err => console.log(err)))
+  .then( () => ParkingSpot.deleteMany().then( err => console.log(err)))
+  .then( () => mongoose.disconnect(MONGODB_URI))
+  .then( () => console.log("Collections Removed!"))
+  .catch( err => console.log(err))
+}
+
 module.exports = {
   insertJayhawk,
-  dropDb
+  dropDb,
+  dropModels
 }
