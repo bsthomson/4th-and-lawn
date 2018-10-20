@@ -10,6 +10,11 @@
 
 .section-about {
     height: 70rem;
-    background-color: $color-primary-dark;
+    // background-color: $color-primary-dark;
+    background-image: linear-gradient(
+        180deg,
+        $color-primary-dark,
+        $color-primary-light
+    );
     position: relative;
 }

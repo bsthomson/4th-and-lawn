@@ -14,20 +14,30 @@ class ParkingSpots extends Component {
     componentDidMount() {
         this.loadParkingSpots()
         this.loadEvents()
+        console.log(this.state)
     }
 
     loadParkingSpots = () => {
         API.getParkingSpots()
-            .then(response => this.setState({ 
-                parkingspots: response.data
-            }))
+            .then( response => {
+                this.setState({ parkingspots: response.data })
+            })
             .catch(err => console.log(err));
     };
 
-    loadEvents = () => {
+    loadEvents = () => {        
+        let parkingSpotArray = [];
         API.getJayhawkEvents()
-            .then(response => this.setState({
-                events: response.data
+            .then( response => {
+                response.data.forEach(parkingSpot => {
+                    console.log("parkingSpot response: ", parkingSpot)
+                    if (moment(parkingSpot.date) > moment()) {
+                        parkingSpotArray.push(parkingSpot)
+                    }
+                });
+            })
+            .then( () => this.setState({
+                events: parkingSpotArray
             }))
             .catch(err => console.log(err))
     }

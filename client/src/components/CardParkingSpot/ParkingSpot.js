@@ -21,13 +21,13 @@ class CardParkingSpot extends Component {
         API.getParkingSpots()
         .then(response => this.setState({ 
             parkingspots: response.data,
+            gameday: response.data
         }))
         .catch(err => console.log(err));
     };
 
     componentDidUpdate() {
-        console.log("this.props.game: " + this.props.game)
-        console.log("this.state.game: " + this.state.game)
+        console.log(this.props.game)
         if (this.props.game !== this.state.game) {
         this.selectDates();
         }
@@ -99,7 +99,7 @@ render() {
                                                     <p className="spot--title">Details</p>
                                                         <div className="parking-card__link">
                                                             <Link to={"/rentthisspot/" + parkingspot._id}>
-                                                                <i class="fas fa-home spot--value"></i>
+                                                                <i className="fas fa-home spot--value"></i>
                                                                 {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                     <input
                                                                         className="parking-card__button"

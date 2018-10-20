@@ -29,11 +29,18 @@ class UserSpot extends Component {
 
     render() {
         return (
-            <div className="section-parking">
-		    {this.state.postedspots.length ? (
+            <div className="section-dashboard">
+                <div className="dashboard__sidebar">
+
+                </div>
+                <div className="dashboard__main">
+                    <div className="row">
+                        <div className="col-1-of-2">
+                            {/* START */}
+                            {this.state.postedspots.length ? (
                 <div className="parking-container">
                     {this.state.postedspots.map(postedspot => (
-                            <div className="col-1-of-3" key={postedspot._id}>
+                            <div className="col-1-of-2" key={postedspot._id}>
                                 <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
 
@@ -49,12 +56,12 @@ class UserSpot extends Component {
                                                 <span className="parking-details parking-details--sub">Available spots: {postedspot.availablespots}</span>                                            </div>
                                             <div className="col-1-of-1">
                                                 <span className="parking-details parking-details--sub">
-                                                <input
-                                                    className="btn btn--form"
-                                                    type="button"
-                                                    value="Remove"
-                                                    onClick={() => this.deletePostedSpot(postedspot._id)}
-                                                />
+                                                    <input
+                                                        className="btn btn--form"
+                                                        type="button"
+                                                        value="Remove"
+                                                        onClick={() => this.deletePostedSpot(postedspot._id)}
+                                                    />
                                                 </span>                             
                                             </div>
                                         </div>
@@ -66,8 +73,12 @@ class UserSpot extends Component {
             ) : (
             <h3>No Results to Display</h3>
             )}
-		</div>
-
+                            {/* END */}
+                        </div>
+                        <div className="col-1-of-2">Test</div>
+                    </div>
+                </div>
+        </div>
         );
     }
 }

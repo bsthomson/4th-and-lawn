@@ -504,7 +504,7 @@ body {
     font-size: 6rem;
     margin-bottom: .5rem;
     display: inline-block;
-    background-image: linear-gradient(to right, #7ed56f, #20b573);
+    background-image: linear-gradient(to right, #67bd58, #20b573);
     -webkit-background-clip: text;
     color: transparent; }
   .feature-box:hover {
@@ -970,7 +970,28 @@ select {
 
 .section-about {
   height: 70rem;
-  background-color: #20b573;
+  background-image: linear-gradient(180deg, #20b573, #67bd58);
+  position: relative; }
+
+.section-dashboard {
+  height: 100vh;
+  min-height: 60rem;
+  width: 100%;
+  background-color: #f7f7f7;
+  z-index: 0;
+  position: relative; }
+
+.dashboard__sidebar {
+  float: left;
+  height: 100%;
+  width: 20%;
+  background-image: linear-gradient(120deg, #55c57a, #20b573); }
+
+.dashboard__main {
+  width: 80%;
+  height: 100%;
+  float: left;
+  padding: 3rem;
   position: relative; }
 
 .section-parking {
