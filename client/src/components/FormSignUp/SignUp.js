@@ -13,7 +13,7 @@ class Signup extends Component {
 			lastname: '',
 			address: '',
 			phonenumber: '',
-			message: ''
+			message: '',
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)

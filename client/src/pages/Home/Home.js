@@ -63,7 +63,7 @@ class Home extends Component {
                                     <div className="parking-card__side parking-card__side--front">
 
                                         <div className="parking-card__banner">
-                                            <p className="spot--banner">Test</p>
+                                            <p className="spot--banner">Kansas vs Texas</p>
                                         </div>
 
                                         <div className="parking-card__picture">
@@ -74,7 +74,7 @@ class Home extends Component {
                                             <div className="row-container">
                                                 <div className="col-1-of-1">
                                                     <p className="spot--address">
-                                                        Test
+                                                    1101 Mississippi St
                                                     </p>
                                                 </div>
                                             </div>
@@ -94,17 +94,18 @@ class Home extends Component {
                                                     <div className="spot-container">
                                                         <p className="spot--title">Spots</p>
                                                         <div className="parking-card__button">
-                                                            <span className="spot--test">Test</span>
+                                                            <span className="spot--test">3</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-1-of-3">
                                                     <div className="spot-container">
                                                     <p className="spot--title">Details</p>
-                                                        <div className="parking-card__link">
-                                                            <Link to=""></Link>
+                                                        <div className="parking-card__button">
+                                                            <div className="parking-card__link">
+                                                                <Link to=""></Link>
+                                                            </div>
                                                         </div>
-                                                            
                                                     </div>
                                                 </div>
                                                 
