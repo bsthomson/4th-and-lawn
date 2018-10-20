@@ -5,7 +5,7 @@ import { BrowserRouter as
   Route, 
   Switch 
 } from 'react-router-dom';
-import Navbar from './components/navigation/Nav.js';
+import Navbar from './components/Navigation/Nav.js';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
 import UserSpots from './pages/UserSpots';
