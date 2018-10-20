@@ -34,7 +34,7 @@ class RentThisSpot extends Component {
                         <div className="header-renter">
                             <div className="header-renter__background">
                                 <p className="renter--title">
-                                    {this.state.parkingspots.address}
+                                    {this.state.parkingspots.streetaddress}
                                 </p>
                                 <h1 className="heading-primary">
                                     <span className="heading-primary--page">
@@ -99,7 +99,7 @@ class RentThisSpot extends Component {
                     <div className="row">
                         <div className="col-3-of-4">
                         <p className="renter--title">
-                            {this.state.parkingspots.address}
+                            {this.state.parkingspots.streetaddress}
                         </p>
                         </div>
                     

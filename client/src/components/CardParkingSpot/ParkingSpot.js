@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 class CardParkingSpot extends Component {
 
@@ -9,7 +8,8 @@ class CardParkingSpot extends Component {
         super(props)
         this.state = {
             parkingspots: [],
-            gameday: []
+            gameday: [],
+            game: ''
         };
     }
 
@@ -21,17 +21,39 @@ class CardParkingSpot extends Component {
         API.getParkingSpots()
         .then(response => this.setState({ 
             parkingspots: response.data,
+            gameday: response.data
         }))
         .catch(err => console.log(err));
     };
+
+    componentDidUpdate() {
+        console.log(this.props.game)
+        if (this.props.game !== this.state.game) {
+        this.selectDates();
+        }
+    }
+
+    selectDates() {
+        let parkingSpotsArray = [];
+        this.state.parkingspots.forEach(parkingspot => {
+            console.log(this.state.parkingspots)
+            if (parkingspot.event[0]._id === this.props.game) {
+                parkingSpotsArray.push(parkingspot)
+            }
+        })
+        this.setState({
+            gameday: parkingSpotsArray,
+            game: this.props.game
+        })
+    }
 
 render() {
 	return (
         
 		<div>
-		    {this.state.parkingspots.length ? (
+		    {this.state.gameday.length ? (
                 <div className="parking-container">
-                    {this.state.parkingspots.map(parkingspot => (
+                    {this.state.gameday.map(parkingspot => (
                             <div className="col-1-of-3" key={parkingspot._id}>
                                 <div className="parking-card">
                                     <div className="parking-card__side parking-card__side--front">
@@ -57,7 +79,7 @@ render() {
                                                     <div className="spot-container">
                                                         <p className="spot--title">Price</p>
                                                         <div className="parking-card__button">
-                                                            <span className="spot--test">$20</span>
+                                                            <span className="spot--test">${parkingspot.price}</span>
                                                         </div>
                                                     </div>         
                                                 </div>
@@ -77,7 +99,7 @@ render() {
                                                     <p className="spot--title">Details</p>
                                                         <div className="parking-card__link">
                                                             <Link to={"/rentthisspot/" + parkingspot._id}>
-                                                                <i class="fas fa-home spot--value"></i>
+                                                                <i className="fas fa-home spot--value"></i>
                                                                 {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                     <input
                                                                         className="parking-card__button"

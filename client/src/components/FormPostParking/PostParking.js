@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
+import API from "../../utils/API"
 
 class PostParkingSpot extends Component {
     constructor() {
@@ -13,7 +14,6 @@ class PostParkingSpot extends Component {
             zipcode: '',
             availablespots: '',
             instructions: '',
-            price: '',
             game: '',
             events: [],
             redirectTo: null
@@ -23,11 +23,26 @@ class PostParkingSpot extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/jayhawk")
-            .then( response => {
+        this.noOldDates();
+    }
+
+    noOldDates = () => {
+        let parkingSpotArray = [];
+        API.getJayhawkEvents()
+            .then(response => {
+                response.data.forEach(parkingSpot => {
+                        if (moment(parkingSpot.date) > moment()) {
+                            parkingSpotArray.push(parkingSpot)
+                        }
+                })
+            })
+            .then( () => {
                 this.setState(
-                    { events: response.data }
+                    { events: parkingSpotArray }
                 )
+            })
+            .catch( err => {
+                console.log(err)
             })
     }
 

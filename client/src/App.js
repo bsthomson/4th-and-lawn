@@ -85,7 +85,7 @@ class App extends Component {
                   {/* Routes to different components */}
                   <Route
                     exact path="/"
-                    component={Home} 
+                    component={() => <Home loggedIn={this.state.loggedIn} />}
                   />
                   <Route
                       path="/rentthisspot"
