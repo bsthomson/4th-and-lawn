@@ -39,9 +39,9 @@ class Home extends Component {
                 ) : (
                     <div>
                     <section className="header">
-                        <div class="header__text-box">
-                            <h1 class="header-primary">
-                                <span class="header-primary--main">Game day parking made easy.</span>
+                        <div className="header__text-box">
+                            <h1 className="header-primary">
+                                <span className="header-primary--main">Game day parking made easy.</span>
                             </h1>
                         </div>
                     </section>
