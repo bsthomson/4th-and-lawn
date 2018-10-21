@@ -19,14 +19,14 @@ body {
     /* Shaking animation bug fix */
     backface-visibility: hidden;
     position: absolute;
-    width: 70%;
+    width: 80%;
     left: 11rem;
     top: 15rem;
     margin-bottom: 3rem;
 
     @include breakpoint(phone) {
         width: 100%;
-        top: 2rem;
+        top: 10rem;
         left: 6rem;
     }
 
@@ -46,7 +46,7 @@ body {
             letter-spacing: -.2rem;
             font-size: 7rem;
             line-height: 6.5rem;
-            margin-top: 7rem;
+            margin-top: .75rem;
             // text-align: center;
         }
     }
@@ -248,7 +248,7 @@ body {
         display: block;
         width: 100%;
         font-size: 8rem;
-        font-weight: 500;
+        font-weight: 900;
         line-height: 5rem;
         letter-spacing: 0px;
         color: $color-black;
@@ -260,6 +260,16 @@ body {
             line-height: 7rem;
             text-align: center;
         }
+    }
+
+    &--footer-address {
+        font-size: 1.25rem;
+        line-height: 5rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        padding: 0 5rem;
     }
 }
 

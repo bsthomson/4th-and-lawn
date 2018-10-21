@@ -116,7 +116,7 @@ class CardParkingSpot extends Component {
                                                         <div className="col-1-of-3">
                                                             <div className="spot-container">
                                                                 <p className="spot--title">Price</p>
-                                                                <div className="parking-card__button">
+                                                                <div className="parking-card__button-price">
                                                                     <span className="spot--test">${parkingspot.price}</span>
                                                                 </div>
                                                             </div>         
@@ -127,27 +127,27 @@ class CardParkingSpot extends Component {
                                                             </p> */}
                                                             <div className="spot-container">
                                                                 <p className="spot--title">Spots</p>
-                                                                <div className="parking-card__button">
+                                                                <div className="parking-card__button-spot">
                                                                     <span className="spot--test">{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "FULL"}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className="col-1-of-3">
                                                             <div className="spot-container">
-                                                            <p className="spot--title">Details</p>
+                                                            <p className="spot--title">Rent</p>
                                                                 <div className="parking-card__link">
                                                                     <Link to={"/rentthisspot/" + parkingspot._id}>
-                                                                        <i className="fas fa-home spot--value"></i>
+                                                                        <i className="fas fa-car spot--value"></i>
                                                                         {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                             <input
-                                                                                className="parking-card__button"
+                                                                                className="parking-card__button-rent"
                                                                                 type="submit"
                                                                                 value=""
                                                                                 onClick={this.handleSubmit}
                                                                             />
                                                                         ) : (
                                                                             <input
-                                                                                className="parking-card__button"
+                                                                                className="parking-card__button-rent"
                                                                                 type="submit"
                                                                                 value=""
                                                                                 onClick={this.handleSubmit}

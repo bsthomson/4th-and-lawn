@@ -53,44 +53,54 @@ class ParkingSpots extends Component {
             <section className="section-parking">
              {/* <div className="page-transition background-test"></div> */}
 
-            <h1 className="heading-page">
-                <span className="heading-page--title">Available spots near Memorial Stadium</span>
-            </h1>
-                <form>
-                    <div className="form__container" id="events">
+                <div className="row">
 
-                    <h1 className="heading-primary">
-                        <span className="heading-primary--form left">Which game do you need parking for?</span>
-                    </h1>                        
-                        {this.state.events.length ? (                    
-                            <div className="form__group">
-                                <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
-                                    <option>
-                                        Pick a game to park at!
-                                    </option>
-                                    {this.state.events.map(game => (
-                                        <option
-                                            key={game._id}
-                                            id="game"
-                                            name="event"
-                                            placeholder="Game"
-                                            value={game._id}>
-                                            {moment(game.date).format("MM-DD")} {game.event}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                        ) : (
-                            <div className="form__group">
-                            <select name="game" className="form__input">                                
-                                <option>
-                                    No Games Available
-                                </option>                            
-                            </select>
-                            </div>
-                        )}
-                    </div>   
-                </form>
+                    <div className="col-1-of-2">
+                        <h1 className="heading-primary">
+                            <span className="heading-primary--form">Parking spots</span>
+                            <span className="dashboard-primary--body">These are your listings.</span>
+                        </h1>
+                    </div>
+
+                    <div className="col-1-of-2">
+
+                        <form>
+                            <div className="form__filter-container" id="events">                        
+                                {this.state.events.length ? (                    
+                                    <div className="form__group">
+                                        <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
+                                            <option>
+                                                Filter by game
+                                            </option>
+                                            {this.state.events.map(game => (
+                                                <option
+                                                    key={game._id}
+                                                    id="game"
+                                                    name="event"
+                                                    placeholder="Game"
+                                                    value={game._id}>
+                                                    {moment(game.date).format("MM-DD")} {game.event}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                ) : (
+                                    <div className="form__group">
+                                        <select name="game" className="form__input">                                
+                                            <option>
+                                                No Games Available
+                                            </option>                            
+                                        </select>
+                                    </div>
+                                )}
+                            </div>   
+                        </form>
+
+                    </div>
+
+                </div>
+
+                
               <CardParkingSpot game={this.state.game}/>
             </section>
         );

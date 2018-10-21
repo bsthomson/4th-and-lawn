@@ -125,14 +125,14 @@ body {
   /* Shaking animation bug fix */
   backface-visibility: hidden;
   position: absolute;
-  width: 70%;
+  width: 80%;
   left: 11rem;
   top: 15rem;
   margin-bottom: 3rem; }
   @media only screen and (max-width: 37.5em) {
     .header-primary {
       width: 100%;
-      top: 2rem;
+      top: 10rem;
       left: 6rem; } }
   .header-primary--main {
     display: block;
@@ -149,7 +149,7 @@ body {
         letter-spacing: -.2rem;
         font-size: 7rem;
         line-height: 6.5rem;
-        margin-top: 7rem; } }
+        margin-top: .75rem; } }
 
 .section-title {
   /* Shaking animation bug fix */
@@ -302,7 +302,7 @@ body {
     display: block;
     width: 100%;
     font-size: 8rem;
-    font-weight: 500;
+    font-weight: 900;
     line-height: 5rem;
     letter-spacing: 0px;
     color: #000;
@@ -313,6 +313,14 @@ body {
         font-size: 8rem;
         line-height: 7rem;
         text-align: center; } }
+  .renter--footer-address {
+    font-size: 1.25rem;
+    line-height: 5rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    padding: 0 5rem; }
 
 .spot-container {
   padding: 2rem 0; }
@@ -483,7 +491,7 @@ body {
 .btn--delete {
   height: 5rem;
   width: 5rem;
-  background-image: linear-gradient(120deg, #cf1f1f, #a81818);
+  background-image: linear-gradient(120deg, #cf1f1f, #b80b0b);
   border-radius: 4rem;
   margin: 0 auto;
   position: relative;
@@ -506,7 +514,7 @@ body {
   display: block !important;
   width: 100%;
   margin: 0 auto;
-  background-image: linear-gradient(120deg, #cf1f1f, #a81818);
+  background-image: linear-gradient(120deg, #e70d0d, #b80b0b);
   color: #fff;
   font-weight: 500;
   border-radius: 5rem; }
@@ -517,12 +525,13 @@ body {
   display: block !important;
   width: 20rem;
   margin: 0 auto;
-  background-color: #cf1f1f;
+  background-image: linear-gradient(120deg, #e70d0d, #b80b0b);
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1.25rem;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  border-radius: 5rem; }
 
 .btn::after {
   content: "";
@@ -587,6 +596,13 @@ body {
   padding: 3rem;
   border-radius: 6px;
   box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
+
+.form__filter-container {
+  width: 40rem;
+  background-color: #fff;
+  position: relative;
+  padding: 0;
+  border-radius: 6px; }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -695,7 +711,8 @@ select {
   padding: 3rem; }
 
 .popup-content {
-  width: 370px !important; }
+  width: 370px !important;
+  z-index: 9000; }
 
 .parking-card {
   perspective: 150rem;
@@ -714,17 +731,38 @@ select {
     backface-visibility: hidden;
     border-radius: 2rem;
     overflow: hidden;
-    box-shadow: 0 0.5rem 1rem rgba(48, 48, 48, 0.15); }
+    box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
     .parking-card__side--front {
       background-color: #fff; }
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
         background-image: linear-gradient(to right bottom, #25abf8, #20b573); }
+  .parking-card__button-price {
+    height: 7rem;
+    width: 7rem;
+    background-image: linear-gradient(120deg, #20b573, #1a9960);
+    border-radius: 4rem;
+    margin: 0 auto;
+    position: relative; }
+  .parking-card__button-spot {
+    height: 7rem;
+    width: 7rem;
+    background-image: linear-gradient(120deg, #e70d0d, #b80b0b);
+    border-radius: 4rem;
+    margin: 0 auto;
+    position: relative; }
+  .parking-card__button-rent {
+    height: 7rem;
+    width: 7rem;
+    background-image: linear-gradient(120deg, #ffb900, #ff7730);
+    border-radius: 4rem;
+    margin: 0 auto;
+    position: relative; }
   .parking-card__button {
     height: 7rem;
     width: 7rem;
-    background-color: #000;
+    background-image: linear-gradient(120deg, #20b573, #1a9960);
     border-radius: 4rem;
     margin: 0 auto;
     position: relative; }
@@ -736,7 +774,7 @@ select {
     float: left;
     width: 100%;
     height: 4rem;
-    background-color: #000; }
+    background-image: linear-gradient(120deg, #20b573, #1a9960); }
   .parking-card__picture {
     float: left;
     width: 100%;
@@ -874,7 +912,7 @@ select {
     clear: both; }
   .parking-container [class^="col-"] {
     float: left;
-    margin-right: 2.5rem; }
+    margin-right: 2rem; }
   .parking-container .col-1-of-1 {
     width: 100%; }
   .parking-container .col-1-of-2 {
@@ -892,13 +930,13 @@ select {
         margin: 0 auto !important; } }
 
 .header {
-  height: 90vh;
+  height: 80rem;
   min-height: 70rem;
   background-image: url(img/background.jpg);
-  background-position: left;
+  background-position: left center;
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 0;
+  z-index: 3000;
   position: relative; }
   @media only screen and (max-width: 37.5em) {
     .header {
@@ -1098,14 +1136,28 @@ select {
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
-  .dashboard-card__details {
+  .dashboard-card__container {
     width: 100%;
     padding: 2rem;
-    text-transform: uppercase;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
+  .dashboard-card__container-flex-vertical-align-icon {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    float: right;
+    padding: 0 1rem; }
+  .dashboard-card__container-flex-vertical-align {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    float: left;
+    text-align: left;
+    padding: 0 1rem; }
   .dashboard-card__button {
     height: 7rem;
     width: 7rem;
@@ -1118,11 +1170,12 @@ select {
     float: right;
     padding: 0 1rem;
     background-color: transparent; }
-  .dashboard-card__ {
-    position: relative;
-    float: right;
-    padding: 0 1rem;
-    background-color: transparent; }
+  .dashboard-card__value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    float: left; }
   .dashboard-card__cta {
     position: absolute;
     top: 50%;
@@ -1136,7 +1189,6 @@ select {
   position: relative; }
 
 .section-renter {
-  padding: 3rem;
   position: relative; }
 
 .data-renter {

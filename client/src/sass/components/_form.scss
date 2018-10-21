@@ -11,6 +11,14 @@
         border-radius: 6px;
         box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
     }
+
+    &__filter-container {
+        width: 40rem;
+        background-color: $color-white;
+        position: relative;
+        padding: 0;
+        border-radius: 6px;
+    }
     
     &__group:not(:last-child) {
         margin-bottom: 2rem;

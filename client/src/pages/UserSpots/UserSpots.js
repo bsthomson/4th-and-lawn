@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './../../App.css';
 import axios from 'axios';
+import Popup from 'reactjs-popup';
 
 class UserSpot extends Component {
 
@@ -60,6 +61,8 @@ class UserSpot extends Component {
 
                 </div>
 
+                
+
                 <div className="dashboard__main">
                     <div className="row">
                         <div className="col-1-of-1">
@@ -75,38 +78,53 @@ class UserSpot extends Component {
                                 <div className="row">
                                     {this.state.postedspots.map(postedspot => (
                                             <div className="col-1-of-1" key={postedspot._id}>
+                                                {/* START CARD -> */}
                                                 <div className="dashboard-card">
+                                                    <div className="dashboard-card__container">
+                                                        <div className="row">
 
-                                                        <div className="dashboard-card__details">
                                                             <div className="col-1-of-3">
-                                                                <span className="dashboard-details dashboard-details--sub">{postedspot.streetaddress}</span>
+                                                                <div className="dashboard-card__container-flex-vertical-align">
+                                                                    <p className="spot--address">{postedspot.streetaddress}</p>
+                                                                </div>
                                                             </div>
 
                                                             <div className="col-1-of-3">
-                                                                <span className="dashboard-details dashboard-details--sub">Available spots: {postedspot.availablespots}</span> 
+                                                                <div className="dashboard-card__container-flex-vertical-align">
+                                                                    <p className="spot--address">{postedspot.event[0]}</p>
+                                                                </div>
                                                             </div>
 
                                                             <div className="col-1-of-3">
-                                                            <div className="dashboard-card__link" >
-                                                                    <div className="btn btn--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
-                                                                        <i class="fas fa-trash-alt spot--icon"></i>
-                                                                    </div>
-                                                                </div>     
-
-                                                                <div className="dashboard-card__link" >
+                                                                <div className="dashboard-card__container-flex-vertical-align-icon">
                                                                     <Link to={"/rentthisspot/" + postedspot._id}>
                                                                         <div className="btn btn--spot" >
                                                                             <i class="fas fa-home spot--icon"></i>
                                                                         </div>
                                                                     </Link>
-                                                                </div>                             
+                                                                </div> 
+                                                                <div className="dashboard-card__container-flex-vertical-align-icon">
+                                                                    <div className="btn btn--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
+                                                                        <i class="fas fa-trash-alt spot--icon"></i>
+                                                                    </div>
+                                                                    {/* <Popup trigger={<span className="navigation__link">Sign up</span>}>
+                                                                        <div className="modal">
+                                                                            Test
+                                                                        </div>
+                                                                    </Popup> */}
+                                                                </div>                          
                                                             </div>
+
                                                         </div>
-                                                   
+
+                                                    </div>
                                                 </div>
+                                                {/* ^ END CARD ^ */}
+
                                             </div>
                                     ))}
                                 </div>
+
                             ) : (
                             <h3>No Results to Display</h3>
                             )}
@@ -118,7 +136,7 @@ class UserSpot extends Component {
                         <div className="dashboard__container">
                             <h1 className="heading-primary">
                                 <span className="heading-primary--form">Rented spots</span>
-                                <span className="dashboard-primary--body">These are your reserved spots. Enjoy.</span>
+                                <span className="dashboard-primary--body">These are your reserved spots. Enjoy the game.</span>
                             </h1>
                         </div>
                     </div>

@@ -43,12 +43,32 @@
     border-radius: 1rem;
     box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
 
+
+
   
-    &__details {
+    &__container {
         width: 100%;
         padding: 2rem;
-        text-transform: uppercase;
         @include absolute-center;
+    }
+
+    &__container-flex-vertical-align-icon {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 400px;
+        float: right;
+        padding: 0 1rem;
+    }
+
+    &__container-flex-vertical-align {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 400px;
+        float: left;
+        text-align: left;
+        padding: 0 1rem;
     }
 
     // Front-side styling
@@ -72,14 +92,12 @@
         background-color: transparent;
     }
 
-    &__ {
+    &__value {
         // position: relative;
         // margin: 0 auto;
         // text-align: center;
-        position: relative;
-        float: right;
-        padding: 0 1rem;
-        background-color: transparent;
+        @include absolute-center;
+        float: left;
     }
 
 

@@ -2,13 +2,22 @@ import React, { Component } from "react";
 import './../../App.css';
 import RentParkingSpot from "./../../components/Rent-Parking-Spot-Form";
 import Popup from 'reactjs-popup';
+import Login  from './../../components/FormLogin/Login';
 import GoogleMap from './../../components/GoogleMap/GoogleMap';
 import axios from 'axios';
 
 class RentThisSpot extends Component {
-    state = {
-        parkingspots: []
-    };
+    // state = {
+    //     parkingspots: []
+    // };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            parkingspots: [],
+            loggedIn: false,
+        };
+    }
 
     componentDidMount() {
         this.getParkingSpot();
@@ -96,35 +105,54 @@ class RentThisSpot extends Component {
 
                 
                 <div className="footer-reservation">
-                    <div className="row">
-                        <div className="col-3-of-4">
-                        <p className="renter--title">
-                            {this.state.parkingspots.streetaddress}
-                        </p>
-                        </div>
-                    
-                        <div className="col-1-of-4">
-                        <Popup trigger={<span className="btn btn--rent">Reserve Spot</span>} modal>
-                            {close => (
-                              <div className="modal">
-                                <a href="#" className="popup__close" onClick={close}>
-                                  &times;
-                                </a>
-                                <RentParkingSpot />
-                                  <button
-                                    className="button"
-                                    onClick={() => {
-                                      console.log('modal closed')
-                                      close()
-                                    }}
-                                  >
-                                  </button>
-                              </div>
+                        <div className="row">
+
+                            <div className="col-3-of-4">
+                                <p className="renter--footer-address">{this.state.parkingspots.streetaddress}</p>
+                            </div>
+                        
+                            <div className="col-1-of-4">
+                            {this.props.loggedIn ? (
+                                    <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
+                                        {close => (
+                                        <div className="modal">
+                                            <a href="#" className="popup__close" onClick={close}>
+                                            &times;
+                                            </a>
+                                            <RentParkingSpot />
+                                            <button
+                                                className="button"
+                                                onClick={() => {
+                                                console.log('modal closed')
+                                                close()
+                                                }}
+                                            >
+                                            </button>
+                                        </div>
+                                        )}
+                                    </Popup>
+                            ) : (
+                                    <Popup trigger={<span className="btn btn--rent">Log in</span>} modal>
+                                        {close => (
+                                        <div className="modal">
+                                            <a href="#" className="popup__close" onClick={close}>
+                                            &times;
+                                            </a>
+                                            <Login updateUser={this.props.updateUser}/>
+                                            <button
+                                                className="button"
+                                                onClick={() => {
+                                                console.log('modal closed')
+                                                close()
+                                                }}
+                                            >
+                                            </button>
+                                        </div>
+                                        )}
+                                    </Popup>
                             )}
-                          </Popup>
+                            </div>
                         </div>
-                    </div>
-                    
                 </div>
             </section>
         );

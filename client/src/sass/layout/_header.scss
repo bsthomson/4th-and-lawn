@@ -1,11 +1,11 @@
 .header {
-    height: 90vh;
+    height: 80rem;
     min-height: 70rem;
     background-image: url(img/background.jpg);
-    background-position: left;
+    background-position: left center;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: 0;
+    z-index: 3000;
     position: relative;
     // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);

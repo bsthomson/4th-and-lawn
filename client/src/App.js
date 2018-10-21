@@ -89,7 +89,7 @@ class App extends Component {
                   />
                   <Route
                       path="/rentthisspot"
-                      component={RentThisSpot}
+                      component={() => <RentThisSpot loggedIn={this.state.loggedIn} updateUser={this.updateUser} />}
                   />
                   <Route
                     path="/parking-spots"
