@@ -65,21 +65,3 @@
 }
 
 
-.section {
-
-    &__text-box {
-        padding: 22rem 5rem;
-        text-align: left;
-
-        @include breakpoint(phone) {
-            width: 80%;
-        }
-    }
-
-    &__container {
-        padding-top: 10rem;
-        height: 100%;
-        width: 40rem;
-        margin: 0 auto;
-    }
-}

@@ -30,6 +30,7 @@
     &__container {
         width: 100%;
         padding: 3rem;
+        position: relative;
     }
 }
 
@@ -49,7 +50,7 @@
         text-transform: uppercase;
         @include absolute-center;
     }
-    
+
     // Front-side styling
 
     &__button {

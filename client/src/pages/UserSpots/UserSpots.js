@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import './../../App.css';
 import axios from 'axios';
 
@@ -66,6 +67,7 @@ class UserSpot extends Component {
                             <div className="dashboard__container">
                                 <h1 className="heading-primary">
                                     <span className="heading-primary--form">Parking spots</span>
+                                    <span className="dashboard-primary--body">These are your listings.</span>
                                 </h1>
 
                             {/* START */}
@@ -92,9 +94,11 @@ class UserSpot extends Component {
                                                                 </div>     
 
                                                                 <div className="dashboard-card__link" >
-                                                                    <div className="btn btn--spot" onClick={() => this.deletePostedSpot(postedspot._id)}>
-                                                                        <i class="fas fa-home spot--icon"></i>
-                                                                    </div>
+                                                                    <Link to={"/rentthisspot/" + postedspot._id}>
+                                                                        <div className="btn btn--spot" >
+                                                                            <i class="fas fa-home spot--icon"></i>
+                                                                        </div>
+                                                                    </Link>
                                                                 </div>                             
                                                             </div>
                                                         </div>
@@ -114,6 +118,7 @@ class UserSpot extends Component {
                         <div className="dashboard__container">
                             <h1 className="heading-primary">
                                 <span className="heading-primary--form">Rented spots</span>
+                                <span className="dashboard-primary--body">These are your reserved spots. Enjoy.</span>
                             </h1>
                         </div>
                     </div>

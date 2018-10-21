@@ -151,33 +151,33 @@ body {
         line-height: 6.5rem;
         margin-top: 7rem; } }
 
-.section-primary {
+.section-title {
   /* Shaking animation bug fix */
   backface-visibility: hidden;
   width: 100%;
   margin-bottom: 2.25rem; }
   @media only screen and (max-width: 37.5em) {
-    .section-primary {
+    .section-title {
       width: 100%;
       top: 2rem;
       left: 6rem; } }
-  .section-primary--main {
+  .section-title--main {
     display: block;
     color: #fff;
     width: 100%;
-    font-size: 5.25rem;
+    font-size: 4.75rem;
     font-weight: 900;
     text-align: left;
     line-height: 6.75rem;
     letter-spacing: .2px;
     margin-bottom: 1rem; }
     @media only screen and (max-width: 37.5em) {
-      .section-primary--main {
+      .section-title--main {
         letter-spacing: -.2rem;
         font-size: 7rem;
         line-height: 6.5rem;
         margin-top: 7rem; } }
-  .section-primary--main-black {
+  .section-title--main-black {
     display: block;
     color: #000;
     width: 100%;
@@ -188,12 +188,12 @@ body {
     letter-spacing: .2px;
     margin-bottom: 1rem; }
     @media only screen and (max-width: 37.5em) {
-      .section-primary--main-black {
+      .section-title--main-black {
         letter-spacing: -.2rem;
         font-size: 7rem;
         line-height: 6.5rem;
         margin-top: 7rem; } }
-  .section-primary--body {
+  .section-title--body {
     display: block;
     color: #fff;
     width: 100%;
@@ -203,6 +203,17 @@ body {
     letter-spacing: .5px;
     line-height: 4rem;
     letter-spacing: .2px; }
+
+.dashboard-primary--body {
+  display: block;
+  color: #000;
+  width: 100%;
+  font-size: 2.25rem;
+  font-weight: 500;
+  text-align: left;
+  letter-spacing: .5px;
+  line-height: 4rem;
+  letter-spacing: .2px; }
 
 .heading-primary {
   color: #fff;
@@ -483,13 +494,13 @@ body {
 .btn--spot {
   height: 5rem;
   width: 5rem;
-  background-image: linear-gradient(120deg, #55c57a, #1a9960);
+  background-image: linear-gradient(120deg, #20b573, #1a9960);
   border-radius: 4rem;
   margin: 0 auto;
   position: relative;
   cursor: pointer; }
   .btn--spot::after {
-    background-color: #55c57a; }
+    background-color: #20b573; }
 
 .btn--form {
   display: block !important;
@@ -532,15 +543,15 @@ body {
 
 .btn-text:link, .btn-text:visited {
   font-size: 1.6rem;
-  color: #55c57a;
+  color: #20b573;
   display: inline-block;
   text-decoration: none;
-  border-bottom: 1px solid #55c57a;
+  border-bottom: 1px solid #20b573;
   padding: .3rem;
   transition: all .2s; }
 
 .btn-text:hover {
-  background-color: #55c57a;
+  background-color: #20b573;
   color: #fff;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   transform: translateY(-2px); }
@@ -597,7 +608,7 @@ body {
   .form__input:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #55c57a; }
+    border-bottom: 1px solid #20b573; }
   .form__input:focus:invalid {
     border-bottom: 1px solid #ff7730; }
   .form__input::-webkit-input-placeholder {
@@ -622,7 +633,7 @@ body {
   .form__input-sm:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #55c57a; }
+    border-bottom: 1px solid #20b573; }
   .form__input-sm:focus:invalid {
     border-bottom: 1px solid #ff7730; }
   .form__input-sm::-webkit-input-placeholder {
@@ -647,7 +658,7 @@ body {
   .form__input-xs:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #55c57a; }
+    border-bottom: 1px solid #20b573; }
   .form__input-xs:focus:invalid {
     border-bottom: 1px solid #ff7730; }
   .form__input-xs::-webkit-input-placeholder {
@@ -709,7 +720,7 @@ select {
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
-        background-image: linear-gradient(to right bottom, #25abf8, #55c57a); }
+        background-image: linear-gradient(to right bottom, #25abf8, #20b573); }
   .parking-card__button {
     height: 7rem;
     width: 7rem;
@@ -783,7 +794,7 @@ select {
     transform: translate(-50%, -50%);
     padding: 5rem;
     width: 75%;
-    background-image: linear-gradient(to right bottom, #25abf8, #55c57a);
+    background-image: linear-gradient(to right bottom, #25abf8, #20b573);
     box-shadow: 0 2rem 4rem black;
     border-radius: 3px;
     text-align: center; }
@@ -926,19 +937,6 @@ select {
     .header__menu ul {
       list-style: none; }
 
-.section__text-box {
-  padding: 22rem 5rem;
-  text-align: left; }
-  @media only screen and (max-width: 37.5em) {
-    .section__text-box {
-      width: 80%; } }
-
-.section__container {
-  padding-top: 10rem;
-  height: 100%;
-  width: 40rem;
-  margin: 0 auto; }
-
 .header-renter {
   position: relative;
   height: 50rem; }
@@ -1027,8 +1025,46 @@ select {
 
 .section-about {
   height: 70rem;
-  background-image: linear-gradient(180deg, #1a9960, #67bd58);
+  background-image: linear-gradient(180deg, #20b573, #67bd58);
   position: relative; }
+  .section-about__container {
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .section-about__container-flex-vertical-align {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px; }
+  .section-about__container-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .section-about__container-small {
+    position: relative;
+    width: 80%;
+    margin: 0 auto; }
+
+.section__text-box {
+  padding: 22rem 10rem;
+  text-align: left; }
+  @media only screen and (max-width: 37.5em) {
+    .section__text-box {
+      width: 80%; } }
+
+.section__container {
+  padding: 10rem;
+  width: 40rem;
+  margin: 0 auto; }
+
+.section__cta {
+  position: absolute;
+  top: 100%;
+  left: 60%;
+  transform: translate(-50%, -50%); }
 
 .section-dashboard {
   height: 100vh;
@@ -1042,7 +1078,7 @@ select {
   float: left;
   height: 100%;
   width: 20%;
-  background-image: linear-gradient(120deg, #55c57a, #1a9960); }
+  background-image: linear-gradient(120deg, #20b573, #1a9960); }
 
 .dashboard__main {
   width: 80%;
@@ -1052,7 +1088,8 @@ select {
 
 .dashboard__container {
   width: 100%;
-  padding: 3rem; }
+  padding: 3rem;
+  position: relative; }
 
 .dashboard-card {
   position: relative;

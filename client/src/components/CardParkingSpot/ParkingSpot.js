@@ -147,7 +147,7 @@ class CardParkingSpot extends Component {
                                                                             />
                                                                         ) : (
                                                                             <input
-                                                                                className="btn btn--form"
+                                                                                className="parking-card__button"
                                                                                 type="submit"
                                                                                 value=""
                                                                                 onClick={this.handleSubmit}

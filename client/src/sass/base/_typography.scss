@@ -52,7 +52,7 @@ body {
     }
 }
 
-.section-primary {
+.section-title {
     
     /* Shaking animation bug fix */
     backface-visibility: hidden;
@@ -69,7 +69,7 @@ body {
         display: block;
         color: $color-white;
         width: 100%;
-        font-size: 5.25rem;
+        font-size: 4.75rem;
         font-weight: 900;
         text-align: left;
         // letter-spacing: -.4rem;
@@ -114,6 +114,22 @@ body {
     &--body {
         display: block;
         color: $color-white;
+        width: 100%;
+        font-size: 2.25rem;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: .5px;
+        line-height: 4rem;
+        letter-spacing: .2px;
+    }
+}
+
+
+.dashboard-primary {
+
+    &--body {
+        display: block;
+        color: $color-black;
         width: 100%;
         font-size: 2.25rem;
         font-weight: 500;
