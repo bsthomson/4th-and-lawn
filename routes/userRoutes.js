@@ -19,6 +19,7 @@ module.exports = function (app) {
       if (err) {
         console.log("User.js post err: ", err)
       } else if (user) {
+        console.log("Sorry that email's already in use.")
         res.json({
           error: `Sorry, already a user with that email: ${email}`
         })
