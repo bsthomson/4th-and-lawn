@@ -32,25 +32,24 @@ module.exports = function (app) {
           lastname: lastname,
           phonenumber: phonenumber
         })
-          .then( (err, user) => {
-            passport.authenticate('local')(req, res, () => {
+          .then( passport.authenticate('local'), (req, res) => {
               let userInfo = {
                 email: req.user.email,
                 firstname: req.user.firstname
               };
               req.session.user = userInfo.email
               res.send(userInfo)
-            })
-        })
-        .catch( error => {
-          console.log("error: ", error)
-        })
+          })
+          .catch( error => {
+            console.log("error: ", error)
+          })
       }
     })
   })
 
   // Route to post login information to see if they match with User db
   app.post("/login", passportLocal, (req, res) => {
+    console.log(req.body)
     let userInfo = {
       email: req.user.email,
       firstname: req.user.firstname
