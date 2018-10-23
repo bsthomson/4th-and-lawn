@@ -12,19 +12,24 @@ const ParkingSpotSchema = new Schema({
     required: true
   },
   state: {
-    type: String
+    type: String,
+    required: true
   },
   zipcode: {
-    type: String
+    type: String,
+    required: true
   },
   availablespots: {
-    type: Number
+    type: Number,
+    required: true
   },
   instructions: {
-    type: String
+    type: String,
+    required: true
   },
   price: {
-    type: Number
+    type: Number,
+    required: true
   },
   event: [
     {

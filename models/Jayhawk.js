@@ -4,13 +4,16 @@ const Schema = mongoose.Schema;
 
 const JayhawkSchema = new Schema({
   address: {
-    type: String
+    type: String,
+    required: true
   },
   event: {
-    type: String
+    type: String,
+    required: true
   },
   date: {
-    type: Date
+    type: Date,
+    required: true
   }
 });
 
