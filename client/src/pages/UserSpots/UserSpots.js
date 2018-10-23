@@ -52,16 +52,19 @@ class UserSpot extends Component {
         return (
             <div className="section-dashboard">
                 <div className="dashboard__sidebar">
-
                     <div className="dashboard__container">
                         <h1 className="heading-primary">
                             <span className="heading-primary--form-white">Dashboard</span>
                         </h1>
+
+                        <div className="dashboard__sidebar-links">
+                            <p className="dashboard-heading--sidebar"><i className="fas fa-user-circle spot--icon-sidebar"></i>Account</p>
+                            <p className="dashboard-heading--sidebar"><i className="far fa-credit-card spot--icon-sidebar"></i>Payments</p>
+                            <p className="dashboard-heading--sidebar"><i className="fas fa-envelope spot--icon-sidebar"></i>Invite Friends</p>
+                            <p className="dashboard-heading--sidebar"><i className="fas fa-cog spot--icon-sidebar"></i>Settings</p>
+                        </div>
                     </div>
-
                 </div>
-
-                
 
                 <div className="dashboard__main">
                     <div className="row">
@@ -73,62 +76,56 @@ class UserSpot extends Component {
                                     <span className="dashboard-primary--body">These are your listings.</span>
                                 </h1>
 
-                            {/* START */}
-                            {this.state.postedspots.length ? (
-                                <div className="row">
-                                    {this.state.postedspots.map(postedspot => (
-                                            <div className="col-1-of-1" key={postedspot._id}>
-                                                {/* START CARD -> */}
-                                                <div className="dashboard-card">
-                                                    <div className="dashboard-card__container">
-                                                        <div className="row">
+                                <div className="dashboard__section">
+                                    {this.state.postedspots.length ? (
+                                        <div className="row">
+                                            {this.state.postedspots.map(postedspot => (
+                                                <div className="col-1-of-1" key={postedspot._id}>
 
-                                                            <div className="col-1-of-3">
-                                                                <div className="dashboard-card__container-flex-vertical-align">
-                                                                    <p className="spot--address">{postedspot.streetaddress}</p>
-                                                                </div>
-                                                            </div>
+                                                <hr className="dashboard-break" />
 
-                                                            <div className="col-1-of-3">
-                                                                <div className="dashboard-card__container-flex-vertical-align">
-                                                                    <p className="spot--address">{postedspot.event[0]}</p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="col-1-of-3">
-                                                                <div className="dashboard-card__container-flex-vertical-align-icon">
-                                                                    <Link to={"/rentthisspot/" + postedspot._id}>
-                                                                        <div className="btn btn--spot" >
-                                                                            <i class="fas fa-home spot--icon"></i>
-                                                                        </div>
-                                                                    </Link>
-                                                                </div> 
-                                                                <div className="dashboard-card__container-flex-vertical-align-icon">
-                                                                    <div className="btn btn--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
-                                                                        <i class="fas fa-trash-alt spot--icon"></i>
-                                                                    </div>
-                                                                    {/* <Popup trigger={<span className="navigation__link">Sign up</span>}>
-                                                                        <div className="modal">
-                                                                            Test
-                                                                        </div>
-                                                                    </Popup> */}
-                                                                </div>                          
-                                                            </div>
-
+                                                        <div className="col-1-of-3">
+                                                            <div className="listing-container">
+                                                                <p className="dashboard-heading--value">{postedspot.streetaddress}</p>
+                                                            </div>         
                                                         </div>
 
-                                                    </div>
+                                                        <div className="col-1-of-3">
+                                                            <div className="listing-container">
+                                                                <p className="dashboard-heading--value">{postedspot.event[0]}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="col-1-of-3">
+                                                            <div className="listing-container">
+
+                                                                <Link to={"/rentthisspot/" + postedspot._id}>
+                                                                    <div className="dashboard-card__button dashboard-card__button--link" >
+                                                                        <span className="spot--test"><i class="fas fa-home spot--icon"></i></span>
+                                                                    </div>
+                                                                </Link>
+
+                                                                <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
+                                                                    <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
+                                                                </div>
+
+                                                            </div>         
+                                                        </div>
+
+                                                        
+
                                                 </div>
-                                                {/* ^ END CARD ^ */}
+                                                
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="dashboard__container-absolute">
+                                            <h3>No Results to Display</h3>
+                                        </div>
+                                    )}
 
-                                            </div>
-                                    ))}
+                            
                                 </div>
-
-                            ) : (
-                            <h3>No Results to Display</h3>
-                            )}
-                            {/* END */}
                             </div>
                         </div>
 

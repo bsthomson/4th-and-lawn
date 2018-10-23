@@ -31,7 +31,7 @@
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(6rem); }
+    transform: translateY(30rem); }
   100% {
     opacity: 1;
     transform: translate(0); } }
@@ -132,23 +132,23 @@ body {
   @media only screen and (max-width: 37.5em) {
     .header-primary {
       width: 100%;
-      top: 10rem;
-      left: 6rem; } }
+      top: 8rem;
+      left: 5rem; } }
   .header-primary--main {
     display: block;
     width: 100%;
     font-size: 6.25rem;
     font-weight: 900;
     text-align: left;
-    animation: moveInTop 1.5s ease-out .75s;
+    animation: moveInTop 1.5s ease-out 1s;
     animation-fill-mode: backwards;
     line-height: 6.75rem;
     letter-spacing: .2px; }
     @media only screen and (max-width: 37.5em) {
       .header-primary--main {
         letter-spacing: -.2rem;
-        font-size: 7rem;
-        line-height: 6.5rem;
+        font-size: 6rem;
+        line-height: 5.5rem;
         margin-top: .75rem; } }
 
 .section-title {
@@ -156,11 +156,6 @@ body {
   backface-visibility: hidden;
   width: 100%;
   margin-bottom: 2.25rem; }
-  @media only screen and (max-width: 37.5em) {
-    .section-title {
-      width: 100%;
-      top: 2rem;
-      left: 6rem; } }
   .section-title--main {
     display: block;
     color: #fff;
@@ -173,8 +168,8 @@ body {
     margin-bottom: 1rem; }
     @media only screen and (max-width: 37.5em) {
       .section-title--main {
-        letter-spacing: -.2rem;
-        font-size: 7rem;
+        letter-spacing: 0;
+        font-size: 4.5rem;
         line-height: 6.5rem;
         margin-top: 7rem; } }
   .section-title--main-black {
@@ -250,7 +245,8 @@ body {
     font-weight: 900;
     line-height: 3.5rem;
     letter-spacing: 0px;
-    color: #fff; }
+    color: #fff;
+    text-align: left; }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--form-white {
         letter-spacing: -.2rem;
@@ -325,6 +321,47 @@ body {
 .spot-container {
   padding: 2rem 0; }
 
+.card-heading--address {
+  font-size: 1.5rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center; }
+
+.card-heading--detail-title {
+  font-size: 1rem;
+  letter-spacing: .1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: #999; }
+
+.card-heading--detail-value {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: #000;
+  font-weight: bold; }
+
+.dashboard-heading--value {
+  font-size: 1.25rem;
+  margin-top: .75rem;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center; }
+
+.dashboard-heading--sidebar {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: left; }
+
 .spot {
   color: #000;
   text-transform: uppercase;
@@ -346,18 +383,25 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    z-index: 9999; }
+    z-index: 2000; }
   .spot--icon {
     font-size: 1.5rem;
     letter-spacing: .1rem;
     text-align: center;
     font-weight: bold;
     position: absolute;
-    top: 48%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    z-index: 9999; }
+    z-index: 3000; }
+  .spot--icon-sidebar {
+    font-size: 1.75rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 2rem;
+    opacity: .5; }
   .spot--test {
     font-size: 1.5rem;
     letter-spacing: .1rem;
@@ -414,13 +458,6 @@ body {
     font-size: 1.3rem;
     color: #000;
     font-weight: normal; }
-
-.form-break {
-  height: 1px;
-  background-color: #eee;
-  border: 0;
-  width: 250px;
-  margin: 3rem auto; }
 
 .u-center-text {
   text-align: center !important; }
@@ -488,24 +525,32 @@ body {
   .btn--main::after {
     background-color: #cf1f1f; }
 
+.btn--card {
+  display: block !important;
+  width: 20rem;
+  background-color: #fff;
+  color: #cf1f1f;
+  font-weight: 500;
+  border-radius: 5rem;
+  letter-spacing: .5px;
+  margin: 0 auto; }
+  .btn--card::after {
+    background-color: #fff; }
+
 .btn--delete {
-  height: 5rem;
-  width: 5rem;
+  height: 3.5rem;
+  width: 3.5rem;
   background-image: linear-gradient(120deg, #cf1f1f, #b80b0b);
   border-radius: 4rem;
-  margin: 0 auto;
-  position: relative;
   cursor: pointer; }
   .btn--delete::after {
     background-color: #cf1f1f; }
 
 .btn--spot {
-  height: 5rem;
-  width: 5rem;
-  background-image: linear-gradient(120deg, #20b573, #1a9960);
+  height: 3.5rem;
+  width: 3.5rem;
+  background-image: linear-gradient(120deg, #20b573, #147549);
   border-radius: 4rem;
-  margin: 0 auto;
-  position: relative;
   cursor: pointer; }
   .btn--spot::after {
     background-color: #20b573; }
@@ -581,7 +626,7 @@ body {
     font-size: 6rem;
     margin-bottom: .5rem;
     display: inline-block;
-    background-image: linear-gradient(to right, #67bd58, #1a9960);
+    background-image: linear-gradient(to right, #16d37e, #147549);
     -webkit-background-clip: text;
     color: transparent; }
   .feature-box:hover {
@@ -594,7 +639,7 @@ body {
   left: 10%;
   top: 4rem;
   padding: 3rem;
-  border-radius: 6px;
+  border-radius: .6rem;
   box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
 
 .form__filter-container {
@@ -697,7 +742,18 @@ body {
   transform: translateY(-4rem); }
 
 select {
-  height: 4.5rem; }
+  height: 4.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.25rem !important;
+  font-weight: bold; }
+
+.form-break {
+  height: 1px;
+  background-color: #eee;
+  border: 0;
+  width: 250px;
+  margin: 3rem auto; }
 
 .errorMsg {
   color: #cc0000;
@@ -718,18 +774,18 @@ select {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 43rem;
+  height: 47rem;
   margin-bottom: 3rem; }
   .parking-card__side {
     font-size: 2rem;
-    height: 43rem;
+    height: 47rem;
     transition: all .8s ease;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     backface-visibility: hidden;
-    border-radius: 2rem;
+    border-radius: .6rem;
     overflow: hidden;
     box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
     .parking-card__side--front {
@@ -737,32 +793,27 @@ select {
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
-        background-image: linear-gradient(to right bottom, #25abf8, #20b573); }
-  .parking-card__button-price {
-    height: 7rem;
-    width: 7rem;
-    background-image: linear-gradient(120deg, #20b573, #1a9960);
-    border-radius: 4rem;
-    margin: 0 auto;
-    position: relative; }
-  .parking-card__button-spot {
-    height: 7rem;
-    width: 7rem;
-    background-image: linear-gradient(120deg, #e70d0d, #b80b0b);
-    border-radius: 4rem;
-    margin: 0 auto;
-    position: relative; }
-  .parking-card__button-rent {
-    height: 7rem;
-    width: 7rem;
-    background-image: linear-gradient(120deg, #ffb900, #ff7730);
-    border-radius: 4rem;
-    margin: 0 auto;
-    position: relative; }
+        background-image: linear-gradient(to right bottom, #25abf8, #005a8f); }
+  .parking-card__address {
+    width: 100%;
+    padding: 2rem;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 75%; }
+  .parking-card__details {
+    width: 100%;
+    padding: 2rem;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 10%; }
+  .parking-card:hover .parking-card__side--front {
+    transform: rotateY(-180deg); }
+  .parking-card:hover .parking-card__side--back {
+    transform: rotateX(0); }
   .parking-card__button {
-    height: 7rem;
-    width: 7rem;
-    background-image: linear-gradient(120deg, #20b573, #1a9960);
+    height: 3.5rem;
+    width: 3.5rem;
+    background-image: linear-gradient(120deg, #b80b0b, #e70d0d);
     border-radius: 4rem;
     margin: 0 auto;
     position: relative; }
@@ -774,7 +825,7 @@ select {
     float: left;
     width: 100%;
     height: 4rem;
-    background-image: linear-gradient(120deg, #20b573, #1a9960); }
+    background-image: linear-gradient(120deg, #20b573, #147549); }
   .parking-card__picture {
     float: left;
     width: 100%;
@@ -785,11 +836,6 @@ select {
       background-size: cover;
       background-position: bottom;
       background-color: #eee; }
-  .parking-card__details {
-    width: 100%;
-    float: left;
-    padding: 2rem;
-    text-transform: uppercase; }
   .parking-card__cta {
     position: absolute;
     top: 50%;
@@ -797,6 +843,13 @@ select {
     transform: translate(-50%, -50%);
     width: 90%;
     text-align: center; }
+
+.card-break {
+  height: 1px;
+  background-color: #eee;
+  border: 0;
+  width: 250px;
+  margin: 3rem auto; }
 
 .popup {
   height: 100vh;
@@ -880,7 +933,10 @@ select {
         width: 100% !important;
         float: none; } }
   .row .col-1-of-1 {
-    width: calc((100% - 2rem)); }
+    width: calc((100%)); }
+    .row .col-1-of-1:nth-child(1n) {
+      margin-right: 0;
+      margin: 0 auto; }
   .row .col-1-of-2 {
     width: calc((100% - 2rem) / 2); }
   .row .col-1-of-3 {
@@ -928,6 +984,24 @@ select {
       .parking-container .col-1-of-3 {
         width: 100% !important;
         margin: 0 auto !important; } }
+  .parking-container .col-1-of-4 {
+    width: calc((100% - 2 * 2rem) / 4); }
+    .parking-container .col-1-of-4:nth-child(4n) {
+      margin-right: 0; }
+    @media (max-width: 75em) {
+      .parking-container .col-1-of-4 {
+        width: calc((100% - 2 * 2rem) / 3); }
+        .parking-container .col-1-of-4:nth-child(3n) {
+          margin-right: 0; } }
+    @media (max-width: 56.25em) {
+      .parking-container .col-1-of-4 {
+        width: calc((100% - 2rem) / 2); }
+        .parking-container .col-1-of-4:nth-child(2n) {
+          margin-right: 0; } }
+    @media only screen and (max-width: 37.5em) {
+      .parking-container .col-1-of-4 {
+        width: 100% !important;
+        margin: 0 auto !important; } }
 
 .header {
   height: 80rem;
@@ -936,7 +1010,6 @@ select {
   background-position: left center;
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 3000;
   position: relative; }
   @media only screen and (max-width: 37.5em) {
     .header {
@@ -952,8 +1025,7 @@ select {
     height: 3.5rem; }
   .header__text-box {
     position: relative;
-    width: 60%;
-    z-index: 1000; }
+    width: 60%; }
     @media only screen and (max-width: 37.5em) {
       .header__text-box {
         width: 80%; } }
@@ -1052,18 +1124,9 @@ select {
     .navigation__link:hover, .navigation__link:active {
       border-bottom: 3px solid #cf1f1f; }
 
-.section-home {
-  height: 85vh;
-  min-height: 60rem;
-  background-image: url(img/background.jpg);
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 0; }
-
 .section-about {
   height: 70rem;
-  background-image: linear-gradient(180deg, #20b573, #67bd58);
+  background-image: linear-gradient(180deg, #20b573, #16d37e);
   position: relative; }
   .section-about__container {
     width: 75%;
@@ -1083,7 +1146,7 @@ select {
     transform: translate(-50%, -50%); }
   .section-about__container-small {
     position: relative;
-    width: 80%;
+    width: 70%;
     margin: 0 auto; }
 
 .section__text-box {
@@ -1115,8 +1178,14 @@ select {
 .dashboard__sidebar {
   float: left;
   height: 100%;
-  width: 20%;
-  background-image: linear-gradient(120deg, #20b573, #1a9960); }
+  width: 17%;
+  background-image: linear-gradient(180deg, #20b573, #147549); }
+
+.dashboard__sidebar-links {
+  float: left;
+  height: 20rem;
+  width: 100%;
+  padding-top: 2rem; }
 
 .dashboard__main {
   width: 80%;
@@ -1129,60 +1198,61 @@ select {
   padding: 3rem;
   position: relative; }
 
+.dashboard__section {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  border-radius: 1rem;
+  min-height: 8rem;
+  box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
+
+.dashboard__container-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 .dashboard-card {
   position: relative;
-  height: 10rem;
+  height: 9rem;
   margin-bottom: 1rem;
   background-color: #fff;
   border-radius: 1rem;
-  box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
+  border: 1px solid black;
+  margin: 0 auto; }
   .dashboard-card__container {
     width: 100%;
-    padding: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-  .dashboard-card__container-flex-vertical-align-icon {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 400px;
-    float: right;
-    padding: 0 1rem; }
-  .dashboard-card__container-flex-vertical-align {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 400px;
-    float: left;
-    text-align: left;
-    padding: 0 1rem; }
-  .dashboard-card__button {
-    height: 7rem;
-    width: 7rem;
-    background-color: #000;
-    border-radius: 4rem;
-    margin: 0 auto;
     position: relative; }
-  .dashboard-card__link {
+  .dashboard-card__button {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 4rem;
+    margin: 0 1rem;
     position: relative;
-    float: right;
-    padding: 0 1rem;
-    background-color: transparent; }
-  .dashboard-card__value {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    float: left; }
-  .dashboard-card__cta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    text-align: center; }
+    display: inline-block;
+    cursor: pointer; }
+    .dashboard-card__button--delete {
+      background-image: linear-gradient(120deg, #b80b0b, #e70d0d); }
+    .dashboard-card__button--link {
+      background-image: linear-gradient(120deg, #20b573, #147549); }
+    .dashboard-card__button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
+      /* x, y, blur */ }
+    .dashboard-card__button:active, .dashboard-card__button:focus {
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: 0 0.5rem 1rem rgba(48, 48, 48, 0.15); }
+
+.listing-container {
+  padding: 2rem 0;
+  text-align: center; }
+
+.dashboard-break {
+  height: 1px;
+  background-color: #eee;
+  border: 0;
+  width: 100%; }
 
 .section-parking {
   padding: 3rem;

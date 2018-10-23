@@ -1,6 +1,7 @@
 
 .form {
 
+
     &__container {
         width: 40rem;
         background-color: $color-white;
@@ -8,7 +9,7 @@
         left: 10%;
         top: 4rem;
         padding: 3rem;
-        border-radius: 6px;
+        border-radius: .6rem;
         box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
     }
 
@@ -145,6 +146,18 @@
 
 select {
     height: 4.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.25rem !important;
+    font-weight: bold;
+}
+
+.form-break {
+    height: 1px;
+    background-color: $color-grey-light-2;
+    border: 0;
+    width: 250px;
+    margin: 3rem auto;
 }
 
 .errorMsg {

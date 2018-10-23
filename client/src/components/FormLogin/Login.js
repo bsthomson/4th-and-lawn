@@ -89,7 +89,7 @@ class LoginForm extends Component {
 							onClick={this.handleSubmit}
 						/>
 
-						<hr className="form-break" />
+						<hr className="form-break"/>
 
 						<div className="heading-form">
 							<span className="heading-form--text">Don't have an account? Sign up</span>

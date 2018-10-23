@@ -92,80 +92,102 @@ class CardParkingSpot extends Component {
                     {this.state.gameday.length ? (
                         <div className="parking-container">
                             {this.state.gameday.map(parkingspot => (
-                                    <div className="col-1-of-3" key={parkingspot._id}>
+                                    <div className="col-1-of-4" key={parkingspot._id}>
                                         <div className="parking-card">
                                             <div className="parking-card__side parking-card__side--front">
         
-                                                <div className="parking-card__banner">
+                                                {/* <div className="parking-card__banner">
                                                     <p className="spot--banner">{parkingspot.event[0].event}</p>
-                                                </div>
+                                                </div> */}
         
-                                                <div className="parking-card__picture">
+                                                {/* <div className="parking-card__picture">
                                                     <div className="parking-card__picture--1">&nbsp;</div>
+                                                </div> */}
+
+                                                <div className="parking-card__address">
+                                                    <div className="row-container">
+                                                        <div className="col-1-of-1">
+                                                            <p className="card-heading--address">{parkingspot.streetaddress}</p>
+                                                            <p className="card-heading--detail-title">Lawrence, KS</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
         
                                                 <div className="parking-card__details">
-                                                    <div className="row-container">
-                                                        <div className="col-1-of-1">
-                                                            <p className="spot--address">
-                                                                {parkingspot.streetaddress}
-                                                            </p>
-                                                        </div>
-                                                    </div>
+
+                                                    
+                                                    
                                                     <div className="row">
+
                                                         <div className="col-1-of-3">
                                                             <div className="spot-container">
-                                                                <p className="spot--title">Price</p>
-                                                                <div className="parking-card__button-price">
-                                                                    <span className="spot--test">${parkingspot.price}</span>
+                                                                
+                                                                <div className="parking-card__button">
+                                                                    <span className="spot--test"><i className="fas fa-dollar-sign spot--icon"></i></span>
                                                                 </div>
+                                                                <p className="card-heading--detail-title">Price</p>
+                                                                <p className="card-heading--detail-value">{parkingspot.price}</p>
                                                             </div>         
                                                         </div>
+
                                                         <div className="col-1-of-3">
-                                                            {/* <p className="spot--address">
-                                                                {parkingspot.address}
-                                                            </p> */}
                                                             <div className="spot-container">
-                                                                <p className="spot--title">Spots</p>
-                                                                <div className="parking-card__button-spot">
-                                                                    <span className="spot--test">{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "FULL"}</span>
+                                                                
+                                                                <div className="parking-card__button">
+                                                                <span className="spot--test"><i className="fas fa-map-marker-alt spot--icon"></i></span>
+                                                                    {/* <span className="spot--test">{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "FULL"}</span> */}
                                                                 </div>
+                                                                <p className="card-heading--detail-title">Distance</p>
+                                                                <p className="card-heading--detail-value">N/A</p>
                                                             </div>
                                                         </div>
+
                                                         <div className="col-1-of-3">
                                                             <div className="spot-container">
-                                                            <p className="spot--title">Rent</p>
-                                                                <div className="parking-card__link">
-                                                                    <Link to={"/rentthisspot/" + parkingspot._id}>
-                                                                        <i className="fas fa-car spot--value"></i>
+                                                                
+                                                                <div className="parking-card__button">
+                                                                    <span className="spot--test"><i className="fas fa-car spot--icon"></i></span>
+                                                                </div>
+                                                                <p className="card-heading--detail-title">Spots</p>
+                                                                <p className="card-heading--detail-value">3</p>
+                                                            </div>         
+                                                        </div>
+
+                                                        
+
+                                                    </div>
+
+                                                    <hr className="card-break"></hr>
+
+                                                </div>
+                                            </div>
+                                            {/* ^ END OF FRONT ^ */}
+
+                                            <div className="parking-card__side parking-card__side--back parking-card__side--back-1">
+                                                <div className="parking-card__cta">
+                                                <Link to={"/rentthisspot/" + parkingspot._id}>
                                                                         {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                             <input
-                                                                                className="parking-card__button-rent"
+                                                                                className="btn btn--rent"
                                                                                 type="submit"
-                                                                                value=""
+                                                                                value="View"
                                                                                 onClick={this.handleSubmit}
                                                                             />
                                                                         ) : (
                                                                             <input
-                                                                                className="parking-card__button-rent"
+                                                                                className="btn btn--rent"
                                                                                 type="submit"
-                                                                                value=""
+                                                                                value="Sold out"
                                                                                 onClick={this.handleSubmit}
                                                                                 disabled
                                                                             />
                                                                         )
                                                                         }
                                                                     </Link>
-                                                                </div>
-                                                                    
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                        {/* ^ END OF CARD ^ */}
                                     </div>
                             ))}
                         </div>

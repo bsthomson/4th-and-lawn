@@ -26,8 +26,8 @@ body {
 
     @include breakpoint(phone) {
         width: 100%;
-        top: 10rem;
-        left: 6rem;
+        top: 8rem;
+        left: 5rem;
     }
 
     &--main {
@@ -37,15 +37,15 @@ body {
         font-weight: 900;
         text-align: left;
         // letter-spacing: -.4rem;
-        animation: moveInTop 1.5s ease-out .75s;
+        animation: moveInTop 1.5s ease-out 1s;
         animation-fill-mode: backwards;
         line-height: 6.75rem;
         letter-spacing: .2px;
 
         @include breakpoint(phone) {
             letter-spacing: -.2rem;
-            font-size: 7rem;
-            line-height: 6.5rem;
+            font-size: 6rem;
+            line-height: 5.5rem;
             margin-top: .75rem;
             // text-align: center;
         }
@@ -58,12 +58,6 @@ body {
     backface-visibility: hidden;
     width: 100%;
     margin-bottom: 2.25rem;
-
-    @include breakpoint(phone) {
-        width: 100%;
-        top: 2rem;
-        left: 6rem;
-    }
 
     &--main {
         display: block;
@@ -80,8 +74,8 @@ body {
         margin-bottom: 1rem;
 
         @include breakpoint(phone) {
-            letter-spacing: -.2rem;
-            font-size: 7rem;
+            letter-spacing: 0;
+            font-size: 4.5rem;
             line-height: 6.5rem;
             margin-top: 7rem;
             // text-align: center;
@@ -185,6 +179,7 @@ body {
         line-height: 3.5rem;
         letter-spacing: 0px;
         color: $color-white;
+        text-align: left;
 
         @include breakpoint(phone) {
             letter-spacing: -.2rem;
@@ -276,6 +271,61 @@ body {
 .spot-container {
     padding: 2rem 0;
 }
+
+.card-heading {
+
+    &--address {
+        font-size: 1.5rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &--detail-title {
+        font-size: 1rem;
+        letter-spacing: .1rem;
+        line-height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+        color: $color-grey-dark-2;
+    }
+
+    &--detail-value {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+        color: $color-black;
+        font-weight: bold;
+    }
+
+}
+
+.dashboard-heading {
+
+    &--value {
+        font-size: 1.25rem;
+        margin-top: .75rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &--sidebar {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        color: $color-white;
+        // text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
 .spot {
     color: $color-black;
     text-transform: uppercase;
@@ -302,7 +352,7 @@ body {
         left: 50%;
         transform: translate(-50%, -50%);
         color: $color-white;
-        z-index: 9999;
+        z-index: 2000;
     }
 
     &--icon {
@@ -311,11 +361,20 @@ body {
         text-align: center;
         font-weight: bold;
         position: absolute;
-        top: 48%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: $color-white;
-        z-index: 9999;
+        z-index: 3000;
+    }
+
+    &--icon-sidebar {
+        font-size: 1.75rem;
+        letter-spacing: .1rem;
+        font-weight: bold;
+        color: $color-white;
+        margin-right: 2rem;
+        opacity: .5;
     }
 
     &--test {
@@ -395,12 +454,4 @@ body {
         font-weight: normal;
         
     }
-}
-
-.form-break {
-    height: 1px;
-    background-color: $color-grey-light-2;
-    border: 0;
-    width: 250px;
-    margin: 3rem auto;
 }

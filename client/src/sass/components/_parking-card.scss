@@ -3,105 +3,81 @@
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
-    height: 43rem;
+    height: 47rem;
     margin-bottom: 3rem;
 
     &__side {
         font-size: 2rem;
-        height: 43rem;
+        height: 47rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         backface-visibility: hidden;
-        border-radius: $card-border-radius;
+        border-radius: .6rem;
         overflow: hidden;
         box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
 
+        // &:hover {
+        //     background-image: linear-gradient(
+        //         to right bottom,
+        //         rgba($color-primary-light, 0.8), 
+        //         rgba($color-primary-dark, 0.8)), 
+        //         url(img/jayhawk.png);
+            
+        // }
+
         &--front {
             background-color: $color-white;
-            // background-image: url(img/card-background.png);
-            // background-position: bottom;
-            // background-size: contain;
-            // background-repeat: no-repeat;
-            // background-image: linear-gradient(
-            // 120deg,
-            // $color-primary-light,
-            // $color-primary-dark
-            // );
         }
     
         &--back {
             transform: rotateY(180deg);
 
             &-1 {
-                background-image: linear-gradient(to right bottom, $color-blue-light, $color-primary);
+                background-image: linear-gradient(to right bottom, $color-blue-light, $color-blue-dark);
             }
 
         }
     }
 
-    // &:hover &__side--front {
-    //     transform: rotateY(-180deg);
-    // }
+    &__address {
+        width: 100%;
+        // float: left;
+        padding: 2rem;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 75%;
+    }
 
-    // &:hover &__side--back {
-    //     transform: rotateX(0);
-    // }
+    &__details {
+        width: 100%;
+        // float: left;
+        padding: 2rem;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 10%;
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateX(0);
+    }
 
     // Front-side styling
 
-    &__button-price {
-        height: 7rem;
-        width: 7rem;
-        // background-color: $color-black;
-        background-image: linear-gradient(
-            120deg,
-            $color-primary,
-            $color-primary-dark
-        );
-        border-radius: 4rem;
-        margin: 0 auto;
-        position: relative;
-    }
-
-    &__button-spot {
-        height: 7rem;
-        width: 7rem;
-        // background-color: $color-black;
-        background-image: linear-gradient(
-            120deg,
-            $color-red-light,
-            $color-red-dark
-        );
-        border-radius: 4rem;
-        margin: 0 auto;
-        position: relative;
-    }
-
-    &__button-rent {
-        height: 7rem;
-        width: 7rem;
-        // background-color: $color-black;
-        background-image: linear-gradient(
-            120deg,
-            $color-secondary-light,
-            $color-secondary-dark
-        );
-        border-radius: 4rem;
-        margin: 0 auto;
-        position: relative;
-    }
-
     &__button {
-        height: 7rem;
-        width: 7rem;
+        height: 3.5rem;
+        width: 3.5rem;
         // background-color: $color-black;
         background-image: linear-gradient(
             120deg,
-            $color-primary,
-            $color-primary-dark
+            $color-red-dark,
+            $color-red-light
         );
         border-radius: 4rem;
         margin: 0 auto;
@@ -140,12 +116,7 @@
         }
     }
 
-    &__details {
-        width: 100%;
-        float: left;
-        padding: 2rem;
-        text-transform: uppercase;
-    }
+ 
 
     // Back-side styling
     &__cta {
@@ -156,4 +127,12 @@
         width: 90%;
         text-align: center;
     }
+}
+
+.card-break {
+    height: 1px;
+    background-color: $color-grey-light-2;
+    border: 0;
+    width: 250px;
+    margin: 3rem auto;
 }

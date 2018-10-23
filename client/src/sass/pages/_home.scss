@@ -1,11 +1,5 @@
 .section-home {
-    height: 85vh;
-    min-height: 60rem;
-    background-image: url(img/background.jpg);
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 0;
+    // transition: 1s ease-out;
 }
 
 .section-about {
@@ -28,7 +22,6 @@
         justify-content: center;
         flex-direction: column;
         height: 400px;
-        
     }
 
     &__container-absolute {
@@ -37,7 +30,7 @@
 
     &__container-small {
         position: relative;
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
     }
 

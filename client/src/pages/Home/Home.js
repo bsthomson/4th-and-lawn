@@ -32,7 +32,7 @@ class Home extends Component {
     render() {
 
         return (
-            <div>
+            <div className="section-home">
                 {this.props.loggedIn ? (
                     <div>
                     <section className="header">

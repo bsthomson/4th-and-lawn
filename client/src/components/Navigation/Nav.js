@@ -27,7 +27,6 @@ class Navbar extends Component {
             console.log('Logout Error')
         })
     }
-    
 
     render() {
 

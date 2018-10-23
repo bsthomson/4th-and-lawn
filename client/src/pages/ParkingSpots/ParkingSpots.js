@@ -54,16 +54,7 @@ class ParkingSpots extends Component {
              {/* <div className="page-transition background-test"></div> */}
 
                 <div className="row">
-
                     <div className="col-1-of-2">
-                        <h1 className="heading-primary">
-                            <span className="heading-primary--form">Parking spots</span>
-                            <span className="dashboard-primary--body">These are your listings.</span>
-                        </h1>
-                    </div>
-
-                    <div className="col-1-of-2">
-
                         <form>
                             <div className="form__filter-container" id="events">                        
                                 {this.state.events.length ? (                    
@@ -95,13 +86,19 @@ class ParkingSpots extends Component {
                                 )}
                             </div>   
                         </form>
-
                     </div>
 
+                    <div className="col-1-of-2">
+                        {/* <div className="col-1-of-2">
+                            <h1 className="heading-primary">
+                                <span className="heading-primary--form">Parking spots</span>
+                                <span className="dashboard-primary--body">These are your listings.</span>
+                            </h1>
+                        </div> */}
+                    </div>
                 </div>
-
                 
-              <CardParkingSpot game={this.state.game}/>
+                <CardParkingSpot game={this.state.game}/>
             </section>
         );
     }
