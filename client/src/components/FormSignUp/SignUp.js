@@ -40,7 +40,7 @@ class Signup extends Component {
 		})
 			.then(response => {
 				console.log(response)
-				if (response.status === 200) {
+				if (response.data.email) {
 					this.props.updateUser({
 						loggedIn: true,
 						email: response.data.email,
@@ -52,7 +52,7 @@ class Signup extends Component {
 					})
 					console.log(this.state)
 				} else {
-					console.log('email address already taken')
+					console.log(response.data.error)
 				}
 			}).catch(error => {
 				console.log('signup error: ')
