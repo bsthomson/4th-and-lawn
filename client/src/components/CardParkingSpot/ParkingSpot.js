@@ -11,7 +11,7 @@ function getGeocode(address){
     return Geocode.fromAddress(address)
         .then( response => {
             const { lat, lng } = response.results[0].geometry.location;
-            return {lat: lat, lng:lng};
+            return {lat: lat, lng: lng};
         })
         .catch(error => console.log(error))
 }
@@ -30,8 +30,6 @@ class CardParkingSpot extends Component {
     }
 
     componentDidUpdate() {
-        console.log(this.state)
-        console.log(this.props.game)
         if (this.props.game !== this.state.game) {
         this.selectDates();
         }
@@ -43,6 +41,7 @@ class CardParkingSpot extends Component {
             console.log(response);
             const spots = response.data;
             const geocodes = [];
+            console.log(geocodes)
             spots.forEach(spot=>{
                 spot.address = `${spot.streetaddress}, ${spot.city}, ${spot.state} ${spot.zipcode}`;
                 geocodes.push(getGeocode(spot.address));
