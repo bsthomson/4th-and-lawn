@@ -16,7 +16,6 @@ class Home extends Component {
       }
 
     componentDidMount() {
-        console.log("********",this.props.loggedIn);
         if (this.props.loggedIn === false) {
             this.setState({
                 loggedIn: false

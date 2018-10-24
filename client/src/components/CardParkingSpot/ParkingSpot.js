@@ -8,14 +8,12 @@ Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 
 function getGeocode(address){
     console.log(address);
-    return Geocode.fromAddress(address).then(
-        response => {
-            console.log(response)
+    return Geocode.fromAddress(address)
+        .then( response => {
             const { lat, lng } = response.results[0].geometry.location;
             return {lat: lat, lng:lng};
-        },
-        error => console.error
-    );
+        })
+        .catch(error => console.log(error))
 }
 
 class CardParkingSpot extends Component {
@@ -23,7 +21,7 @@ class CardParkingSpot extends Component {
     state = {
             parkingspots: [],
             gameday: [],
-            game: ''
+            game: this.props.game
         };
     
 
@@ -32,6 +30,7 @@ class CardParkingSpot extends Component {
     }
 
     componentDidUpdate() {
+        console.log(this.state)
         console.log(this.props.game)
         if (this.props.game !== this.state.game) {
         this.selectDates();
@@ -58,12 +57,14 @@ class CardParkingSpot extends Component {
                     spot.lat = lat;
                     spot.lng = lng;
                 })
-            }).then(()=>{
+            })
+            .then(()=>{
                 this.setState({ 
                     parkingspots: spots,
                     gameday: response.data
                 });
             })
+            .catch( err => console.log(err))
 
             
         })
