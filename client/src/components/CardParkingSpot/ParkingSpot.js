@@ -173,7 +173,7 @@ class CardParkingSpot extends Component {
                 ) : (
                 <h3>No Results to Display</h3>
                 )}
-                <div><GoogleMap markers={this.state.parkingspots}/></div>
+                {<div><GoogleMap markers={this.state.parkingspots}/></div>}
             </div>
     
         )

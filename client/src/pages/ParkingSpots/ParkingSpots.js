@@ -3,6 +3,8 @@ import './../../App.css';
 import API from "./../../utils/API";
 import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
 import moment from "moment";
+import GoogleMap from "./../../components/GoogleMap/GoogleMap";
+
 
 class ParkingSpots extends Component {
     state = {
@@ -93,6 +95,7 @@ class ParkingSpots extends Component {
                 </form>
                 <CardParkingSpot game={this.state.game}/>
             </section>
+
         );
     }
 }
