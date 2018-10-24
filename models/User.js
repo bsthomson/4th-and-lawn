@@ -42,13 +42,13 @@ const UserSchema = new Schema({
   rentinfo: [
     {
       type: Schema.Types.ObjectId,
-      ref: "RentInfo"
+      ref: "Renter"
     }
   ],
   rentedspots: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Renter"
+      ref: "ParkingSpot"
     }
   ],
   parkingspots: [
