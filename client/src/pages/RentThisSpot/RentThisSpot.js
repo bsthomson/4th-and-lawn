@@ -27,10 +27,6 @@ class RentThisSpot extends Component {
         this.getParkingSpot();
     }
 
-    componentDidUpdate() {
-        console.log(this.state)
-    }
-
     getParkingSpot = () => {
         axios.get("/api/" + window.location.pathname)
         .then(response => {
