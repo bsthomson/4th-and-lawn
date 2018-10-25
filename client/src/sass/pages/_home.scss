@@ -1,10 +1,11 @@
 .section-home {
     // transition: 1s ease-out;
+    height: 100%;
 }
 
 .section-about {
-    height: 70rem;
     // background-color: $color-primary-dark;
+    height: 70rem;
     background-image: linear-gradient(
         180deg,
         $color-primary,

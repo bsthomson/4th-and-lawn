@@ -1,34 +1,123 @@
 .navigation {
-    position: relative;
-    display: fixed;
-    width: 100%;
-    height: 80px;
-    background-color: $color-white;
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+
+        @include breakpoint(tab-port) {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            background-color: $color-white;
+            height: 4rem;
+            width: 4rem;
+            position: fixed;
+            top: 5rem;
+            right: 5rem;
+            border-radius: 50%;
+            z-index: 5000;
+            box-shadow: 0 1rem 3rem rgba($color-black, .1);
+            text-align: center;
+            cursor: pointer;
+        }
+            
+        @include breakpoint(phone) {
+            height: 5rem;
+            width: 5rem;
+            top: 4rem;
+            right: 4rem;
+        }
+    }
+
+    &__background {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+
+        @include breakpoint(tab-port) {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            position: fixed;
+            top: 5rem;
+            right: 5rem;
+            background-image: linear-gradient(to right, $color-primary, $color-primary-dark);
+            z-index: 4000;
+            transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+
+        @include breakpoint(phone) {
+            height: 5rem;
+            width: 5rem;
+            top: 4rem;
+            right: 4rem;
+        }
+    }
 
     &__nav { 
-        position: absolute;
-        padding: 2rem 2rem;
-        margin-bottom: 4rem;
-        top: 0;
-        right: 0;
-        width: 500px;
-        // margin-right: -41.5%;
+        position: relative;
+        width: 100%;
+        height: 80px;
+        padding: 4rem;
+        background-color: transparent;
+        z-index: 4000;
+
+        // position: absolute;
+        // padding: 2rem 2rem;
+        // margin-bottom: 4rem;
+        // top: 0;
+        // right: 0;
+        // width: 500px;
+
+        @include breakpoint(tab-port) {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 4000;
+            opacity: 0;
+            width: 0;
+            transition: all .8s;
+        }
+
     }
 
     &__list {
-        text-align: center;
+        text-align: right;
         list-style: none;
         width: 100%;
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            list-style: none;
+            text-align: center;
+        }
     }
 
     &__item {
         padding: 0 1.5rem;
         display: inline-block;
         white-space: nowrap;
+
+        @include breakpoint (tab-port) {
+            display: block;
+            margin: 1rem;
+        }
     }
 
     &__link {
-
         display: inline-block;
         font-size: 1.4rem;
         font-weight: bold;
@@ -36,6 +125,7 @@
         padding: 1rem 0 2.3rem 0;
         color: $color-grey-dark-3;
         text-decoration: none;
+        cursor: pointer;
 
         &:link,
         &:visited {
@@ -53,8 +143,103 @@
 
         &:hover,
         &:active {
-            border-bottom: 3px solid $color-red;
+            // border-bottom: 3px solid $color-red;
+        }
+
+        @include breakpoint(tab-port) {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 240%;
+            transition: all .6s;
+
+            &:link,
+            &:visited {
+                display: inline-block;
+                font-size: 3rem;
+                font-weight: 300;
+                letter-spacing: 1px;
+                padding: 1rem 2rem;
+                color: $color-white;
+                text-decoration: none;
+                background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+                background-size: 240%;
+                transition: all .6s;
+            }
+
+            &:hover,
+            &:active {
+                background-position: 100%;
+                color: $color-primary-dark;
+                transform: translateX(1rem);
+            }
         }
     }
-}
 
+    // Functionality
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    // Icon
+    &__icon {
+        position: relative;
+        margin-top: 2rem;
+
+        @include breakpoint (phone) {
+            margin-top: 2.35rem;
+        }
+
+        &,
+        &::before,
+        &::after {
+            width: 1.5rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before { top: -.6rem }
+        &::after { top: .6rem }
+    }
+
+    &__button:hover &__icon::before {
+        top: -.7rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: .7rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+}

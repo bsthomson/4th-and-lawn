@@ -4,13 +4,6 @@
 
     @include breakpoint(tab-port) {
         max-width: 90%;
-        overflow: scroll;
-        height: 60rem;
-    }
-
-    @include breakpoint(phone) {
-        overflow: scroll;
-        height: 60rem;
     }
 
     &:not(:last-child) {
@@ -36,7 +29,7 @@
         }
 
         @include breakpoint(phone) {
-            width: 100% !important;
+            width: 100%;
             float: none;
         }
     }
@@ -58,6 +51,11 @@
 
     .col-1-of-3 {
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+
+        @include breakpoint(phone) {
+            float: left;
+            width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+        }
     }
 
     .col-2-of-3 {
@@ -117,12 +115,12 @@
         }
 
         @include breakpoint(tab-port) {
-            width: 100% !important;
+            width: 100%;
         }
 
         @include breakpoint(phone) {
-            width: 100% !important;
-            margin: 0 auto !important;
+            width: 100%;
+            margin: 0 auto;
         }
 
     }
@@ -151,8 +149,8 @@
         }
 
         @include breakpoint(phone) {
-            width: 100% !important;
-            margin: 0 auto !important;
+            width: 100%;
+            margin: 0 auto;
         }
 
     }

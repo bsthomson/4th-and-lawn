@@ -3,21 +3,22 @@
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
-    height: 47rem;
+    height: 40rem;
     margin-bottom: 3rem;
 
     &__side {
         font-size: 2rem;
-        height: 47rem;
+        height: 40rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         backface-visibility: hidden;
-        border-radius: .6rem;
+        border-radius: 2rem;
         overflow: hidden;
-        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
+        box-shadow: 0 .25rem 2rem .25rem rgba(48, 48, 48, 0.1);
+        // border: 4px solid $color-primary-dark;
 
         // &:hover {
         //     background-image: linear-gradient(
@@ -29,14 +30,24 @@
         // }
 
         &--front {
+            // background-image: linear-gradient(
+            // 180deg,
+            // $color-primary,
+            // $color-primary-dark
+            // );
             background-color: $color-white;
+            // height: 100%;
+            // background-image: url(img/card-background.jpg);
+            // background-size: cover;
+            // background-position: top;
         }
     
         &--back {
             transform: rotateY(180deg);
 
             &-1 {
-                background-image: linear-gradient(to right bottom, $color-blue-light, $color-blue-dark);
+                // background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+                background-color: $color-primary-dark;
             }
 
         }
@@ -46,18 +57,26 @@
         width: 100%;
         // float: left;
         padding: 2rem;
-        text-transform: uppercase;
-        position: absolute;
-        bottom: 75%;
+        // text-transform: uppercase;
+        float: left;
     }
 
     &__details {
         width: 100%;
         // float: left;
         padding: 2rem;
+        position: absolute;
+        bottom: 1%;
+    }
+
+    &__game {
+        width: 100%;
+        // float: left;
+        padding: 2rem;
         text-transform: uppercase;
         position: absolute;
-        bottom: 10%;
+        bottom: 0;
+        margin: 0 auto;
     }
 
     &:hover &__side--front {
@@ -71,15 +90,15 @@
     // Front-side styling
 
     &__button {
-        height: 3.5rem;
-        width: 3.5rem;
-        // background-color: $color-black;
-        background-image: linear-gradient(
-            120deg,
-            $color-red-dark,
-            $color-red-light
-        );
-        border-radius: 4rem;
+        height: 4rem;
+        width: 4rem;
+        background-color: $color-primary-dark;
+        // background-image: linear-gradient(
+        //     120deg,
+        //     $color-primary-light,
+        //     $color-primary-dark
+        // );
+        border-radius: 1rem;
         margin: 0 auto;
         position: relative;
     }
@@ -94,29 +113,117 @@
         float: left;
         width: 100%;
         height: 4rem;
-        // background-color: $color-white;
-        background-image: linear-gradient(
-            120deg,
-            $color-primary,
-            $color-primary-dark
-        );
+        background-color: $color-primary-dark;
+        // background-image: linear-gradient(
+        //     120deg,
+        //     $color-primary,
+        //     $color-primary-dark
+        // );
     }
 
     &__picture {
         float: left;
         width: 100%;
-        height: 20rem;
+        height: 100%;
 
         &--1 {
-            height: 100%;
+            height: 50%;
             background-image: url(img/house.jpg);
             background-size: cover;
-            background-position: bottom;
+            background-position: center;
             background-color: $color-grey-light-2;
         }
     }
 
- 
+    &__user-row {
+        width: 100%;
+        position: relative;
+        background-color: $color-white;
+        border-radius: 2rem;
+        // padding: 1rem;
+        margin-top: 1.5rem;
+        display: table;
+    }
+
+    &__user-col {
+        width: 33.3%;
+        float: left;
+        // margin-bottom: .5rem;
+        text-align: center;
+        padding: 1rem 1rem 1rem 1rem;
+        // padding: 1.25rem;
+
+        &--icon-l {
+            text-align: center;
+            border-top-left-radius: 2rem;
+            border-bottom-left-radius: 2rem;
+            width: 33.3%;
+            float: left;
+            background-color: $color-primary-dark;
+            padding: 1rem 1rem 1rem 1rem;
+        }
+
+        &--icon-m {
+            text-align: center;
+            border-right: 3px solid $color-primary;
+            border-left: 3px solid $color-primary;
+            width: 33.3%;
+            float: left;
+            background-color: $color-primary-dark;
+            padding: 1rem 1rem 1rem 1rem;
+        }
+
+        &--icon-r {
+            text-align: center;
+            border-top-right-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            width: 33.3%;
+            float: left;
+            background-color: $color-primary-dark;
+            padding: 1rem 1rem 1rem 1rem;
+        }
+    }
+
+
+    &--type {
+        font-size: 1rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    &--icon-padding {
+        font-size: 1.5rem;
+        color: $color-white;
+        font-weight: bold;
+        text-align: left;
+        padding-right: .5rem;
+    }
+
+    &--icon-white {
+        font-size: 1.65rem;
+        color: $color-white;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    &__user-buttons {
+        width: 30%;
+        float: left;
+        text-align: right;
+        margin-top: .25rem;
+        
+        @include breakpoint(phone) {
+            float: none;
+            width: 100%;
+            text-align: center;
+        }
+    }
 
     // Back-side styling
     &__cta {

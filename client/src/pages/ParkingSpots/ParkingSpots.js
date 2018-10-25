@@ -50,6 +50,8 @@ class ParkingSpots extends Component {
 
     render() {
         return (
+            <div>
+           
             <section className="section-parking">
              {/* <div className="page-transition background-test"></div> */}
 
@@ -100,6 +102,7 @@ class ParkingSpots extends Component {
                 
                 <CardParkingSpot game={this.state.game}/>
             </section>
+            </div>
         );
     }
 }

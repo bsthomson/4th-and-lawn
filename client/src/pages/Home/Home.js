@@ -95,9 +95,6 @@ class Home extends Component {
                                                         </div>
 
                                                         <div className="col-1-of-3">
-                                                            {/* <p className="spot--address">
-                                                                {parkingspot.address}
-                                                            </p> */}
                                                             <div className="spot-container">
                                                                 <p className="spot--title">Spots</p>
                                                                 <div className="parking-card__button-spot">

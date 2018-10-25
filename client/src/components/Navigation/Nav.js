@@ -14,6 +14,14 @@ class Navbar extends Component {
         this.logout = this.logout.bind(this)
     }
 
+    componentDidMount() {
+        
+    }
+
+    // closeMobile.click( () => {
+    //     navButton.trigger('click');
+    // });
+
     logout(event) {
         event.preventDefault()
         axios.post('/logout').then(response => {
@@ -34,6 +42,16 @@ class Navbar extends Component {
         
         return (
             <section className="navigation">
+
+                <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+                
+                <label for="navi-toggle" class="navigation__button">
+                    <span class="navigation__icon">&nbsp;</span>
+                </label>
+                
+                <div class="navigation__background">
+                    &nbsp;
+                </div>
 
                 <nav className="navigation__nav">
                     {loggedIn ? (
@@ -72,6 +90,8 @@ class Navbar extends Component {
                                     <span>Parking spots</span>
                                 </Link>
                             </li>
+
+                            
                             <li className="navigation__item">
                                 <Popup trigger={<span className="navigation__link">Sign up</span>}>
                                     <div className="modal">
@@ -80,25 +100,25 @@ class Navbar extends Component {
                                 </Popup>
                             </li>
                             <li className="navigation__item">
-                            <Popup trigger={<span className="navigation__link">Log in</span>} modal>
-                            {close => (
-                              <div className="modal">
-                                <a href="#" className="popup__close" onClick={close} >
-                                  &times;
-                                </a>
-                                
-                                <Login updateUser={this.props.updateUser}/>
-                                  <button
-                                    className="button"
-                                    onClick={() => {
-                                      console.log('modal closed ')
-                                      close()
-                                    }}
-                                  >
-                                  </button>
-                              </div>
-                            )}
-                          </Popup>
+                                <Popup trigger={<span className="navigation__link">Log in</span>} modal>
+                                {close => (
+                                <div className="modal">
+                                    <a href="#" className="popup__close" onClick={close} >
+                                    &times;
+                                    </a>
+                                    
+                                    <Login updateUser={this.props.updateUser}/>
+                                    <button
+                                        className="button"
+                                        onClick={() => {
+                                        console.log('Modal Closed')
+                                        close()
+                                        }}
+                                    >
+                                    </button>
+                                </div>
+                                )}
+                                </Popup>
                             </li>
                         </ul>
                     )}

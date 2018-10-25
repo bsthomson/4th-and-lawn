@@ -1,12 +1,12 @@
 .section-parking {
-    padding: 3rem;
+    padding: 15rem 3rem 3rem 3rem;
     position: relative;
     // animation: moveInBottom 1.5s ease-out;
     // animation-fill-mode: backwards;
-    // background-image: linear-gradient(
-    //     120deg,
-    //     $color-primary-light,
-    //     $color-primary-dark
-    // );
+    background-image: linear-gradient(
+        180deg,
+        $color-primary,
+        $color-primary-dark
+    );
 
 }

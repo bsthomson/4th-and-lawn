@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import { BrowserRouter as 
   Router, 
   Route, 
   Switch 
 } from 'react-router-dom';
-import Navbar from './components/Navigation/Nav.js';
+import Navbar from './components/Navigation/Nav';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
 import UserSpots from './pages/UserSpots';

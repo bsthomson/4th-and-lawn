@@ -27,7 +27,7 @@ class CardParkingSpot extends Component {
         };
     
 
-	componentDidMount() {
+    componentDidMount() {
         this.loadParkingSpots();
     }
 
@@ -92,41 +92,61 @@ class CardParkingSpot extends Component {
                     {this.state.gameday.length ? (
                         <div className="parking-container">
                             {this.state.gameday.map(parkingspot => (
-                                    <div className="col-1-of-4" key={parkingspot._id}>
+                                    <div className="col-1-of-3" key={parkingspot._id}>
                                         <div className="parking-card">
                                             <div className="parking-card__side parking-card__side--front">
         
-                                                {/* <div className="parking-card__banner">
-                                                    <p className="spot--banner">{parkingspot.event[0].event}</p>
-                                                </div> */}
+                                                <div className="parking-card__banner">
+                                                    <p className="spot--banner">{parkingspot.streetaddress}</p>
+                                                </div>
         
-                                                {/* <div className="parking-card__picture">
+                                                <div className="parking-card__picture">
                                                     <div className="parking-card__picture--1">&nbsp;</div>
-                                                </div> */}
+                                                </div>
 
-                                                <div className="parking-card__address">
+                                                {/* <div className="parking-card__address">
                                                     <div className="row-container">
                                                         <div className="col-1-of-1">
                                                             <p className="card-heading--address">{parkingspot.streetaddress}</p>
                                                             <p className="card-heading--detail-title">Lawrence, KS</p>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
         
-                                                <div className="parking-card__details">
+                                                <section className="parking-card__details">
+                                                    {/* <div className="parking-card__user-row">
+                                                        <div className="parking-card__user-col--icon-l">
+                                                            <span className="parking-card--icon-white">
+                                                                <i className="fas fa-dollar-sign parking-card--icon-padding"></i>
+                                                                {parkingspot.price}
+                                                            </span>
+                                                        </div>
 
-                                                    
-                                                    
-                                                    <div className="row">
+                                                        <div className="parking-card__user-col--icon-m">
+                                                            <span className="parking-card--icon-white">
+                                                                <i className="fas fa-car parking-card--icon-padding"></i>
+                                                                {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold"}
+                                                            Full
+                                                            </span>
+                                                        </div>
+
+                                                        <div className="parking-card__user-col--icon-r">
+                                                            <span className="parking-card--icon-white">
+                                                                <i className="fas fa-map-marker-alt parking-card--icon-padding"></i>
+                                                                TBA
+                                                            </span>
+                                                        </div>
+
+                                                    </div> */}
 
                                                         <div className="col-1-of-3">
                                                             <div className="spot-container">
                                                                 
                                                                 <div className="parking-card__button">
-                                                                    <span className="spot--test"><i className="fas fa-dollar-sign spot--icon"></i></span>
+                                                                    <span className="spot--test"><i className="fas fa-money-bill-alt spot--icon"></i></span>
                                                                 </div>
                                                                 <p className="card-heading--detail-title">Price</p>
-                                                                <p className="card-heading--detail-value">{parkingspot.price}</p>
+                                                                <p className="card-heading--detail-value">${parkingspot.price}</p>
                                                             </div>         
                                                         </div>
 
@@ -135,7 +155,6 @@ class CardParkingSpot extends Component {
                                                                 
                                                                 <div className="parking-card__button">
                                                                 <span className="spot--test"><i className="fas fa-map-marker-alt spot--icon"></i></span>
-                                                                    {/* <span className="spot--test">{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "FULL"}</span> */}
                                                                 </div>
                                                                 <p className="card-heading--detail-title">Distance</p>
                                                                 <p className="card-heading--detail-value">N/A</p>
@@ -149,17 +168,18 @@ class CardParkingSpot extends Component {
                                                                     <span className="spot--test"><i className="fas fa-car spot--icon"></i></span>
                                                                 </div>
                                                                 <p className="card-heading--detail-title">Spots</p>
-                                                                <p className="card-heading--detail-value">3</p>
+                                                                <p className="card-heading--detail-value">{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "FULL"}</p>
                                                             </div>         
                                                         </div>
+                                                   
 
-                                                        
 
-                                                    </div>
+                                                </section>
 
-                                                    <hr className="card-break"></hr>
+                                                {/* <div className="parking-card__game">
+                                                    <p className="card-heading--detail-title">{parkingspot.event[0].event}</p>
+                                                </div> */}
 
-                                                </div>
                                             </div>
                                             {/* ^ END OF FRONT ^ */}
 
@@ -168,14 +188,14 @@ class CardParkingSpot extends Component {
                                                 <Link to={"/rentthisspot/" + parkingspot._id}>
                                                                         {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                             <input
-                                                                                className="btn btn--rent"
+                                                                                className="btn btn--card"
                                                                                 type="submit"
                                                                                 value="View"
                                                                                 onClick={this.handleSubmit}
                                                                             />
                                                                         ) : (
                                                                             <input
-                                                                                className="btn btn--rent"
+                                                                                className="btn btn--card"
                                                                                 type="submit"
                                                                                 value="Sold out"
                                                                                 onClick={this.handleSubmit}
@@ -192,9 +212,9 @@ class CardParkingSpot extends Component {
                             ))}
                         </div>
                 ) : (
-                <h3>No Results to Display</h3>
+                <h3>No Parking Spots Available</h3>
                 )}
-                <div><GoogleMap markers={this.state.parkingspots}/></div>
+                {/* <div><GoogleMap markers={this.state.parkingspots}/></div> */}
             </div>
     
         )
@@ -203,3 +223,4 @@ class CardParkingSpot extends Component {
     
 export default CardParkingSpot;
     
+

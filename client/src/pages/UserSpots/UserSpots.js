@@ -29,9 +29,13 @@ class UserSpot extends Component {
         }
     }
 
+    componentDidUpdate() {
+        console.log(this.state)
+    }
 
     componentDidMount() {
         this.loadPostedSpots();
+        this.loadRentedSpots();
     }
 
     loadPostedSpots = () => {
@@ -42,105 +46,145 @@ class UserSpot extends Component {
             .catch(err => console.log(err));
     };
 
+    loadRentedSpots = () => {
+        axios.get("/api/rentedspots")
+            .then(response => this.setState({             
+                rentedspots: response.data[0].rentinfo
+            }))
+            .catch(err => console.log(err));
+    };
+
     deletePostedSpot = id => {
         axios.delete("/api/postedspots/" + id)
         .then(response => this.loadPostedSpots())
         .catch(err => console.log(err));
     }
 
+    deleteRentedSpot = id => {
+        axios.delete("/api/rentedspots/" + id)
+        .then(response => this.loadRentedSpots())
+        .catch(err => console.log(err));
+    }
+
     render() {
         return (
+            <section>
+            <div className="section-header"></div>
             <div className="section-dashboard">
-                <div className="dashboard__sidebar">
-                    <div className="dashboard__container">
+                
+                <div className="dashboard__container">
+
+                    {/* SIDEBARD -> */}
+                    <section className="dashboard__sidebar">
                         <h1 className="heading-primary">
-                            <span className="heading-primary--form-white">Dashboard</span>
+                            <span className="heading-primary--white">Dashboard</span>
                         </h1>
-
-                        <div className="dashboard__sidebar-links">
-                            <p className="dashboard-heading--sidebar"><i className="fas fa-user-circle spot--icon-sidebar"></i>Account</p>
-                            <p className="dashboard-heading--sidebar"><i className="far fa-credit-card spot--icon-sidebar"></i>Payments</p>
-                            <p className="dashboard-heading--sidebar"><i className="fas fa-envelope spot--icon-sidebar"></i>Invite Friends</p>
-                            <p className="dashboard-heading--sidebar"><i className="fas fa-cog spot--icon-sidebar"></i>Settings</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="dashboard__main">
-                    <div className="row">
-                        <div className="col-1-of-1">
-                        
-                            <div className="dashboard__container">
-                                <h1 className="heading-primary">
-                                    <span className="heading-primary--form">Parking spots</span>
-                                    <span className="dashboard-primary--body">These are your listings.</span>
-                                </h1>
-
-                                <div className="dashboard__section">
+                        <ul className="dashboard__sidebar-links">
+                            <li className="dashboard-heading--item">
+                                <i className="fas fa-user-circle spot--icon-sidebar"></i> Account
+                            </li>
+                            <li className="dashboard-heading--item">
+                                <i className="far fa-credit-card spot--icon-sidebar"></i> Payments
+                            </li>
+                            <li className="dashboard-heading--item">
+                                <i className="fas fa-envelope spot--icon-sidebar"></i> Invite Friends
+                            </li>
+                            <li className="dashboard-heading--item">
+                                <i className="fas fa-cog spot--icon-sidebar"></i> Settings
+                            </li>
+                        </ul>
+                    </section>
+                    {/* SIDEBAR END ^ */}
+                    
+                    {/* START USER CONTENT */}
+                    <section className="dashboard__content">
+                        <div className="row">
+                            <div className="col-1-of-1">
+                                <section className="dashboard__user-section">
+                                    <span className="dashboard-heading--title">Parking spots</span>
+                                    {/* <span className="dashboard-heading--btn"></span> */}
+                                    
+                                    {/* START -> */}
                                     {this.state.postedspots.length ? (
-                                        <div className="row">
+                                        <div>
                                             {this.state.postedspots.map(postedspot => (
-                                                <div className="col-1-of-1" key={postedspot._id}>
-
-                                                <hr className="dashboard-break" />
-
-                                                        <div className="col-1-of-3">
-                                                            <div className="listing-container">
-                                                                <p className="dashboard-heading--value">{postedspot.streetaddress}</p>
-                                                            </div>         
+                                                <section key={postedspot._id}>
+                                                    <div className="dashboard__user-item">
+                                                        <div className="dashboard__user-address">
+                                                            <span className="dashboard-heading--value">{postedspot.streetaddress}</span>
                                                         </div>
-
-                                                        <div className="col-1-of-3">
-                                                            <div className="listing-container">
-                                                                <p className="dashboard-heading--value">{postedspot.event[0]}</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="col-1-of-3">
-                                                            <div className="listing-container">
-
-                                                                <Link to={"/rentthisspot/" + postedspot._id}>
-                                                                    <div className="dashboard-card__button dashboard-card__button--link" >
-                                                                        <span className="spot--test"><i class="fas fa-home spot--icon"></i></span>
-                                                                    </div>
-                                                                </Link>
-
-                                                                <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
-                                                                    <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
+                                                        <div className="dashboard__user-buttons">
+                                                            <Link to={"/rentthisspot/" + postedspot._id}>
+                                                                <div className="dashboard-card__button dashboard-card__button--link" >
+                                                                    <span className="spot--test"><i className="fas fa-home spot--icon"></i></span>
                                                                 </div>
-
-                                                            </div>         
+                                                            </Link>
+                                                            <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
+                                                                <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
+                                                            </div>      
                                                         </div>
-
-                                                        
-
-                                                </div>
-                                                
+                                                    </div>
+                                                </section>
                                             ))}
                                         </div>
                                     ) : (
-                                        <div className="dashboard__container-absolute">
-                                            <h3>No Results to Display</h3>
+                                        <div className="dashboard__user-item">
+                                            <div className="dashboard__user-empty">
+                                                 <span className="dashboard-heading--value">You haven't listed any parking spots.</span>
+                                             </div>
                                         </div>
                                     )}
+                                    {/* END ^ */}
 
-                            
-                                </div>
+                                </section>
+                            </div>
+                            <div className="col-1-of-1">
+                                <section className="dashboard__user-section">
+                                    <span className="dashboard-heading--title">Rented Spots</span>
+
+                                        {/* START -> */}
+                                        {this.state.rentedspots.length ? (
+                                            <div>
+                                                {this.state.rentedspots.map(rentedspot => (
+                                                    <section key={rentedspot._id}>
+                                                        <div className="dashboard__user-item">
+                                                            <div className="dashboard__user-address">
+                                                                <span className="dashboard-heading--value">{rentedspot.make} {rentedspot.model} / {rentedspot.licenseplate}</span>
+                                                            </div>
+                                                            <div className="dashboard__user-buttons">
+                                                                <Link to={"/rentthisspot/" + rentedspot._id}>
+                                                                    <div className="dashboard-card__button dashboard-card__button--link" >
+                                                                        <span className="spot--test"><i className="fas fa-home spot--icon"></i></span>
+                                                                    </div>
+                                                                </Link>
+                                                                <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deleteRentedSpot(rentedspot._id)}>
+                                                                    <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
+                                                                </div>      
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div className="dashboard__user-item">
+                                                <div className="dashboard__user-empty">
+                                                    <span className="dashboard-heading--value">You haven't rented any parking spots.</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {/* END ^ */}
+
+                                </section>
                             </div>
                         </div>
 
-                    <div className="col-1-of-1">
-                        <div className="dashboard__container">
-                            <h1 className="heading-primary">
-                                <span className="heading-primary--form">Rented spots</span>
-                                <span className="dashboard-primary--body">These are your reserved spots. Enjoy the game.</span>
-                            </h1>
-                        </div>
-                    </div>
+                        
+                    </section>
+                    {/* END DASHBOARD USER CONTENT */}
 
                 </div>
             </div>
-        </div>
+            </section>
         );
     }
 }
