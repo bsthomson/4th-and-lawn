@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import Signup from './../FormSignUp/SignUp';
 import Login  from './../FormLogin/Login';
-import ValidateForm  from './../FormSignUp/Validate';
+import { Redirect } from "react-router-dom";
 
 import '../../App.css';
 import axios from 'axios'
@@ -12,6 +12,12 @@ class Navbar extends Component {
     constructor() {
         super()
         this.logout = this.logout.bind(this)
+
+        this.state = {
+            redirectTo: null
+        }
+        
+    
     }
 
     componentDidMount() {
@@ -30,6 +36,9 @@ class Navbar extends Component {
               loggedIn: false,
               username: null
             })
+            this.setState({
+                redirectTo: '/'
+            })
           }
         }).catch(error => {
             console.log('Logout Error')
@@ -37,11 +46,18 @@ class Navbar extends Component {
     }
 
     render() {
+        if (this.state.redirectTo) {
+            return <Redirect to ={{ pathname: this.state.redirectTo }} />
+        } else {
 
         const loggedIn = this.props.loggedIn;
         
         return (
             <section className="navigation">
+
+                {/* <div class="navigation__logo-box">
+                    <div class="navigation__logo"></div>
+                </div> */}
 
                 <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
                 
@@ -124,7 +140,7 @@ class Navbar extends Component {
                     )}
                 </nav>
             </section>
-        );
+        )};
     }
 }
 

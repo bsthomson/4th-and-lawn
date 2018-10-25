@@ -5,7 +5,7 @@
 
 .section-about {
     // background-color: $color-primary-dark;
-    height: 70rem;
+    height: 100vh;
     background-image: linear-gradient(
         180deg,
         $color-primary,
@@ -22,7 +22,13 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        height: 400px;
+        height: 40rem;
+        width: 90%;
+        margin: 0 auto;
+
+        @include breakpoint(tab-land) {
+            height: 34rem;
+        }
     }
 
     &__container-absolute {

@@ -24,7 +24,7 @@
 
             @include breakpoint(tab-port) {
                 margin-right: 0;
-                margin-bottom: $gutter-vertical-sm;
+                // margin-bottom: $gutter-vertical-sm;
             }
         }
 
@@ -41,12 +41,24 @@
             margin-right: 0;
             margin: 0 auto;
         }
-
-
     }
 
     .col-1-of-2 {
         width: calc((100% - #{$gutter-horizontal}) / 2);
+
+        &:nth-child(2n) {
+            margin-right: 0;
+            // margin: 0 auto;
+        }
+
+        @include breakpoint(tab-land) {
+            width: 100%;
+        }
+
+        @include breakpoint(phone) {
+            width: 100%;
+        }
+
     }
 
     .col-1-of-3 {
@@ -80,6 +92,9 @@
     margin: 0 auto;
 }
 
+
+
+
 .parking-container {
     max-width: $grid-width;
     margin: 0 auto;
@@ -105,10 +120,19 @@
 
     .col-1-of-2 {
         width: calc((100% - #{$gutter-horizontal}) / 2);
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+        }
     }
 
     .col-1-of-3 {
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+        margin-right: 0;
 
         &:nth-child(3n) {
             margin-right: 0;
@@ -123,6 +147,14 @@
             margin: 0 auto;
         }
 
+    }
+
+    .col-2-of-3 {
+        width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+
+        @include breakpoint(phone) {
+            width: 100%;
+        }
     }
 
     .col-1-of-4 {

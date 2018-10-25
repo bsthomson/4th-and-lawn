@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser")
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const logger = require("morgan");
+const bcrypt = require("bcryptjs")
 
 // Sets the port express will listen to.
 const PORT = process.env.PORT || 3001;
@@ -64,10 +65,15 @@ passport.use(new LocalStrategy(
       if (!user) {
         return done(null, false, { message: "Incorrect username" })
       }
-      if (!password) {
-        return done(null, false, { message: "Incorrect password" })
-      }
-      return done(null, user)
+      bcrypt.compare(password, user.password, (err, isValid) => {
+        if (err) {
+          return done(err)
+        }
+        if (!isValid) {
+          return done(null, false)
+        }
+        return done(null, user)
+      })
     })
   }
 ));

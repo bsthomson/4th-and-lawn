@@ -18,13 +18,21 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
+    required: true,
+    validate: {
+      validator: v => {
+        return /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*?]).*$/.test(v);
+      },
+      message: props => `${props.value} is not a valid password`
+    }
   },
   firstname: {
-    type: String
+    type: String,
+    required: true
   },
   lastname: {
-    type: String
+    type: String,
+    required: true
   },
   phonenumber: {
     type: Number,
@@ -40,7 +48,7 @@ const UserSchema = new Schema({
   rentedspots: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Renter"
+      ref: "ParkingSpot"
     }
   ],
   parkingspots: [

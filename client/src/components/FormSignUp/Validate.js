@@ -26,7 +26,6 @@ class ValidateForm extends Component {
       e.preventDefault();
       if (this.validateForm()) {
           let fields = {};
-          fields["username"] = "";
           fields["emailid"] = "";
           fields["mobileno"] = "";
           fields["password"] = "";
@@ -40,18 +39,6 @@ class ValidateForm extends Component {
       let fields = this.state.fields;
       let errors = {};
       let formIsValid = true;
-
-      if (!fields["username"]) {
-        formIsValid = false;
-        errors["username"] = "*Please enter your username.";
-      }
-
-      if (typeof fields["username"] !== "undefined") {
-        if (!fields["username"].match(/^[a-zA-Z ]*$/)) {
-          formIsValid = false;
-          errors["username"] = "*Please enter alphabet characters only.";
-        }
-      }
 
       if (!fields["emailid"]) {
         formIsValid = false;
@@ -85,7 +72,7 @@ class ValidateForm extends Component {
       }
 
       if (typeof fields["password"] !== "undefined") {
-        if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+        if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*?]).*$/)) {
           formIsValid = false;
           errors["password"] = "*Please enter secure and strong password.";
         }

@@ -17,7 +17,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        console.log("********",this.props.loggedIn);
         if (this.props.loggedIn === false) {
             this.setState({
                 loggedIn: false
@@ -53,72 +52,18 @@ class Home extends Component {
                                         </h1>
                                         <span className="btn btn--main">Parking spots</span>
                                     </div>
-
                                 </div>
 
                                 <div className="col-1-of-2">
 
-                                    <div className="section-about__container-small">
-                                        
-                                    
-                                        {/* START CARD -> */}
-                                        <div className="parking-card">
-                                            <div className="parking-card__side parking-card__side--front">
-
-                                                <div className="parking-card__banner">
-                                                    <p className="spot--banner">Kansas vs Texas</p>
-                                                </div>
-
-                                                <div className="parking-card__picture">
-                                                    <div className="parking-card__picture--1">&nbsp;</div>
-                                                </div>
-
-                                                <div className="parking-card__details">
-
-                                                    <div className="row-container">
-                                                        <div className="col-1-of-1">
-                                                            <p className="spot--address">
-                                                            1101 Mississippi St
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="row">
-
-                                                        <div className="col-1-of-3">
-                                                            <div className="spot-container">
-                                                                <p className="spot--title">Price</p>
-                                                                <div className="parking-card__button-price">
-                                                                    <span className="spot--test">$20</span>
-                                                                </div>
-                                                            </div>         
-                                                        </div>
-
-                                                        <div className="col-1-of-3">
-                                                            <div className="spot-container">
-                                                                <p className="spot--title">Spots</p>
-                                                                <div className="parking-card__button-spot">
-                                                                    <span className="spot--test">3</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="col-1-of-3">
-                                                        <div className="spot-container">
-                                                                <p className="spot--title">Rent</p>
-                                                                <div className="parking-card__button-rent">
-                                                                <i className="fas fa-car spot--value"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* ^ END CARD ^ */}
+                                    <div className="section-about__container-flex-vertical-align">
+                                        <h1 className="section-title">
+                                            <span className="section-title--main">Take your time</span>
+                                            <span className="section-title--body">There's nothing we can do about the traffic, but at least your parking spot is really good. Cheers to that.</span>
+                                            {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
+                                        </h1>
+                                        <span className="btn btn--main">Parking spots</span>
                                     </div>
-
                                 </div>
 
                             </div>
@@ -148,7 +93,8 @@ class Home extends Component {
                                     <div className="col-1-of-2">
                                         <div className="section-about__container-flex-vertical-align">
                                             <h1 className="section-title">
-                                                <span className="section-title--main">Take your time</span>
+                                                {/* <span className="section-title--body">01.</span> */}
+                                                <span className="section-title--main">Why wait?</span>
                                                 <span className="section-title--body">There's nothing we can do about the traffic, but at least your parking spot is really good. Cheers to that.</span>
                                                 {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
                                             </h1>
@@ -159,68 +105,14 @@ class Home extends Component {
 
                                     <div className="col-1-of-2">
 
-                                        <div className="section-about__container-small">
-                                            
-                                        
-                                            {/* START CARD -> */}
-                                            <div className="parking-card">
-                                                <div className="parking-card__side parking-card__side--front">
-
-                                                    <div className="parking-card__banner">
-                                                        <p className="spot--banner">Kansas vs Texas</p>
-                                                    </div>
-
-                                                    <div className="parking-card__picture">
-                                                        <div className="parking-card__picture--1">&nbsp;</div>
-                                                    </div>
-
-                                                    <div className="parking-card__details">
-
-                                                        <div className="row-container">
-                                                            <div className="col-1-of-1">
-                                                                <p className="spot--address">
-                                                                1101 Mississippi St
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="row">
-
-                                                            <div className="col-1-of-3">
-                                                                <div className="spot-container">
-                                                                    <p className="spot--title">Price</p>
-                                                                    <div className="parking-card__button-price">
-                                                                        <span className="spot--test">$20</span>
-                                                                    </div>
-                                                                </div>         
-                                                            </div>
-
-                                                            <div className="col-1-of-3">
-                                                                {/* <p className="spot--address">
-                                                                    {parkingspot.address}
-                                                                </p> */}
-                                                                <div className="spot-container">
-                                                                    <p className="spot--title">Spots</p>
-                                                                    <div className="parking-card__button-spot">
-                                                                        <span className="spot--test">3</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="col-1-of-3">
-                                                            <div className="spot-container">
-                                                                    <p className="spot--title">Rent</p>
-                                                                    <div className="parking-card__button-rent">
-                                                                    <i className="fas fa-car spot--value"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* ^ END CARD ^ */}
+                                        <div className="section-about__container-flex-vertical-align">
+                                            <h1 className="section-title">
+                                                {/* <span className="section-title--body">02.</span> */}
+                                                <span className="section-title--main">Take your time</span>
+                                                <span className="section-title--body">There's nothing we can do about the traffic, but at least your parking spot is really good. Cheers to that.</span>
+                                                {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
+                                            </h1>
+                                            <span className="btn btn--main">Parking spots</span>
                                         </div>
 
                                     </div>

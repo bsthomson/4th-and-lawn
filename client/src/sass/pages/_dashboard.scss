@@ -30,8 +30,12 @@
 
     &__container {
         width: 100%;
-        padding: 5rem 5rem 5rem 5rem;
+        padding: 2rem 5rem;
         position: relative;
+
+        @include breakpoint(phone) {
+            padding: 2rem;
+        }
     }
 
     &__sidebar {
@@ -42,7 +46,13 @@
         @include breakpoint(tab-port) {
             width: 100%;
             float: left;
-            margin-bottom: 10rem;
+            margin-bottom: 4rem;
+        }
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+            margin-bottom: 4rem;
         }
     }
 
@@ -52,8 +62,12 @@
         width: 100%;
         list-style: none;
 
+        @include breakpoint(tab-port) {
+            display: none;
+        }
+
         @include breakpoint(phone) {
-            float: right;
+            display: none;
             
         }
     }

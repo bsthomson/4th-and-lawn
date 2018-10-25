@@ -245,6 +245,11 @@ body {
     letter-spacing: 0px;
     color: #fff;
     text-align: left; }
+    @media (max-width: 56.25em) {
+      .heading-primary--white {
+        font-size: 6rem;
+        line-height: 7rem;
+        text-align: center; } }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--white {
         font-size: 6rem;
@@ -253,17 +258,19 @@ body {
   .heading-primary--page {
     display: block;
     width: 100%;
-    font-size: 4rem;
-    font-weight: 500;
-    line-height: 5rem;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 3.5rem;
     letter-spacing: 0px;
-    color: #000;
-    margin: 2rem 0; }
+    color: #fff;
+    text-align: left; }
+    @media (max-width: 56.25em) {
+      .heading-primary--page {
+        font-size: 6rem;
+        text-align: center; } }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--page {
-        letter-spacing: -.2rem;
-        font-size: 8rem;
-        line-height: 7rem;
+        font-size: 6rem;
         text-align: center; } }
 
 .heading-page {
@@ -523,17 +530,17 @@ body {
 .btn--main {
   width: 20rem;
   border-radius: 5rem;
-  font-weight: 300;
+  font-weight: bold;
   letter-spacing: .5px;
   padding: 1rem 2rem;
-  color: #fff;
+  color: #20b573;
   text-decoration: none;
-  background-image: linear-gradient(120deg, #ef3840 0%, #b22028 50%, #fff 50%);
+  background-image: linear-gradient(120deg, #fff 0%, #fff 50%, #266b4c 50%);
   background-size: 240%;
   transition: all .6s; }
   .btn--main:hover, .btn--main:active {
     background-position: 100%;
-    color: #20b573; }
+    color: #fff; }
 
 .btn--delete {
   height: 3.5rem;
@@ -581,13 +588,16 @@ body {
   display: block !important;
   width: 20rem;
   margin: 0 auto;
-  background-color: white;
   color: #20b573;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 1.25rem;
-  letter-spacing: 1px;
-  border-radius: 5rem; }
+  font-weight: bold;
+  letter-spacing: .5px;
+  border-radius: 5rem;
+  background-image: linear-gradient(120deg, #fff 0%, #fff 50%, #266b4c 50%);
+  background-size: 240%;
+  transition: all .6s; }
+  .btn--card:hover, .btn--card:active {
+    background-position: 100%;
+    color: #fff; }
 
 .btn::after {
   content: "";
@@ -660,11 +670,15 @@ body {
       transform: translate(-50%, -50%); } }
 
 .form__filter-container {
-  width: 40rem;
+  width: 60%;
   background-color: #fff;
   position: relative;
   padding: 0;
-  border-radius: 6px; }
+  border-radius: 6px;
+  float: right; }
+  @media (max-width: 56.25em) {
+    .form__filter-container {
+      width: 100%; } }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -791,34 +805,76 @@ select {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 40rem;
+  height: 34rem;
   margin-bottom: 3rem; }
   .parking-card__side {
     font-size: 2rem;
-    height: 40rem;
+    height: 34rem;
     transition: all .8s ease;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     backface-visibility: hidden;
-    border-radius: 2rem;
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 0.25rem 2rem 0.25rem rgba(48, 48, 48, 0.1); }
     .parking-card__side--front {
-      background-color: #fff; }
+      background-color: #266b4c; }
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
-        background-color: #266b4c; }
-  .parking-card__address {
+        background-image: linear-gradient(180deg, #20b573, #22c27b); }
+  .parking-card__title {
+    /* Shaking animation bug fix */
+    backface-visibility: hidden;
     width: 100%;
-    padding: 2rem;
-    float: left; }
+    margin-bottom: 2.25rem; }
+    .parking-card__title--address {
+      display: block;
+      color: #fff;
+      width: 100%;
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: left;
+      line-height: 6rem;
+      letter-spacing: .2px;
+      margin-bottom: 1rem; }
+      @media only screen and (max-width: 37.5em) {
+        .parking-card__title--address {
+          letter-spacing: 0;
+          font-size: 4.5rem;
+          line-height: 6.5rem;
+          margin-top: 0rem; } }
+    .parking-card__title--value {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-align: left;
+      letter-spacing: 1px;
+      line-height: 3rem; }
+    .parking-card__title--icon {
+      float: right;
+      color: #20b573;
+      font-size: 2.5rem;
+      font-weight: 500;
+      text-align: right;
+      letter-spacing: .5px;
+      line-height: 4rem;
+      letter-spacing: .2px; }
+  .parking-card__picture {
+    float: left;
+    width: 100%;
+    height: 100%; }
+    .parking-card__picture--1 {
+      height: 100%;
+      background-image: url(img/house.jpg);
+      background-size: cover;
+      background-position: bottom; }
   .parking-card__details {
     width: 100%;
-    padding: 2rem;
-    position: absolute;
+    padding: 5rem;
+    position: relative;
     bottom: 1%; }
   .parking-card__game {
     width: 100%;
@@ -846,84 +902,8 @@ select {
     float: left;
     width: 100%;
     height: 4rem;
-    background-color: #266b4c; }
-  .parking-card__picture {
-    float: left;
-    width: 100%;
-    height: 100%; }
-    .parking-card__picture--1 {
-      height: 50%;
-      background-image: url(img/house.jpg);
-      background-size: cover;
-      background-position: center;
-      background-color: #eee; }
-  .parking-card__user-row {
-    width: 100%;
-    position: relative;
-    background-color: #fff;
-    border-radius: 2rem;
-    margin-top: 1.5rem;
-    display: table; }
-  .parking-card__user-col {
-    width: 33.3%;
-    float: left;
-    text-align: center;
-    padding: 1rem 1rem 1rem 1rem; }
-    .parking-card__user-col--icon-l {
-      text-align: center;
-      border-top-left-radius: 2rem;
-      border-bottom-left-radius: 2rem;
-      width: 33.3%;
-      float: left;
-      background-color: #266b4c;
-      padding: 1rem 1rem 1rem 1rem; }
-    .parking-card__user-col--icon-m {
-      text-align: center;
-      border-right: 3px solid #20b573;
-      border-left: 3px solid #20b573;
-      width: 33.3%;
-      float: left;
-      background-color: #266b4c;
-      padding: 1rem 1rem 1rem 1rem; }
-    .parking-card__user-col--icon-r {
-      text-align: center;
-      border-top-right-radius: 2rem;
-      border-bottom-right-radius: 2rem;
-      width: 33.3%;
-      float: left;
-      background-color: #266b4c;
-      padding: 1rem 1rem 1rem 1rem; }
-  .parking-card--type {
-    font-size: 1rem;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 1rem; }
-  .parking-card--icon-padding {
-    font-size: 1.5rem;
-    color: #fff;
-    font-weight: bold;
-    text-align: left;
-    padding-right: .5rem; }
-  .parking-card--icon-white {
-    font-size: 1.65rem;
-    color: #fff;
-    letter-spacing: 1px;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 1rem; }
-  .parking-card__user-buttons {
-    width: 30%;
-    float: left;
-    text-align: right;
-    margin-top: .25rem; }
-    @media only screen and (max-width: 37.5em) {
-      .parking-card__user-buttons {
-        float: none;
-        width: 100%;
-        text-align: center; } }
+    background-color: #266b4c;
+    background-image: linear-gradient(120deg, #ef3840, #b22028); }
   .parking-card__cta {
     position: absolute;
     top: 50%;
@@ -934,10 +914,10 @@ select {
 
 .card-break {
   height: 1px;
-  background-color: #eee;
+  background-color: #20b573;
   border: 0;
-  width: 250px;
-  margin: 3rem auto; }
+  width: 100%;
+  margin: 1rem 0; }
 
 .popup {
   height: 100vh;
@@ -1008,8 +988,7 @@ select {
       margin-right: 2rem; }
       @media (max-width: 56.25em) {
         .row [class^="col-"]:not(:last-child) {
-          margin-right: 0;
-          margin-bottom: 6rem; } }
+          margin-right: 0; } }
     @media only screen and (max-width: 37.5em) {
       .row [class^="col-"] {
         width: 100%;
@@ -1021,6 +1000,14 @@ select {
       margin: 0 auto; }
   .row .col-1-of-2 {
     width: calc((100% - 2rem) / 2); }
+    .row .col-1-of-2:nth-child(2n) {
+      margin-right: 0; }
+    @media (max-width: 75em) {
+      .row .col-1-of-2 {
+        width: 100%; } }
+    @media only screen and (max-width: 37.5em) {
+      .row .col-1-of-2 {
+        width: 100%; } }
   .row .col-1-of-3 {
     width: calc((100% - 2 * 2rem) / 3); }
     @media only screen and (max-width: 37.5em) {
@@ -1059,8 +1046,14 @@ select {
     width: 100%; }
   .parking-container .col-1-of-2 {
     width: calc((100% - 2rem) / 2); }
+    .parking-container .col-1-of-2:nth-child(2n) {
+      margin-right: 0; }
+    @media (max-width: 56.25em) {
+      .parking-container .col-1-of-2 {
+        width: 100%; } }
   .parking-container .col-1-of-3 {
-    width: calc((100% - 2 * 2rem) / 3); }
+    width: calc((100% - 2 * 2rem) / 3);
+    margin-right: 0; }
     .parking-container .col-1-of-3:nth-child(3n) {
       margin-right: 0; }
     @media (max-width: 56.25em) {
@@ -1070,6 +1063,11 @@ select {
       .parking-container .col-1-of-3 {
         width: 100%;
         margin: 0 auto; } }
+  .parking-container .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 2rem) / 3) + 2rem); }
+    @media only screen and (max-width: 37.5em) {
+      .parking-container .col-2-of-3 {
+        width: 100%; } }
   .parking-container .col-1-of-4 {
     width: calc((100% - 2 * 2rem) / 4); }
     .parking-container .col-1-of-4:nth-child(4n) {
@@ -1173,6 +1171,19 @@ select {
 .navigation__checkbox {
   display: none; }
 
+.navigation__logo-box {
+  position: fixed;
+  top: 4.5rem;
+  left: 4.5rem;
+  z-index: 9000; }
+
+.navigation__logo {
+  height: 4rem;
+  width: 4rem;
+  background-image: url(img/logo.png);
+  background-size: contain;
+  background-position: top; }
+
 .navigation__button {
   display: none;
   opacity: 0;
@@ -1229,7 +1240,7 @@ select {
   position: relative;
   width: 100%;
   height: 80px;
-  padding: 4rem;
+  padding: 2rem;
   background-color: transparent;
   z-index: 4000; }
   @media (max-width: 56.25em) {
@@ -1360,7 +1371,7 @@ select {
   height: 100%; }
 
 .section-about {
-  height: 70rem;
+  height: 100vh;
   background-image: linear-gradient(180deg, #20b573, #22c27b);
   position: relative; }
   .section-about__container {
@@ -1373,7 +1384,12 @@ select {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 400px; }
+    height: 40rem;
+    width: 90%;
+    margin: 0 auto; }
+    @media (max-width: 75em) {
+      .section-about__container-flex-vertical-align {
+        height: 34rem; } }
   .section-about__container-absolute {
     position: absolute;
     top: 50%;
@@ -1424,8 +1440,11 @@ select {
 
 .dashboard__container {
   width: 100%;
-  padding: 5rem 5rem 5rem 5rem;
+  padding: 2rem 5rem;
   position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .dashboard__container {
+      padding: 2rem; } }
 
 .dashboard__sidebar {
   float: left;
@@ -1435,16 +1454,24 @@ select {
     .dashboard__sidebar {
       width: 100%;
       float: left;
-      margin-bottom: 10rem; } }
+      margin-bottom: 4rem; } }
+  @media (max-width: 56.25em) {
+    .dashboard__sidebar {
+      width: 100%;
+      float: left;
+      margin-bottom: 4rem; } }
 
 .dashboard__sidebar-links {
   float: left;
   height: 20rem;
   width: 100%;
   list-style: none; }
+  @media (max-width: 56.25em) {
+    .dashboard__sidebar-links {
+      display: none; } }
   @media only screen and (max-width: 37.5em) {
     .dashboard__sidebar-links {
-      float: right; } }
+      display: none; } }
 
 .dashboard__content {
   width: 83%;
@@ -1538,9 +1565,117 @@ select {
   margin: 0 auto; }
 
 .section-parking {
-  padding: 15rem 3rem 3rem 3rem;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(180deg, #20b573, #22c27b);
+  z-index: 0;
+  position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .section-parking {
+      height: 100%;
+      display: table;
+      padding-bottom: 8rem; } }
+
+.parking__container {
+  width: 100%;
+  padding: 2rem 5rem;
+  position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .parking__container {
+      padding: 2rem; } }
+
+.parking__sidebar {
+  float: left;
+  height: 100%;
+  width: 20%; }
+  @media (max-width: 56.25em) {
+    .parking__sidebar {
+      width: 100%;
+      float: left;
+      margin-bottom: 4rem; } }
+  @media (max-width: 56.25em) {
+    .parking__sidebar {
+      width: 100%;
+      float: left;
+      margin-bottom: 4rem; } }
+
+.parking__header {
+  width: 100%;
+  padding-bottom: 5rem;
+  display: table; }
+
+.parking__heading {
+  float: left;
+  height: 100%;
+  width: 50%; }
+  @media (max-width: 56.25em) {
+    .parking__heading {
+      width: 100%;
+      float: left;
+      margin-bottom: 2rem; } }
+  @media (max-width: 56.25em) {
+    .parking__heading {
+      width: 100%;
+      float: left;
+      margin-bottom: 2rem; } }
+
+.parking__filter {
+  float: left;
+  width: 50%;
+  height: 100%; }
+  @media (max-width: 56.25em) {
+    .parking__filter {
+      float: none;
+      width: 80%;
+      margin: 0 auto; } }
+
+.parking__content {
+  width: 100%;
+  height: 100%;
+  float: right; }
+  @media (max-width: 56.25em) {
+    .parking__content {
+      width: 100%;
+      float: left; } }
+
+.parking__user-section {
+  width: 100%;
   position: relative;
-  background-image: linear-gradient(180deg, #20b573, #266b4c); }
+  background-color: #266b4c;
+  border-radius: 1rem;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 0.25rem 2rem 0.25rem rgba(48, 48, 48, 0.1); }
+
+.parking__user-item {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  display: table; }
+
+.parking__user-address {
+  width: 70%;
+  float: left;
+  padding: 1.25rem; }
+
+.parking__user-buttons {
+  width: 30%;
+  float: left;
+  text-align: right;
+  margin-top: .25rem; }
+  @media only screen and (max-width: 37.5em) {
+    .parking__user-buttons {
+      float: none;
+      width: 100%;
+      text-align: center; } }
+
+.parking__user-empty {
+  width: 100%;
+  float: left;
+  padding: 1.25rem; }
 
 .section-renter {
   position: relative; }

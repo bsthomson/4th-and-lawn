@@ -3,6 +3,8 @@ import './../../App.css';
 import API from "./../../utils/API";
 import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
 import moment from "moment";
+import GoogleMap from "./../../components/GoogleMap/GoogleMap";
+
 
 class ParkingSpots extends Component {
     state = {
@@ -14,14 +16,15 @@ class ParkingSpots extends Component {
     componentDidMount() {
         this.loadParkingSpots()
         this.loadEvents()
-        console.log(this.state)
     }
 
     loadParkingSpots = () => {
         API.getParkingSpots()
             .then( response => {
+                console.log(response.data)
                 this.setState({ parkingspots: response.data })
             })
+            .then( console.log(this.state.parkingspots))
             .catch(err => console.log(err));
     };
 
@@ -30,7 +33,6 @@ class ParkingSpots extends Component {
         API.getJayhawkEvents()
             .then( response => {
                 response.data.forEach(parkingSpot => {
-                    console.log("parkingSpot response: ", parkingSpot)
                     if (moment(parkingSpot.date) > moment()) {
                         parkingSpotArray.push(parkingSpot)
                     }
@@ -50,59 +52,84 @@ class ParkingSpots extends Component {
 
     render() {
         return (
-            <div>
-           
-            <section className="section-parking">
-             {/* <div className="page-transition background-test"></div> */}
+            <section>
+                <div className="section-header">&nbsp;</div>
 
-                <div className="row">
-                    <div className="col-1-of-2">
-                        <form>
-                            <div className="form__filter-container" id="events">                        
-                                {this.state.events.length ? (                    
-                                    <div className="form__group">
-                                        <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
-                                            <option>
-                                                Filter by game
-                                            </option>
-                                            {this.state.events.map(game => (
-                                                <option
-                                                    key={game._id}
-                                                    id="game"
-                                                    name="event"
-                                                    placeholder="Game"
-                                                    value={game._id}>
-                                                    {moment(game.date).format("MM-DD")} {game.event}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                ) : (
-                                    <div className="form__group">
-                                        <select name="game" className="form__input">                                
-                                            <option>
-                                                No Games Available
-                                            </option>                            
-                                        </select>
-                                    </div>
-                                )}
-                            </div>   
-                        </form>
-                    </div>
-
-                    <div className="col-1-of-2">
-                        {/* <div className="col-1-of-2">
-                            <h1 className="heading-primary">
-                                <span className="heading-primary--form">Parking spots</span>
-                                <span className="dashboard-primary--body">These are your listings.</span>
-                            </h1>
-                        </div> */}
-                    </div>
-                </div>
+                <div className="section-parking">
                 
-                <CardParkingSpot game={this.state.game}/>
-            </section>
+                    <div className="parking__container">
+                        {/*  START PAGE HEADER -> */}
+                        <section  className="parking__header">
+                           
+                            <div className="parking__heading">
+                                <h1 className="heading-primary">
+                                    <span className="heading-primary--page">Parking spots</span>
+                                </h1>
+                            </div>
+                            
+
+                            <div className="parking__filter">
+                            <form>
+                                <div className="form__filter-container" id="events">                        
+                                    {this.state.events.length ? (                    
+                                        <div className="form__group">
+                                            <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
+                                                <option>
+                                                    Filter by game
+                                                </option>
+                                                {this.state.events.map(game => (
+                                                    <option
+                                                        key={game._id}
+                                                        id="game"
+                                                        name="event"
+                                                        placeholder="Game"
+                                                        value={game._id}>
+                                                        {moment(game.date).format("MM-DD")} {game.event}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    ) : (
+                                        <div className="form__group">
+                                            <select name="game" className="form__input">                                
+                                                <option>
+                                                    No Games Available
+                                                </option>                            
+                                            </select>
+                                        </div>
+                                    )}
+                                </div>   
+                            </form>
+                        </div>
+                    </section>
+                    {/* ^ END PAGE HEADER ^ */}
+
+                    <section className="parking__content">
+
+                    <CardParkingSpot game={this.state.game}/>
+
+                        {/* <div className="row">
+
+                            <div className="col-1-of-3">
+                                <section className="dashboard__user-section">
+                                    <span className="dashboard-heading--title">Parking spots</span>
+                                </section>
+                            </div>
+
+                            <div className="col-1-of-3">
+                                <section className="dashboard__user-section">
+                                    <span className="dashboard-heading--title">Rented Spots</span>
+                                </section>
+                            </div>
+
+                        </div> */}
+                    </section>
+                    {/* END DASHBOARD USER CONTENT */}
+
+                </div>
             </div>
+
+            </section>
         );
     }
 }

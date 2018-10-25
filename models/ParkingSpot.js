@@ -4,30 +4,38 @@ const Schema = mongoose.Schema;
 
 const ParkingSpotSchema = new Schema({
   streetaddress: {
-    type: String
+    type: String,
+    required: true
   },
   city: {
-    type: String
+    type: String,
+    required: true
   },
   state: {
-    type: String
+    type: String,
+    required: true
   },
   zipcode: {
-    type: String
+    type: String,
+    required: true
   },
   availablespots: {
-    type: Number
+    type: Number,
+    required: true
   },
   instructions: {
-    type: String
+    type: String,
+    required: true
   },
   price: {
-    type: Number
+    type: Number,
+    required: true
   },
   event: [
     {
     type: Schema.Types.ObjectId,
-    ref: "Jayhawk"
+    ref: "Jayhawk",
+    required: true
     }
   ],
   user: [
@@ -39,7 +47,7 @@ const ParkingSpotSchema = new Schema({
   renter: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Renter"
+      ref: "User"
     }
   ],
   rentinfo: [

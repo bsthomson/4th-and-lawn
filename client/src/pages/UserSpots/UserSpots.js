@@ -99,7 +99,7 @@ class UserSpot extends Component {
                     {/* START USER CONTENT */}
                     <section className="dashboard__content">
                         <div className="row">
-                            <div className="col-1-of-1">
+                            <div className="col-1-of-2">
                                 <section className="dashboard__user-section">
                                     <span className="dashboard-heading--title">Parking spots</span>
                                     {/* <span className="dashboard-heading--btn"></span> */}
@@ -130,7 +130,7 @@ class UserSpot extends Component {
                                     ) : (
                                         <div className="dashboard__user-item">
                                             <div className="dashboard__user-empty">
-                                                 <span className="dashboard-heading--value">You haven't listed any parking spots.</span>
+                                                 <span className="dashboard-heading--value">You haven't listed any spots.</span>
                                              </div>
                                         </div>
                                     )}
@@ -138,7 +138,7 @@ class UserSpot extends Component {
 
                                 </section>
                             </div>
-                            <div className="col-1-of-1">
+                            <div className="col-1-of-2">
                                 <section className="dashboard__user-section">
                                     <span className="dashboard-heading--title">Rented Spots</span>
 
@@ -168,7 +168,7 @@ class UserSpot extends Component {
                                         ) : (
                                             <div className="dashboard__user-item">
                                                 <div className="dashboard__user-empty">
-                                                    <span className="dashboard-heading--value">You haven't rented any parking spots.</span>
+                                                    <span className="dashboard-heading--value">You haven't rented any spots.</span>
                                                 </div>
                                             </div>
                                         )}
@@ -176,6 +176,10 @@ class UserSpot extends Component {
 
                                 </section>
                             </div>
+
+                            
+
+
                         </div>
 
                         
