@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect } from "react-router-dom"
-import ValidateForm from "./Validate"
 
 class Signup extends Component {
 	constructor() {
