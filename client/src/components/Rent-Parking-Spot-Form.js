@@ -6,7 +6,7 @@ class RentParkingSpot extends Component {
     constructor() {
         super()
         this.state = {
-            licensePlate: '',
+            licenseplate: '',
             make: '',
             model: '',
             redirectTo: null
@@ -27,7 +27,7 @@ class RentParkingSpot extends Component {
         console.log(this.state);
 
         axios.post("/api" + window.location.pathname, {
-            licensePlate: this.state.licensePlate,
+            licenseplate: this.state.licenseplate,
             make: this.state.make,
             model: this.state.model
         })
@@ -61,10 +61,10 @@ class RentParkingSpot extends Component {
                                 <div className="form__group">
                                     <input className="form__input"
                                         type="text"
-                                        id="licensePlate"
-                                        name="licensePlate"
+                                        id="licenseplate"
+                                        name="licenseplate"
                                         placeholder="License plate number"
-                                        value={this.state.licensePlate}
+                                        value={this.state.licenseplate}
                                         onChange={this.handleChange}
                                     />
                                 </div>
