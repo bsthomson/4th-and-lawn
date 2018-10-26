@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup';
 import GoogleMap from './../../components/GoogleMap/GoogleMap';
 import axios from 'axios';
 import Geocode from "react-geocode";
+import API from "../../utils/API.js"
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 
@@ -20,7 +21,8 @@ function getGeocode(address){
 
 class RentThisSpot extends Component {
     state = {
-        parkingspots: []
+        parkingspots: [],
+        distance: []
     };
 
     componentDidMount() {
@@ -33,6 +35,7 @@ class RentThisSpot extends Component {
             this.setState({ 
                 parkingspots: response.data
             });
+            console.log(response.data)
             const spots = [];
             spots.push(response.data)
             const geocodes = [];
@@ -51,10 +54,32 @@ class RentThisSpot extends Component {
                     spot.lng = lng;
                 })
             })
+            .then(this.getWalkingDistance())
             .catch( err => console.log(err))
+            // this.getWalkingDistance();
         })
         .catch(err => console.log(err));
+   
     };
+
+    getWalkingDistance = () => {
+        console.log(this.state);
+        var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
+        var destination = " 1101 Mississippi St Lawrence, KS";
+        // const setState = this.setState;
+        
+        
+        API.getDistance(origin, destination) 
+        .then((response) => {
+            // console.log(response.data)
+            // console.log(this);
+            this.setState({
+                distance: response.data
+            })
+            
+        })
+
+    }
 
     render() {
         return (
@@ -109,7 +134,7 @@ class RentThisSpot extends Component {
                             <div className="data-renter__background">
                                 <div className="data-renter__cta">
                                     <span className="renter--title center">Distance</span>
-                                    <span className="renter--value-xl center">N/A</span>
+                                    <span className="renter--value-xl center">{this.state.distance}</span>
                                 </div>
                             </div>
                         </div>
@@ -165,4 +190,4 @@ class RentThisSpot extends Component {
 export default RentThisSpot;
 
 
-
+    
