@@ -48,6 +48,8 @@ class ValidateForm extends Component {
           console.log(error)
         })
       let fields = {};
+      fields["firstname"] = "";
+      fields["lastname"] = "";
       fields["email"] = "";
       fields["phonenumber"] = "";
       fields["password"] = "";
@@ -60,6 +62,16 @@ class ValidateForm extends Component {
       let fields = this.state.fields;
       let errors = {};
       let formIsValid = true;
+
+      if (!fields["firstname"]) {
+        formIsValid = false;
+        errors["firstname"] = "*Please enter your first name.";
+      }
+
+      if (!fields["lastname"]) {
+        formIsValid = false;
+        errors["lastname"] = "*Please enter your last name.";
+      }
 
       if (!fields["email"]) {
         formIsValid = false;
@@ -126,7 +138,7 @@ class ValidateForm extends Component {
             onChange={this.handleChange} 
           />
         </div>
-        <div className="errorMsg">{this.state.errors.username}</div>
+        <div className="errorMsg">{this.state.errors.firstname}</div>
 
         <div className="form__group">
           <input 
@@ -138,7 +150,7 @@ class ValidateForm extends Component {
             onChange={this.handleChange} 
           />
         </div>
-        <div className="errorMsg">{this.state.errors.username}</div>
+        <div className="errorMsg">{this.state.errors.lastname}</div>
 
         <div className="form__group">
           <input 
