@@ -35,8 +35,15 @@ class Home extends Component {
                 {this.props.loggedIn ? (
                     <div>
                     <section className="header">
-                    <PostParkingSpot />
+                        <div className="header__text-box">
+                            <h1 className="header-primary">
+                                <span className="header-primary--main">Game day</span>
+                                <span className="header-primary--main">parking made</span>
+                                <span className="header-primary--main">easy.</span>
+                            </h1>
+                        </div>
                     </section>
+
                     <section className="section-about">
 
                         <div className="section-about__container">

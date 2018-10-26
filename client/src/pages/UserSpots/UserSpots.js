@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './../../App.css';
 import axios from 'axios';
+import PostParkingSpot from './../../components/FormPostParking/PostParking';
 import Popup from 'reactjs-popup';
 
 class UserSpot extends Component {
@@ -74,8 +75,16 @@ class UserSpot extends Component {
                 
                 <div className="dashboard__container">
 
+                    <section  className="parking__header">
+                        <div className="parking__heading">
+                            <h1 className="heading-primary">
+                                <span className="heading-primary--page">Dashboard</span>
+                            </h1>
+                        </div>
+                    </section>
+
                     {/* SIDEBARD -> */}
-                    <section className="dashboard__sidebar">
+                    {/* <section className="dashboard__sidebar">
                         <h1 className="heading-primary">
                             <span className="heading-primary--white">Dashboard</span>
                         </h1>
@@ -93,11 +102,34 @@ class UserSpot extends Component {
                                 <i className="fas fa-cog spot--icon-sidebar"></i> Settings
                             </li>
                         </ul>
-                    </section>
+                    </section> */}
                     {/* SIDEBAR END ^ */}
+                    <div className="dashboard__create">
+                    <Popup trigger={<span className="btn btn--create">Create Parking Spot</span>} modal>
+                            {close => (
+                            <div className="modal">
+                                <a href="#" className="popup__close" onClick={close} >
+                                &times;
+                                </a>
+                                    
+                                <PostParkingSpot />
+                                <button
+                                    className="button"
+                                    onClick={() => {
+                                    console.log('Modal Closed')
+                                    close()
+                                    }}
+                                >
+                                </button>
+                            </div>
+                            )}
+                        </Popup>
+                    </div>
+                    
                     
                     {/* START USER CONTENT */}
                     <section className="dashboard__content">
+
                         <div className="row">
                             <div className="col-1-of-2">
                                 <section className="dashboard__user-section">
@@ -138,6 +170,7 @@ class UserSpot extends Component {
 
                                 </section>
                             </div>
+
                             <div className="col-1-of-2">
                                 <section className="dashboard__user-section">
                                     <span className="dashboard-heading--title">Rented Spots</span>

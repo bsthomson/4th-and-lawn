@@ -186,10 +186,10 @@ class RentThisSpot extends Component {
                             )}
                         </div>
                         {/* END FOOTER BUTTON ^ */}
-                        
+
                         <div className="footer__price">
                             <p className="renter--footer-price"><i className="fas fa-dollar-sign"></i>{this.state.parkingspots.price}
-                            <span className="renter--footer-price-text">/ per game</span>
+                                <span className="renter--footer-price-text">/ per game</span>
                             </p>
                         </div>
                     

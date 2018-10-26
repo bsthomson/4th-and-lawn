@@ -78,6 +78,27 @@
         }
     }
 
+    &--create {
+        border-radius: 5rem;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+        padding: 1.25rem 3rem;
+        color: $color-primary;
+        text-decoration: none;
+        background-image: linear-gradient(120deg, $color-white 0%, $color-white 50%, $color-primary-dark 50%);
+        background-size: 240%;
+        transition: all .6s;
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-white;
+            // transform: translateX(1rem);
+        }
+    }
+
     &--delete {
         height: 3.5rem;
         width: 3.5rem;

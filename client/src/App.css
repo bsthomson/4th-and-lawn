@@ -509,6 +509,22 @@ body {
     background-position: 100%;
     color: #fff; }
 
+.btn--create {
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 1.25rem 3rem;
+  color: #20b573;
+  text-decoration: none;
+  background-image: linear-gradient(120deg, #fff 0%, #fff 50%, #266b4c 50%);
+  background-size: 240%;
+  transition: all .6s; }
+  .btn--create:hover, .btn--create:active {
+    background-position: 100%;
+    color: #fff; }
+
 .btn--delete {
   height: 3.5rem;
   width: 3.5rem;
@@ -631,22 +647,6 @@ body {
     color: transparent; }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
-
-.form__container {
-  width: 40rem;
-  background-color: #fff;
-  position: relative;
-  left: 10rem;
-  top: 10rem;
-  padding: 3rem;
-  border-radius: .6rem;
-  box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.3); }
-  @media only screen and (max-width: 37.5em) {
-    .form__container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); } }
 
 .form__filter-container {
   width: 40%;
@@ -774,15 +774,18 @@ select {
   margin-bottom: 10px; }
 
 .modal {
-  padding: 3rem; }
+  padding: 6rem; }
 
 .popup-content {
-  width: 370px !important;
+  width: 50% !important;
   z-index: 9000; }
   @media only screen and (max-width: 37.5em) {
     .popup-content {
       width: 100% !important;
       height: 100vh !important; } }
+
+.popup-overlay {
+  position: relative; }
 
 .parking-card {
   perspective: 150rem;
@@ -1472,13 +1475,25 @@ select {
       display: none; } }
 
 .dashboard__content {
-  width: 83%;
+  width: 100%;
   height: 100%;
   float: left; }
   @media (max-width: 56.25em) {
     .dashboard__content {
       width: 100%;
       float: left; } }
+
+.dashboard__create {
+  float: left;
+  width: 50%;
+  margin-bottom: 3rem; }
+  @media (max-width: 56.25em) {
+    .dashboard__create {
+      text-align: center;
+      float: none;
+      display: table;
+      margin: 0 auto;
+      padding-bottom: 4rem; } }
 
 .dashboard__user-section {
   width: 100%;
@@ -1488,6 +1503,14 @@ select {
   padding: 3rem;
   margin-bottom: 3rem;
   box-shadow: 0 0.25rem 2rem 0.25rem rgba(48, 48, 48, 0.1); }
+
+.dashboard__user-container {
+  width: 100%;
+  position: relative;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  display: table; }
 
 .dashboard__user-item {
   width: 100%;
@@ -1548,6 +1571,8 @@ select {
       background-image: linear-gradient(120deg, #b22028, #e70d0d); }
     .dashboard-card__button--link {
       background-image: linear-gradient(120deg, #20b573, #266b4c); }
+    .dashboard-card__button--create {
+      background-color: white; }
     .dashboard-card__button:hover {
       transform: translateY(-2px);
       box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
