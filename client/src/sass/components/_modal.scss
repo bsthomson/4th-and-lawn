@@ -1,7 +1,20 @@
 .modal {
-    padding: 3rem;
+    padding: 6rem;
+    
 }
 
 .popup-content {
-    width: 370px !important;
+    width: 50% !important;
+    z-index: 9000;
+
+    @include breakpoint(phone) {
+        width: 100% !important;
+        height: 100vh !important;
+        
+    }
+}
+
+.popup-overlay {
+    position: relative;
+
 }

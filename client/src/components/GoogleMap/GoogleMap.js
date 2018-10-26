@@ -4,8 +4,8 @@ import HouseIcon from "./HouseDollarThree.png";
 
 
 const style = {
-    height: '40rem',
-    width: '90%',
+    height: '100%;',
+    width: '100%',
   }
 
 class GoogleMap extends Component {

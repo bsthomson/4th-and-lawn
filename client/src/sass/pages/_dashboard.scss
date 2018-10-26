@@ -1,0 +1,234 @@
+.section-header {
+    width: 100%;
+    height: 12rem;
+    background-image: url(img/section-header.jpg);
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.section-dashboard {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(
+        180deg,
+        $color-primary,
+        $color-primary-dark
+        );
+    z-index: 0;
+    position: relative;
+    display: table;
+    // transition: 1s ease-out;
+
+    @include breakpoint(phone) {
+        height: 100%;
+        display: table;
+        padding-bottom: 8rem;
+    }
+}
+
+.dashboard {
+
+    &__container {
+        width: 100%;
+        padding: 2rem 5rem;
+        position: relative;
+
+        @include breakpoint(phone) {
+            padding: 2rem;
+        }
+    }
+
+ 
+
+    &__sidebar {
+        float: left;
+        height: 100%;
+        width: 17%;
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+            margin-bottom: 4rem;
+        }
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+            margin-bottom: 4rem;
+        }
+    }
+
+    &__sidebar-links {
+        float: left;
+        height: 20rem;
+        width: 100%;
+        list-style: none;
+
+        @include breakpoint(tab-port) {
+            display: none;
+        }
+
+        @include breakpoint(phone) {
+            display: none;
+            
+        }
+    }
+
+    &__content {
+        width: 100%;
+        height: 100%;
+        float: left;
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+        }
+    }
+
+    &__create {
+        float: left;
+        width: 50%;
+        margin-bottom: 3rem;
+
+        @include breakpoint(tab-port) {
+            text-align: center;
+            float: none;
+            display: table;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+            width: 100%;
+        }
+    }
+
+    &__user-section {
+        width: 100%;
+        position: relative;
+        background-color: $color-primary-dark;
+        border-radius: 1rem;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 .25rem 2rem .25rem rgba(48, 48, 48, 0.1);
+    }
+
+    &__user-container {
+        width: 100%;
+        position: relative;
+        border-radius: .5rem;
+        padding: 1rem;
+        margin-top: 2rem;
+        display: table;
+    }
+
+    &__user-item {
+        width: 100%;
+        position: relative;
+        background-color: $color-white;
+        border-radius: .5rem;
+        padding: 1rem;
+        margin-top: 2rem;
+        display: table;
+    }
+
+    &__user-address {
+        width: 70%;
+        float: left;
+        padding: 1.25rem
+    }
+
+    &__user-buttons {
+        width: 30%;
+        float: left;
+        text-align: right;
+        margin-top: .25rem;
+        
+        @include breakpoint(phone) {
+            float: none;
+            width: 100%;
+            text-align: center;
+            padding: 2rem 0;
+        }
+    }
+
+    &__user-empty {
+        width: 100%;
+        float: left;
+        padding: 1.25rem
+    }
+
+}
+
+.dashboard-card {
+    // Functionality
+    position: relative;
+    height: 9rem;
+    margin-bottom: 1rem;
+    background-color: $color-white;
+    border-radius: 1rem;
+    border: 1px solid black;
+    margin: 0 auto;
+
+  
+    &__container {
+        width: 100%;
+        position: relative;
+    }
+
+    &__button {
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 4rem;
+        margin: 0 1rem;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+
+        @include breakpoint(phone) {
+            width: 100%;
+            margin: 0 auto;
+            height: 4.5rem;
+        }
+        
+        &--delete {
+            background-image: linear-gradient(
+                120deg,
+                $color-red-dark,
+                $color-red-light
+            );
+        }
+
+        &--link {
+            background-image: linear-gradient(
+                120deg,
+                $color-primary,
+                $color-primary-dark
+            );
+        }
+
+        &--create {
+            background-color: white;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 .75rem 1.5rem rgba($color-black, .2);
+            /* x, y, blur */
+        }
+        
+        &:active,
+        &:focus {
+            outline: none;
+            transform: translateY(-1px);
+            box-shadow: 0 .5rem 1rem rgba(48, 48, 48, 0.15);
+        }
+    }
+
+}
+
+.listing-container {
+    width: 90%;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin: 0 auto;
+}
+

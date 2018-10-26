@@ -1,13 +1,21 @@
 // Colors
-$color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
+$color-primary: #20b573;
+$color-primary-light: #22c27b;
+$color-primary-dark: #266b4c;
+$color-primary-background: #0b7947;
+// $color-primary-background: #256F78;
+
 
 $color-blue-light: #25abf8;
 $color-blue: #007CC2;
 $color-blue-dark: #005a8f;
 
-$color-red: #cf1f1f;
+$color-red: #ef3840;
+$color-red-dark: #b22028;
+// $color-red: #cf1f1f;
+$color-red-light: #e70d0d;
+// $color-red-dark: #b80b0b;
+// $color-red-dark: #680f00;
 
 $color-secondary-light: #ffb900;
 $color-secondary-dark: #ff7730;
@@ -30,12 +38,12 @@ $color-black: #000;
 $default-font-size: 1.6rem;
 
 // Grid
-$grid-width: 90%;
+$grid-width: 100%;
 $card-detail-width: 95%;
 $gutter-vertical: 2rem;
 $gutter-vertical-sm: 6rem;
 $gutter-horizontal: 2rem;
-$gutter-horizontal-sm: 2.5rem;
+$gutter-horizontal-s: .5rem;
 
 // Border Radius
 $default-border-radius: 3px;

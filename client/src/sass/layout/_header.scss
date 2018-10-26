@@ -1,14 +1,20 @@
 .header {
-    height: 85vh;
-    min-height: 60rem;
+    height: 80rem;
+    min-height: 70rem;
     background-image: url(img/background.jpg);
-    background-position: bottom;
+    background-position: left center;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: 0;
     position: relative;
     // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    @include breakpoint(phone) {
+        background-position: right;
+        background-size: cover;
+        background-position: bottom;
+
+    }
 
 
     &__logo-box {
@@ -25,8 +31,20 @@
     &__text-box {
         position: relative;
         width: 60%;
+
+        @include breakpoint(phone) {
+            width: 80%;
+        }
+    }
+
+    &__section-box {
+        position: relative;
+        width: 60%;
         z-index: 1000;
-  
+
+        @include breakpoint(phone) {
+            width: 80%;
+        }
     }
 
     &__menu {
@@ -43,3 +61,5 @@
         }
     }
 }
+
+

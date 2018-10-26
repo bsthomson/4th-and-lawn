@@ -111,24 +111,24 @@ class PostParkingSpot extends Component {
                             type="city"
                             id="city"
                             name="city"
-                            placeholder="City"
-                            value={this.state.city}
+                            placeholder="Lawrence"
+                            value="Lawrence"
                             onChange={this.handleChange}
                         />
                         <input className="form__input-xs"
                             type="text"
                             id="state"
                             name="state"
-                            placeholder="State"
-                            value={this.state.state}
+                            placeholder="KS"
+                            value="KS"
                             onChange={this.handleChange}
                         />
                         <input className="form__input-xs"
                             type="text"
                             id="zipcode"
                             name="zipcode"
-                            placeholder="Zip code"
-                            value={this.state.zipcode}
+                            placeholder="66044"
+                            value="66044"
                             onChange={this.handleChange}
                         />
                     </div>
