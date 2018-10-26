@@ -3,6 +3,8 @@ import './../../App.css';
 import API from "./../../utils/API";
 import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
 import moment from "moment";
+import GoogleMap from "./../../components/GoogleMap/GoogleMap";
+
 
 class ParkingSpots extends Component {
     state = {
@@ -14,14 +16,15 @@ class ParkingSpots extends Component {
     componentDidMount() {
         this.loadParkingSpots()
         this.loadEvents()
-        console.log(this.state)
     }
 
     loadParkingSpots = () => {
         API.getParkingSpots()
             .then( response => {
+                console.log(response.data)
                 this.setState({ parkingspots: response.data })
             })
+            .then( console.log(this.state.parkingspots))
             .catch(err => console.log(err));
     };
 
@@ -30,7 +33,6 @@ class ParkingSpots extends Component {
         API.getJayhawkEvents()
             .then( response => {
                 response.data.forEach(parkingSpot => {
-                    console.log("parkingSpot response: ", parkingSpot)
                     if (moment(parkingSpot.date) > moment()) {
                         parkingSpotArray.push(parkingSpot)
                     }
@@ -91,8 +93,9 @@ class ParkingSpots extends Component {
                         )}
                     </div>   
                 </form>
-              <CardParkingSpot game={this.state.game}/>
+                <CardParkingSpot game={this.state.game}/>
             </section>
+
         );
     }
 }

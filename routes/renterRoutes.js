@@ -133,11 +133,7 @@ module.exports = function (app) {
       // console.log("inside app.route", req);
       var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + req.query.origin + "&destinations=" + req.query.destination + "&key=AIzaSyCMQAxD4bwQmzLZNVUGgc_wy6q7Bk6kbo4";
         axios.get(queryURL).then((ggl) =>{
-          // const data = ""
-          // ggl.on("data", (chunk=>{ data += chunk; }))
-          // ggl.on("end", ()=>{
-          //   console.log(data);
-          console.log("@@@@", ggl.data.rows[0].elements[0].duration.text)
+          console.log("@@@@", ggl.data.rows[0].elements[0])
             res.json(ggl.data.rows[0].elements[0].duration.text)
           // })
         })

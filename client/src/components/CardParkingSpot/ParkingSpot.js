@@ -8,14 +8,12 @@ Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 
 function getGeocode(address){
     console.log(address);
-    return Geocode.fromAddress(address).then(
-        response => {
-            console.log(response)
+    return Geocode.fromAddress(address)
+        .then( response => {
             const { lat, lng } = response.results[0].geometry.location;
-            return {lat: lat, lng:lng};
-        },
-        error => console.error
-    );
+            return {lat: lat, lng: lng};
+        })
+        .catch(error => console.log(error))
 }
 
 class CardParkingSpot extends Component {
@@ -23,7 +21,7 @@ class CardParkingSpot extends Component {
     state = {
             parkingspots: [],
             gameday: [],
-            game: ''
+            game: this.props.game
         };
     
 
@@ -32,7 +30,6 @@ class CardParkingSpot extends Component {
     }
 
     componentDidUpdate() {
-        console.log(this.props.game)
         if (this.props.game !== this.state.game) {
         this.selectDates();
         }
@@ -44,6 +41,7 @@ class CardParkingSpot extends Component {
             console.log(response);
             const spots = response.data;
             const geocodes = [];
+            console.log(geocodes)
             spots.forEach(spot=>{
                 spot.address = `${spot.streetaddress}, ${spot.city}, ${spot.state} ${spot.zipcode}`;
                 geocodes.push(getGeocode(spot.address));
@@ -58,12 +56,14 @@ class CardParkingSpot extends Component {
                     spot.lat = lat;
                     spot.lng = lng;
                 })
-            }).then(()=>{
+            })
+            .then(()=>{
                 this.setState({ 
                     parkingspots: spots,
                     gameday: response.data
                 });
             })
+            .catch( err => console.log(err))
 
             
         })
@@ -172,7 +172,7 @@ class CardParkingSpot extends Component {
                 ) : (
                 <h3>No Results to Display</h3>
                 )}
-                <div><GoogleMap markers={this.state.parkingspots}/></div>
+                {<div><GoogleMap markers={this.state.parkingspots}/></div>}
             </div>
     
         )

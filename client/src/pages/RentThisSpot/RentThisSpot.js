@@ -4,10 +4,20 @@ import RentParkingSpot from "./../../components/Rent-Parking-Spot-Form";
 import Popup from 'reactjs-popup';
 import GoogleMap from './../../components/GoogleMap/GoogleMap';
 import axios from 'axios';
-import $ from 'jquery';
-import jQuery from 'jquery';
 import API from '../../utils/API.js'
+import Geocode from "react-geocode";
 
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+
+function getGeocode(address){
+    console.log(address);
+    return Geocode.fromAddress(address)
+        .then( response => {
+            const { lat, lng } = response.results[0].geometry.location;
+            return {lat: lat, lng: lng};
+        })
+        .catch(error => console.log(error))
+}
 
 class RentThisSpot extends Component {
     constructor(props) {
@@ -29,17 +39,37 @@ class RentThisSpot extends Component {
         axios.get("/api/" + window.location.pathname)
         .then(response => {
             this.setState({ 
-            parkingspots: response.data
+                parkingspots: response.data
             }) 
-            console.log(response.data)
-            this.getWalkingDistance();
+            // console.log(response.data)
+            
+
+            const spots = [];
+            spots.push(response.data)
+            const geocodes = [];
+            spots.forEach(spot => {
+                spot.address = `${spot.streetaddress}, ${spot.city}, ${spot.state} ${spot.zipcode}`;
+                geocodes.push(getGeocode(spot.address))
+            })
+            console.log(geocodes)            
+
+            Promise.all(geocodes)
+            .then(geoCodeResults =>{
+                geoCodeResults.forEach( (res, idx) => {
+                    const spot = spots[idx];
+                    const {lat, lng} = res
+                    spot.lat = lat;
+                    spot.lng = lng;
+                })
+            })
+            .catch( err => console.log(err))
         })
         .catch(err => console.log(err));
-
+        this.getWalkingDistance();
     };
 
     getWalkingDistance() {
-        console.log(this);
+        console.log(this.state);
         var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
         var destination = " 1101 Mississippi St Lawrence, KS";
         // const setState = this.setState;
@@ -47,8 +77,8 @@ class RentThisSpot extends Component {
         
         API.getDistance(origin, destination) 
         .then((response) => {
-            console.log(response.data)
-            console.log(this);
+            // console.log(response.data)
+            // console.log(this);
             this.setState({
                 distance: response.data
             })
