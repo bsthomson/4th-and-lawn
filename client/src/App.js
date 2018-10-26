@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import { BrowserRouter as 
   Router, 
   Route, 
   Switch 
 } from 'react-router-dom';
-import Navbar from './components/Navigation/Nav.js';
+import Navbar from './components/Navigation/Nav';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
 import UserSpots from './pages/UserSpots';
@@ -85,7 +86,7 @@ class App extends Component {
                   />
                   <Route
                       path="/rentthisspot"
-                      component={RentThisSpot}
+                      component={() => <RentThisSpot loggedIn={this.state.loggedIn} updateUser={this.updateUser} />}
                   />
                   <Route
                     path="/parking-spots"

@@ -13,36 +13,128 @@ body {
     text-align: center;
 }
 
+.margin-right {
+    margin-right: $gutter-horizontal-s;
+}
+
 .header-primary {
     
     color: $color-black;
     /* Shaking animation bug fix */
     backface-visibility: hidden;
     position: absolute;
-    width: 70%;
+    width: 100%;
     left: 11rem;
-    top: 7rem;
+    top: 15rem;
     margin-bottom: 3rem;
-    
+
+    @include breakpoint(phone) {
+        width: 100%;
+        top: 8rem;
+        left: 5rem;
+    }
 
     &--main {
         display: block;
         width: 100%;
-        font-size: 6.5rem;
+        font-size: 6.25rem;
         font-weight: 900;
         text-align: left;
         // letter-spacing: -.4rem;
-        animation: moveInTop 1.5s ease-out .75s;
+        animation: moveInTop 1.5s ease-out 1s;
         animation-fill-mode: backwards;
-        line-height: 6.5rem;
+        line-height: 6.75rem;
         letter-spacing: .2px;
 
         @include breakpoint(phone) {
             letter-spacing: -.2rem;
-            font-size: 8rem;
-            line-height: 7rem;
-            text-align: center;
+            font-size: 6rem;
+            line-height: 5.5rem;
+            margin-top: .75rem;
+            // text-align: center;
         }
+    }
+}
+
+.section-title {
+    
+    /* Shaking animation bug fix */
+    backface-visibility: hidden;
+    width: 100%;
+    margin-bottom: 2.25rem;
+
+    &--main {
+        display: block;
+        color: $color-white;
+        width: 100%;
+        font-size: 4.75rem;
+        font-weight: 900;
+        text-align: left;
+        // letter-spacing: -.4rem;
+        // animation: moveInTop 1.5s ease-out .75s;
+        // animation-fill-mode: backwards;
+        line-height: 6.75rem;
+        letter-spacing: .2px;
+        margin-bottom: 1rem;
+
+        @include breakpoint(phone) {
+            letter-spacing: 0;
+            font-size: 4.5rem;
+            line-height: 6.5rem;
+            margin-top: 0rem;
+            // text-align: center;
+        }
+    }
+
+    &--main-black {
+        display: block;
+        color: $color-black;
+        width: 100%;
+        font-size: 5.25rem;
+        font-weight: 900;
+        text-align: left;
+        // letter-spacing: -.4rem;
+        // animation: moveInTop 1.5s ease-out .75s;
+        // animation-fill-mode: backwards;
+        line-height: 6.75rem;
+        letter-spacing: .2px;
+        margin-bottom: 1rem;
+
+        @include breakpoint(phone) {
+            letter-spacing: -.2rem;
+            font-size: 7rem;
+            line-height: 6.5rem;
+            margin-top: 7rem;
+            // text-align: center;
+        }
+    }
+
+    &--body {
+        display: block;
+        color: $color-white;
+        width: 100%;
+        font-size: 2.25rem;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: .5px;
+        line-height: 4rem;
+        letter-spacing: .2px;
+    }
+}
+
+
+.dashboard-primary {
+
+    &--body {
+        display: block;
+        color: $color-black;
+        width: 100%;
+        font-size: 2.25rem;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: .5px;
+        line-height: 4rem;
+        letter-spacing: .2px;
     }
 }
 
@@ -76,8 +168,31 @@ body {
         color: $color-black;
 
         @include breakpoint(phone) {
-            letter-spacing: -.2rem;
-            font-size: 8rem;
+            font-size: 2.7rem;
+            line-height: 3rem;
+        }
+    }
+
+    &--white {
+        display: block;
+        width: 100%;
+        font-size: 2.7rem;
+        font-weight: 900;
+        line-height: 3.5rem;
+        letter-spacing: 0px;
+        color: $color-white;
+        text-align: left;
+
+        @include breakpoint(tab-port) {
+            // letter-spacing: -.2rem;
+            font-size: 6rem;
+            line-height: 7rem;
+            text-align: center;
+        }
+
+        @include breakpoint(phone) {
+            // letter-spacing: -.2rem;
+            font-size: 6rem;
             line-height: 7rem;
             text-align: center;
         }
@@ -86,17 +201,24 @@ body {
     &--page {
         display: block;
         width: 100%;
-        font-size: 4rem;
-        font-weight: 500;
-        line-height: 5rem;
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 3.5rem;
         letter-spacing: 0px;
-        color: $color-black;
-        margin: 2rem 0;
+        color: $color-white;
+        text-align: center;
+
+        @include breakpoint(tab-port) {
+            // letter-spacing: -.2rem;
+            font-size: 6rem;
+            // line-height: 7rem;
+            text-align: center;
+        }
 
         @include breakpoint(phone) {
-            letter-spacing: -.2rem;
-            font-size: 8rem;
-            line-height: 7rem;
+            // letter-spacing: -.2rem;
+            font-size: 4.5rem;
+            // line-height: 7rem;
             text-align: center;
         }
     }
@@ -118,43 +240,88 @@ body {
     }
 }
 
-.renter {
-    color: $color-black !important;
-    text-transform: uppercase;
-    display: block;
-    width: 100%;
 
-    &--title {
-        font-size: 1.25rem;
-        line-height: 5rem;
-        color: $color-black;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: bold;
-    }
-
-    &--value-xl {
-        display: block;
-        width: 100%;
-        font-size: 8rem;
-        font-weight: 500;
-        line-height: 5rem;
-        letter-spacing: 0px;
-        color: $color-black;
-        margin: 2rem 0;
-
-        @include breakpoint(phone) {
-            letter-spacing: -.2rem;
-            font-size: 8rem;
-            line-height: 7rem;
-            text-align: center;
-        }
-    }
-}
 
 .spot-container {
     padding: 2rem 0;
 }
+
+.card-heading {
+
+    &--address {
+        font-size: 1.5rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &--detail-title {
+        font-size: 1rem;
+        letter-spacing: .1rem;
+        line-height: 1.5rem;
+        text-align: center;
+        margin-top: 1rem;
+        color: $color-grey-dark-2;
+    }
+
+    &--detail-value {
+        font-size: 1.5rem;
+        line-height: 1.25rem;
+        text-align: center;
+        margin-top: 1rem;
+        color: $color-black;
+        font-weight: bold;
+    }
+
+}
+
+.dashboard-heading {
+
+    &--title {
+        font-size: 1.2rem;
+        margin-top: 3rem;
+        color: $color-white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    &--btn {
+        height: 2.5rem;
+        width: 2.5rem;
+        border: 1px solid $color-white;
+        float: right;
+        border-radius: 2rem;
+    }
+
+    &--value {
+        font-size: 1rem;
+        color: $color-black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    &--item {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        color: $color-white;
+        // text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+
+        @include breakpoint(phone) {
+            text-align: center;
+            font-size: 2rem;
+        }
+    }
+}
+
 .spot {
     color: $color-black;
     text-transform: uppercase;
@@ -181,14 +348,33 @@ body {
         left: 50%;
         transform: translate(-50%, -50%);
         color: $color-white;
-        z-index: 9999;
+        z-index: 2000;
     }
 
-    &--test {
-        font-size: 1.5rem;
+    &--icon {
+        font-size: 1.25rem;
         letter-spacing: .1rem;
         text-align: center;
         font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $color-white;
+        z-index: 3000;
+    }
+
+    &--icon-sidebar {
+        font-size: 1.75rem;
+        letter-spacing: .1rem;
+        font-weight: bold;
+        color: $color-white;
+        margin-right: 2rem;
+        opacity: .5;
+    }
+
+    &--test {
+        text-align: center;
         @include absolute-center;
         color: $color-white;
     }
@@ -223,14 +409,6 @@ body {
     }
 }
 
-.icon {
-    color: $color-white;
-}
-
-.icon-back {
-    color: $color-white;
-    padding-top: 1.5rem;
-}
 
 .paragraph {
     font-size: $default-font-size;
@@ -270,12 +448,3 @@ body {
         
     }
 }
-
-.form-break {
-    height: 1px;
-    background-color: $color-grey-light-2;
-    border: 0;
-    width: 250px;
-    margin: 3rem auto;
-}
-

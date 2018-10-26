@@ -71,7 +71,7 @@ module.exports = function (app) {
   // route that gets all of the users rented spots
   app.get('/api/rentedspots', (req, res) => {
     User.find({ _id: req.session.passport.user })
-      .populate('rentedspots')
+      .populate("rentinfo")
       .then ( dbRentedSpot => {
         res.json(dbRentedSpot)
       })

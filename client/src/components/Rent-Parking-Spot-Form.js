@@ -9,7 +9,6 @@ class RentParkingSpot extends Component {
             licenseplate: '',
             make: '',
             model: '',
-            redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -20,7 +19,7 @@ class RentParkingSpot extends Component {
             [event.target.name]: event.target.value
         });
     };
-    // confirm with jolie
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -34,10 +33,10 @@ class RentParkingSpot extends Component {
         .then(response => {
             console.log('Renters info: ');
             console.log(response.data);
-            if(response === 200) {
+            if(response.status === 200) {
                 console.log("Post Sent")
                 this.setState({
-                    redirectTo: "/posted-spots"
+                    redirectTo: '/posted-spots'
                 })
             }
         }).catch(error => {
@@ -88,14 +87,13 @@ class RentParkingSpot extends Component {
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                                <div className="form__group">
-                                    <input
-                                        className="btn btn--form"
-                                        type="submit"
-                                        value="Submit"
-                                        onClick={this.handleSubmit}
-                                    />
-                                </div>
+
+                                <input
+                                    className="btn btn--form"
+                                    type="submit"
+                                    value="Submit"
+                                    onClick={this.handleSubmit}
+                                />
                         </form>
                 </div>
             )
