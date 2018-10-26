@@ -4,8 +4,8 @@ import RentParkingSpot from "./../../components/Rent-Parking-Spot-Form";
 import Popup from 'reactjs-popup';
 import GoogleMap from './../../components/GoogleMap/GoogleMap';
 import axios from 'axios';
-import API from '../../utils/API.js'
 import Geocode from "react-geocode";
+import API from "../../utils/API.js"
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 
@@ -20,16 +20,10 @@ function getGeocode(address){
 }
 
 class RentThisSpot extends Component {
-    constructor(props) {
-        super(props);
-
-        this.getWalkingDistance = this.getWalkingDistance.bind(this);
-
-        this.state = {
-            parkingspots: [],
-            distance: []
-        };
-    }
+    state = {
+        parkingspots: [],
+        distance: []
+    };
 
     componentDidMount() {
         this.getParkingSpot();
@@ -40,10 +34,8 @@ class RentThisSpot extends Component {
         .then(response => {
             this.setState({ 
                 parkingspots: response.data
-            }) 
-            // console.log(response.data)
-            
-
+            });
+            console.log(response.data)
             const spots = [];
             spots.push(response.data)
             const geocodes = [];
@@ -62,13 +54,15 @@ class RentThisSpot extends Component {
                     spot.lng = lng;
                 })
             })
+            .then(this.getWalkingDistance())
             .catch( err => console.log(err))
+            // this.getWalkingDistance();
         })
         .catch(err => console.log(err));
-        this.getWalkingDistance();
+   
     };
 
-    getWalkingDistance() {
+    getWalkingDistance = () => {
         console.log(this.state);
         var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
         var destination = " 1101 Mississippi St Lawrence, KS";
@@ -196,4 +190,4 @@ class RentThisSpot extends Component {
 export default RentThisSpot;
 
 
-
+    
