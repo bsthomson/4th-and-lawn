@@ -52,7 +52,6 @@ class ValidateForm extends Component {
       fields["phonenumber"] = "";
       fields["password"] = "";
       this.setState({fields:fields});
-      alert("Form submitted");
     }
   }
 

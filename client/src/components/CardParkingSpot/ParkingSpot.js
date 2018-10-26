@@ -30,6 +30,7 @@ class CardParkingSpot extends Component {
     }
 
     componentDidUpdate() {
+        console.log(this.state)
         if (this.props.game !== this.state.game) {
         this.selectDates();
         }

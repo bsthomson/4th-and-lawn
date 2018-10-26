@@ -12,7 +12,6 @@ module.exports = function (app) {
   // Route to post user info after they register
   app.post("/register", (req, res) => {
     console.log("registering")
-    console.log(req.body)
 
     const { email, password, firstname, lastname, phonenumber } = req.body;
 
@@ -33,26 +32,26 @@ module.exports = function (app) {
           lastname: lastname,
           phonenumber: phonenumber
         })
-          .then( response => {
-            console.log(response)
-              let userInfo = {
-                email: response.email,
-                firstname: response.firstname
-              };
-              req.session.user = userInfo.email
-              console.log(req.session.user)
-              res.send(userInfo)
+        .then( (err, user) => {
+          passport.authenticate('local')(req, res, function () {
+            let userInfo = {
+              email: req.user.email,
+              firstname: req.user.firstname
+            };
+            req.session.user = userInfo.email
+            res.send(userInfo)
           })
-          .catch( error => {
-            console.log("error: ", error)
-          })
+        })
+        .catch( error => {
+          console.log("error: ", error)
+        }) 
       }
     })
   })
 
   // Route to post login information to see if they match with User db
   app.post("/login", passportLocal, (req, res) => {
-    console.log(req.body)
+    console.log("login post: ", req.body)
     let userInfo = {
       email: req.user.email,
       firstname: req.user.firstname
@@ -62,8 +61,8 @@ module.exports = function (app) {
   });
 
   // Route to see if a user is logged in already
-  app.get('/user', passportLocal, (req, res) =>{
-    
+  app.get('/user', (req, res) =>{
+    console.log(req.session)
     if (req.session.passport !== undefined) {
       User.findOne({ _id: req.session.passport.user })
         .then( (user) => {

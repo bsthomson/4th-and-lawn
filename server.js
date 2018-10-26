@@ -70,7 +70,7 @@ passport.use(new LocalStrategy(
           return done(err)
         }
         if (!isValid) {
-          return done(null, false)
+          return done(null, false, { message: "Incorrect password" })
         }
         return done(null, user)
       })
@@ -79,14 +79,13 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, { _id: user.id } );
+  done(null, user.id );
 });
 passport.deserializeUser(function(id, done) {
   User.findById(
     { _id: id },
-    'username',
     (err, user) => {
-    done(null, user);
+    done(err, user);
   })
 });
 
