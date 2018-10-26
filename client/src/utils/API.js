@@ -54,5 +54,9 @@ export default {
   // Gets the eventsd from the database
   getJayhawkEvents: () => {
     return axios.get("/api/jayhawk")
+  },
+
+  getDistance: (origin, destination) => {
+    return axios.get("/api/rentedspots/distance?origin=" + origin + "&destination="+ destination)
   }
 }
