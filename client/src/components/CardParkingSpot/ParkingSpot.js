@@ -84,21 +84,21 @@ class CardParkingSpot extends Component {
         })
     };
 
-    getWalkingDistance = () => {
-        console.log(this.state);
-        var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
-        var destination = "1101 Mississippi St Lawrence, KS";
-        // const setState = this.setState;
+    // getWalkingDistance = () => {
+    //     console.log(this.state);
+    //     var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
+    //     var destination = "1101 Mississippi St Lawrence, KS";
+    //     // const setState = this.setState;
         
-        API.getDistance(origin, destination) 
-        .then((response) => {
-            // console.log(response.data)
-            // console.log(this);
-            this.setState({
-                distance: response.data
-            })
-        })
-    }
+    //     API.getDistance(origin, destination) 
+    //     .then((response) => {
+    //         // console.log(response.data)
+    //         // console.log(this);
+    //         this.setState({
+    //             distance: response.data
+    //         })
+    //     })
+    // }
 
     
     render() {

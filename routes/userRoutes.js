@@ -32,17 +32,19 @@ module.exports = function (app) {
           lastname: lastname,
           phonenumber: phonenumber
         })
-          .then( passport.authenticate('local'), (req, res) => {
-              let userInfo = {
-                email: req.user.email,
-                firstname: req.user.firstname
-              };
-              req.session.user = userInfo.email
-              res.send(userInfo)
+        .then( (err, user) => {
+          passport.authenticate('local')(req, res, function () {
+            let userInfo = {
+              email: req.user.email,
+              firstname: req.user.firstname
+            };
+            req.session.user = userInfo.email
+            res.send(userInfo)
           })
-          .catch( error => {
-            console.log("error: ", error)
-          })
+        })
+        .catch( error => {
+          console.log("error: ", error)
+        })
       }
     })
   })
