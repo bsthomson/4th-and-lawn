@@ -14,10 +14,9 @@ class Navbar extends Component {
         this.logout = this.logout.bind(this)
 
         this.state = {
-            redirectTo: null
+            redirectTo: null,
+            menuOpen: false,
         }
-        
-    
     }
 
     componentDidMount() {
@@ -34,6 +33,7 @@ class Navbar extends Component {
           if (response.status === 200) {
             this.props.updateUser({
               loggedIn: false,
+              menuOpen: false,
               username: null
             })
             this.setState({
@@ -43,6 +43,10 @@ class Navbar extends Component {
         }).catch(error => {
             console.log('Logout Error')
         })
+    }
+
+    toggleMenu() {
+        this.setState({menuOpen: !this.state.menuOpen});
     }
 
     render() {
@@ -59,7 +63,7 @@ class Navbar extends Component {
                     <div class="navigation__logo"></div>
                 </div> */}
 
-                <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+                <input type="checkbox" class="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>
                 
                 <label for="navi-toggle" class="navigation__button">
                     <span class="navigation__icon">&nbsp;</span>
@@ -78,17 +82,18 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="/posted-spots" className="navigation__link">
+                                <Link to="/posted-spots" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}> 
                                     <span>My Spots</span>
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="/parking-spots" className="navigation__link">
+                                <Link to="/parking-spots" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}>
                                     <span>Parking spots</span>
                                 </Link>
                             </li>
                             <li className="navigation__item">
                                 <span className="navigation__link" onClick={this.logout}>
+                                {/* <span className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}> */}
                                     Logout
                                 </span>
                             </li>
@@ -96,13 +101,13 @@ class Navbar extends Component {
                     ) : (
                         <ul className="navigation__list">
                             <li className="navigation__item">
-                                <Link to="/" className="navigation__link">
+                                <Link to="/" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}>
                                     <span>Home</span>
                                 </Link>
                             </li>
                             
                             <li className="navigation__item">
-                                <Link to="/parking-spots" className="navigation__link">
+                                <Link to="/parking-spots" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}>
                                     <span>Parking spots</span>
                                 </Link>
                             </li>

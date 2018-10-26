@@ -114,49 +114,57 @@
         display: block !important;
         width: 100%;
         margin: 0 auto;
-        // background-color: $color-red;
-        background-image: linear-gradient(
-            120deg,
-            $color-red,
-            $color-red-dark
-        );
         color: $color-white;
         font-weight: 500;
         border-radius: 5rem;
         letter-spacing: .5px;
     
-        &::after {
-            background-color: $color-white;
+        background-image: linear-gradient(120deg, $color-red 0%, $color-red-dark 50%, $color-primary-dark 50%);
+        background-size: 240%;
+        transition: all .6s;
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-white;
+            // transform: translateX(1rem);
         }
     }
 
     &--rent {
-        display: block !important;
+        display: inline-block;
         width: 20rem;
-        margin: 0 auto;
-        background-image: linear-gradient(
-            120deg,
-            $color-red,
-            $color-red-dark
-        );
+        float: right;
         color: $color-white;
         font-weight: 700;
         text-transform: uppercase;
         font-size: 1.25rem;
-        letter-spacing: 1px;
-        border-radius: 5rem;
-    }
-
-    &--card {
-        display: block !important;
-        width: 20rem;
-        margin: 0 auto;
-        color: $color-primary;
-        font-weight: bold;
-        // font-size: 1.25rem;
         letter-spacing: .5px;
         border-radius: 5rem;
 
+        background-image: linear-gradient(120deg, $color-red 0%, $color-red-dark 50%, $color-primary-dark 50%);
+        background-size: 240%;
+        transition: all .6s;
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-white;
+            // transform: translateX(1rem);
+        }
+    }
+
+    &--card {
+        width: 25rem;
+        font-size: 1.5rem;
+        border-radius: 5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        padding: 2rem 3rem;
+        color: $color-primary-dark;
+        border: 2px solid $color-primary-dark;
+        text-decoration: none;
         background-image: linear-gradient(120deg, $color-white 0%, $color-white 50%, $color-primary-dark 50%);
         background-size: 240%;
         transition: all .6s;

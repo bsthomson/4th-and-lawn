@@ -5,4 +5,13 @@
 .popup-content {
     width: 370px !important;
     z-index: 9000;
+
+    @include breakpoint(phone) {
+        width: 100% !important;
+        height: 100vh !important;
+    }
+}
+
+.popup-overlay {
+
 }

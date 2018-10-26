@@ -67,29 +67,33 @@ class RentThisSpot extends Component {
 
     render() {
         return (
+            <div>
             <section className="section-renter">
 
                 <div className="row">
                     <div className="col-1-of-3">
-                        <div className="header-renter">
+
+                        <div className="header-renter__title">
                             <div className="header-renter__background">
-                                <p className="renter--title">
-                                    {this.state.parkingspots.streetaddress}
-                                </p>
-                                <h1 className="heading-primary">
-                                    <span className="heading-primary--page">
-                                    Game day parking made easy
-                                    </span>
-                                </h1>
+                                <h3 className="parking-card__title">
+                                    <span className="parking-card__title--address">{this.state.parkingspots.streetaddress}</span>
+                                    <hr className="card-break"></hr>
+                                    {/* <span className="parking-card__title--value">Price per vehicle: ${this.state.parkingspots.price}</span>
+                                    <span className="parking-card__title--icon"><i className="fas fa-dollar-sign"></i></span> */}
+                                </h3>
                             </div>
                         </div>
-                        
+
                     </div>
+
                     <div className="col-2-of-3">
-                        <div className="header-renter">
-                            <div className="header-renter__background-image"></div>
+                        <div className="header-renter__map-box">
+                            <div className="header-renter__map">
+                                <GoogleMap markers={[this.state.parkingspots]} />
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div className="row">
@@ -125,67 +129,70 @@ class RentThisSpot extends Component {
                     </div>
                 </div>
 
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-1-of-1">
                         <h3 className="heading-primary">
                             <span className="heading-primary--page">Location</span>
                         </h3>
                         <GoogleMap markers={[this.state.parkingspots]} />
                     </div>
-                </div>
-
+                </div> */}
+            </section>
                 
                 <div className="footer-reservation">
-                        <div className="row">
 
-                            <div className="col-3-of-4">
-                                <p className="renter--footer-address">{this.state.parkingspots.streetaddress}</p>
+                    <div className="footer-reservation__left">
+                        <span className="renter--item-address">{this.state.parkingspots.streetaddress}</span>
+                        <span className="renter--item-price">${this.state.parkingspots.price}</span>
+                    </div>
+
+                    <div className="footer-reservation__right">
+                    <p className="renter--item-price">${this.state.parkingspots.price}</p>
+                    {this.props.loggedIn ? (
+                        <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
+                            {close => (
+                            <div className="modal">
+                                <a href="#" className="popup__close" onClick={close}>
+                                &times;
+                                </a>
+                                <RentParkingSpot />
+                                <button
+                                    className="button"
+                                    onClick={() => {
+                                    console.log('modal closed')
+                                    close()
+                                    }}
+                                >
+                                </button>
                             </div>
-                        
-                            <div className="col-1-of-4">
-                            {this.props.loggedIn ? (
-                                    <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
-                                        {close => (
-                                        <div className="modal">
-                                            <a href="#" className="popup__close" onClick={close}>
-                                            &times;
-                                            </a>
-                                            <RentParkingSpot />
-                                            <button
-                                                className="button"
-                                                onClick={() => {
-                                                console.log('modal closed')
-                                                close()
-                                                }}
-                                            >
-                                            </button>
-                                        </div>
-                                        )}
-                                    </Popup>
-                            ) : (
-                                    <Popup trigger={<span className="btn btn--rent">Log in</span>} modal>
-                                        {close => (
-                                        <div className="modal">
-                                            <a href="#" className="popup__close" onClick={close}>
-                                            &times;
-                                            </a>
-                                            <Login updateUser={this.props.updateUser}/>
-                                            <button
-                                                className="button"
-                                                onClick={() => {
-                                                console.log('modal closed')
-                                                close()
-                                                }}
-                                            >
-                                            </button>
-                                        </div>
-                                        )}
-                                    </Popup>
                             )}
+                        </Popup>
+                    ) : (
+                        <Popup trigger={<span className="btn btn--rent">Log in</span>} modal>
+                            {close => (
+                            <div className="modal">
+                                <a href="#" className="popup__close" onClick={close}>
+                                &times;
+                                </a>
+                                <Login updateUser={this.props.updateUser}/>
+                                <button
+                                    className="button"
+                                    onClick={() => {
+                                    console.log('modal closed')
+                                    close()
+                                    }}
+                                >
+                                </button>
                             </div>
-                        </div>
+                            )}
+                        </Popup>
+                    )}
                 </div>
-            </section>
+                
+            </div>
+        </div>
+               
+            
         );
     }
 }

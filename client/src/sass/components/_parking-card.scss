@@ -27,8 +27,8 @@
             transform: rotateY(180deg);
 
             &-1 {
-                background-image: linear-gradient(180deg, $color-primary, $color-primary-light);
-                // background-color: $color-primary;
+                // background-image: linear-gradient(180deg, $color-primary, $color-primary-light);
+                background-color: $color-white;
             }
 
         }

@@ -286,42 +286,6 @@ body {
     letter-spacing: 0px;
     color: #000; }
 
-.renter {
-  color: #000 !important;
-  text-transform: uppercase;
-  display: block;
-  width: 100%; }
-  .renter--title {
-    font-size: 1.25rem;
-    line-height: 5rem;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold; }
-  .renter--value-xl {
-    display: block;
-    width: 100%;
-    font-size: 8rem;
-    font-weight: 900;
-    line-height: 5rem;
-    letter-spacing: 0px;
-    color: #000;
-    margin: 2rem 0; }
-    @media only screen and (max-width: 37.5em) {
-      .renter--value-xl {
-        letter-spacing: -.2rem;
-        font-size: 8rem;
-        line-height: 7rem;
-        text-align: center; } }
-  .renter--footer-address {
-    font-size: 1.25rem;
-    line-height: 5rem;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    padding: 0 5rem; }
-
 .spot-container {
   padding: 2rem 0; }
 
@@ -564,34 +528,45 @@ body {
   display: block !important;
   width: 100%;
   margin: 0 auto;
-  background-image: linear-gradient(120deg, #ef3840, #b22028);
   color: #fff;
   font-weight: 500;
   border-radius: 5rem;
-  letter-spacing: .5px; }
-  .btn--form::after {
-    background-color: #fff; }
+  letter-spacing: .5px;
+  background-image: linear-gradient(120deg, #ef3840 0%, #b22028 50%, #266b4c 50%);
+  background-size: 240%;
+  transition: all .6s; }
+  .btn--form:hover, .btn--form:active {
+    background-position: 100%;
+    color: #fff; }
 
 .btn--rent {
-  display: block !important;
+  display: inline-block;
   width: 20rem;
-  margin: 0 auto;
-  background-image: linear-gradient(120deg, #ef3840, #b22028);
+  float: right;
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1.25rem;
-  letter-spacing: 1px;
-  border-radius: 5rem; }
-
-.btn--card {
-  display: block !important;
-  width: 20rem;
-  margin: 0 auto;
-  color: #20b573;
-  font-weight: bold;
   letter-spacing: .5px;
   border-radius: 5rem;
+  background-image: linear-gradient(120deg, #ef3840 0%, #b22028 50%, #266b4c 50%);
+  background-size: 240%;
+  transition: all .6s; }
+  .btn--rent:hover, .btn--rent:active {
+    background-position: 100%;
+    color: #fff; }
+
+.btn--card {
+  width: 25rem;
+  font-size: 1.5rem;
+  border-radius: 5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 2rem 3rem;
+  color: #266b4c;
+  border: 2px solid #266b4c;
+  text-decoration: none;
   background-image: linear-gradient(120deg, #fff 0%, #fff 50%, #266b4c 50%);
   background-size: 240%;
   transition: all .6s; }
@@ -800,6 +775,10 @@ select {
 .popup-content {
   width: 370px !important;
   z-index: 9000; }
+  @media only screen and (max-width: 37.5em) {
+    .popup-content {
+      width: 100% !important;
+      height: 100vh !important; } }
 
 .parking-card {
   perspective: 150rem;
@@ -824,7 +803,7 @@ select {
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
-        background-image: linear-gradient(180deg, #20b573, #22c27b); }
+        background-color: #fff; }
   .parking-card__title {
     /* Shaking animation bug fix */
     backface-visibility: hidden;
@@ -964,8 +943,66 @@ select {
   bottom: 0;
   height: 8rem;
   box-shadow: 0 0 1rem 0.5rem rgba(153, 153, 153, 0.15);
-  padding: 1.5rem 0;
   background-color: #fff; }
+  .footer-reservation__left {
+    float: left;
+    width: 30%;
+    padding: 2rem;
+    margin-left: 2rem;
+    display: table; }
+  .footer-reservation__right {
+    float: right;
+    width: 30%;
+    padding: 1.5rem;
+    margin-right: 2rem;
+    display: table; }
+
+.renter {
+  color: #000 !important;
+  text-transform: uppercase;
+  display: block;
+  width: 100%; }
+  .renter--title {
+    font-size: 1.25rem;
+    line-height: 5rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold; }
+  .renter--value-xl {
+    display: block;
+    width: 100%;
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 5rem;
+    letter-spacing: 0px;
+    color: #000;
+    margin: 2rem 0; }
+    @media only screen and (max-width: 37.5em) {
+      .renter--value-xl {
+        letter-spacing: -.2rem;
+        font-size: 8rem;
+        line-height: 7rem;
+        text-align: center; } }
+  .renter--item-address {
+    font-size: 1.25rem;
+    display: block;
+    line-height: 2rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold; }
+  .renter--item-price {
+    height: 100%;
+    font-size: 1.75rem;
+    display: inline-block;
+    line-height: 2rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    float: left;
+    position: relative; }
 
 .row {
   max-width: 100%;
@@ -1010,12 +1047,17 @@ select {
         width: 100%; } }
   .row .col-1-of-3 {
     width: calc((100% - 2 * 2rem) / 3); }
+    @media (max-width: 56.25em) {
+      .row .col-1-of-3 {
+        width: 100%; } }
     @media only screen and (max-width: 37.5em) {
       .row .col-1-of-3 {
-        float: left;
-        width: calc((100% - 2 * 2rem) / 3); } }
+        width: 100%; } }
   .row .col-2-of-3 {
     width: calc(2 * ((100% - 2 * 2rem) / 3) + 2rem); }
+    @media (max-width: 56.25em) {
+      .row .col-2-of-3 {
+        width: 100%; } }
   .row .col-1-of-4 {
     width: calc((100% - 3 * 2rem) / 4); }
   .row .col-2-of-4 {
@@ -1132,17 +1174,35 @@ select {
       list-style: none; }
 
 .header-renter {
-  position: relative;
-  height: 50rem; }
+  position: relative; }
+  .header-renter__title {
+    height: 50rem; }
+    @media (max-width: 56.25em) {
+      .header-renter__title {
+        height: 20rem;
+        margin-bottom: 3rem; } }
+  .header-renter__map-box {
+    position: relative;
+    height: 50rem; }
+    @media (max-width: 56.25em) {
+      .header-renter__map-box {
+        height: 40rem;
+        margin-bottom: 3rem; } }
+  .header-renter__map {
+    position: relative;
+    height: 100%;
+    width: 100%; }
+    @media (max-width: 56.25em) {
+      .header-renter__map {
+        height: 40rem;
+        width: 100%; } }
   .header-renter__background {
     height: 100%;
-    background-color: #f7f7f7;
-    padding: 4rem; }
+    background-color: #eee;
+    padding: 4rem;
+    border-radius: 1rem; }
   .header-renter__background-image {
-    height: 100%;
-    background-image: url(img/house.jpg);
-    background-size: cover;
-    background-position: center; }
+    height: 100%; }
 
 .index-navigation__menu {
   display: block;
@@ -1582,7 +1642,7 @@ select {
   position: relative; }
   @media only screen and (max-width: 37.5em) {
     .parking__container {
-      padding: 2rem; } }
+      padding: 4rem; } }
 
 .parking__sidebar {
   float: left;
@@ -1678,16 +1738,19 @@ select {
   padding: 1.25rem; }
 
 .section-renter {
-  position: relative; }
+  position: relative;
+  padding: 3rem;
+  background-color: #fff; }
 
 .data-renter {
   position: relative;
   height: 30rem; }
   .data-renter__background {
     height: 100%;
-    background-color: #f7f7f7;
+    background-color: #eee;
     padding: 4rem;
-    width: 100%; }
+    width: 100%;
+    border-radius: 1rem; }
   .data-renter__cta {
     position: absolute;
     top: 50%;

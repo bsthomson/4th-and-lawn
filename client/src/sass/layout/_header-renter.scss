@@ -1,18 +1,50 @@
 .header-renter {
     position: relative;
-    height: 50rem;
+
+    &__title {
+        height: 50rem;
+
+        @include breakpoint(tab-port) {
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__map-box {
+        position: relative;
+        height: 50rem;
+
+        @include breakpoint(tab-port) {
+            height: 40rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__map {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        @include breakpoint(tab-port) {
+            height: 40rem;
+            width: 100%;
+        }
+    }
 
     &__background {
         height: 100%;
-        background-color: $color-grey-light-1;
+        background-color: $color-grey-light-2;
         padding: 4rem;
+        border-radius: 1rem;
     }
 
     &__background-image {
         height: 100%;
-        background-image: url(img/house.jpg);
-        background-size: cover;
-        background-position: center;
+        // background-image: url(img/house.jpg);
+        // background-size: cover;
+        // background-position: center;
     }
+
+    
     
 }
