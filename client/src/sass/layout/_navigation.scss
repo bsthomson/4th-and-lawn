@@ -156,9 +156,10 @@
 
         @include breakpoint(tab-land) {
             display: inline-block;
-            font-size: 4rem;
+            font-size: 2rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             padding: 1rem 2rem;
             color: $color-white;
             text-decoration: none;
@@ -169,9 +170,10 @@
             &:link,
             &:visited {
                 display: inline-block;
-                font-size: 4rem;
+                font-size: 2rem;
                 font-weight: bold;
-                letter-spacing: 1px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
                 padding: 1rem 2rem;
                 color: $color-white;
                 text-decoration: none;

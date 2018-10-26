@@ -273,7 +273,7 @@ body {
         text-align: center; } }
     @media only screen and (max-width: 37.5em) {
       .heading-primary--page {
-        font-size: 6rem;
+        font-size: 4.5rem;
         text-align: center; } }
 
 .heading-page {
@@ -658,6 +658,9 @@ body {
   @media (max-width: 56.25em) {
     .form__filter-container {
       width: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    .form__filter-container {
+      width: 100%; } }
 
 .form__group:not(:last-child) {
   margin-bottom: 2rem; }
@@ -842,7 +845,7 @@ select {
       text-transform: uppercase; }
       @media only screen and (max-width: 37.5em) {
         .parking-card__title--value {
-          font-size: 1.5rem; } }
+          font-size: 1.25rem; } }
     .parking-card__title--icon {
       float: right;
       color: #20b573;
@@ -1297,9 +1300,10 @@ select {
   @media (max-width: 75em) {
     .navigation__link {
       display: inline-block;
-      font-size: 4rem;
+      font-size: 2rem;
       font-weight: bold;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       padding: 1rem 2rem;
       color: #fff;
       text-decoration: none;
@@ -1308,9 +1312,10 @@ select {
       transition: all .6s; }
       .navigation__link:link, .navigation__link:visited {
         display: inline-block;
-        font-size: 4rem;
+        font-size: 2rem;
         font-weight: bold;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
         padding: 1rem 2rem;
         color: #fff;
         text-decoration: none;
@@ -1493,7 +1498,8 @@ select {
       float: none;
       display: table;
       margin: 0 auto;
-      padding-bottom: 4rem; } }
+      padding-bottom: 4rem;
+      width: 100%; } }
 
 .dashboard__user-section {
   width: 100%;
