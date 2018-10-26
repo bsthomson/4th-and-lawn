@@ -1,10 +1,69 @@
 .section-home {
-    height: 85vh;
-    min-height: 60rem;
-    background-image: url(img/background.jpg);
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 0;
+    // transition: 1s ease-out;
+    height: 100%;
 }
 
+.section-about {
+    // background-color: $color-primary-dark;
+    height: 100vh;
+    background-image: linear-gradient(
+        180deg,
+        $color-primary,
+        $color-primary-light
+    );
+    position: relative;
+
+    &__container {
+        width: 75%;
+        @include absolute-center;
+    }
+
+    &__container-flex-vertical-align {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 40rem;
+        width: 90%;
+        margin: 0 auto;
+
+        @include breakpoint(tab-land) {
+            height: 34rem;
+        }
+    }
+
+    &__container-absolute {
+        @include absolute-center;
+    }
+
+    &__container-small {
+        position: relative;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+}
+
+.section {
+
+    &__text-box {
+        padding: 22rem 10rem;
+        text-align: left;
+
+        @include breakpoint(phone) {
+            width: 80%;
+        }
+    }
+
+    &__container {
+        padding: 10rem;
+        width: 40rem;
+        margin: 0 auto;
+    }
+
+    &__cta {
+        position: absolute;
+        top: 100%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+    }
+}

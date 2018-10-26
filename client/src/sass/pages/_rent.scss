@@ -1,6 +1,61 @@
 .section-renter {
-    padding: 2rem 0;
     position: relative;
+    padding: 8rem 3rem 3rem 3rem;
+    // background-image: linear-gradient(
+    //     180deg,
+    //     $color-primary,
+    //     $color-primary-light
+    // );
+    background-color: $color-white;
+}
+
+.header-renter {
+    position: relative;
+
+    &__title {
+        height: 50rem;
+
+        @include breakpoint(tab-port) {
+            height: 100%;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__map-box {
+        position: relative;
+        height: 50rem;
+
+        @include breakpoint(tab-port) {
+            height: 40rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__map {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        @include breakpoint(tab-port) {
+            height: 40rem;
+            width: 100%;
+        }
+    }
+
+    &__background {
+        height: 100%;
+        background-color: $color-primary-dark;
+        padding: 4rem;
+        border-radius: 1rem;
+    }
+
+    &__background-image {
+        height: 100%;
+        // background-image: url(img/house.jpg);
+        // background-size: cover;
+        // background-position: center;
+    }
+    
 }
 
 .data-renter {
@@ -9,9 +64,10 @@
 
     &__background {
         height: 100%;
-        background-color: $color-grey-light-1;
+        background-color: $color-primary;
         padding: 4rem;
         width: 100%;
+        border-radius: 1rem;
     }
 
     &__cta {
@@ -21,4 +77,195 @@
         transform: translate(-50%, -50%);
         text-align: center;
     }
+}
+
+
+.renter {
+
+    backface-visibility: hidden;
+    width: 100%;
+    margin-bottom: 2.25rem;
+
+    &--title {
+        display: block;
+        color: $color-white;
+        width: 100%;
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-align: left;
+        line-height: 6rem;
+        letter-spacing: .2px;
+        margin-bottom: 1rem;
+
+        @include breakpoint(tab-land) {
+            letter-spacing: 0;
+            font-size: 2.5rem;
+            line-height: 6.5rem;
+            margin-top: 0rem;
+            // text-align: center;
+        }
+
+        @include breakpoint(tab-port) {
+            letter-spacing: 0;
+            font-size: 3rem;
+            line-height: 6.5rem;
+            margin-top: 0rem;
+            // text-align: center;
+        }
+    
+        @include breakpoint(phone) {
+            letter-spacing: 0;
+            font-size: 3rem;
+            line-height: 6.5rem;
+            margin-top: 0rem;
+            // text-align: center;
+        }
+    }
+
+    &--value {
+        // display: block;
+        color: $color-white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: left;
+        letter-spacing: 1px;
+        line-height: 4rem;
+        text-transform: uppercase;
+
+        @include breakpoint(tab-land) {
+            font-size: 1.25rem;
+        }
+
+        @include breakpoint(tab-port) {
+            font-size: 1.5rem;
+        }
+
+        @include breakpoint(phone) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &--icon {
+        // display: block;
+        float: right;
+        color: $color-primary;
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-align: right;
+        letter-spacing: .5px;
+        line-height: 4rem;
+        letter-spacing: .2px;
+
+        @include breakpoint(tab-land) {
+            font-size: 2rem;
+        }
+
+        @include breakpoint(tab-port) {
+            font-size: 2.5rem;
+        }
+
+        @include breakpoint(phone) {
+            font-size: 2.3rem;
+        }
+    }
+
+    &--value-xl {
+        display: block;
+        width: 100%;
+        font-size: 6rem;
+        font-weight: 900;
+        line-height: 5rem;
+        letter-spacing: 0px;
+        color: $color-black;
+        margin: 2rem 0;
+
+        @include breakpoint(phone) {
+            letter-spacing: -.2rem;
+            font-size: 8rem;
+            line-height: 7rem;
+            text-align: center;
+        }
+    }
+
+    &--footer-price {
+        font-size: 2.5rem;
+        line-height: 3.25rem;
+        color: $color-black;
+        letter-spacing: 1px;
+        font-weight: 800;
+        text-align: left;
+        
+    }
+
+    &--footer-price-text {
+        font-size: 1.3rem;
+        line-height: 2rem;
+        color: $color-grey-dark;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+        text-transform: uppercase;
+        padding-left: .5rem;
+    }
+
+}
+
+.footer-reservation {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 8rem;
+    box-shadow: 0 0 1rem .5rem rgba($color-grey-dark-2, 0.15);
+    // padding: 1.5rem 0;
+    background-color: $color-white;
+
+    // &__left {
+    //     float: left;
+    //     width: 30%;
+    //     padding: 2rem;
+    //     margin-left: 2rem;
+    //     display: table;
+    // }
+
+    &__container {
+        float: left;
+        width: 100%;
+        padding: 1.5rem 4rem;
+        display: table;
+
+        @include breakpoint(phone) {
+            padding: 1.5rem 2rem;
+        }
+    }
+
+}
+
+.footer {
+    
+    &__price {
+        float: right;
+        width: 17rem;
+        border-right: 1px solid $color-grey-dark-2;
+        padding: 1rem 0;
+        margin-right: 4rem;
+
+        @include breakpoint(phone) {
+            float: left;
+            border-right: none;
+            width: 15rem;
+        }
+    }
+
+    &__button {
+        float: right;
+        width: 20rem;
+    }
+}
+
+.rent-break {
+    height: 1px;
+    background-color: $color-primary;
+    border: 0;
+    width: 100%;
+    margin: 1.5rem 0;
 }

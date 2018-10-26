@@ -13,13 +13,12 @@
 @import "components/parking-card";
 @import "components/popup";
 
-@import "layout/footer-reservation";
 @import "layout/grid";
 @import "layout/header";
-@import "layout/header-renter";
 @import "layout/index-navigation";
 @import "layout/navigation";
 
 @import "pages/home";
+@import "pages/dashboard.scss";
 @import "pages/parking";
 @import "pages/rent";

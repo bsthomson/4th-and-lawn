@@ -1,4 +1,126 @@
 .section-parking {
-    padding-top: 5rem;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+        180deg,
+        $color-primary,
+        $color-primary-light
+        );
+    z-index: 0;
     position: relative;
+    display: table;
+    // transition: 1s ease-out;
+
+    @include breakpoint(phone) {
+        height: 100%;
+        display: table;
+        padding-bottom: 8rem;
+    }
+}
+
+.parking {
+
+    &__container {
+        width: 100%;
+        padding: 2rem 5rem;
+        position: relative;
+
+        @include breakpoint(phone) {
+            padding: 4rem;
+        }
+    }
+
+    &__header {
+        width: 100%;
+        padding-bottom: 5rem;
+        display: table;
+    }
+
+    &__heading {
+        float: left;
+        width: 100%;
+        margin-bottom: 2rem;
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+            margin-bottom: 2rem;
+        }
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__filter {
+        float: left;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+
+        @include breakpoint(tab-port) {
+            float: left;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    &__content {
+        width: 100%;
+        height: 100%;
+        float: right;
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+            float: left;
+        }
+    }
+
+    &__user-section {
+        width: 100%;
+        position: relative;
+        background-color: $color-primary-dark;
+        border-radius: 1rem;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 .25rem 2rem .25rem rgba(48, 48, 48, 0.1);
+    }
+
+    &__user-item {
+        width: 100%;
+        position: relative;
+        background-color: $color-white;
+        border-radius: .5rem;
+        padding: 1rem;
+        margin-top: 2rem;
+        display: table;
+    }
+
+    &__user-address {
+        width: 70%;
+        float: left;
+        padding: 1.25rem
+    }
+
+    &__user-buttons {
+        width: 30%;
+        float: left;
+        text-align: right;
+        margin-top: .25rem;
+        
+        @include breakpoint(phone) {
+            float: none;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    &__user-empty {
+        width: 100%;
+        float: left;
+        padding: 1.25rem
+    }
+
 }
