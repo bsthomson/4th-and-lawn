@@ -23,16 +23,11 @@ class ValidateForm extends Component {
 
     }
 
-    
-  registerUser = (inputData) => {
-    API.submitRegisterInfo(inputData)
-  }
-
   submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
       console.log(this.state.fields)
-      this.registerUser(this.state.fields)
+      API.submitRegisterInfo(this.state.fields)
         .then( response => {
           if (response.data.email) {
             this.props.updateUser({
