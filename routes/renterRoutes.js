@@ -130,7 +130,7 @@ module.exports = function (app) {
 
     app.route('/api/rentedspots/distance').get((req, res)=>{
       // console.log("inside app.route", req);
-      var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + req.query.origin + "&destinations=" + req.query.destination + "&key=AIzaSyCMQAxD4bwQmzLZNVUGgc_wy6q7Bk6kbo4";
+      var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + req.query.origin + "&destinations=" + req.query.destination + "&key=AIzaSyCMQAxD4bwQmzLZNVUGgc_wy6q7Bk6kbo4&mode=walking";
         axios.get(queryURL).then((ggl) =>{
           console.log("@@@@", ggl.data.rows[0].elements[0])
             res.json(ggl.data.rows[0].elements[0].duration.text)
