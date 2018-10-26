@@ -139,10 +139,17 @@
 
     .col-1-of-3 {
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
-        margin-right: 0;
 
         &:nth-child(3n) {
             margin-right: 0;
+        }
+
+        @include breakpoint(tab-land) {
+            width: calc((100% - #{$gutter-horizontal}) / 2);
+
+            &:nth-child(2n) {
+                margin-right: 0;
+            }
         }
 
         @include breakpoint(tab-port) {

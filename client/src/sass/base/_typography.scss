@@ -13,13 +13,17 @@ body {
     text-align: center;
 }
 
+.margin-right {
+    margin-right: $gutter-horizontal-s;
+}
+
 .header-primary {
     
     color: $color-black;
     /* Shaking animation bug fix */
     backface-visibility: hidden;
     position: absolute;
-    width: 80%;
+    width: 100%;
     left: 11rem;
     top: 15rem;
     margin-bottom: 3rem;
@@ -197,12 +201,12 @@ body {
     &--page {
         display: block;
         width: 100%;
-        font-size: 3rem;
+        font-size: 5rem;
         font-weight: 900;
         line-height: 3.5rem;
         letter-spacing: 0px;
         color: $color-white;
-        text-align: left;
+        text-align: center;
 
         @include breakpoint(tab-port) {
             // letter-spacing: -.2rem;

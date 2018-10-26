@@ -92,7 +92,7 @@ class CardParkingSpot extends Component {
                     {this.state.gameday.length ? (
                         <div className="parking-container">
                             {this.state.gameday.map(parkingspot => (
-                                <div className="col-1-of-2" key={parkingspot._id}>
+                                <div className="col-1-of-3" key={parkingspot._id}>
 
                                     {/* CARD START -> */}
                                     <section className="parking-card">
@@ -105,14 +105,14 @@ class CardParkingSpot extends Component {
                                                     <span className="parking-card__title--value">{parkingspot.event[0].event}</span>
                                                     <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
                                                     <hr className="card-break"></hr>
-                                                    <span className="parking-card__title--value">Price per vehicle: ${parkingspot.price}</span>
-                                                    <span className="parking-card__title--icon"><i className="fas fa-dollar-sign"></i></span>
+                                                    <span className="parking-card__title--value">Price per vehicle:</span>
+                                                    <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price}</span>
                                                     <hr className="card-break"></hr>
-                                                    <span className="parking-card__title--value">Available spots: {parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</span>
-                                                    <span className="parking-card__title--icon"><i className="fas fa-car"></i></span>
-                                                    {/* <hr className="card-break"></hr>
-                                                    <span className="parking-card__title--value">Distance from stadium: TBA</span>
-                                                    <span className="parking-card__title--icon"><i className="fas fa-map-marker-alt"></i></span> */}
+                                                    <span className="parking-card__title--value">Available spots:</span>
+                                                    <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</span>
+                                                    <hr className="card-break"></hr>
+                                                    <span className="parking-card__title--value">Distance from stadium:</span>
+                                                    <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i></span>
                                                 </h3>
                                             </section>
 

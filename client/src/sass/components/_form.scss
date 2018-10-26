@@ -17,15 +17,16 @@
     }
 
     &__filter-container {
-        width: 60%;
+        width: 40%;
         background-color: $color-white;
         position: relative;
         padding: 0;
         border-radius: 6px;
-        float: right;
+        margin: 0 auto;
+        // float: right;
 
         @include breakpoint(tab-port) {
-            width: 100%;
+            width: 50%;
         }
     }
     

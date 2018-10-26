@@ -77,7 +77,7 @@ class Navbar extends Component {
                     {loggedIn ? (
                         <ul className="navigation__list">
                             <li className="navigation__item">
-                                <Link to="/" className="navigation__link">
+                                <Link to="/" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}>
                                     <span>Home</span>
                                 </Link>
                             </li>
