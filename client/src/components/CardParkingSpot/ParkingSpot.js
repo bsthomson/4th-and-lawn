@@ -39,7 +39,6 @@ class CardParkingSpot extends Component {
     loadParkingSpots = () => {
         API.getParkingSpots()
         .then(response =>{
-            console.log(response);
             const spots = response.data;
             const geocodes = [];
             console.log(geocodes)
@@ -59,6 +58,7 @@ class CardParkingSpot extends Component {
                 })
             })
             .then(()=>{
+                console.log(spots)
                 this.setState({ 
                     parkingspots: spots,
                     gameday: response.data
