@@ -44,7 +44,11 @@ module.exports = function (app) {
         })
         .catch( error => {
           console.log("error: ", error)
+<<<<<<< HEAD
         }) 
+=======
+        })
+>>>>>>> master
       }
     })
   })
