@@ -21,7 +21,8 @@ class CardParkingSpot extends Component {
     state = {
             parkingspots: [],
             gameday: [],
-            game: this.props.game
+            game: this.props.game,
+            distance: []
         };
     
 
@@ -63,9 +64,8 @@ class CardParkingSpot extends Component {
                     gameday: response.data
                 });
             })
-            .catch( err => console.log(err))
-
-            
+            .then(this.getWalkingDistance())
+            .catch( err => console.log(err)) 
         })
         .catch(err => console.log(err));
     };
@@ -83,6 +83,22 @@ class CardParkingSpot extends Component {
             game: this.props.game
         })
     };
+
+    getWalkingDistance = () => {
+        console.log(this.state);
+        var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
+        var destination = "1101 Mississippi St Lawrence, KS";
+        // const setState = this.setState;
+        
+        API.getDistance(origin, destination) 
+        .then((response) => {
+            // console.log(response.data)
+            // console.log(this);
+            this.setState({
+                distance: response.data
+            })
+        })
+    }
 
     
     render() {
@@ -105,14 +121,14 @@ class CardParkingSpot extends Component {
                                                     <span className="parking-card__title--value">{parkingspot.event[0].event}</span>
                                                     <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
                                                     <hr className="card-break"></hr>
-                                                    <span className="parking-card__title--value">Price per vehicle:</span>
+                                                    <span className="parking-card__title--value">Price per game:</span>
                                                     <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price}</span>
                                                     <hr className="card-break"></hr>
                                                     <span className="parking-card__title--value">Available spots:</span>
                                                     <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</span>
                                                     <hr className="card-break"></hr>
                                                     <span className="parking-card__title--value">Distance from stadium:</span>
-                                                    <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i></span>
+                                                    <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>
                                                 </h3>
                                             </section>
 
@@ -140,6 +156,10 @@ class CardParkingSpot extends Component {
                                                     )
                                                     }
                                                 </Link>
+                                                <input 
+                                                    className="btn btn--card" 
+                                                    value="Add to favorites"
+                                                />
                                             </div>
                                         </div>
                                     </section>

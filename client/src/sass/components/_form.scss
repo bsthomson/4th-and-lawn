@@ -6,10 +6,10 @@
         background-color: $color-white;
         position: relative;
         left: 10rem;
-        top: 4rem;
+        top: 10rem;
         padding: 3rem;
         border-radius: .6rem;
-        box-shadow: 0 .25rem 2rem .25rem rgba(48, 48, 48, 0.1);
+        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.3);
 
         @include breakpoint(phone) {
             @include absolute-center; 

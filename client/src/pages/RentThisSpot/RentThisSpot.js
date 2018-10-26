@@ -68,7 +68,6 @@ class RentThisSpot extends Component {
             // this.getWalkingDistance();
         })
         .catch(err => console.log(err));
-   
     };
 
     getWalkingDistance = () => {
@@ -77,7 +76,6 @@ class RentThisSpot extends Component {
         var destination = "1101 Mississippi St Lawrence, KS";
         // const setState = this.setState;
         
-        
         API.getDistance(origin, destination) 
         .then((response) => {
             // console.log(response.data)
@@ -85,9 +83,7 @@ class RentThisSpot extends Component {
             this.setState({
                 distance: response.data
             })
-            
         })
-
     }
 
     render() {
@@ -95,17 +91,24 @@ class RentThisSpot extends Component {
             <div>
             <section className="section-renter">
 
-                <div className="row">
+                <div className="renter-container">
+                
                     <div className="col-1-of-3">
 
                         <div className="header-renter__title">
                             <div className="header-renter__background">
-                                <h3 className="parking-card__title">
-                                    <span className="parking-card__title--address">{this.state.parkingspots.streetaddress}</span>
-                                    <hr className="card-break"></hr>
-                                    {/* <span className="parking-card__title--value">Price per vehicle: ${this.state.parkingspots.price}</span>
-                                    <span className="parking-card__title--icon"><i className="fas fa-dollar-sign"></i></span> */}
-                                </h3>
+                            <h3 className="renter">
+                                <span className="renter--title">{this.state.parkingspots.streetaddress}</span>
+                                <hr className="rent-break"></hr>
+                                <span className="renter--value">Price per game:</span>
+                                <span className="renter--icon"><i className="fas fa-dollar-sign margin-right"></i>{this.state.parkingspots.price}</span>
+                                <hr className="rent-break"></hr>
+                                <span className="renter--value">Available spots:</span>
+                                <span className="renter--icon"><i className="fas fa-car margin-right"></i>{this.state.parkingspots.availablespots}</span>
+                                <hr className="rent-break"></hr>
+                                <span className="renter--value">Distance from stadium:</span>
+                                <span className="renter--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>
+                            </h3>
                             </div>
                         </div>
 
@@ -121,38 +124,7 @@ class RentThisSpot extends Component {
 
                 </div>
 
-                <div className="row">
-                    <div className="col-1-of-3">
-                        <div className="data-renter">
-                            <div className="data-renter__background">
-                                <div className="data-renter__cta">
-                                    <span className="renter--title center">Price</span>
-                                    <span className="renter--value-xl center">${this.state.parkingspots.price}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-1-of-3">
-                    <div className="data-renter">
-                        <div className="data-renter__background">
-                            <div className="data-renter__cta">
-                                <span className="renter--title center">Spots</span>
-                                <span className="renter--value-xl center">{this.state.parkingspots.availablespots}</span>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="col-1-of-3">
-                        <div className="data-renter">
-                            <div className="data-renter__background">
-                                <div className="data-renter__cta">
-                                    <span className="renter--title center">Distance</span>
-                                    <span className="renter--value-xl center">{this.state.distance}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
                 {/* <div className="row">
                     <div className="col-1-of-1">
@@ -166,52 +138,61 @@ class RentThisSpot extends Component {
                 
                 <div className="footer-reservation">
 
-                    <div className="footer-reservation__left">
+                    {/* <div className="footer-reservation__left">
                         <span className="renter--item-address">{this.state.parkingspots.streetaddress}</span>
-                        <span className="renter--item-price">${this.state.parkingspots.price}</span>
-                    </div>
+                    </div> */}
 
-                    <div className="footer-reservation__right">
-                    <p className="renter--item-price">${this.state.parkingspots.price}</p>
-                    {this.props.loggedIn ? (
-                        <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
-                            {close => (
-                            <div className="modal">
-                                <a href="#" className="popup__close" onClick={close}>
-                                &times;
-                                </a>
-                                <RentParkingSpot />
-                                <button
-                                    className="button"
-                                    onClick={() => {
-                                    console.log('modal closed')
-                                    close()
-                                    }}
-                                >
-                                </button>
-                            </div>
+                    <div className="footer-reservation__container">
+                        {/* START FOOTER BUTTON */}
+                        <div className="footer__button">
+                            {this.props.loggedIn ? (
+                                <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
+                                    {close => (
+                                        <div className="modal">
+                                            <a href="#" className="popup__close" onClick={close}>
+                                            &times;
+                                            </a>
+                                            <RentParkingSpot />
+                                            <button
+                                                className="button"
+                                                onClick={() => {
+                                                console.log('modal closed')
+                                                close()
+                                                }}
+                                            >
+                                            </button>
+                                        </div>
+                                    )}
+                                </Popup>
+                            ) : (
+                                <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
+                                    {close => (
+                                    <div className="modal">
+                                        <a href="#" className="popup__close" onClick={close}>
+                                        &times;
+                                        </a>
+                                        <Login updateUser={this.props.updateUser}/>
+                                        <button
+                                            className="button"
+                                            onClick={() => {
+                                            console.log('modal closed')
+                                            close()
+                                            }}
+                                        >
+                                        </button>
+                                    </div>
+                                    )}
+                                </Popup>
                             )}
-                        </Popup>
-                    ) : (
-                        <Popup trigger={<span className="btn btn--rent">Log in</span>} modal>
-                            {close => (
-                            <div className="modal">
-                                <a href="#" className="popup__close" onClick={close}>
-                                &times;
-                                </a>
-                                <Login updateUser={this.props.updateUser}/>
-                                <button
-                                    className="button"
-                                    onClick={() => {
-                                    console.log('modal closed')
-                                    close()
-                                    }}
-                                >
-                                </button>
-                            </div>
-                            )}
-                        </Popup>
-                    )}
+                        </div>
+                        {/* END FOOTER BUTTON ^ */}
+                        
+                        <div className="footer__price">
+                            <p className="renter--footer-price"><i className="fas fa-dollar-sign"></i>{this.state.parkingspots.price}
+                            <span className="renter--footer-price-text">/ per game</span>
+                            </p>
+                        </div>
+                    
                 </div>
                 
             </div>

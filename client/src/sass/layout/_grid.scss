@@ -150,6 +150,10 @@
             &:nth-child(2n) {
                 margin-right: 0;
             }
+
+            &:nth-child(3n) {
+                margin-right: $gutter-horizontal;
+            }
         }
 
         @include breakpoint(tab-port) {
@@ -199,6 +203,57 @@
             margin: 0 auto;
         }
 
+    }
+
+}
+
+.renter-container {
+    max-width: $grid-width;
+    
+    @include clearfix;
+
+    [class^="col-"] {
+        float: left;
+        margin-right: $gutter-horizontal;
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+        margin-right: 2rem;
+
+        @include breakpoint(tab-land) {
+            width: calc((100% - #{$gutter-horizontal}) / 2);
+            margin-right: 2rem;
+        }
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+        }
+
+        @include breakpoint(phone) {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+    }
+
+    .col-2-of-3 {
+        width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+        margin-right: 0;
+
+        @include breakpoint(tab-land) {
+            width: calc((100% - #{$gutter-horizontal}) / 2);
+            margin-right: 0;
+        }
+
+        @include breakpoint(tab-port) {
+            width: 100%;
+        }
+
+        @include breakpoint(phone) {
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 
 }

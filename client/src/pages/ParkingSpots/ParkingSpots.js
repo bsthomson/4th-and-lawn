@@ -108,21 +108,6 @@ class ParkingSpots extends Component {
 
                     <CardParkingSpot game={this.state.game}/>
 
-                        {/* <div className="row">
-
-                            <div className="col-1-of-3">
-                                <section className="dashboard__user-section">
-                                    <span className="dashboard-heading--title">Parking spots</span>
-                                </section>
-                            </div>
-
-                            <div className="col-1-of-3">
-                                <section className="dashboard__user-section">
-                                    <span className="dashboard-heading--title">Rented Spots</span>
-                                </section>
-                            </div>
-
-                        </div> */}
                     </section>
                     {/* END DASHBOARD USER CONTENT */}
 

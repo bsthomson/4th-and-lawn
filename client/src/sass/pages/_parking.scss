@@ -1,5 +1,5 @@
 .section-parking {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-image: linear-gradient(
         180deg,
@@ -8,6 +8,7 @@
         );
     z-index: 0;
     position: relative;
+    display: table;
     // transition: 1s ease-out;
 
     @include breakpoint(phone) {

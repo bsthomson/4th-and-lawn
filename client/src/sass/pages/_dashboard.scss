@@ -17,6 +17,7 @@
         );
     z-index: 0;
     position: relative;
+    display: table;
     // transition: 1s ease-out;
 
     @include breakpoint(phone) {
@@ -119,6 +120,7 @@
             float: none;
             width: 100%;
             text-align: center;
+            padding: 2rem 0;
         }
     }
 
