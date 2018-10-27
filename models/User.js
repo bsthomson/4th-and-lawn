@@ -36,8 +36,10 @@ const UserSchema = new Schema({
   },
   phonenumber: {
     type: Number,
-    min: 10,
-    max: 10
+    validator: v => {
+      return /^[0-9]{10}$/.test(v);
+    },
+    message: props => `${props.value} is not a valid phonenumber`
   },
   rentinfo: [
     {

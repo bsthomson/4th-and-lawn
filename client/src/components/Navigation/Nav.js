@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import Signup from './../FormSignUp/SignUp';
+import ValidateForm from './../FormSignUp/Validate';
 import Login  from './../FormLogin/Login';
 import { Redirect } from "react-router-dom";
 
@@ -116,7 +116,7 @@ class Navbar extends Component {
                             <li className="navigation__item">
                                 <Popup trigger={<span className="navigation__link">Sign up</span>}>
                                     <div className="modal">
-                                        <Signup updateUser={this.props.updateUser}/>
+                                        <ValidateForm updateUser={this.props.updateUser}/>
                                     </div>
                                 </Popup>
                             </li>

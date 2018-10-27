@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from "../../utils/API"
 
 class ValidateForm extends Component {
     constructor() {
@@ -22,17 +23,39 @@ class ValidateForm extends Component {
 
     }
 
-    submituserRegistrationForm(e) {
-      e.preventDefault();
-      if (this.validateForm()) {
-          let fields = {};
-          fields["emailid"] = "";
-          fields["mobileno"] = "";
-          fields["password"] = "";
-          this.setState({fields:fields});
-          alert("Form submitted");
-      }
+  submituserRegistrationForm(e) {
+    e.preventDefault();
+    if (this.validateForm()) {
+      console.log(this.state.fields)
+      API.submitRegisterInfo(this.state.fields)
+        .then( response => {
+          if (response.data.email) {
+            this.props.updateUser({
+              loggedIn: true,
+              email: response.data.email,
+              firstname: response.data.firstname
+            })
+            console.log('successful signup')
+            this.setState({
+              redirectTo: '/'
+            })            
+          } else {
+            console.log(response.data.error)
+          }
+        })
+        .catch( error => {
+          console.log('signup error: ')
+          console.log(error)
+        })
+      let fields = {};
+      fields["firstname"] = "";
+      fields["lastname"] = "";
+      fields["email"] = "";
+      fields["phonenumber"] = "";
+      fields["password"] = "";
+      this.setState({fields:fields});
     }
+  }
 
     validateForm() {
 
@@ -40,29 +63,39 @@ class ValidateForm extends Component {
       let errors = {};
       let formIsValid = true;
 
-      if (!fields["emailid"]) {
+      if (!fields["firstname"]) {
         formIsValid = false;
-        errors["emailid"] = "*Please enter your email.";
+        errors["firstname"] = "*Please enter your first name.";
       }
 
-      if (typeof fields["emailid"] !== "undefined") {
+      if (!fields["lastname"]) {
+        formIsValid = false;
+        errors["lastname"] = "*Please enter your last name.";
+      }
+
+      if (!fields["email"]) {
+        formIsValid = false;
+        errors["email"] = "*Please enter your email.";
+      }
+
+      if (typeof fields["email"] !== "undefined") {
         //regular expression for email validation
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        if (!pattern.test(fields["emailid"])) {
+        if (!pattern.test(fields["email"])) {
           formIsValid = false;
-          errors["emailid"] = "*Please enter valid email.";
+          errors["email"] = "*Please enter valid email.";
         }
       }
 
-      if (!fields["mobileno"]) {
+      if (!fields["phonenumber"]) {
         formIsValid = false;
-        errors["mobileno"] = "*Please enter your mobile no.";
+        errors["phonenumber"] = "*Please enter your mobile no.";
       }
 
-      if (typeof fields["mobileno"] !== "undefined") {
-        if (!fields["mobileno"].match(/^[0-9]{10}$/)) {
+      if (typeof fields["phonenumber"] !== "undefined") {
+        if (!fields["phonenumber"].match(/^[0-9]{10}$/)) {
           formIsValid = false;
-          errors["mobileno"] = "*Please enter valid mobile no.";
+          errors["phonenumber"] = "*Please enter valid mobile no.";
         }
       }
 
@@ -86,7 +119,6 @@ class ValidateForm extends Component {
 
     }
 
-
   render() {
     return (
       <div>
@@ -99,38 +131,50 @@ class ValidateForm extends Component {
         <div className="form__group">
           <input 
             type="text" 
-            name="username" 
+            name="firstname" 
             className="form__input"
-            placeholder="Name"
-            value={this.state.fields.username} 
+            placeholder="First Name"
+            value={this.state.fields.firstname} 
             onChange={this.handleChange} 
           />
         </div>
-        <div className="errorMsg">{this.state.errors.username}</div>
+        <div className="errorMsg">{this.state.errors.firstname}</div>
+
+        <div className="form__group">
+          <input 
+            type="text" 
+            name="lastname" 
+            className="form__input"
+            placeholder="Last Name"
+            value={this.state.fields.lastname} 
+            onChange={this.handleChange} 
+          />
+        </div>
+        <div className="errorMsg">{this.state.errors.lastname}</div>
 
         <div className="form__group">
           <input 
             className="form__input"
             type="text" 
-            name="emailid" 
+            name="email" 
             placeholder="Email"
-            value={this.state.fields.emailid} 
+            value={this.state.fields.email} 
             onChange={this.handleChange}  
           />
         </div>
-        <div className="errorMsg">{this.state.errors.emailid}</div>
+        <div className="errorMsg">{this.state.errors.email}</div>
 
         <div className="form__group">
           <input 
             className="form__input"
             type="text" 
-            name="mobileno" 
+            name="phonenumber" 
             placeholder="Phone"
-            value={this.state.fields.mobileno} 
+            value={this.state.fields.phonenumber} 
             onChange={this.handleChange}
           />
         </div>
-        <div className="errorMsg">{this.state.errors.mobileno}</div>
+        <div className="errorMsg">{this.state.errors.phonenumber}</div>
 
         <div className="form__group">
           <input 
