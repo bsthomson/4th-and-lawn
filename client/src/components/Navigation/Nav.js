@@ -64,7 +64,9 @@ class Navbar extends Component {
                 <div className="navigation__nav-container">
 
                 <div class="navigation__logo-box">
-                    <div class="navigation__logo"><i className="fas fa-car margin-right"></i>fourth&lawn</div>
+                    <Link to="/" className="navigation__logo" onClick={(e)=>{this.setState({menuOpen: false})}}>
+                        <div class="navigation__logo"><i className="fas fa-car margin-right"></i>fourth&lawn</div>
+                    </Link>
                 </div>
 
                 <input type="checkbox" className="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>

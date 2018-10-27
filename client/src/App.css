@@ -1213,7 +1213,8 @@ select {
 .navigation__logo-box {
   position: absolute;
   top: 2rem;
-  left: 4.5rem; }
+  left: 4.5rem;
+  z-index: 4050; }
   @media only screen and (max-width: 37.5em) {
     .navigation__logo-box {
       top: 2.3rem; } }

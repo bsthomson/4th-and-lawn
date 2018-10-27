@@ -16,7 +16,7 @@
         position: absolute;
         top: 2rem;
         left: 4.5rem;
-        // z-index: 4000;
+        z-index: 4050;
 
         @include breakpoint(phone) {
             top: 2.3rem;
