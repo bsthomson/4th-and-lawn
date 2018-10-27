@@ -1,12 +1,12 @@
 .section-renter {
     position: relative;
     padding: 12rem 3rem 3rem 3rem;
-    // background-image: linear-gradient(
-    //     180deg,
-    //     $color-primary,
-    //     $color-primary-light
-    // );
-    background-color: $color-white;
+    background-image: linear-gradient(
+        180deg,
+        $color-grey-dark-3,
+        $color-black
+    );
+    // background-color: $color-white;
 }
 
 .header-renter {
@@ -44,7 +44,7 @@
 
     &__background {
         height: 100%;
-        background-color: $color-black;
+        background-color: $color-grey-dark-3;
         padding: 4rem;
         border-radius: 1rem;
     }

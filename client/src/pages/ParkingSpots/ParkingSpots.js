@@ -63,7 +63,7 @@ class ParkingSpots extends Component {
                            
                             <div className="parking__heading">
                                 <h1 className="heading-primary">
-                                    <span className="heading-primary--page">Parking spots</span>
+                                    <span className="heading-primary--page-white">Parking spots</span>
                                 </h1>
                             </div>
                             

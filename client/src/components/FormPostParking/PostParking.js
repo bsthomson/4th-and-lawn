@@ -9,9 +9,9 @@ class PostParkingSpot extends Component {
         super()
         this.state = {
             streetaddress: '',
-            city: '',
-            state: '',
-            zipcode: '',
+            city: 'Lawrence',
+            state: 'KS',
+            zipcode: '66044',
             availablespots: '',
             instructions: '',
             game: '',

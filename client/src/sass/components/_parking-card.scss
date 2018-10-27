@@ -17,10 +17,10 @@
         backface-visibility: hidden;
         border-radius: 1rem;
         overflow: hidden;
-        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.3);
+        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
 
         &--front {
-            background-color: $color-black;
+            background-color: $color-grey-dark-3;
             // background-image: linear-gradient(
             // 120deg,
             // $color-black,

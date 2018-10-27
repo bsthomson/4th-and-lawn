@@ -8,10 +8,18 @@
     height: 60rem;
     background-color: white;
     position: relative;
+
+    @include breakpoint(tab-land) {
+        height: 70rem;
+    }
+
+    @include breakpoint(phone) {
+        height: 80rem;
+    }
  }
 .section-about {
     // background-color: $color-primary-dark;
-    height: 60rem;
+    height: 55rem;
     background-image: linear-gradient(
         180deg,
         $color-primary,
@@ -19,8 +27,12 @@
     );
     position: relative;
 
+    @include breakpoint(tab-port) {
+        height: 60rem;
+    }
+
     @include breakpoint(phone) {
-        height: 100rem;
+        height: 72rem;
     }
 
     &__container {
@@ -103,4 +115,36 @@
             background-size: auto;
         }
     }
+}
+
+.footer-home {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: table;
+    height: 8rem;
+    box-shadow: 0 0 1rem .5rem rgba($color-grey-dark-2, 0.15);
+    // padding: 1.5rem 0;
+    background-color: $color-black;
+
+    // &__left {
+    //     float: left;
+    //     width: 30%;
+    //     padding: 2rem;
+    //     margin-left: 2rem;
+    //     display: table;
+    // }
+
+    &__container {
+        float: left;
+        width: 100%;
+        padding: 1.5rem 4rem;
+        display: table;
+
+        @include breakpoint(phone) {
+            padding: 1.5rem 2rem;
+        }
+    }
+
 }

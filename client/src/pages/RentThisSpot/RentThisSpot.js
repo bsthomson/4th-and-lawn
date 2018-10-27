@@ -165,7 +165,7 @@ class RentThisSpot extends Component {
                                     )}
                                 </Popup>
                             ) : (
-                                <Popup trigger={<span className="btn btn--rent">Rent This Spot</span>} modal>
+                                <Popup trigger={<span className="btn btn--rent">Log in required</span>} modal>
                                     {close => (
                                     <div className="modal">
                                         <a href="#" className="popup__close" onClick={close}>

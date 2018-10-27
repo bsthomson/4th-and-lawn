@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './../../App.css';
 import '../../img/parking-garage.jpg';
-import PostParkingSpot from '../../components/FormPostParking/PostParking';
 import "animate.css/animate.min.css";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 class Home extends Component {
 
@@ -54,8 +52,8 @@ class Home extends Component {
                                         <div className="section-about__container-flex-vertical-align">
                                             <h1 className="section-title">
                                                 {/* <span className="section-title--body">01.</span> */}
-                                                <span className="section-title--main">Take your time</span>
-                                                <span className="section-title--body">There's nothing we can do about the traffic, but at least your parking spot is really good. Cheers to that.</span>
+                                                <span className="section-title--main">Let us help</span>
+                                                <span className="section-title--body">Find game day parking before game day or sell your parking spots a head of time. We're here for you.</span>
                                                 {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
                                             </h1>
                                             <span className="btn btn--main">Parking spots</span>
@@ -66,7 +64,7 @@ class Home extends Component {
                                         <div className="section-about__container-flex-vertical-align">
                                             <h1 className="section-title">
                                                 {/* <span className="section-title--body">01.</span> */}
-                                                <span className="section-title--main">Why wait?</span>
+                                                <span className="section-title--main">Take your time</span>
                                                 <span className="section-title--body">There's nothing we can do about the traffic, but at least your parking spot is really good. Cheers to that.</span>
                                                 {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
                                             </h1>
@@ -92,26 +90,30 @@ class Home extends Component {
 
                                     <div className="col-1-of-2">
                                         <div className="section-about__container-flex-vertical-align">
-                                            <h1 className="section-title">
-                                                {/* <span className="section-title--body">01.</span> */}
-                                                <span className="section-title--main">Why wait?</span>
-                                                <span className="section-title--body">There's nothing we can do about the traffic, but at least your parking spot is really good. Cheers to that.</span>
-                                                {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
-                                            </h1>
-                                            <span className="btn btn--main">Parking spots</span>
+                                            <div className="section-about__image">&nbsp;</div>
                                         </div>
                                     </div>
 
                                     <div className="col-1-of-2">
                                         <div className="section-about__container-flex-vertical-align">
-                                            <div className="section-about__image">&nbsp;</div>
+                                            <h1 className="section-title">
+                                                {/* <span className="section-title--body">01.</span> */}
+                                                <span className="section-title--main-black">Why wait?</span>
+                                                <span className="section-title--body-black">Get paid for parking spots ahead of time and enjoy game day like you should. Thank us later.</span>
+                                                {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
+                                            </h1>
+                                            <span className="btn btn--main-2">Get started</span>
                                         </div>
                                     </div>
+
+                                    
 
                                 </div>
 
                             </div>
                         </section>
+
+                        <div className="footer-home">&nbsp;</div>
 
                     </div>
                

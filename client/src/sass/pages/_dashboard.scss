@@ -10,12 +10,12 @@
 .section-dashboard {
     height: 100vh;
     width: 100%;
-    // background-image: linear-gradient(
-    //     180deg,
-    //     $color-primary,
-    //     $color-primary-dark
-    //     );
-    background-color: white;
+    background-image: linear-gradient(
+        180deg,
+        $color-grey-dark-3,
+        $color-black
+        );
+    // background-color: $color-grey-dark-3;
     z-index: 0;
     position: relative;
     display: table;
@@ -40,7 +40,11 @@
         }
     }
 
- 
+    &__header {
+        width: 100%;
+        padding-bottom: 0rem;
+        display: table;
+    }
 
     &__sidebar {
         float: left;
@@ -105,7 +109,7 @@
     &__user-section {
         width: 100%;
         position: relative;
-        background-color: $color-black;
+        background-color: $color-grey-dark-3;
         border-radius: 1rem;
         padding: 3rem;
         margin-bottom: 3rem;
@@ -124,7 +128,7 @@
     &__user-item {
         width: 100%;
         position: relative;
-        background-color: $color-white;
+        background-color: $color-black;
         border-radius: .5rem;
         padding: 1rem;
         margin-top: 2rem;

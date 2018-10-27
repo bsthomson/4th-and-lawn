@@ -187,13 +187,23 @@ body {
     margin-bottom: 1rem; }
     @media only screen and (max-width: 37.5em) {
       .section-title--main-black {
-        letter-spacing: -.2rem;
-        font-size: 7rem;
+        letter-spacing: 0;
+        font-size: 4.5rem;
         line-height: 6.5rem;
-        margin-top: 7rem; } }
+        margin-top: 0rem; } }
   .section-title--body {
     display: block;
     color: #fff;
+    width: 100%;
+    font-size: 2.25rem;
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: .5px;
+    line-height: 4rem;
+    letter-spacing: .2px; }
+  .section-title--body-black {
+    display: block;
+    color: #000;
     width: 100%;
     font-size: 2.25rem;
     font-weight: 500;
@@ -275,6 +285,23 @@ body {
       .heading-primary--page {
         font-size: 4.5rem;
         text-align: center; } }
+  .heading-primary--page-white {
+    display: block;
+    width: 100%;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 3.5rem;
+    letter-spacing: 0px;
+    color: #fff;
+    text-align: center; }
+    @media (max-width: 56.25em) {
+      .heading-primary--page-white {
+        font-size: 6rem;
+        text-align: center; } }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--page-white {
+        font-size: 4.5rem;
+        text-align: center; } }
 
 .heading-page {
   max-width: 100%;
@@ -334,7 +361,7 @@ body {
 
 .dashboard-heading--value {
   font-size: 1rem;
-  color: #000;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
@@ -501,10 +528,25 @@ body {
   padding: 1rem 2rem;
   color: #20b573;
   text-decoration: none;
-  background-image: linear-gradient(120deg, #fff 0%, #fff 50%, #266b4c 50%);
+  background-image: linear-gradient(120deg, #fff 0%, #fff 50%, #000 50%);
   background-size: 240%;
   transition: all .6s; }
   .btn--main:hover, .btn--main:active {
+    background-position: 100%;
+    color: #fff; }
+
+.btn--main-2 {
+  width: 20rem;
+  border-radius: 5rem;
+  font-weight: bold;
+  letter-spacing: .5px;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  background-image: linear-gradient(120deg, #000 0%, #000 50%, #20b573 50%);
+  background-size: 240%;
+  transition: all .6s; }
+  .btn--main-2:hover, .btn--main-2:active {
     background-position: 100%;
     color: #fff; }
 
@@ -804,9 +846,9 @@ select {
     backface-visibility: hidden;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.3); }
+    box-shadow: 0 0.25rem 1rem 0.25rem rgba(48, 48, 48, 0.1); }
     .parking-card__side--front {
-      background-color: #000; }
+      background-color: #202020; }
     .parking-card__side--back {
       transform: rotateY(180deg); }
       .parking-card__side--back-1 {
@@ -984,7 +1026,8 @@ select {
         width: 100%; } }
     @media only screen and (max-width: 37.5em) {
       .row .col-1-of-2 {
-        width: 100%; } }
+        width: 100%;
+        margin-bottom: 4rem; } }
   .row .col-1-of-3 {
     width: calc((100% - 2 * 2rem) / 3); }
     @media (max-width: 56.25em) {
@@ -1388,14 +1431,23 @@ select {
   height: 60rem;
   background-color: white;
   position: relative; }
+  @media (max-width: 75em) {
+    .section-white {
+      height: 70rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .section-white {
+      height: 80rem; } }
 
 .section-about {
-  height: 60rem;
+  height: 55rem;
   background-image: linear-gradient(180deg, #20b573, #20b573);
   position: relative; }
+  @media (max-width: 56.25em) {
+    .section-about {
+      height: 60rem; } }
   @media only screen and (max-width: 37.5em) {
     .section-about {
-      height: 100rem; } }
+      height: 72rem; } }
   .section-about__container {
     width: 75%;
     position: absolute;
@@ -1460,6 +1512,24 @@ select {
       background-position: center;
       background-size: auto; } }
 
+.footer-home {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: table;
+  height: 8rem;
+  box-shadow: 0 0 1rem 0.5rem rgba(153, 153, 153, 0.15);
+  background-color: #000; }
+  .footer-home__container {
+    float: left;
+    width: 100%;
+    padding: 1.5rem 4rem;
+    display: table; }
+    @media only screen and (max-width: 37.5em) {
+      .footer-home__container {
+        padding: 1.5rem 2rem; } }
+
 .section-header {
   width: 100%;
   height: 12rem;
@@ -1471,7 +1541,7 @@ select {
 .section-dashboard {
   height: 100vh;
   width: 100%;
-  background-color: white;
+  background-image: linear-gradient(180deg, #202020, #000);
   z-index: 0;
   position: relative;
   display: table;
@@ -1488,6 +1558,11 @@ select {
   @media only screen and (max-width: 37.5em) {
     .dashboard__container {
       padding: 2rem; } }
+
+.dashboard__header {
+  width: 100%;
+  padding-bottom: 0rem;
+  display: table; }
 
 .dashboard__sidebar {
   float: left;
@@ -1541,7 +1616,7 @@ select {
 .dashboard__user-section {
   width: 100%;
   position: relative;
-  background-color: #000;
+  background-color: #202020;
   border-radius: 1rem;
   padding: 3rem;
   margin-bottom: 3rem;
@@ -1558,7 +1633,7 @@ select {
 .dashboard__user-item {
   width: 100%;
   position: relative;
-  background-color: #fff;
+  background-color: #000;
   border-radius: .5rem;
   padding: 1rem;
   margin-top: 2rem;
@@ -1634,7 +1709,7 @@ select {
 .section-parking {
   height: 100%;
   width: 100%;
-  background-color: #fff;
+  background-image: linear-gradient(180deg, #202020, #000);
   z-index: 0;
   position: relative;
   display: table;
@@ -1735,7 +1810,7 @@ select {
 .section-renter {
   position: relative;
   padding: 12rem 3rem 3rem 3rem;
-  background-color: #fff; }
+  background-image: linear-gradient(180deg, #202020, #000); }
 
 .header-renter {
   position: relative; }
@@ -1762,7 +1837,7 @@ select {
         width: 100%; } }
   .header-renter__background {
     height: 100%;
-    background-color: #000;
+    background-color: #202020;
     padding: 4rem;
     border-radius: 1rem; }
   .header-renter__background-image {

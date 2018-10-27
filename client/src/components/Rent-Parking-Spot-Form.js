@@ -54,7 +54,7 @@ class RentParkingSpot extends Component {
                 <div>
                     <form>
                         <p className="heading-primary">
-                            <span className="heading-primary--form">Reserve your spot</span>
+                            <span className="heading-primary--form center">Rent this spot</span>
                         </p>
 
                                 <div className="form__group">
