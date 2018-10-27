@@ -53,5 +53,11 @@ export default {
 
   getDistance: (origin, destination) => {
     return axios.get("/api/rentedspots/distance?origin=" + origin + "&destination="+ destination)
+  },
+
+  getAllDistance: (origin, destination) => {
+    return axios.get("/api/parkingspots/distance?origin=" + origin + "&destination="+ destination)
   }
 }
+
+

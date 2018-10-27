@@ -17,14 +17,18 @@ function getGeocode(address){
 }
 
 class CardParkingSpot extends Component {
+    constructor(props) {
+        super(props);
 
-    state = {
-            parkingspots: [],
-            gameday: [],
-            game: this.props.game,
-            distance: []
-        };
-    
+        this.state = {
+                parkingspots: [],
+                gameday: [],
+                game: this.props.game,
+                distance: []
+            };
+       
+
+    }
 
     componentDidMount() {
         this.loadParkingSpots();
@@ -39,6 +43,10 @@ class CardParkingSpot extends Component {
     loadParkingSpots = () => {
         API.getParkingSpots()
         .then(response =>{
+            this.setState({ 
+                parkingspots: response.data,
+                gameday: response.data
+            });
             console.log(response);
             const spots = response.data;
             const geocodes = [];
@@ -58,12 +66,12 @@ class CardParkingSpot extends Component {
                     spot.lng = lng;
                 })
             })
-            .then(()=>{
-                this.setState({ 
-                    parkingspots: spots,
-                    gameday: response.data
-                });
-            })
+            // .then(()=>{
+            //     this.setState({ 
+            //         parkingspots: spots,
+            //         gameday: response.data
+            //     });
+            // })
             .then(this.getWalkingDistance())
             .catch( err => console.log(err)) 
         })
@@ -72,6 +80,7 @@ class CardParkingSpot extends Component {
 
     selectDates() {
         let parkingSpotsArray = [];
+        console.log(this.state.parkingspots);
         this.state.parkingspots.forEach(parkingspot => {
             console.log(this.state.parkingspots)
             if (parkingspot.event[0]._id === this.props.game) {
@@ -85,21 +94,44 @@ class CardParkingSpot extends Component {
     };
 
     // getWalkingDistance = () => {
-    //     console.log(this.state);
+    //     console.log(this.state.parkingspots);
     //     var origin = this.state.parkingspots.streetaddress + " " + this.state.parkingspots.city + ", " + this.state.parkingspots.state;
+    //     console.log(origin);
     //     var destination = "1101 Mississippi St Lawrence, KS";
     //     // const setState = this.setState;
         
-    //     API.getDistance(origin, destination) 
-    //     .then((response) => {
-    //         // console.log(response.data)
-    //         // console.log(this);
+    //     API.getDistance(origin, destination)
+        
+    //     .then((response) => 
+    //     {console.log(origin);
+    //         console.log(response.data)
+    //         console.log(this);
     //         this.setState({
     //             distance: response.data
     //         })
+    //         console.log(this.state.distance)
     //     })
     // }
 
+    getWalkingDistance = () => {
+        let walkingDistanceArry = [];
+        let origin;
+        console.log(origin);
+        this.state.parkingspots.forEach(origin => {
+            console.log(this.state.parkingspots);
+            origin = this.state.parkingspots[0].streetaddress + " " + this.state.parkingspots[0].city + ", " + this.state.parkingspots[0].state;
+            // console.log(parkingspot);
+            var destination = "1101 Mississippi St Lawrence, KS";
+            API.getDistance(origin, destination)
+            .then((response) => {
+            walkingDistanceArry.push(response.data)
+            console.log(walkingDistanceArry)
+                this.setState({
+                distance: walkingDistanceArry
+            })
+        }
+            )}
+        )}
     
     render() {
             return (
