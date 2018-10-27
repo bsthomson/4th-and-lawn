@@ -157,7 +157,7 @@ class CardParkingSpot extends Component {
                                                     }
                                                 </Link>
                                                 <input 
-                                                    className="btn btn--card readOnly" 
+                                                    className="btn btn--card" 
                                                     value="Add to favorites"
                                                 />
                                             </div>

@@ -28,10 +28,6 @@ class Home extends Component {
         }
     }
 
-    componentDidUpdate() {
-        console.log(this.state.loggedIn)
-    }
-
     render() {
 
         return (
