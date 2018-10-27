@@ -70,42 +70,21 @@ class UserSpot extends Component {
     render() {
         return (
             <section>
-            <div className="section-header"></div>
+            {/* <div className="section-header"></div> */}
             <div className="section-dashboard">
                 
                 <div className="dashboard__container">
 
-                    <section  className="parking__header">
+                    <section  className="dashboard__header">
                         <div className="parking__heading">
                             <h1 className="heading-primary">
-                                <span className="heading-primary--page">Dashboard</span>
+                                <span className="heading-primary--page-white">Dashboard</span>
                             </h1>
                         </div>
                     </section>
 
-                    {/* SIDEBARD -> */}
-                    {/* <section className="dashboard__sidebar">
-                        <h1 className="heading-primary">
-                            <span className="heading-primary--white">Dashboard</span>
-                        </h1>
-                        <ul className="dashboard__sidebar-links">
-                            <li className="dashboard-heading--item">
-                                <i className="fas fa-user-circle spot--icon-sidebar"></i> Account
-                            </li>
-                            <li className="dashboard-heading--item">
-                                <i className="far fa-credit-card spot--icon-sidebar"></i> Payments
-                            </li>
-                            <li className="dashboard-heading--item">
-                                <i className="fas fa-envelope spot--icon-sidebar"></i> Invite Friends
-                            </li>
-                            <li className="dashboard-heading--item">
-                                <i className="fas fa-cog spot--icon-sidebar"></i> Settings
-                            </li>
-                        </ul>
-                    </section> */}
-                    {/* SIDEBAR END ^ */}
                     <div className="dashboard__create">
-                    <Popup trigger={<span className="btn btn--create">Create Parking Spot</span>} modal>
+                    <Popup trigger={<span className="btn btn--card">Create Parking Spot</span>} modal>
                             {close => (
                             <div className="modal">
                                 <a href="#" className="popup__close" onClick={close} >
@@ -185,11 +164,6 @@ class UserSpot extends Component {
                                                                 <span className="dashboard-heading--value">{rentedspot.make} {rentedspot.model} / {rentedspot.licenseplate}</span>
                                                             </div>
                                                             <div className="dashboard__user-buttons">
-                                                                <Link to={"/rentthisspot/" + rentedspot._id}>
-                                                                    <div className="dashboard-card__button dashboard-card__button--link" >
-                                                                        <span className="spot--test"><i className="fas fa-home spot--icon"></i></span>
-                                                                    </div>
-                                                                </Link>
                                                                 <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deleteRentedSpot(rentedspot._id)}>
                                                                     <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
                                                                 </div>      

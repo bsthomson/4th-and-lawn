@@ -16,6 +16,8 @@
     //     }
     // }
 
+    
+
     &__filter-container {
         width: 40%;
         background-color: $color-white;
@@ -45,7 +47,7 @@
         padding: 1rem 1rem;
         border-radius: 2px;
         background-color: rgba($color-white, .5);
-        border: 1px solid $color-grey-light-2;
+        border: 2px solid $color-black;
         width: 100%;
         display: block;
         transition: all .3s;
@@ -64,7 +66,7 @@
         }
 
         &::-webkit-input-placeholder {
-            color: $color-grey-dark-2;
+            color: $color-black;
         }
     }
 
@@ -75,8 +77,8 @@
         padding: 1rem 1rem;
         border-radius: 2px;
         background-color: rgba($color-white, .5);
-        border: 1px solid $color-grey-light-2;
-        width: 47%;
+        border: 2px solid $color-black;
+        width: 47.8%;
         display: inline-block;
         transition: all .3s;
         text-align: left;
@@ -98,7 +100,15 @@
         }
 
         &::-webkit-input-placeholder {
-            color: $color-grey-dark-2;
+            color: $color-black;
+        }
+
+        @include breakpoint(tab-land) {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
         }
     }
 
@@ -109,8 +119,8 @@
         padding: 1rem 1rem;
         border-radius: 2px;
         background-color: rgba($color-white, .5);
-        border: 1px solid $color-grey-light-2;
-        width: 29%;
+        border: 2px solid $color-black;
+        width: 30.5%;
         display: inline-block;
         transition: all .3s;
         text-align: left;
@@ -132,8 +142,18 @@
         }
 
         &::-webkit-input-placeholder {
-            color: $color-grey-dark-2;
+            color: $color-black;
         }
+
+        @include breakpoint(tab-land) {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        
     }
 
     &__label {
@@ -176,9 +196,9 @@ select {
 .errorMsg {
     color: #cc0000;
     margin-bottom: 12px;
-  }
+}
   
   .sucessMsg {
     color: #6B8E23;
     margin-bottom: 10px;
-  }
+}

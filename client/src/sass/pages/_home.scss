@@ -1,17 +1,39 @@
 .section-home {
     // transition: 1s ease-out;
     height: 100%;
+    padding-top: 8rem;
 }
 
+.section-white {
+    height: 60rem;
+    background-color: white;
+    position: relative;
+
+    @include breakpoint(tab-land) {
+        height: 70rem;
+    }
+
+    @include breakpoint(phone) {
+        height: 80rem;
+    }
+ }
 .section-about {
     // background-color: $color-primary-dark;
-    height: 100vh;
+    height: 55rem;
     background-image: linear-gradient(
         180deg,
         $color-primary,
-        $color-primary-light
+        $color-primary
     );
     position: relative;
+
+    @include breakpoint(tab-port) {
+        height: 60rem;
+    }
+
+    @include breakpoint(phone) {
+        height: 72rem;
+    }
 
     &__container {
         width: 75%;
@@ -29,6 +51,15 @@
         @include breakpoint(tab-land) {
             height: 34rem;
         }
+    }
+
+    &__image {
+        height: 70rem;
+        width: 100%;
+        background-image: url(img/parking-iphone.png);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     &__container-absolute {
@@ -66,4 +97,54 @@
         left: 60%;
         transform: translate(-50%, -50%);
     }
+}
+
+.section-transition {
+
+    &__background {
+        height: 40rem;
+        display: table;
+        width: 100%;
+        background-image: url(img/section-transition.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @include breakpoint(phone) {
+            background-position: center;
+            background-size: auto;
+        }
+    }
+}
+
+.footer-home {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: table;
+    height: 8rem;
+    box-shadow: 0 0 1rem .5rem rgba($color-grey-dark-2, 0.15);
+    // padding: 1.5rem 0;
+    background-color: $color-black;
+
+    // &__left {
+    //     float: left;
+    //     width: 30%;
+    //     padding: 2rem;
+    //     margin-left: 2rem;
+    //     display: table;
+    // }
+
+    &__container {
+        float: left;
+        width: 100%;
+        padding: 1.5rem 4rem;
+        display: table;
+
+        @include breakpoint(phone) {
+            padding: 1.5rem 2rem;
+        }
+    }
+
 }

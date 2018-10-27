@@ -17,10 +17,15 @@
         backface-visibility: hidden;
         border-radius: 1rem;
         overflow: hidden;
-        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.3);
+        box-shadow: 0 .25rem 1rem .25rem rgba(48, 48, 48, 0.1);
 
         &--front {
-            background-color: $color-primary-dark;
+            background-color: $color-grey-dark-3;
+            // background-image: linear-gradient(
+            // 120deg,
+            // $color-black,
+            // $color-grey-dark
+            // );
         }
     
         &--back {
@@ -30,6 +35,15 @@
                 // background-image: linear-gradient(180deg, $color-primary, $color-primary-light);
                 background-color: $color-white;
             }
+
+            @include breakpoint(tab-land) {
+                display: none;
+            }
+
+        }
+
+        @include breakpoint(tab-land) {
+            position: relative;
 
         }
     }
@@ -98,10 +112,18 @@
 
     &:hover &__side--front {
         transform: rotateY(-180deg);
+
+        @include breakpoint(tab-land) {
+            transform: rotateY(0deg);
+        }
     }
 
     &:hover &__side--back {
         transform: rotateX(0);
+
+        @include breakpoint(tab-land) {
+            transform: rotateY(0deg);
+        }
     }
 
     // Front-side styling
