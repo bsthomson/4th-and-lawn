@@ -1,6 +1,11 @@
 import axios from "axios";
 
 export default {
+  //Posts register info
+  submitRegisterInfo: registerData => {
+    return axios.post('/register', registerData);
+  },
+
   // Gets all parking spots
   getParkingSpots: () => {
     return axios.get("/api/parkingspots");

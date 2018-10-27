@@ -56,7 +56,7 @@ class Home extends Component {
                                                 <span className="section-title--body">Find game day parking before game day or sell your parking spots a head of time. We're here for you.</span>
                                                 {/* <span className="section-title--body">Your spot is waiting for you.</span> */}
                                             </h1>
-                                            <span className="btn btn--main">Parking spots</span>
+                                            <span className="btn btn--main">Sign up</span>
                                         </div>
                                     </div>
 

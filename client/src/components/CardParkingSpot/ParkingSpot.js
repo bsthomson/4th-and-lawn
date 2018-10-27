@@ -31,6 +31,7 @@ class CardParkingSpot extends Component {
     }
 
     componentDidUpdate() {
+        console.log(this.state)
         if (this.props.game !== this.state.game) {
         this.selectDates();
         }
@@ -39,7 +40,6 @@ class CardParkingSpot extends Component {
     loadParkingSpots = () => {
         API.getParkingSpots()
         .then(response =>{
-            console.log(response);
             const spots = response.data;
             const geocodes = [];
             console.log(geocodes)
@@ -59,6 +59,7 @@ class CardParkingSpot extends Component {
                 })
             })
             .then(()=>{
+                console.log(spots)
                 this.setState({ 
                     parkingspots: spots,
                     gameday: response.data

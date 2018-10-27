@@ -17,9 +17,8 @@ module.exports = function (app) {
           return event = dbParkingSpot.event
         })
         .then( () => {
-          const { licenseplate, make, model } = req.body;
 
-          // console.log(event.date)
+          const { licenseplate, make, model } = req.body;
 
           Renter.create({
             licenseplate: licenseplate,
@@ -30,7 +29,7 @@ module.exports = function (app) {
             parkingspot: req.params.id,
           })
           .then( dbRenter => {
-            // console.log("User: ", dbRenter)
+            console.log("User: ", dbRenter)
             User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec().then((user) => {
               User.findOne({ _id: req.session.passport.user }).then(name =>{
                 ParkingSpot.findOneAndUpdate({ _id: req.params.id }, { $push: { renter: req.session.passport.user, rentinfo: dbRenter._id } }).exec().then((ruse) => {
@@ -131,7 +130,7 @@ module.exports = function (app) {
 
     app.route('/api/rentedspots/distance').get((req, res)=>{
       // console.log("inside app.route", req);
-      var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + req.query.origin + "&destinations=" + req.query.destination + "&key=AIzaSyCMQAxD4bwQmzLZNVUGgc_wy6q7Bk6kbo4";
+      var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + req.query.origin + "&destinations=" + req.query.destination + "&key=AIzaSyCMQAxD4bwQmzLZNVUGgc_wy6q7Bk6kbo4&mode=walking";
         axios.get(queryURL).then((ggl) =>{
           console.log("@@@@", ggl.data.rows[0].elements[0])
             res.json(ggl.data.rows[0].elements[0].duration.text)
