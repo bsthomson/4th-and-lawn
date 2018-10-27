@@ -70,7 +70,7 @@ class UserSpot extends Component {
     render() {
         return (
             <section>
-            <div className="section-header"></div>
+            {/* <div className="section-header"></div> */}
             <div className="section-dashboard">
                 
                 <div className="dashboard__container">
@@ -105,7 +105,7 @@ class UserSpot extends Component {
                     </section> */}
                     {/* SIDEBAR END ^ */}
                     <div className="dashboard__create">
-                    <Popup trigger={<span className="btn btn--create">Create Parking Spot</span>} modal>
+                    <Popup trigger={<span className="btn btn--card">Create Parking Spot</span>} modal>
                             {close => (
                             <div className="modal">
                                 <a href="#" className="popup__close" onClick={close} >

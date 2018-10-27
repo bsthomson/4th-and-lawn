@@ -53,7 +53,7 @@ class ParkingSpots extends Component {
     render() {
         return (
             <section>
-                <div className="section-header">&nbsp;</div>
+                {/* <div className="section-header">&nbsp;</div> */}
 
                 <div className="section-parking">
                 

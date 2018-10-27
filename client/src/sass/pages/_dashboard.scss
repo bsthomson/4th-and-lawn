@@ -10,20 +10,21 @@
 .section-dashboard {
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(
-        180deg,
-        $color-primary,
-        $color-primary-dark
-        );
+    // background-image: linear-gradient(
+    //     180deg,
+    //     $color-primary,
+    //     $color-primary-dark
+    //     );
+    background-color: white;
     z-index: 0;
     position: relative;
     display: table;
-    // transition: 1s ease-out;
+    padding-top: 12rem;
 
     @include breakpoint(phone) {
         height: 100%;
         display: table;
-        padding-bottom: 8rem;
+        
     }
 }
 
@@ -104,7 +105,7 @@
     &__user-section {
         width: 100%;
         position: relative;
-        background-color: $color-primary-dark;
+        background-color: $color-black;
         border-radius: 1rem;
         padding: 3rem;
         margin-bottom: 3rem;

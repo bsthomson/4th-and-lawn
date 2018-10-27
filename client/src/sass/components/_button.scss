@@ -139,8 +139,7 @@
         font-weight: 500;
         border-radius: 5rem;
         letter-spacing: .5px;
-    
-        background-image: linear-gradient(120deg, $color-red 0%, $color-red-dark 50%, $color-primary-dark 50%);
+        background-image: linear-gradient(120deg, $color-black 0%, $color-black 50%, $color-primary 50%);
         background-size: 240%;
         transition: all .6s;
 
@@ -153,7 +152,7 @@
     }
 
     &--rent {
-        display: inline-block;
+        // display: inline-block;
         width: 20rem;
         float: right;
         color: $color-white;
@@ -163,7 +162,7 @@
         letter-spacing: .5px;
         border-radius: 5rem;
 
-        background-image: linear-gradient(120deg, $color-red 0%, $color-red-dark 50%, $color-primary-dark 50%);
+        background-image: linear-gradient(120deg, $color-black 0%, $color-black 50%, $color-primary 50%);
         background-size: 240%;
         transition: all .6s;
 
@@ -171,7 +170,6 @@
         &:active {
             background-position: 100%;
             color: $color-white;
-            // transform: translateX(1rem);
         }
     }
 
@@ -184,10 +182,9 @@
         text-transform: uppercase;
         letter-spacing: .5px;
         padding: 2rem 3rem;
-        color: $color-primary-dark;
-        border: 2px solid $color-primary-dark;
+        color: $color-white;
         text-decoration: none;
-        background-image: linear-gradient(120deg, $color-white 0%, $color-white 50%, $color-primary-dark 50%);
+        background-image: linear-gradient(120deg, $color-black 0%, $color-black 50%, $color-primary 50%);
         background-size: 240%;
         transition: all .6s;
 
@@ -195,7 +192,6 @@
         &:active {
             background-position: 100%;
             color: $color-white;
-            // transform: translateX(1rem);
         }
     }
 

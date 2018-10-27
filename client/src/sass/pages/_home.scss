@@ -1,17 +1,27 @@
 .section-home {
     // transition: 1s ease-out;
     height: 100%;
+    padding-top: 8rem;
 }
 
+.section-white {
+    height: 60rem;
+    background-color: white;
+    position: relative;
+ }
 .section-about {
     // background-color: $color-primary-dark;
-    height: 100vh;
+    height: 60rem;
     background-image: linear-gradient(
         180deg,
         $color-primary,
-        $color-primary-light
+        $color-primary
     );
     position: relative;
+
+    @include breakpoint(phone) {
+        height: 100rem;
+    }
 
     &__container {
         width: 75%;
@@ -29,6 +39,15 @@
         @include breakpoint(tab-land) {
             height: 34rem;
         }
+    }
+
+    &__image {
+        height: 70rem;
+        width: 100%;
+        background-image: url(img/parking-iphone.png);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     &__container-absolute {
@@ -65,5 +84,23 @@
         top: 100%;
         left: 60%;
         transform: translate(-50%, -50%);
+    }
+}
+
+.section-transition {
+
+    &__background {
+        height: 40rem;
+        display: table;
+        width: 100%;
+        background-image: url(img/section-transition.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @include breakpoint(phone) {
+            background-position: center;
+            background-size: auto;
+        }
     }
 }

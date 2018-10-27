@@ -58,10 +58,11 @@ class Navbar extends Component {
         
         return (
             <section className="navigation">
+                <div className="navigation__nav-container">
 
-                {/* <div class="navigation__logo-box">
-                    <div class="navigation__logo"></div>
-                </div> */}
+                <div class="navigation__logo-box">
+                    <div class="navigation__logo"><i className="fas fa-car margin-right"></i>fourth&lawn</div>
+                </div>
 
                 <input type="checkbox" class="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>
                 
@@ -73,6 +74,7 @@ class Navbar extends Component {
                     &nbsp;
                 </div>
 
+                
                 <nav className="navigation__nav">
                     {loggedIn ? (
                         <ul className="navigation__list">
@@ -114,10 +116,24 @@ class Navbar extends Component {
 
                             
                             <li className="navigation__item">
-                                <Popup trigger={<span className="navigation__link">Sign up</span>}>
-                                    <div className="modal">
-                                        <Signup updateUser={this.props.updateUser}/>
-                                    </div>
+                            <Popup trigger={<span className="navigation__link">Sign up</span>} modal>
+                                {close => (
+                                <div className="modal">
+                                    <a href="#" className="popup__close" onClick={close} >
+                                    &times;
+                                    </a>
+                                    
+                                    <Signup updateUser={this.props.updateUser}/>
+                                    <button
+                                        className="button"
+                                        onClick={() => {
+                                        console.log('Modal Closed')
+                                        close()
+                                        }}
+                                    >
+                                    </button>
+                                </div>
+                                )}
                                 </Popup>
                             </li>
                             <li className="navigation__item">
@@ -144,6 +160,8 @@ class Navbar extends Component {
                         </ul>
                     )}
                 </nav>
+               
+                </div>
             </section>
         )};
     }
