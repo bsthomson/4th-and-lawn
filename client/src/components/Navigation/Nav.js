@@ -19,25 +19,27 @@ class Navbar extends Component {
         }
     }
 
-    componentDidMount() {
-        
-    }
-
     // closeMobile.click( () => {
     //     navButton.trigger('click');
     // });
+    componentDidUpdate() {
+        console.log(this.state)
+    }
 
     logout(event) {
         event.preventDefault()
+        console.log("logging out")
         axios.post('/logout').then(response => {
+            console.log("logging out part 2")
           if (response.status === 200) {
             this.props.updateUser({
               loggedIn: false,
               menuOpen: false,
-              username: null
+              email: null
             })
             this.setState({
-                redirectTo: '/'
+                // redirectTo: '/',
+                menuOpen: false
             })
           }
         }).catch(error => {
@@ -59,17 +61,17 @@ class Navbar extends Component {
         return (
             <section className="navigation">
 
-                {/* <div class="navigation__logo-box">
-                    <div class="navigation__logo"></div>
+                {/* <div className="navigation__logo-box">
+                    <div className="navigation__logo"></div>
                 </div> */}
 
-                <input type="checkbox" class="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>
+                <input type="checkbox" className="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>
                 
-                <label for="navi-toggle" class="navigation__button">
-                    <span class="navigation__icon">&nbsp;</span>
+                <label htmlFor="navi-toggle" className="navigation__button">
+                    <span className="navigation__icon">&nbsp;</span>
                 </label>
                 
-                <div class="navigation__background">
+                <div className="navigation__background">
                     &nbsp;
                 </div>
 
@@ -93,7 +95,6 @@ class Navbar extends Component {
                             </li>
                             <li className="navigation__item">
                                 <span className="navigation__link" onClick={this.logout}>
-                                {/* <span className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}> */}
                                     Logout
                                 </span>
                             </li>

@@ -1,4 +1,5 @@
 const passport = require("passport");
+const session = require("express-session");
 
 const db = require("../models");
 
@@ -77,7 +78,8 @@ module.exports = function (app) {
   app.post("/logout", (req, res) => {
     req.session.destroy( (err) => {
       req.logout();
-      res.redirect('/');
+      console.log("session destroyed")
+      res.send(200)
     })
   });
 
