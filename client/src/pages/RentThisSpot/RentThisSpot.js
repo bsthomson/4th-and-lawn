@@ -102,9 +102,9 @@ class RentThisSpot extends Component {
                                 <hr className="rent-break"></hr>
                                 <span className="renter--value">Price per game:</span>
                                 <span className="renter--icon"><i className="fas fa-dollar-sign margin-right"></i>{this.state.parkingspots.price}</span>
-                                <hr className="rent-break"></hr>
+                                {/* <hr className="rent-break"></hr>
                                 <span className="renter--value">Available spots:</span>
-                                <span className="renter--icon"><i className="fas fa-car margin-right"></i>{this.state.parkingspots.availablespots}</span>
+                                <span className="renter--icon"><i className="fas fa-car margin-right"></i>{this.state.parkingspots.availablespots}</span> */}
                                 <hr className="rent-break"></hr>
                                 <span className="renter--value">Distance from stadium:</span>
                                 <span className="renter--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>

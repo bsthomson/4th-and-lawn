@@ -240,7 +240,7 @@ body {
   .heading-primary--form {
     display: block;
     width: 100%;
-    font-size: 2.7rem;
+    font-size: 2.5rem;
     font-weight: 900;
     line-height: 3.5rem;
     letter-spacing: 0px;
@@ -735,7 +735,7 @@ body {
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.5);
   border: 2px solid #000;
-  width: 47%;
+  width: 47.8%;
   display: inline-block;
   transition: all .3s;
   text-align: left;
@@ -751,6 +751,11 @@ body {
     border-bottom: 1px solid #ff7730; }
   .form__input-sm::-webkit-input-placeholder {
     color: #000; }
+  @media (max-width: 75em) {
+    .form__input-sm {
+      width: 100%; }
+      .form__input-sm:not(:last-child) {
+        margin-bottom: 2rem; } }
 
 .form__input-xs {
   color: inherit;
@@ -760,7 +765,7 @@ body {
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.5);
   border: 2px solid #000;
-  width: 29%;
+  width: 30.5%;
   display: inline-block;
   transition: all .3s;
   text-align: left;
@@ -776,6 +781,11 @@ body {
     border-bottom: 1px solid #ff7730; }
   .form__input-xs::-webkit-input-placeholder {
     color: #000; }
+  @media (max-width: 75em) {
+    .form__input-xs {
+      width: 100%; }
+      .form__input-xs:not(:last-child) {
+        margin-bottom: 2rem; } }
 
 .form__label {
   font-size: 1rem;
@@ -820,7 +830,9 @@ select {
 
 .popup-content {
   width: 50% !important;
-  z-index: 9000; }
+  z-index: 9000 !important;
+  overflow: scroll !important;
+  height: 50rem !important; }
   @media only screen and (max-width: 37.5em) {
     .popup-content {
       width: 100% !important;
@@ -1811,7 +1823,10 @@ select {
 .section-renter {
   position: relative;
   padding: 12rem 3rem 3rem 3rem;
-  background-image: linear-gradient(180deg, #202020, #000); }
+  background-image: linear-gradient(180deg, #202020, #000);
+  height: 100vh;
+  width: 100%;
+  display: table; }
 
 .header-renter {
   position: relative; }

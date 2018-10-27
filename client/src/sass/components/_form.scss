@@ -16,6 +16,8 @@
     //     }
     // }
 
+    
+
     &__filter-container {
         width: 40%;
         background-color: $color-white;
@@ -76,7 +78,7 @@
         border-radius: 2px;
         background-color: rgba($color-white, .5);
         border: 2px solid $color-black;
-        width: 47%;
+        width: 47.8%;
         display: inline-block;
         transition: all .3s;
         text-align: left;
@@ -100,6 +102,14 @@
         &::-webkit-input-placeholder {
             color: $color-black;
         }
+
+        @include breakpoint(tab-land) {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
     }
 
     &__input-xs {
@@ -110,7 +120,7 @@
         border-radius: 2px;
         background-color: rgba($color-white, .5);
         border: 2px solid $color-black;
-        width: 29%;
+        width: 30.5%;
         display: inline-block;
         transition: all .3s;
         text-align: left;
@@ -134,6 +144,16 @@
         &::-webkit-input-placeholder {
             color: $color-black;
         }
+
+        @include breakpoint(tab-land) {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        
     }
 
     &__label {
