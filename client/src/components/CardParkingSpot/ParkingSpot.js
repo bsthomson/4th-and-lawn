@@ -35,6 +35,7 @@ class CardParkingSpot extends Component {
     }
 
     componentDidUpdate() {
+        console.log(this.state)
         if (this.props.game !== this.state.game) {
         this.selectDates();
         }
@@ -141,7 +142,10 @@ class CardParkingSpot extends Component {
                         <div className="parking-container">
                             {this.state.gameday.map(parkingspot => (
                                 <div className="col-1-of-3" key={parkingspot._id}>
+                                
 
+                                    {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
+                                        <Link to={"/rentthisspot/" + parkingspot._id}>
                                     {/* CARD START -> */}
                                     <section className="parking-card">
                                         <div className="parking-card__side parking-card__side--front">
@@ -185,8 +189,7 @@ class CardParkingSpot extends Component {
                                                             onClick={this.handleSubmit}
                                                             disabled
                                                         />
-                                                    )
-                                                    }
+                                                    )}
                                                 </Link>
                                                 <input 
                                                     className="btn btn--card" 
@@ -196,13 +199,68 @@ class CardParkingSpot extends Component {
                                         </div>
                                     </section>
                                     {/* ^ END OF CARD ^ */}
+                                    </Link>
+                                    ) : (
+                                        <section className="parking-card">
+                                        <div className="parking-card__side parking-card__side--front">
+
+                                            <section className="parking-card__details">
+                                                <h3 className="parking-card__title">
+                                                    <span className="parking-card__title--address">{parkingspot.streetaddress}</span>
+                                                    <hr className="card-break"></hr>
+                                                    <span className="parking-card__title--value">{parkingspot.event[0].event}</span>
+                                                    <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
+                                                    <hr className="card-break"></hr>
+                                                    <span className="parking-card__title--value">Price per game:</span>
+                                                    <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price}</span>
+                                                    <hr className="card-break"></hr>
+                                                    <span className="parking-card__title--value">Available spots:</span>
+                                                    <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold"}</span>
+                                                    <hr className="card-break"></hr>
+                                                    <span className="parking-card__title--value">Distance from stadium:</span>
+                                                    <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>
+                                                </h3>
+                                            </section>
+
+                                        </div>
+                                        {/* ^ END OF FRONT ^ */}
+
+                                        <div className="parking-card__side parking-card__side--back parking-card__side--back-1">
+                                            <div className="parking-card__cta">
+                                                <Link to={"/rentthisspot/" + parkingspot._id}>
+                                                    {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
+                                                        <input
+                                                            className="btn btn--card"
+                                                            type="submit"
+                                                            value="Parking details"
+                                                            onClick={this.handleSubmit}
+                                                        />
+                                                    ) : (
+                                                        <input
+                                                            className="btn btn--card"
+                                                            type="submit"
+                                                            value="Sold out"
+                                                            onClick={this.handleSubmit}
+                                                            disabled
+                                                        />
+                                                    )}
+                                                </Link>
+                                                <input 
+                                                    className="btn btn--card" 
+                                                    value="Add to favorites"
+                                                />
+                                            </div>
+                                        </div>
+                                    </section>
+                                    )}
+                                   
                                 </div>
                             ))}
                         </div>
                 ) : (
                 <h3>No Parking Spots Available</h3>
                 )}
-                {<div><GoogleMap markers={this.state.parkingspots}/></div>}
+                {/* {<div><GoogleMap markers={this.state.parkingspots}/></div>} */}
             </section>
     
         )

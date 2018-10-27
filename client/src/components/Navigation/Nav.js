@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import Signup from './../FormSignUp/SignUp';
+import ValidateForm from './../FormSignUp/Validate';
 import Login  from './../FormLogin/Login';
 import { Redirect } from "react-router-dom";
+import Signup from './../FormSignUp/SignUp';
 
 import '../../App.css';
 import axios from 'axios'
@@ -19,25 +20,27 @@ class Navbar extends Component {
         }
     }
 
-    componentDidMount() {
-        
-    }
-
     // closeMobile.click( () => {
     //     navButton.trigger('click');
     // });
+    componentDidUpdate() {
+        console.log(this.state)
+    }
 
     logout(event) {
         event.preventDefault()
+        console.log("logging out")
         axios.post('/logout').then(response => {
+            console.log("logging out part 2")
           if (response.status === 200) {
             this.props.updateUser({
               loggedIn: false,
               menuOpen: false,
-              username: null
+              email: null
             })
             this.setState({
-                redirectTo: '/'
+                // redirectTo: '/',
+                menuOpen: false
             })
           }
         }).catch(error => {
@@ -58,21 +61,25 @@ class Navbar extends Component {
         
         return (
             <section className="navigation">
+                <div className="navigation__nav-container">
 
-                {/* <div class="navigation__logo-box">
-                    <div class="navigation__logo"></div>
-                </div> */}
+                <div class="navigation__logo-box">
+                    <Link to="/" className="navigation__logo" onClick={(e)=>{this.setState({menuOpen: false})}}>
+                        <div class="navigation__logo"><i className="fas fa-car margin-right"></i>fourth&lawn</div>
+                    </Link>
+                </div>
 
-                <input type="checkbox" class="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>
+                <input type="checkbox" className="navigation__checkbox" id="navi-toggle" checked={this.state.menuOpen} onChange={this.toggleMenu.bind(this)}/>
                 
-                <label for="navi-toggle" class="navigation__button">
-                    <span class="navigation__icon">&nbsp;</span>
+                <label htmlFor="navi-toggle" className="navigation__button">
+                    <span className="navigation__icon">&nbsp;</span>
                 </label>
                 
-                <div class="navigation__background">
+                <div className="navigation__background">
                     &nbsp;
                 </div>
 
+                
                 <nav className="navigation__nav">
                     {loggedIn ? (
                         <ul className="navigation__list">
@@ -93,7 +100,6 @@ class Navbar extends Component {
                             </li>
                             <li className="navigation__item">
                                 <span className="navigation__link" onClick={this.logout}>
-                                {/* <span className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}> */}
                                     Logout
                                 </span>
                             </li>
@@ -114,10 +120,24 @@ class Navbar extends Component {
 
                             
                             <li className="navigation__item">
-                                <Popup trigger={<span className="navigation__link">Sign up</span>}>
-                                    <div className="modal">
-                                        <Signup updateUser={this.props.updateUser}/>
-                                    </div>
+                            <Popup trigger={<span className="navigation__link">Sign up</span>} modal>
+                                {close => (
+                                <div className="modal">
+                                    <a href="#" className="popup__close" onClick={close} >
+                                    &times;
+                                    </a>
+                                    
+                                    <Signup updateUser={this.props.updateUser}/>
+                                    <button
+                                        className="button"
+                                        onClick={() => {
+                                        console.log('Modal Closed')
+                                        close()
+                                        }}
+                                    >
+                                    </button>
+                                </div>
+                                )}
                                 </Popup>
                             </li>
                             <li className="navigation__item">
@@ -144,6 +164,8 @@ class Navbar extends Component {
                         </ul>
                     )}
                 </nav>
+               
+                </div>
             </section>
         )};
     }

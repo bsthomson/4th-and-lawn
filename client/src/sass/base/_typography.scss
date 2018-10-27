@@ -25,7 +25,7 @@ body {
     position: absolute;
     width: 100%;
     left: 11rem;
-    top: 15rem;
+    top: 12rem;
     margin-bottom: 3rem;
 
     @include breakpoint(phone) {
@@ -40,11 +40,10 @@ body {
         font-size: 6.25rem;
         font-weight: 900;
         text-align: left;
-        // letter-spacing: -.4rem;
         animation: moveInTop 1.5s ease-out 1s;
         animation-fill-mode: backwards;
         line-height: 6.75rem;
-        letter-spacing: .2px;
+        letter-spacing: -.5px;
 
         @include breakpoint(phone) {
             letter-spacing: -.2rem;
@@ -101,10 +100,10 @@ body {
         margin-bottom: 1rem;
 
         @include breakpoint(phone) {
-            letter-spacing: -.2rem;
-            font-size: 7rem;
+            letter-spacing: 0;
+            font-size: 4.5rem;
             line-height: 6.5rem;
-            margin-top: 7rem;
+            margin-top: 0rem;
             // text-align: center;
         }
     }
@@ -112,6 +111,18 @@ body {
     &--body {
         display: block;
         color: $color-white;
+        width: 100%;
+        font-size: 2.25rem;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: .5px;
+        line-height: 4rem;
+        letter-spacing: .2px;
+    }
+
+    &--body-black {
+        display: block;
+        color: $color-black;
         width: 100%;
         font-size: 2.25rem;
         font-weight: 500;
@@ -161,7 +172,7 @@ body {
     &--form {
         display: block;
         width: 100%;
-        font-size: 2.7rem;
+        font-size: 2.5rem;
         font-weight: 900;
         line-height: 3.5rem;
         letter-spacing: 0px;
@@ -199,6 +210,31 @@ body {
     }
 
     &--page {
+        display: block;
+        width: 100%;
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 3.5rem;
+        letter-spacing: 0px;
+        color: $color-black;
+        text-align: center;
+
+        @include breakpoint(tab-port) {
+            // letter-spacing: -.2rem;
+            font-size: 6rem;
+            // line-height: 7rem;
+            text-align: center;
+        }
+
+        @include breakpoint(phone) {
+            // letter-spacing: -.2rem;
+            font-size: 4.5rem;
+            // line-height: 7rem;
+            text-align: center;
+        }
+    }
+
+    &--page-white {
         display: block;
         width: 100%;
         font-size: 5rem;
@@ -299,7 +335,7 @@ body {
 
     &--value {
         font-size: 1rem;
-        color: $color-black;
+        color: $color-white;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: bold;
@@ -433,11 +469,11 @@ body {
     
     text-align: center;
     padding-bottom: 2rem;
-    letter-spacing: .1px;
+    // letter-spacing: .1px;
 
     &--title {
-        font-size: 1.3rem;
-        font-weight: 600;
+        font-size: 2.25rem;
+        font-weight: 800;
         color: $color-grey-dark-3;
     }
 

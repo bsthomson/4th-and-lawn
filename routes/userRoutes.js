@@ -1,4 +1,5 @@
 const passport = require("passport");
+const session = require("express-session");
 
 const db = require("../models");
 
@@ -51,7 +52,6 @@ module.exports = function (app) {
 
   // Route to post login information to see if they match with User db
   app.post("/login", passportLocal, (req, res) => {
-    console.log(req.body)
     let userInfo = {
       email: req.user.email,
       firstname: req.user.firstname
@@ -62,7 +62,6 @@ module.exports = function (app) {
 
   // Route to see if a user is logged in already
   app.get('/user', (req, res) =>{
-    
     if (req.session.passport !== undefined) {
       User.findOne({ _id: req.session.passport.user })
         .then( (user) => {
@@ -77,7 +76,8 @@ module.exports = function (app) {
   app.post("/logout", (req, res) => {
     req.session.destroy( (err) => {
       req.logout();
-      res.redirect('/');
+      console.log("session destroyed")
+      res.send(200)
     })
   });
 
