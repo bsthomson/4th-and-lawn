@@ -30,7 +30,7 @@ To deploy, simply add and commit your changes, and push to Heroku. As is, the NP
 
 ## Contributors
 
-#### ![Alex Beal](https://avatars3.githubusercontent.com/u/19156046?s=460&v=4)[Alex Beal](https://github.com/alexanderjbeal)
-#### ![Ben Thomson](https://avatars3.githubusercontent.com/u/37671151?s=460&v=4)[Ben Thomson](https://benthomson.space) 
-#### ![Charles Welch](https://avatars0.githubusercontent.com/u/34580067?s=460&v=4)[Charles Welch](https://github.com/cmattrox)
-#### ![Michael Surface](https://avatars3.githubusercontent.com/u/33470298?s=460&v=4)[Michael Surface](https://github.com/msurface)
+#### ![Alex Beal](https://avatars2.githubusercontent.com/u/19156046?s=60&v=4)[Alex Beal](https://github.com/alexanderjbeal)
+#### ![Ben Thomson](https://avatars3.githubusercontent.com/u/37671151?s=60&v=4)[Ben Thomson](https://benthomson.space) 
+#### ![Charles Welch](https://avatars0.githubusercontent.com/u/34580067?s=60&v=4)[Charles Welch](https://github.com/cmattrox)
+#### ![Michael Surface](https://avatars3.githubusercontent.com/u/33470298?s=60&v=4)[Michael Surface](https://github.com/msurface)
