@@ -28,7 +28,7 @@ class PostParkingSpot extends Component {
 
     noOldDates = () => {
         let parkingSpotArray = [];
-        API.getJayhawkEvents()
+        API.getEvents()
             .then(response => {
                 response.data.forEach(parkingSpot => {
                         if (moment(parkingSpot.date) > moment()) {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const db = require("./models")
-const Jayhawk = db.Jayhawk
+const Event = db.Event
 const User = db.User
 const Renter = db.Renter
 const ParkingSpot = db.Renter
@@ -10,11 +10,11 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn
 
 mongoose.Promise = Promise;
 
-insertJayhawk = () => {
+insertEvent = () => {
   mongoose.connect(MONGODB_URI)
     .then( () => console.log("Mongodb connection successful"))
     .then( () => {
-      Jayhawk.insertMany([
+      Event.insertMany([
         {
           address: "1101 Mississippi St, Lawrence, KS 66044",
           event: "KU Hosting Nicholls 6 P.M. Kickoff",
@@ -47,9 +47,9 @@ insertJayhawk = () => {
         }
       ]) 
     })
-    .then( () => Jayhawk.find().then( response => console.log(response)))
+    .then( () => Event.find().then( response => console.log(response)))
     .then( () => mongoose.disconnect(MONGODB_URI))
-    .then( () => console.log("Jayhawk info inserted!"))
+    .then( () => console.log("Event info inserted!"))
     .catch( err => console.error(err));
 }
 
@@ -65,7 +65,7 @@ dropDb = () => {
 dropModels = () => {
   mongoose.connect(MONGODB_URI)
   .then( () => console.log("Mongodb connection successful"))
-  .then( () => Jayhawk.deleteMany({ address: "1101 Mississippi St, Lawrence, KS 66044"}).then( response => console.log("Jayhawk Removed!", response)).then( err => console.log(err)))
+  .then( () => Event.deleteMany({ address: "1101 Mississippi St, Lawrence, KS 66044"}).then( response => console.log("Event Removed!", response)).then( err => console.log(err)))
   .then( () => Renter.deleteMany().then( response => console.log("Renter Removed!", response)).then( err => console.log(err)))
   .then( () => User.deleteMany().then( response => console.log("User Removed!", response)).then( err => console.log(err)))
   .then( () => ParkingSpot.deleteMany().then( response => console.log("ParkingSpot Removed!", response)).then( err => console.log(err)))
@@ -76,12 +76,12 @@ dropModels = () => {
 
 restartDb = () => {
   dropModels()
-    .then( insertJayhawk())
+    .then( insertEvent())
     .catch( err => (console.log(err)))
 }
 
 module.exports = {
-  insertJayhawk,
+  insertEvent,
   dropDb,
   dropModels,
   restartDb

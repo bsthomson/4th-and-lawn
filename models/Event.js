@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const JayhawkSchema = new Schema({
+const EventSchema = new Schema({
   address: {
     type: String,
     required: true
@@ -17,6 +17,5 @@ const JayhawkSchema = new Schema({
   }
 });
 
-const Jayhawk = mongoose.model("Jayhawk", JayhawkSchema);
-
-module.exports = Jayhawk;
+const Event = mongoose.model("Event", EventSchema);
+module.exports = Event;

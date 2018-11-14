@@ -89,17 +89,10 @@ passport.deserializeUser(function(id, done) {
   })
 });
 
-// Tells express where our jayhawk AP route is
-require("./routes/jayhawkRoutes")(app);
-
-// Tells express where our renter API routes are
-require("./routes/renterRoutes")(app);
-
-// Tells express where our parking spot API routes are
-require("./routes/parkingSpotRoutes")(app);
-
-// Tell express where where our user API routes are
-require("./routes/userRoutes")(app);
+require("./routes/event")(app);
+require("./routes/renter")(app);
+require("./routes/parkingSpot")(app);
+require("./routes/user")(app);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
