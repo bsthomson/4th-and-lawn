@@ -16,12 +16,13 @@ module.exports = function (app) {
         })
     })
     .post((req, res) => {
-      const { address, event, date } = req.body
+      const { location, name, shortName, date } = req.body
 
       Event.create({
-        address: address,
-        event: event,
-        date: date
+        location,
+        name,
+        shortName,
+        date
       })
         .then(newEvent => {
           res.json(newEvent)

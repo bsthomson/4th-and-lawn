@@ -24,14 +24,14 @@ module.exports = function (app) {
       const { streetaddress, city, state, zipcode, availablespots, price, instructions, event } = req.body;
 
       ParkingSpot.create({
-        streetaddress: streetaddress,
-        city: city,
-        state: state,
-        zipcode: zipcode,
-        availablespots: availablespots,
-        price: price,
-        instructions: instructions,
-        event: event,
+        streetaddress,
+        city,
+        state,
+        zipcode,
+        availablespots,
+        price,
+        instructions,
+        event,
         user: req.session.passport.user
       })
         .then(dbParkingSpotPoster => {
