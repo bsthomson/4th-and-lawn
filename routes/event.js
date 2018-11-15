@@ -5,6 +5,7 @@ module.exports = function (app) {
   app.route("/api/event")
     // route that finds all events
     .get((req, res) => {
+      console.log('Get all events');
 
       Event.find({})
         .then(allEvents => {

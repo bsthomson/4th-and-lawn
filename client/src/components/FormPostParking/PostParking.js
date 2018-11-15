@@ -9,9 +9,9 @@ class PostParkingSpot extends Component {
         super()
         this.state = {
             streetaddress: '',
-            city: 'Lawrence',
-            state: 'KS',
-            zipcode: '66044',
+            city: '',
+            state: '',
+            zipcode: '',
             availablespots: '',
             instructions: '',
             game: '',
@@ -112,7 +112,7 @@ class PostParkingSpot extends Component {
                             id="city"
                             name="city"
                             placeholder="Lawrence"
-                            value="Lawrence"
+                            value={this.state.city}
                             onChange={this.handleChange}
                         />
                         <input className="form__input-xs"
@@ -120,7 +120,7 @@ class PostParkingSpot extends Component {
                             id="state"
                             name="state"
                             placeholder="KS"
-                            value="KS"
+                            value={this.state.state}
                             onChange={this.handleChange}
                         />
                         <input className="form__input-xs"
@@ -128,7 +128,7 @@ class PostParkingSpot extends Component {
                             id="zipcode"
                             name="zipcode"
                             placeholder="66044"
-                            value="66044"
+                            value={this.state.zipcode}
                             onChange={this.handleChange}
                         />
                     </div>

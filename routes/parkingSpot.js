@@ -7,19 +7,19 @@ module.exports = function (app) {
 
   app.route("/api/parkingspots")
     // route that finds all of the posted parking spots
-    .get( (req, res) => {
-
+    .get((req, res) => {
       ParkingSpot.find({})
         .populate("event")
-        .then( dbParkingSpot => {
-          res.json(dbParkingSpot)
+        .then(parkingSpots => {
+          console.log(parkingSpots[0]);
+          res.json(parkingSpots)
         })
-        .catch( err => {
+        .catch(err => {
           res.json(err)
         })
     })
     // route that posts parking spots
-    .post( (req, res) => {
+    .post((req, res) => {
 
       const { streetaddress, city, state, zipcode, availablespots, price, instructions, event } = req.body;
 
@@ -34,25 +34,25 @@ module.exports = function (app) {
         event: event,
         user: req.session.passport.user
       })
-        .then( dbParkingSpotPoster => {
-          return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, {new: true });
+        .then(dbParkingSpotPoster => {
+          return db.User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { parkingspots: dbParkingSpotPoster._id } }, { new: true });
         })
-        .then( dbUser => {
+        .then(dbUser => {
           res.json(dbUser)
         })
-        .catch( err => {
+        .catch(err => {
           res.json(err)
-        })  
-      });
+        })
+    });
 
   // routes that finds all of a users posted spots
   app.get('/api/postedspots', (req, res) => {
     User.find({ _id: req.session.passport.user })
       .populate('parkingspots')
-      .then( dbPostedSpot => {
+      .then(dbPostedSpot => {
         res.json(dbPostedSpot)
       })
-      .catch( err => {
+      .catch(err => {
         res.json(err)
         console.log('No Spots')
       })
@@ -60,21 +60,21 @@ module.exports = function (app) {
 
   // routes that delete and update parking spots
   app.route('/api/postedspots/:id')
-    .delete( (req, res) => {
+    .delete((req, res) => {
       ParkingSpot.findByIdAndDelete({ _id: req.params.id })
-        .then( dbParkingSpot => {
+        .then(dbParkingSpot => {
           res.json(dbParkingSpot)
         })
-        .catch( err => {
+        .catch(err => {
           res.json(err)
         })
     })
-    .put( (req, res) => {
+    .put((req, res) => {
       ParkingSpot.findByIdAndUpdate({ _id: req.params.id }, req.body)
-        .then( dbParkingSpot => {
+        .then(dbParkingSpot => {
           res.json(dbParkingSpot)
         })
-        .catch( err => {
+        .catch(err => {
           res.json(err)
         })
     })

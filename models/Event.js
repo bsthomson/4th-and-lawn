@@ -3,16 +3,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
-  address: {
+  location: {
     type: String,
     required: true
   },
-  event: {
+  name: {
+    type: String,
+    required: true
+  },
+  shortName: {
     type: String,
     required: true
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   }
 });

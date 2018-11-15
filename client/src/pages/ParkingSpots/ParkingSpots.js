@@ -6,11 +6,17 @@ import moment from "moment";
 
 
 class ParkingSpots extends Component {
-    state = {
-        parkingspots: [],
-        events: [],
-        game: ""
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            parkingspots: [],
+            events: [],
+            selectedEvent: undefined
+        };
+
+        this.loadEvents = this.loadEvents.bind(this);
+    }
 
     componentDidMount() {
         this.loadParkingSpots()
@@ -27,25 +33,24 @@ class ParkingSpots extends Component {
             .catch(err => console.log(err));
     };
 
-    loadEvents = () => {
-        let parkingSpotArray = [];
+    loadEvents() {
+        console.log('loadEvents');
+        console.log(this.state);
         API.getEvents()
             .then(response => {
-                response.data.forEach(parkingSpot => {
-                    if (moment(parkingSpot.date) > moment()) {
-                        parkingSpotArray.push(parkingSpot)
-                    }
+                this.setState({
+                    events: response.data
                 });
             })
-            .then(() => this.setState({
-                events: parkingSpotArray
-            }))
+            .then(
+                console.log(this.state.events)
+            )
             .catch(err => console.log(err))
     }
 
     handleChange = event => {
         this.setState({
-            game: event.target.value
+            selectedEvent: event.target.value
         });
     };
 
@@ -71,18 +76,18 @@ class ParkingSpots extends Component {
                                     <div className="form__filter-container" id="events">
                                         {this.state.events.length ? (
                                             <div className="form__group">
-                                                <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
+                                                <select name="game" className="form__input" value={this.state.selectedEvent} onChange={this.handleChange}>
                                                     <option>
-                                                        Filter By Game
+                                                        Filter By Event
                                                 </option>
-                                                    {this.state.events.map(game => (
+                                                    {this.state.events.map(event => (
                                                         <option
-                                                            key={game._id}
-                                                            id="game"
+                                                            key={event._id}
+                                                            id="event"
                                                             name="event"
-                                                            placeholder="Game"
-                                                            value={game._id}>
-                                                            {moment(game.date).format("MM-DD")} {game.event}
+                                                            placeholder="Event"
+                                                            value={event.location}>
+                                                            {moment(event.date).format("MM-DD-YYYY")} {event.shortName}
                                                         </option>
                                                     ))}
                                                 </select>
@@ -104,7 +109,10 @@ class ParkingSpots extends Component {
 
                         <section className="parking__content">
 
-                            <CardParkingSpot game={this.state.game} />
+                            {this.state.selectedEvent ?
+                            <CardParkingSpot event={this.state.selectedEvent} /> :
+                            <h2>No Spots Available</h2>
+                        }
 
                         </section>
                         {/* END DASHBOARD USER CONTENT */}

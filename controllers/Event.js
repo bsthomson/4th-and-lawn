@@ -4,22 +4,27 @@ var fs = require('fs');
 const db = require('../models');
 const Event = db.Event;
 
-const storeTeamSchedule = (teamName) => {
+const getTeamSchedule = (teamName, cb) => {
     teamId = getTeamId(teamName);
 
-    var url = `http://site.web.api.espn.com/apis/site/v2/sports/football/college-football/teams/${teamId}/schedule?region=us&lang=en&seasontype=2`
+    var url = `https://site.web.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/teams/${teamId}/schedule?region=us&lang=en&season=2019&seasontype=2`
     axios.get(url).then((obj) => {
         var events = obj.data.events;
+
+        var mappedEvents = [];
         events.forEach(event => {
             var homeTeam = event.name.replace(new RegExp('.*at '), '');
 
-            Event.create({
+            newEvent = {
                 date: event.date,
                 name: event.name,
                 shortName: event.shortName,
-                location: getTeamStadium(homeTeam)
-            });
+                location: homeTeam ? getTeamStadium(homeTeam) : 'Location could not be found.'
+            };
+            mappedEvents.push(newEvent);
         });
+
+        cb(mappedEvents);
     });
 }
 
@@ -57,7 +62,7 @@ const getTeamStadium = (teamName) => {
 }
 
 module.exports = {
-    storeTeamSchedule: storeTeamSchedule,
+    getTeamSchedule: getTeamSchedule,
     getHomeSchedule: getHomeSchedule,
     getTeamStadium: getTeamStadium,
 }

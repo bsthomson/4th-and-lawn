@@ -51,7 +51,7 @@ export default {
     return axios.post("/api/rentedspot", rentedSpotData);
   },
 
-  // Gets the eventsd from the database
+  // Gets the events from the database
   getEvents: () => {
     return axios.get("/api/event")
   },
