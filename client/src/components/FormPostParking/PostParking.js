@@ -9,12 +9,12 @@ class PostParkingSpot extends Component {
         super()
         this.state = {
             streetaddress: '',
-            city: 'Lawrence',
-            state: 'KS',
-            zipcode: '66044',
+            city: '',
+            state: '',
+            zipcode: '',
             availablespots: '',
             instructions: '',
-            game: '',
+            event: '',
             events: [],
             redirectTo: null
         }
@@ -28,7 +28,7 @@ class PostParkingSpot extends Component {
 
     noOldDates = () => {
         let parkingSpotArray = [];
-        API.getJayhawkEvents()
+        API.getEvents()
             .then(response => {
                 response.data.forEach(parkingSpot => {
                         if (moment(parkingSpot.date) > moment()) {
@@ -65,7 +65,7 @@ class PostParkingSpot extends Component {
             availablespots: this.state.availablespots,
             price: this.state.price,
             instructions: this.state.instructions,
-            event: this.state.game
+            event: this.state.event
         })
         .then(response => {
             console.log("parking spot info: ");
@@ -112,7 +112,7 @@ class PostParkingSpot extends Component {
                             id="city"
                             name="city"
                             placeholder="Lawrence"
-                            value="Lawrence"
+                            value={this.state.city}
                             onChange={this.handleChange}
                         />
                         <input className="form__input-xs"
@@ -120,7 +120,7 @@ class PostParkingSpot extends Component {
                             id="state"
                             name="state"
                             placeholder="KS"
-                            value="KS"
+                            value={this.state.state}
                             onChange={this.handleChange}
                         />
                         <input className="form__input-xs"
@@ -128,7 +128,7 @@ class PostParkingSpot extends Component {
                             id="zipcode"
                             name="zipcode"
                             placeholder="66044"
-                            value="66044"
+                            value={this.state.zipcode}
                             onChange={this.handleChange}
                         />
                     </div>
@@ -162,27 +162,27 @@ class PostParkingSpot extends Component {
                     </div>
                     {this.state.events.length ? (
                         <div className="form__group">
-                            <select name="game" className="form__input" value={this.state.game} onChange={this.handleChange}>
+                            <select name="event" className="form__input" value={this.state.event} onChange={this.handleChange}>
                                 <option>
-                                    Select a game
+                                    Select an Event
                                 </option>
-                                {this.state.events.map(game => (
+                                {this.state.events.map(event => (
                                     <option
-                                        key={game._id}
-                                        id="game"
+                                        key={event._id}
+                                        id="event"
                                         name="event"
-                                        placeholder="Game"
-                                        value={game._id}>
-                                        {game.event} {moment(game.date).format("MM-DD")}
+                                        placeholder="Event"
+                                        value={event._id}>
+                                        {moment(event.date).format("MM-DD-YYYY")} {event.shortName}
                                     </option>
                                 ))}
                             </select>
                         </div>
                     ) : (
                         <div className="form__group">
-                            <select name="game" className="form__input">                                
+                            <select name="event" className="form__input">                                
                                 <option>
-                                    No Games Available
+                                    No Events Available
                                 </option>                            
                              </select>
                         </div>

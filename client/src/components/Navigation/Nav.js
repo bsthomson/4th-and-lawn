@@ -95,7 +95,7 @@ class Navbar extends Component {
                             </li>
                             <li className="navigation__item">
                                 <Link to="/parking-spots" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}>
-                                    <span>Parking spots</span>
+                                    <span>Parking Spots</span>
                                 </Link>
                             </li>
                             <li className="navigation__item">
@@ -114,7 +114,7 @@ class Navbar extends Component {
                             
                             <li className="navigation__item">
                                 <Link to="/parking-spots" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}>
-                                    <span>Parking spots</span>
+                                    <span>Parking Spots</span>
                                 </Link>
                             </li>
 

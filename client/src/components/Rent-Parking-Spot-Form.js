@@ -10,6 +10,7 @@ class RentParkingSpot extends Component {
             make: '',
             model: '',
         }
+        
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }

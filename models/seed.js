@@ -1,10 +1,9 @@
 const db = "../models";
-
-const Jayhawk = db.Jayhawk
+const Event = db.Event
 
 seed = () => {  
   
-  Jayhawk.insertMany([
+  Event.insertMany([
     {
       address: "1101 Mississippi St, Lawrence, KS 66044",
       event: "KU Hosting Nicholls 6 P.M. Kickoff",
@@ -38,4 +37,4 @@ seed = () => {
   ])
 }
 
-module.exports = seed(Jayhawk)
+module.exports = seed(Event)

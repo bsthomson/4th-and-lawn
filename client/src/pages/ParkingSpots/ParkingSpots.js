@@ -3,15 +3,20 @@ import './../../App.css';
 import API from "./../../utils/API";
 import CardParkingSpot from './../../components/CardParkingSpot/ParkingSpot';
 import moment from "moment";
-import GoogleMap from "./../../components/GoogleMap/GoogleMap";
 
 
 class ParkingSpots extends Component {
-    state = {
-        parkingspots: [],
-        events: [],
-        game: ""
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            parkingspots: [],
+            events: [],
+            selectedEvent: undefined
+        };
+
+        this.loadEvents = this.loadEvents.bind(this);
+    }
 
     componentDidMount() {
         this.loadParkingSpots()
@@ -20,33 +25,32 @@ class ParkingSpots extends Component {
 
     loadParkingSpots = () => {
         API.getParkingSpots()
-            .then( response => {
+            .then(response => {
                 console.log(response.data)
                 this.setState({ parkingspots: response.data })
             })
-            .then( console.log(this.state.parkingspots))
+            .then(console.log(this.state.parkingspots))
             .catch(err => console.log(err));
     };
 
-    loadEvents = () => {        
-        let parkingSpotArray = [];
-        API.getJayhawkEvents()
-            .then( response => {
-                response.data.forEach(parkingSpot => {
-                    if (moment(parkingSpot.date) > moment()) {
-                        parkingSpotArray.push(parkingSpot)
-                    }
+    loadEvents() {
+        console.log('loadEvents');
+        console.log(this.state);
+        API.getEvents()
+            .then(response => {
+                this.setState({
+                    events: response.data
                 });
             })
-            .then( () => this.setState({
-                events: parkingSpotArray
-            }))
+            .then(
+                console.log(this.state.events)
+            )
             .catch(err => console.log(err))
     }
 
     handleChange = event => {
         this.setState({
-            game: event.target.value
+            selectedEvent: event.target.value
         });
     };
 
@@ -56,63 +60,67 @@ class ParkingSpots extends Component {
                 {/* <div className="section-header">&nbsp;</div> */}
 
                 <div className="section-parking">
-                
+
                     <div className="parking__container">
                         {/*  START PAGE HEADER -> */}
-                        <section  className="parking__header">
-                           
+                        <section className="parking__header">
+
                             <div className="parking__heading">
                                 <h1 className="heading-primary">
-                                    <span className="heading-primary--page-white">Parking spots</span>
+                                    <span className="heading-primary--page-white">Parking Spots</span>
                                 </h1>
                             </div>
-                            
 
                             <div className="parking__filter">
-                            <form>
-                                <div className="form__filter-container" id="events">                        
-                                    {this.state.events.length ? (                    
-                                        <div className="form__group">
-                                            <select name="game" className="form__input" value={this.state.event} onChange={this.handleChange}>
-                                                <option>
-                                                    Filter by game
+                                <form>
+                                    <div className="form__filter-container" id="events">
+                                        {this.state.events.length ? (
+                                            <div className="form__group">
+                                                <select name="game" className="form__input" value={this.state.selectedEvent} onChange={this.handleChange}>
+                                                    <option>
+                                                        Filter By Event
                                                 </option>
-                                                {this.state.events.map(game => (
-                                                    <option
-                                                        key={game._id}
-                                                        id="game"
-                                                        name="event"
-                                                        placeholder="Game"
-                                                        value={game._id}>
-                                                        {moment(game.date).format("MM-DD")} {game.event}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    ) : (
-                                        <div className="form__group">
-                                            <select name="game" className="form__input">                                
-                                                <option>
-                                                    No Games Available
-                                                </option>                            
-                                            </select>
-                                        </div>
-                                    )}
-                                </div>   
-                            </form>
-                        </div>
-                    </section>
-                    {/* ^ END PAGE HEADER ^ */}
+                                                    {this.state.events.map(event => (
+                                                        <option
+                                                            key={event._id}
+                                                            id="event"
+                                                            name="event"
+                                                            placeholder="Event"
+                                                            value={event.location}>
+                                                            {moment(event.date).format("MM-DD-YYYY")} {event.shortName}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        ) : (
+                                                <div className="form__group">
+                                                    <select name="game" className="form__input">
+                                                        <option>
+                                                            No Games Available
+                                                </option>
+                                                    </select>
+                                                </div>
+                                            )}
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                        {/* ^ END PAGE HEADER ^ */}
 
-                    <section className="parking__content">
+                        <section className="parking__content">
 
-                    <CardParkingSpot game={this.state.game}/>
+                            {this.state.selectedEvent ?
+                                <CardParkingSpot event={this.state.selectedEvent} /> :
+                                <div style={{ color: "red", textAlign: "center" }} className="container-fluid">
+                                    <h3>Please select an event from the dropdown</h3>
+                                </div>
+                            }
 
-                    </section>
-                    {/* END DASHBOARD USER CONTENT */}
+                        </section>
+                        {/* END DASHBOARD USER CONTENT */}
 
+                    </div>
                 </div>
-            </div>
 
             </section>
         );

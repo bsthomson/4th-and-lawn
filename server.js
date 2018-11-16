@@ -19,8 +19,22 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/4th-and-lawn
 // Where our database models are stored.
 const db = require("./models");
 const User = db.User;
-
 const app = express();
+
+// const eventController = require('./controllers/Event');
+// const Event = db.Event;
+
+// eventController.getTeamSchedule('Kansas Jayhawks', events => {
+//   events.forEach(eventData => {
+//     Event.create(eventData)
+//       .then(res => {
+//         console.log('New event added!');
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       })
+//   })
+// })
 
 app.use(logger("dev"));
 
@@ -78,28 +92,21 @@ passport.use(new LocalStrategy(
   }
 ));
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id );
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
 });
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
   User.findById(
     { _id: id },
     (err, user) => {
-    done(err, user);
-  })
+      done(err, user);
+    })
 });
 
-// Tells express where our jayhawk AP route is
-require("./routes/jayhawkRoutes")(app);
-
-// Tells express where our renter API routes are
-require("./routes/renterRoutes")(app);
-
-// Tells express where our parking spot API routes are
-require("./routes/parkingSpotRoutes")(app);
-
-// Tell express where where our user API routes are
-require("./routes/userRoutes")(app);
+require("./routes/event")(app);
+require("./routes/renter")(app);
+require("./routes/parkingSpot")(app);
+require("./routes/user")(app);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -108,7 +115,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
@@ -119,6 +126,6 @@ mongoose.connect(MONGODB_URI)
   .catch((err) => console.error(err));
 
 // Tells express to listen to port 3001
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
