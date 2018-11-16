@@ -9,14 +9,21 @@ const style = {
   }
 
 class GoogleMap extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-  };
+  constructor(props) {
+    super(props);
 
-  onMarkerClick = (props, marker, e) => {
-  console.log(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+    };
+
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+  }
+
+  onMarkerClick(props, marker, e) {
+    console.log(props);
+
     this.setState({
       selectedPlace: props,
       activeMarker: marker,

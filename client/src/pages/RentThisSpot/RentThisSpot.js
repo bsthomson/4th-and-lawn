@@ -25,7 +25,7 @@ class RentThisSpot extends Component {
         this.getParkingSpot();
     }
 
-    getParkingSpot = () => {
+    getParkingSpot() {
         axios.get("/api/" + window.location.pathname)
             .then(response => {
                 this.setState({
@@ -33,22 +33,20 @@ class RentThisSpot extends Component {
                 });
 
                 let selectedSpot = response.data;
-                let geocode = undefined;
-
                 selectedSpot.address = `${selectedSpot.streetaddress}, ${selectedSpot.city}, ${selectedSpot.state} ${selectedSpot.zipcode}`;
-                geocode = getGeocode(selectedSpot.address);
 
-                getWalkingDistance(this.state.selectedSpot.address, this.state.selectedSpot.event[0].location)
+                getWalkingDistance(selectedSpot.address, selectedSpot.event[0].location)
                     .then(walkingDistance => {
                         this.setState({ distance: walkingDistance });
                     })
 
-                geocode.then(res => {
-                    const { lat, lng } = res;
+                getGeocode(selectedSpot.address)
+                    .then(res => {
+                        const { lat, lng } = res;
 
-                    selectedSpot.lat = lat;
-                    selectedSpot.lng = lng;
-                })
+                        selectedSpot.lat = lat;
+                        selectedSpot.lng = lng;
+                    })
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
@@ -58,24 +56,39 @@ class RentThisSpot extends Component {
         return (
             <div>
                 <section className="section-renter">
-
                     <div className="renter-container">
-
                         <div className="col-1-of-3">
-
                             <div className="header-renter__title">
                                 <div className="header-renter__background">
                                     <h3 className="renter">
-                                        <span className="renter--title">{this.state.selectedSpot.streetaddress}</span>
+                                        <span className="renter--title">{
+                                            this.state.selectedSpot.streetaddress
+                                        }
+                                        </span>
                                         <hr className="rent-break"></hr>
                                         <span className="renter--value">Price per game</span>
-                                        <span className="renter--icon"><i className="fas fa-dollar-sign margin-right"></i>{this.state.selectedSpot.price ? this.state.selectedSpot.price : 'N/A'}</span>
-                                        {/* <hr className="rent-break"></hr>
-                                <span className="renter--value">Available spots:</span>
-                                <span className="renter--icon"><i className="fas fa-car margin-right"></i>{this.state.selectedSpot.availablespots}</span> */}
+                                        <span className="renter--icon">
+                                            <i className="fas fa-dollar-sign margin-right"></i>{
+                                                this.state.selectedSpot.price ?
+                                                    this.state.selectedSpot.price :
+                                                    'N/A'}
+                                        </span>
+                                        <hr className="rent-break"></hr>
+                                        <span className="renter--value">Available spots:</span>
+                                        <span className="renter--icon">
+                                            <i className="fas fa-car margin-right"></i>{
+                                                this.state.selectedSpot.availablespots
+                                            }
+                                        </span>
                                         <hr className="rent-break"></hr>
                                         <span className="renter--value">Distance from stadium</span>
-                                        <span className="renter--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance ? this.state.distance : 'N/A'}</span>
+                                        <span className="renter--icon">
+                                            <i class="fas fa-walking margin-right"></i>{
+                                                this.state.distance ?
+                                                    this.state.distance :
+                                                    'N/A'
+                                            }
+                                        </span>
                                     </h3>
                                 </div>
                             </div>
@@ -85,7 +98,7 @@ class RentThisSpot extends Component {
                         <div className="col-2-of-3">
                             <div className="header-renter__map-box">
                                 <div className="header-renter__map">
-                                    <GoogleMap markers={[this.state.selectedSpot]} />
+                                    {/* <GoogleMap markers={[this.state.selectedSpot]} /> */}
                                 </div>
                             </div>
                         </div>

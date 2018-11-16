@@ -6,8 +6,6 @@ import Geocode from "react-geocode";
 
 import { getGeocode, getWalkingDistance } from '../../utils/Helpers';
 
-Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-
 class CardParkingSpot extends Component {
     constructor(props) {
         super(props);
@@ -98,128 +96,134 @@ class CardParkingSpot extends Component {
         return (
 
             <section>
-                {this.state.availableSpots.length ? (
+                {
                     <div className="parking-container">
-                        {this.state.availableSpots.map((parkingspot, idx) => (
-                            <div className="col-1-of-3" key={parkingspot._id}>
+                        {this.state.availableSpots.length > 0 ? (
+                            this.state.availableSpots.map((parkingspot, idx) => (
+                                <div className="col-1-of-3" key={parkingspot._id}>
 
 
-                                {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
-                                    <Link to={"/rentthisspot/" + parkingspot._id}>
-                                        {/* CARD START -> */}
-                                        <section className="parking-card">
-                                            <div className="parking-card__side parking-card__side--front">
+                                    {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
+                                        <Link to={"/rentthisspot/" + parkingspot._id}>
+                                            {/* CARD START -> */}
+                                            <section className="parking-card">
+                                                <div className="parking-card__side parking-card__side--front">
 
-                                                <section className="parking-card__details">
-                                                    <h3 className="parking-card__title">
-                                                        <span className="parking-card__title--address">{parkingspot.streetaddress}</span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">{parkingspot.event[0].shortName ? parkingspot.event[0].shortName : 'No Event Name Set'}</span>
-                                                        <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">Price per game:</span>
-                                                        <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price ? parkingspot.price : 'N/A'}</span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">Available spots:</span>
-                                                        <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">Distance from stadium:</span>
-                                                        <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distanceTimes[idx] ? this.state.distanceTimes[idx] : 'N/A'}</span>
-                                                    </h3>
-                                                </section>
+                                                    <section className="parking-card__details">
+                                                        <h3 className="parking-card__title">
+                                                            <span className="parking-card__title--address">{parkingspot.streetaddress}</span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">{parkingspot.event[0].shortName ? parkingspot.event[0].shortName : 'No Event Name Set'}</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">Price per game:</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price ? parkingspot.price : 'N/A'}</span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">Available spots:</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">Distance from stadium:</span>
+                                                            <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distanceTimes[idx] ? this.state.distanceTimes[idx] : 'N/A'}</span>
+                                                        </h3>
+                                                    </section>
 
-                                            </div>
-                                            {/* ^ END OF FRONT ^ */}
+                                                </div>
+                                                {/* ^ END OF FRONT ^ */}
 
-                                            <div className="parking-card__side parking-card__side--back parking-card__side--back-1">
-                                                <div className="parking-card__cta">
-                                                    <Link to={"/rentthisspot/" + parkingspot._id}>
-                                                        {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
-                                                            <input
-                                                                className="btn btn--card"
-                                                                type="submit"
-                                                                value="Parking details"
-                                                                onClick={this.handleSubmit}
-                                                            />
-                                                        ) : (
+                                                <div className="parking-card__side parking-card__side--back parking-card__side--back-1">
+                                                    <div className="parking-card__cta">
+                                                        <Link to={"/rentthisspot/" + parkingspot._id}>
+                                                            {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                 <input
                                                                     className="btn btn--card"
                                                                     type="submit"
-                                                                    value="Sold out"
+                                                                    value="Parking details"
                                                                     onClick={this.handleSubmit}
-                                                                    disabled
                                                                 />
-                                                            )}
-                                                    </Link>
-                                                    <input
-                                                        className="btn btn--card"
-                                                        value="Add to favorites"
-                                                    />
+                                                            ) : (
+                                                                    <input
+                                                                        className="btn btn--card"
+                                                                        type="submit"
+                                                                        value="Sold out"
+                                                                        onClick={this.handleSubmit}
+                                                                        disabled
+                                                                    />
+                                                                )}
+                                                        </Link>
+                                                        <input
+                                                            className="btn btn--card"
+                                                            value="Add to favorites"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </section>
-                                        {/* ^ END OF CARD ^ */}
-                                    </Link>
-                                ) : (
-                                        <section className="parking-card">
-                                            <div className="parking-card__side parking-card__side--front">
+                                            </section>
+                                            {/* ^ END OF CARD ^ */}
+                                        </Link>
+                                    ) : (
+                                            <section className="parking-card">
+                                                <div className="parking-card__side parking-card__side--front">
 
-                                                <section className="parking-card__details">
-                                                    <h3 className="parking-card__title">
-                                                        <span className="parking-card__title--address">{parkingspot.streetaddress}</span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">{parkingspot.event[0].event}</span>
-                                                        <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">Price per game:</span>
-                                                        <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price}</span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">Available spots:</span>
-                                                        <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold"}</span>
-                                                        <hr className="card-break"></hr>
-                                                        <span className="parking-card__title--value">Distance from stadium:</span>
-                                                        <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>
-                                                    </h3>
-                                                </section>
+                                                    <section className="parking-card__details">
+                                                        <h3 className="parking-card__title">
+                                                            <span className="parking-card__title--address">{parkingspot.streetaddress}</span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">{parkingspot.event[0].event}</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">Price per game:</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price}</span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">Available spots:</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold"}</span>
+                                                            <hr className="card-break"></hr>
+                                                            <span className="parking-card__title--value">Distance from stadium:</span>
+                                                            <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>
+                                                        </h3>
+                                                    </section>
 
-                                            </div>
-                                            {/* ^ END OF FRONT ^ */}
+                                                </div>
+                                                {/* ^ END OF FRONT ^ */}
 
-                                            <div className="parking-card__side parking-card__side--back parking-card__side--back-1">
-                                                <div className="parking-card__cta">
-                                                    <Link to={"/rentthisspot/" + parkingspot._id}>
-                                                        {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
-                                                            <input
-                                                                className="btn btn--card"
-                                                                type="submit"
-                                                                value="Parking details"
-                                                                onClick={this.handleSubmit}
-                                                            />
-                                                        ) : (
+                                                <div className="parking-card__side parking-card__side--back parking-card__side--back-1">
+                                                    <div className="parking-card__cta">
+                                                        <Link to={"/rentthisspot/" + parkingspot._id}>
+                                                            {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                                                 <input
                                                                     className="btn btn--card"
                                                                     type="submit"
-                                                                    value="Sold out"
+                                                                    value="Parking details"
                                                                     onClick={this.handleSubmit}
-                                                                    disabled
                                                                 />
-                                                            )}
-                                                    </Link>
-                                                    <input
-                                                        className="btn btn--card"
-                                                        value="Add to favorites"
-                                                    />
+                                                            ) : (
+                                                                    <input
+                                                                        className="btn btn--card"
+                                                                        type="submit"
+                                                                        value="Sold out"
+                                                                        onClick={this.handleSubmit}
+                                                                        disabled
+                                                                    />
+                                                                )}
+                                                        </Link>
+                                                        <input
+                                                            className="btn btn--card"
+                                                            value="Add to favorites"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </section>
-                                    )}
+                                            </section>
+                                        )}
 
-                            </div>
-                        ))}
+                                </div>
+                            ))
+                        ) : (
+                                <div style={{ color: "red", textAlign: "center" }} className="container-fluid">
+                                    <h3>No spots available at this time</h3>
+                                </div>
+                            )
+                        }
                     </div>
-                ) : (
-                        <h3>No Parking Spots Available</h3>
-                    )}
+
+                }
                 {/* {<div><GoogleMap markers={this.state.parkingspots}/></div>} */}
             </section>
 

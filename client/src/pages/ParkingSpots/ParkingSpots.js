@@ -110,9 +110,11 @@ class ParkingSpots extends Component {
                         <section className="parking__content">
 
                             {this.state.selectedEvent ?
-                            <CardParkingSpot event={this.state.selectedEvent} /> :
-                            <h2>No Spots Available</h2>
-                        }
+                                <CardParkingSpot event={this.state.selectedEvent} /> :
+                                <div style={{ color: "red", textAlign: "center" }} className="container-fluid">
+                                    <h3>Please select an event from the dropdown</h3>
+                                </div>
+                            }
 
                         </section>
                         {/* END DASHBOARD USER CONTENT */}
