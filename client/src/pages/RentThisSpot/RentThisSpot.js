@@ -28,11 +28,13 @@ class RentThisSpot extends Component {
     getParkingSpot() {
         axios.get("/api/" + window.location.pathname)
             .then(response => {
+                let selectedSpot = response.data;
                 this.setState({
-                    selectedSpot: response.data
+                    selectedSpot
+                }, () => {
+                    console.log({spot: this.state.selectedSpot})
                 });
 
-                let selectedSpot = response.data;
                 selectedSpot.address = `${selectedSpot.streetaddress}, ${selectedSpot.city}, ${selectedSpot.state} ${selectedSpot.zipcode}`;
 
                 getWalkingDistance(selectedSpot.address, selectedSpot.event[0].location)
@@ -48,6 +50,15 @@ class RentThisSpot extends Component {
                         selectedSpot.lng = lng;
                     })
                     .catch(err => console.log(err))
+
+                getGeocode(selectedSpot.event[0].location)
+                    .then(res => {
+                        selectedSpot.event[0].coords = {
+                            lat: res.lat,
+                            lng: res.lng
+                        }
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
     };
@@ -57,6 +68,7 @@ class RentThisSpot extends Component {
             <div>
                 <section className="section-renter">
                     <div className="renter-container">
+
                         <div className="col-1-of-3">
                             <div className="header-renter__title">
                                 <div className="header-renter__background">
@@ -98,7 +110,9 @@ class RentThisSpot extends Component {
                         <div className="col-2-of-3">
                             <div className="header-renter__map-box">
                                 <div className="header-renter__map">
-                                    {/* <GoogleMap markers={[this.state.selectedSpot]} /> */}
+                                    {this.state.selectedSpot.event ? 
+                                        <GoogleMap markers={[this.state.selectedSpot]} /> :
+                                            <h2>"Loading Map..."</h2>}
                                 </div>
                             </div>
                         </div>

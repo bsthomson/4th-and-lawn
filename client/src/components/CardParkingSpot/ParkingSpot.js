@@ -64,13 +64,8 @@ class CardParkingSpot extends Component {
                         })
                     })
                     .then(() => {
-                        console.log({ returnedSpots })
                         this.setState({
                             availableSpots: returnedSpots,
-                        }, () => {
-                            console.log({
-                                updatedState: this.state
-                            })
                         });
                     })
                     .catch(err => console.log(err))
@@ -137,14 +132,14 @@ class CardParkingSpot extends Component {
                                                                 <input
                                                                     className="btn btn--card"
                                                                     type="submit"
-                                                                    value="Parking details"
+                                                                    value="Parking Details"
                                                                     onClick={this.handleSubmit}
                                                                 />
                                                             ) : (
                                                                     <input
                                                                         className="btn btn--card"
                                                                         type="submit"
-                                                                        value="Sold out"
+                                                                        value="Sold Out"
                                                                         onClick={this.handleSubmit}
                                                                         disabled
                                                                     />
@@ -152,7 +147,7 @@ class CardParkingSpot extends Component {
                                                         </Link>
                                                         <input
                                                             className="btn btn--card"
-                                                            value="Add to favorites"
+                                                            value="Add to Favorites"
                                                         />
                                                     </div>
                                                 </div>
@@ -191,14 +186,14 @@ class CardParkingSpot extends Component {
                                                                 <input
                                                                     className="btn btn--card"
                                                                     type="submit"
-                                                                    value="Parking details"
+                                                                    // value="Parking details"
                                                                     onClick={this.handleSubmit}
                                                                 />
                                                             ) : (
                                                                     <input
                                                                         className="btn btn--card"
                                                                         type="submit"
-                                                                        value="Sold out"
+                                                                        // value="Sold out"
                                                                         onClick={this.handleSubmit}
                                                                         disabled
                                                                     />
@@ -206,7 +201,7 @@ class CardParkingSpot extends Component {
                                                         </Link>
                                                         <input
                                                             className="btn btn--card"
-                                                            value="Add to favorites"
+                                                        // value="Add to favorites"
                                                         />
                                                     </div>
                                                 </div>
@@ -224,7 +219,11 @@ class CardParkingSpot extends Component {
                     </div>
 
                 }
-                {/* {<div><GoogleMap markers={this.state.parkingspots}/></div>} */}
+                {
+                // <div>
+                //     <GoogleMap markers={this.state.availableSpots} />
+                // </div>
+                }
             </section>
 
         )

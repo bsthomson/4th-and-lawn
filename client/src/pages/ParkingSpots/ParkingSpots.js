@@ -86,7 +86,7 @@ class ParkingSpots extends Component {
                                                             id="event"
                                                             name="event"
                                                             placeholder="Event"
-                                                            value={event.location}>
+                                                        >
                                                             {moment(event.date).format("MM-DD-YYYY")} {event.shortName}
                                                         </option>
                                                     ))}

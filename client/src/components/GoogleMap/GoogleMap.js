@@ -12,6 +12,8 @@ class GoogleMap extends Component {
   constructor(props) {
     super(props);
 
+    console.log("Google Map Init")
+
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
@@ -41,9 +43,10 @@ class GoogleMap extends Component {
     // };
   
     render() {
-      // console.log('GooleMap props',   this.props.markers)
-      // const initial = this.props.markers[0];
-      const initial = { lat: 38.964460, lng: -95.246237}
+      console.log('GooleMap props',   this.props)
+      const eventCoords = this.props.markers[0].event[0].coords
+
+      const initial = {lat: eventCoords.lat, lng: eventCoords.lng}
       let markers = this.props.markers
       return (
         
@@ -51,21 +54,19 @@ class GoogleMap extends Component {
           style = {style}
           initialCenter = {initial}
           google={this.props.google} 
-          zoom={16}>
+          zoom={14}>
    
           {markers.map((m, i) => {
             console.log(m, i);
             return (
-
               <Marker key={`marker-${i}`} onClick={this.onMarkerClick}
                 title={m.address}
-                position={m}
+                position={{lat: m.lat, lng: m.lng}}
                 icon={{
                   url: HouseIcon,
                   anchor: new this.props.google.maps.Point(32,32),
                   scaledSize: new this.props.google.maps.Size(80,80)
                 }}
-
               />
             )
           })

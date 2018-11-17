@@ -20,7 +20,6 @@ module.exports = function (app) {
     })
     // route that posts parking spots
     .post((req, res) => {
-
       const { streetaddress, city, state, zipcode, availablespots, price, instructions, event } = req.body;
 
       ParkingSpot.create({
