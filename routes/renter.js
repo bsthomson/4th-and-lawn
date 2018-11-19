@@ -80,6 +80,17 @@ module.exports = function (app) {
 
   // route that deletes a renters info
   app.route('/api/rentedspots/:id')
+    // .get((req, res) => {
+    //   Renter.findOne(
+    //       { user: req.params.id })
+    //     .then(dbRenter => {
+    //       console.log(dbRenter)
+    //       res.json(dbRenter)
+    //     })
+    //     .catch(err => {
+    //       res.json(err)
+    //     })
+    // })
     .delete((req, res) => {
       Renter.findByIdAndDelete({ _id: req.params.id })
         .then(dbRenter => {

@@ -41,6 +41,11 @@ class GoogleMap extends Component {
     //     })
     //   }
     // };
+
+    /*
+    // Use this and a DirectionsRoute object to center the map on a route
+    map.setCenter(route.bounds.getCenter());
+    */
   
     render() {
       console.log('GooleMap props',   this.props)

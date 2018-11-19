@@ -11,7 +11,6 @@ module.exports = function (app) {
       ParkingSpot.find({})
         .populate("event")
         .then(parkingSpots => {
-          console.log(parkingSpots[0]);
           res.json(parkingSpots)
         })
         .catch(err => {
@@ -53,12 +52,20 @@ module.exports = function (app) {
       })
       .catch(err => {
         res.json(err)
-        console.log('No Spots')
       })
   })
 
   // routes that delete and update parking spots
-  app.route('/api/postedspots/:id')
+  app.route('/api/parkingSpots/:id')
+  .get((req, res) => {
+    ParkingSpot.findOne({ _id: req.params.id })
+      .then(dbParkingSpot => {
+        res.json(dbParkingSpot)
+      })
+      .catch(err => {
+        res.json(err)
+      })
+  })
     .delete((req, res) => {
       ParkingSpot.findByIdAndDelete({ _id: req.params.id })
         .then(dbParkingSpot => {
