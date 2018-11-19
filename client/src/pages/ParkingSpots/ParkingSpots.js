@@ -50,7 +50,10 @@ class ParkingSpots extends Component {
 
     handleChange = event => {
         this.setState({
-            selectedEvent: event.target.value
+            selectedEvent: {
+                name: event.target.value,
+                id: event.target.options[event.target.options.selectedIndex].id
+            }
         });
     };
 
@@ -76,14 +79,14 @@ class ParkingSpots extends Component {
                                     <div className="form__filter-container" id="events">
                                         {this.state.events.length ? (
                                             <div className="form__group">
-                                                <select name="game" className="form__input" value={this.state.selectedEvent} onChange={this.handleChange}>
+                                                <select name="game" className="form__input" defaultValue={this.state.selectedEvent} onChange={this.handleChange}>
                                                     <option>
                                                         Filter By Event
                                                 </option>
                                                     {this.state.events.map(event => (
                                                         <option
                                                             key={event._id}
-                                                            id="event"
+                                                            id={event._id}
                                                             name="event"
                                                             placeholder="Event"
                                                         >
@@ -108,7 +111,6 @@ class ParkingSpots extends Component {
                         {/* ^ END PAGE HEADER ^ */}
 
                         <section className="parking__content">
-
                             {this.state.selectedEvent ?
                                 <CardParkingSpot event={this.state.selectedEvent} /> :
                                 <div style={{ color: "red", textAlign: "center" }} className="container-fluid">

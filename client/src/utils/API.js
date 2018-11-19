@@ -11,6 +11,11 @@ export default {
     return axios.get("/api/parkingspots");
   },
 
+  // Gets all parking spots
+  getParkingSpotsByEvent: (eventId) => {
+    return axios.get("/api/parkingspots/-1/" + eventId);
+  },
+
   // Gets the parking spot with the given id
   getParkingSpot: id => {
     return axios.get("/api/parkingspots/" + id);
@@ -26,8 +31,8 @@ export default {
     return axios.post("/api/parkingspots", parkingSpotData);
   },
 
-   // Gets all posted spots by user
-   getPostedSpots: () => {
+  // Gets all posted spots by user
+  getPostedSpots: () => {
     return axios.get("/api/postedspots");
   },
 
@@ -57,6 +62,6 @@ export default {
   },
 
   getDistance: (origin, destination) => {
-    return axios.get("/api/rentedspots/distance?origin=" + origin + "&destination="+ destination)
+    return axios.get("/api/rentedspots/distance?origin=" + origin + "&destination=" + destination)
   }
 }

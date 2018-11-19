@@ -55,6 +55,17 @@ module.exports = function (app) {
       })
   })
 
+  app.route('/api/parkingSpots/:id/:event')
+  .get((req, res) => {
+    ParkingSpot.find({ event: { $all: [req.params.event] } })
+      .then(matchedSpots => {
+        res.json(matchedSpots)
+      })
+      .catch(err => {
+        res.json(err)
+      })
+  })
+
   // routes that delete and update parking spots
   app.route('/api/parkingSpots/:id')
   .get((req, res) => {

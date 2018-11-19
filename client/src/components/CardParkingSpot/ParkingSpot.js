@@ -24,6 +24,16 @@ class CardParkingSpot extends Component {
         this.loadParkingSpots = this.loadParkingSpots.bind(this);
     }
 
+    componentWillReceiveProps(props) {
+        const { name, id } = this.props.event;
+        console.log({
+            name,
+            id
+        })
+        if (props.event.id !== id) 
+            this.loadParkingSpots();
+      }
+
     // Probably remove this in favor of loading data conditionally
     //  based on the selected event, otherwise, display a message
     //  for the user to selecta game/event/date
@@ -32,8 +42,14 @@ class CardParkingSpot extends Component {
     }
 
     loadParkingSpots() {
-        API.getParkingSpots()
+        console.log({
+            loadParkingSpots: this.props.event
+        })
+        API.getParkingSpotsByEvent(this.props.event.id)
             .then(response => {
+                console.log({
+                    returnedSpots: response
+                })
                 const returnedSpots = response.data;
                 const geocodes = [];
 
@@ -97,7 +113,6 @@ class CardParkingSpot extends Component {
                             this.state.availableSpots.map((parkingspot, idx) => (
                                 <div className="col-1-of-3" key={parkingspot._id}>
 
-
                                     {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
                                         <Link to={"/rentthisspot/" + parkingspot._id}>
                                             {/* CARD START -> */}
@@ -132,14 +147,14 @@ class CardParkingSpot extends Component {
                                                                 <input
                                                                     className="btn btn--card"
                                                                     type="submit"
-                                                                    value="Parking Details"
+                                                                    defaultValue="Parking Details"
                                                                     onClick={this.handleSubmit}
                                                                 />
                                                             ) : (
                                                                     <input
                                                                         className="btn btn--card"
                                                                         type="submit"
-                                                                        value="Sold Out"
+                                                                        defaultValue="Sold Out"
                                                                         onClick={this.handleSubmit}
                                                                         disabled
                                                                     />
@@ -147,7 +162,7 @@ class CardParkingSpot extends Component {
                                                         </Link>
                                                         <input
                                                             className="btn btn--card"
-                                                            value="Add to Favorites"
+                                                            defaultValue="Add to Favorites"
                                                         />
                                                     </div>
                                                 </div>
