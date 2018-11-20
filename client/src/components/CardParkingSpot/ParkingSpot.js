@@ -12,44 +12,32 @@ class CardParkingSpot extends Component {
 
         this.state = {
             availableSpots: [],
-            distanceTimes: [],
+            distanceTimes: {},
             gameday: [],
             selectedEvent: this.props.event
         };
-
-        console.log({
-            selectedEvent: this.state.selectedEvent
-        });
 
         this.loadParkingSpots = this.loadParkingSpots.bind(this);
     }
 
     componentWillReceiveProps(props) {
-        const { name, id } = this.props.event;
-        console.log({
-            name,
-            id
-        })
-        if (props.event.id !== id) 
+        const id = this.props.event._id;
+        if (props.event.id !== id)
             this.loadParkingSpots();
-      }
+    }
 
-    // Probably remove this in favor of loading data conditionally
-    //  based on the selected event, otherwise, display a message
-    //  for the user to selecta game/event/date
+    // Still refreshes data 1 selection behind the current selection
     componentDidMount() {
+        console.log({
+            props: this.props
+        })
+
         this.loadParkingSpots();
     }
 
     loadParkingSpots() {
-        console.log({
-            loadParkingSpots: this.props.event
-        })
-        API.getParkingSpotsByEvent(this.props.event.id)
+        API.getParkingSpotsByEvent(this.props.event._id)
             .then(response => {
-                console.log({
-                    returnedSpots: response
-                })
                 const returnedSpots = response.data;
                 const geocodes = [];
 
@@ -57,11 +45,11 @@ class CardParkingSpot extends Component {
                     spot.address = `${spot.streetaddress}, ${spot.city}, ${spot.state} ${spot.zipcode}`;
                     geocodes.push(getGeocode(spot.address));
 
-                    getWalkingDistance(spot.address, this.state.selectedEvent)
+                    getWalkingDistance(spot.address, this.state.selectedEvent.location)
                         .then(walkingDistance => {
                             // TODO :: Update this to include smarter logic for handling data aggregation
                             let tempDistances = this.state.distanceTimes;
-                            tempDistances.push(walkingDistance);
+                            tempDistances[spot._id] = walkingDistance;
 
                             this.setState({ distanceTimes: tempDistances });
                         })
@@ -133,7 +121,7 @@ class CardParkingSpot extends Component {
                                                             <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold out"}</span>
                                                             <hr className="card-break"></hr>
                                                             <span className="parking-card__title--value">Distance from stadium:</span>
-                                                            <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distanceTimes[idx] ? this.state.distanceTimes[idx] : 'N/A'}</span>
+                                                            <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distanceTimes[parkingspot._id] ? this.state.distanceTimes[parkingspot._id] : 'N/A'}</span>
                                                         </h3>
                                                     </section>
 
@@ -235,9 +223,9 @@ class CardParkingSpot extends Component {
 
                 }
                 {
-                // <div>
-                //     <GoogleMap markers={this.state.availableSpots} />
-                // </div>
+                    // <div>
+                    //     <GoogleMap markers={this.state.availableSpots} />
+                    // </div>
                 }
             </section>
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './../../App.css';
 import axios from 'axios';
 import PostParkingSpot from './../../components/FormPostParking/PostParking';
+import ViewParkingSpot from './../../components/ViewParking/ViewParkingSpot';
 import Popup from 'reactjs-popup';
 import { Redirect } from 'react-router-dom'
 import { resolve } from "url";
@@ -14,23 +15,17 @@ class UserSpot extends Component {
         super(props);
 
         this.state = {
-            loggedIn: false,
+            loggedIn: this.props.loggedIn,
             postedspots: [],
             rentedspots: []
         };
     }
 
     componentDidMount() {
-        console.log("********", this.props.loggedIn);
-        if (this.props.loggedIn === false) {
-            this.setState({
-                loggedIn: false
-            })
-        } else {
-            this.setState({
-                loggedIn: true
-            })
-        }
+        // console.log("********", this.props.loggedIn);
+        // this.setState({
+        //     loggedIn: this.props.loggedIn
+        // })
     }
 
     componentDidUpdate() {
@@ -44,9 +39,13 @@ class UserSpot extends Component {
 
     loadPostedSpots = () => {
         axios.get("/api/postedspots")
-            .then(response => this.setState({
-                postedspots: response.data[0].parkingspots
-            }))
+            .then(response => {
+                console.log(response)
+
+                this.setState({
+                    postedspots: response.data[0].parkingspots
+                })
+            })
             .catch(err => console.log(err));
     };
 
@@ -100,6 +99,10 @@ class UserSpot extends Component {
         axios.delete("/api/rentedspots/" + id)
             .then(response => this.loadRentedSpots())
             .catch(err => console.log(err));
+    }
+
+    viewPostedSpot = id => {
+        console.log('Viewing posted spot with id', id)
     }
 
     render() {
@@ -165,6 +168,28 @@ class UserSpot extends Component {
                                                                         <span className="spot--test"><i className="fas fa-home spot--icon"></i></span>
                                                                     </div>
                                                                 </Link>
+                                                                <Popup trigger={<div className="dashboard-card__button dashboard-card__button--view" onClick={() => this.viewPostedSpot(postedspot._id)}>
+                                                                    <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
+                                                                </div>} modal>
+                                                                    {close => (
+                                                                        <div className="modal">
+                                                                            <a href="#" className="popup__close" onClick={close} >
+                                                                                &times;
+                                                                            </a>
+
+                                                                            <ViewParkingSpot renters={postedspot.renter} />
+                                                                            <button
+                                                                                className="button"
+                                                                                onClick={() => {
+                                                                                    console.log('Modal Closed')
+                                                                                    close()
+                                                                                }}
+                                                                            >
+                                                                            </button>
+                                                                        </div>
+                                                                    )}
+                                                                </Popup>
+
                                                                 <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
                                                                     <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
                                                                 </div>
@@ -199,7 +224,10 @@ class UserSpot extends Component {
                                                     <section key={rentedspot._id}>
                                                         <div className="dashboard__user-item">
                                                             <div className="dashboard__user-address">
-                                                                <div className="row" style={{color: "white"}}>
+                                                                <div className="row" style={{ color: "white" }}>
+                                                                    <div className="col-1-of-5">
+                                                                        <h2>{moment(rentedspot[0].date).format("hh:mm a")}</h2>
+                                                                    </div>
                                                                     <div className="col-1-of-4">
                                                                         <h2>{moment(rentedspot[0].date).format("MM-DD-YYYY")}</h2>
                                                                     </div>
@@ -229,13 +257,7 @@ class UserSpot extends Component {
 
                                     </section>
                                 </div>
-
-
-
-
                             </div>
-
-
                         </section>
                         {/* END DASHBOARD USER CONTENT */}
 

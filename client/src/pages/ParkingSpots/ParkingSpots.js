@@ -49,12 +49,10 @@ class ParkingSpots extends Component {
     }
 
     handleChange = event => {
-        this.setState({
-            selectedEvent: {
-                name: event.target.value,
-                id: event.target.options[event.target.options.selectedIndex].id
-            }
-        });
+        let selectedId = event.target.options[event.target.options.selectedIndex].id;
+        let selectedEvent = this.state.events.find(event => event._id == selectedId);
+
+        this.setState({ selectedEvent });
     };
 
     render() {
@@ -87,6 +85,7 @@ class ParkingSpots extends Component {
                                                         <option
                                                             key={event._id}
                                                             id={event._id}
+                                                            location={event.location}
                                                             name="event"
                                                             placeholder="Event"
                                                         >

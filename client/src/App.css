@@ -1700,6 +1700,8 @@ select {
         height: 4.5rem; } }
     .dashboard-card__button--delete {
       background-image: linear-gradient(120deg, #b22028, #e70d0d); }
+    .dashboard-card__button--view {
+      background-image: linear-gradient(120deg, #999, #c7c7c7); }
     .dashboard-card__button--link {
       background-image: linear-gradient(120deg, #20b573, #266b4c); }
     .dashboard-card__button--create {
