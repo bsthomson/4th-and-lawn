@@ -41,6 +41,11 @@ export default {
     return axios.get("/api/rentedspots");
   },
 
+  // Get all renters for a spot
+  getRentersForSpot: id => {
+    return axios.get("/api/postedspots/" + id);
+  },
+
   // Gets the rented spot with the given id
   getRentedSpot: id => {
     return axios.get("/api/rentedspots/" + id);
@@ -59,6 +64,11 @@ export default {
   // Gets the events from the database
   getEvents: () => {
     return axios.get("/api/event")
+  },
+
+  // Gets the events from the database
+  getUser: id => {
+    return axios.get("/api/user/" + id)
   },
 
   getDistance: (origin, destination) => {

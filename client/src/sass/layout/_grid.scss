@@ -210,6 +210,7 @@
 
 .renter-container {
     max-width: $grid-width;
+    padding-bottom: 50px;
     
     @include clearfix;
 

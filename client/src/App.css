@@ -839,6 +839,7 @@ select {
       height: 100vh !important; } }
 
 .popup-overlay {
+  padding-top: 50px;
   position: relative; }
 
 .parking-card {
@@ -1131,7 +1132,8 @@ select {
         margin: 0 auto; } }
 
 .renter-container {
-  max-width: 100%; }
+  max-width: 100%;
+  padding-bottom: 50px; }
   .renter-container::after {
     content: "";
     display: table;

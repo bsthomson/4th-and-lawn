@@ -73,6 +73,22 @@ module.exports = function (app) {
     }
   })
 
+  app.get('/api/user/:id', (req, res) => {
+    if (req.session.passport !== undefined) {
+      User.findOne({ _id: req.params.id })
+        .then((user) => {
+          res.json({ user: {
+            firstName: user.firstname,
+            lastName: user.lastname,
+            phoneNumber: user.phonenumber,
+            rentInfo: user.rentinfo
+          } })
+        })
+    } else {
+      res.json({ user: null })
+    }
+  })
+
   // Route to log out user
   app.post("/logout", (req, res) => {
     req.session.destroy((err) => {

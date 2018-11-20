@@ -49,28 +49,7 @@ module.exports = function (app) {
     User.findOne({ _id: req.session.passport.user })
       .populate('parkingspots')
       .then(retrievedUser => {
-        const hydratedSpots = {};
-
-        retrievedUser.parkingspots.forEach(spot => {
-          console.log({ SPOT: spot })
-          spot.renter.forEach(renter => {
-            User.findOne({ _id: renter })
-              .then(result => {
-                hydratedSpots[spot._id] = {
-                  firstName: result.firstname,
-                  lastName: result.lastname,
-                  email: result.email,
-                  rentInfo: result.rentinfo
-                };
-
-                console.log({ TESTING: hydratedSpots[spot._id] });
-              })
-          });
-        })
-          .then((res) => {
-            console.log({ hydratedSpots });
-            res.json(hydratedSpots);
-          })
+        res.json(retrievedUser.parkingspots);
       })
       .catch(err => {
         res.json(err)

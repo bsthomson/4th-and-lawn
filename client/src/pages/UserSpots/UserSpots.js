@@ -10,7 +10,6 @@ import { resolve } from "url";
 import moment from "moment";
 
 class UserSpot extends Component {
-
     constructor(props) {
         super(props);
 
@@ -22,10 +21,10 @@ class UserSpot extends Component {
     }
 
     componentDidMount() {
-        // console.log("********", this.props.loggedIn);
-        // this.setState({
-        //     loggedIn: this.props.loggedIn
-        // })
+        console.log("********", this.props.loggedIn);
+        this.setState({
+            loggedIn: this.props.loggedIn
+        })
     }
 
     componentDidUpdate() {
@@ -40,10 +39,10 @@ class UserSpot extends Component {
     loadPostedSpots = () => {
         axios.get("/api/postedspots")
             .then(response => {
-                console.log(response)
+                console.log({ response })
 
                 this.setState({
-                    postedspots: response.data[0].parkingspots
+                    postedspots: response.data
                 })
             })
             .catch(err => console.log(err));
@@ -168,9 +167,11 @@ class UserSpot extends Component {
                                                                         <span className="spot--test"><i className="fas fa-home spot--icon"></i></span>
                                                                     </div>
                                                                 </Link>
-                                                                <Popup trigger={<div className="dashboard-card__button dashboard-card__button--view" onClick={() => this.viewPostedSpot(postedspot._id)}>
-                                                                    <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
-                                                                </div>} modal>
+                                                                <Popup trigger={
+                                                                    <div className="dashboard-card__button dashboard-card__button--view" onClick={() => this.viewPostedSpot(postedspot._id)}>
+                                                                        <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
+                                                                    </div>
+                                                                } modal>
                                                                     {close => (
                                                                         <div className="modal">
                                                                             <a href="#" className="popup__close" onClick={close} >
