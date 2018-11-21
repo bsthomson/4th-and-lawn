@@ -8,27 +8,27 @@ export default {
 
   // Gets all parking spots
   getParkingSpots: () => {
-    return axios.get("/api/parkingspots");
+    return axios.get("/api/parkingSpots");
   },
 
   // Gets all parking spots
   getParkingSpotsByEvent: (eventId) => {
-    return axios.get("/api/parkingspots/-1/" + eventId);
+    return axios.get("/api/parkingSpots/-1/" + eventId);
   },
 
   // Gets the parking spot with the given id
   getParkingSpot: id => {
-    return axios.get("/api/parkingspots/" + id);
+    return axios.get("/api/parkingSpots/" + id);
   },
 
   // Deletes the parking spot with the given id
   deleteParkingSpot: id => {
-    return axios.delete("/api/parkingspots/" + id);
+    return axios.delete("/api/parkingSpots/" + id);
   },
 
   // Saves a parking spot to the database
   saveParkingSpot: parkingSpotData => {
-    return axios.post("/api/parkingspots", parkingSpotData);
+    return axios.post("/api/parkingSpots", parkingSpotData);
   },
 
   // Gets all posted spots by user

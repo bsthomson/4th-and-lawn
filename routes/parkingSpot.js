@@ -6,7 +6,7 @@ const ParkingSpot = db.ParkingSpot;
 
 module.exports = function (app) {
 
-  app.route("/api/parkingspots")
+  app.route("/api/parkingSpots")
     // route that finds all of the posted parking spots
     .get((req, res) => {
       ParkingSpot.find({})

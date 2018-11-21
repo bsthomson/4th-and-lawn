@@ -92,6 +92,10 @@ class CardParkingSpot extends Component {
     // };
 
     render() {
+        console.log({
+            state: this.state
+        })
+
         return (
 
             <section>
@@ -111,7 +115,7 @@ class CardParkingSpot extends Component {
                                                         <h3 className="parking-card__title">
                                                             <span className="parking-card__title--address">{parkingspot.streetaddress}</span>
                                                             <hr className="card-break"></hr>
-                                                            <span className="parking-card__title--value">{parkingspot.event[0].shortName ? parkingspot.event[0].shortName : 'No Event Name Set'}</span>
+                                                            <span className="parking-card__title--value">{this.state.selectedEvent.shortName ? this.state.selectedEvent.shortName : 'No Event Name Set'}</span>
                                                             <span className="parking-card__title--icon"><i className="fas fa-football-ball"></i></span>
                                                             <hr className="card-break"></hr>
                                                             <span className="parking-card__title--value">Price per game:</span>
@@ -132,26 +136,26 @@ class CardParkingSpot extends Component {
                                                     <div className="parking-card__cta">
                                                         <Link to={"/rentthisspot/" + parkingspot._id}>
                                                             {parkingspot.availablespots - parkingspot.renter.length > 0 ? (
-                                                                <input
+                                                                <button
                                                                     className="btn btn--card"
                                                                     type="submit"
                                                                     defaultValue="Parking Details"
                                                                     onClick={this.handleSubmit}
-                                                                />
+                                                                >Parking Details</button>
                                                             ) : (
-                                                                    <input
+                                                                    <button
                                                                         className="btn btn--card"
                                                                         type="submit"
                                                                         defaultValue="Sold Out"
                                                                         onClick={this.handleSubmit}
                                                                         disabled
-                                                                    />
+                                                                    >Sold Out</button>
                                                                 )}
                                                         </Link>
-                                                        <input
+                                                        <button
                                                             className="btn btn--card"
                                                             defaultValue="Add to Favorites"
-                                                        />
+                                                        >Add to Favorites</button>
                                                     </div>
                                                 </div>
                                             </section>

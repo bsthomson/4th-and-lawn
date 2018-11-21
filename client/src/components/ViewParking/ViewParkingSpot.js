@@ -46,22 +46,33 @@ class ViewParkingSpot extends Component {
                     <section key={idx}>
                         <div className="dashboard__user-item">
                             <div className="dashboard__user-address">
-                                <div className="row">
-                                    <div className="col">
-                                        <span className="dashboard-heading--value">{renters[id].user.firstName} {renters[id].user.lastName} {renters[id].user.phoneNumber ? renters[id].user.phoneNumber : "N/A"}</span>
+                                <div className="row" style={{ color: "white" }}>
+                                    <div className="col-1-of-3">
+                                        <h2>{renters[id].user.firstName} {renters[id].user.lastName}</h2>
+                                        <div className="row">
+                                            <h2>{renters[id].user.phoneNumber ? renters[id].user.phoneNumber : "(555) 555-5555"}</h2>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="dashboard__user-buttons">
-                                <div className="dashboard-card__button dashboard-card__button--view">
-                                    <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
+                                    <div className="col-1-of-6">
+                                        <h2>{renters[id].user.carMake ? renters[id].user.carMake : "N/A"} / {renters[id].user.carModel ? renters[id].user.carModel : "N/A"}</h2>
+                                        <div className="row">
+                                            <h2>{renters[id].user.licensePlate ? renters[id].user.licensePlate : "N/A"}</h2>
+                                        </div>
+                                    </div>
+                                    <div className="col-1-of-5 fluid-container">
+                                        <div className="dashboard__user-buttons">
+                                            <div className="dashboard-card__button dashboard-card__button--view">
+                                                <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 ))
                     : (
-                        <span className="dashboard-heading--value center" style={{color: "black"}}>No renters for this spot</span>
+                        <span className="dashboard-heading--value center" style={{ color: "black" }}>No renters for this spot</span>
                     )}
             </div>
         )

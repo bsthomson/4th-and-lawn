@@ -8,6 +8,8 @@ import Popup from 'reactjs-popup';
 import { Redirect } from 'react-router-dom'
 import { resolve } from "url";
 import moment from "moment";
+import API from "../../utils/API"
+
 
 class UserSpot extends Component {
     constructor(props) {
@@ -20,16 +22,12 @@ class UserSpot extends Component {
         };
     }
 
-    componentDidMount() {
-        console.log("********", this.props.loggedIn);
-        this.setState({
-            loggedIn: this.props.loggedIn
-        })
-    }
-
-    componentDidUpdate() {
-        console.log(this.state)
-    }
+    // componentDidMount() {
+    //     console.log("********", this.props.loggedIn);
+    //     this.setState({
+    //         loggedIn: this.props.loggedIn
+    //     })
+    // }
 
     componentDidMount() {
         this.loadPostedSpots();
@@ -52,7 +50,7 @@ class UserSpot extends Component {
         axios.get("/api/rentedspots")
             .then(response => {
                 console.log({
-                    loadRented: response.data
+                    loadRented: response.data.rentinfo
                 })
 
                 let eventPromises = [];
@@ -75,12 +73,11 @@ class UserSpot extends Component {
                         Promise.all(spotPromises)
                             .then(spots => {
                                 this.setState({
-                                    rentedspots: [
+                                    rentedspots:
                                         events.map((item, idx) => {
                                             item.data.address = spots[idx].data.streetaddress;
                                             return item.data;
                                         })
-                                    ]
                                 })
                             })
                     })
@@ -89,19 +86,16 @@ class UserSpot extends Component {
     };
 
     deletePostedSpot = id => {
-        axios.delete("/api/postedspots/" + id)
+        API.deleteParkingSpot(id)
             .then(response => this.loadPostedSpots())
             .catch(err => console.log(err));
     }
 
     deleteRentedSpot = id => {
-        axios.delete("/api/rentedspots/" + id)
+        console.log(id)
+        API.deleteRentedSpot(id)
             .then(response => this.loadRentedSpots())
             .catch(err => console.log(err));
-    }
-
-    viewPostedSpot = id => {
-        console.log('Viewing posted spot with id', id)
     }
 
     render() {
@@ -227,14 +221,14 @@ class UserSpot extends Component {
                                                             <div className="dashboard__user-address">
                                                                 <div className="row" style={{ color: "white" }}>
                                                                     <div className="col-1-of-5">
-                                                                        <h2>{moment(rentedspot[0].date).format("hh:mm a")}</h2>
+                                                                        <h2>{moment(rentedspot.date).format("hh:mm a")}</h2>
                                                                     </div>
                                                                     <div className="col-1-of-4">
-                                                                        <h2>{moment(rentedspot[0].date).format("MM-DD-YYYY")}</h2>
+                                                                        <h2>{moment(rentedspot.date).format("MM-DD-YYYY")}</h2>
                                                                     </div>
                                                                     <div className="col-1-of-2">
-                                                                        <span className="dashboard-heading--value">{rentedspot[0].shortName}</span> <br></br>
-                                                                        <span className="dashboard-heading--value">{rentedspot[0].address}</span>
+                                                                        <span className="dashboard-heading--value">{rentedspot.shortName}</span> <br></br>
+                                                                        <span className="dashboard-heading--value">{rentedspot.address}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>

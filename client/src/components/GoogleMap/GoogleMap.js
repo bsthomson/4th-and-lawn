@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import HouseIcon from "./HouseDollarThree.png";
 
+import { getGeocode } from '../../utils/Helpers';
+
 
 const style = {
     height: '100%;',
@@ -12,20 +14,33 @@ class GoogleMap extends Component {
   constructor(props) {
     super(props);
 
-    console.log("Google Map Init")
-
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      lat: undefined,
+      lng: undefined,
     };
 
     this.onMarkerClick = this.onMarkerClick.bind(this);
   }
 
-  onMarkerClick(props, marker, e) {
-    console.log(props);
+  componentDidMount()
+  {
+    console.log({location: this.props.markers[0].event[0].location})
+    getGeocode(this.props.markers[0].event[0].location)
+      .then(res => {
+          const { lat, lng } = res;
 
+          this.setState({
+            lat,
+            lng
+          });
+      })
+      .catch(err => console.log(err))
+  }
+
+  onMarkerClick(props, marker, e) {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -48,20 +63,16 @@ class GoogleMap extends Component {
     */
   
     render() {
-      console.log('GooleMap props',   this.props)
-      const eventCoords = this.props.markers[0].event[0].coords
+      let returnThis;
 
-      const initial = {lat: eventCoords.lat, lng: eventCoords.lng}
-      let markers = this.props.markers
-      return (
-        
+      returnThis = this.state.lat ? (
         <Map 
           style = {style}
-          initialCenter = {initial}
+          initialCenter = {this.state.lat ? {lat: this.state.lat, lng: this.state.lng} : {}}
           google={this.props.google} 
           zoom={14}>
    
-          {markers.map((m, i) => {
+          {this.props.markers.map((m, i) => {
             console.log(m, i);
             return (
               <Marker key={`marker-${i}`} onClick={this.onMarkerClick}
@@ -90,7 +101,12 @@ class GoogleMap extends Component {
             </div>
           </InfoWindow>
         </Map>    
-      );
+      ) : 
+      (
+        <div>Map is loading...</div>
+      )
+
+      return returnThis;
     }
   }
   
