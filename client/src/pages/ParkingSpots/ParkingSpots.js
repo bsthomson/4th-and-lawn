@@ -51,7 +51,7 @@ class ParkingSpots extends Component {
         let selectedId = event.target.options[event.target.options.selectedIndex].id;
         let selectedEvent = this.state.events.find(event => event._id == selectedId);
 
-        this.setState({ selectedEvent });
+        this.setState({ selectedEvent }, () => this.forceUpdate());
     };
 
     render() {
@@ -60,7 +60,6 @@ class ParkingSpots extends Component {
                 {/* <div className="section-header">&nbsp;</div> */}
 
                 <div className="section-parking">
-
                     <div className="parking__container">
                         {/*  START PAGE HEADER -> */}
                         <section className="parking__header">

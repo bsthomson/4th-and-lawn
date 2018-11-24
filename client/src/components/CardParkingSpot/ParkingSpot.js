@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-import GoogleMap from "../GoogleMap/GoogleMap";
-import Geocode from "react-geocode";
 
 import { getGeocode, getWalkingDistance } from '../../utils/Helpers';
 
@@ -22,16 +20,13 @@ class CardParkingSpot extends Component {
 
     componentWillReceiveProps(props) {
         const id = this.props.event._id;
+
         if (props.event.id !== id)
             this.loadParkingSpots();
     }
 
     // Still refreshes data 1 selection behind the current selection
     componentDidMount() {
-        console.log({
-            props: this.props
-        })
-
         this.loadParkingSpots();
     }
 
@@ -57,9 +52,6 @@ class CardParkingSpot extends Component {
 
                 Promise.all(geocodes)
                     .then(geoCodeResults => {
-                        console.log({ geoCodeResults });
-
-                        // TODO: set geoCode data on spot
                         geoCodeResults.forEach((res, idx) => {
                             const spot = returnedSpots[idx];
                             const { lat, lng } = res;
@@ -77,27 +69,8 @@ class CardParkingSpot extends Component {
             .catch(err => console.log(err));
     };
 
-    // selectDates() {
-    //     let parkingSpotsArray = [];
-    //     this.state.parkingspots.forEach(parkingspot => {
-    //         console.log(this.state.parkingspots)
-    //         if (parkingspot.event[0]._id === this.props.event) {
-    //             parkingSpotsArray.push(parkingspot)
-    //         }
-    //     })
-    //     this.setState({
-    //         gameday: parkingSpotsArray,
-    //         selectedEvent: this.props.event
-    //     })
-    // };
-
     render() {
-        console.log({
-            state: this.state
-        })
-
         return (
-
             <section>
                 {
                     <div className="parking-container">
@@ -224,12 +197,6 @@ class CardParkingSpot extends Component {
                             )
                         }
                     </div>
-
-                }
-                {
-                    // <div>
-                    //     <GoogleMap markers={this.state.availableSpots} />
-                    // </div>
                 }
             </section>
 
