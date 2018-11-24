@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import HouseIcon from "./HouseDollarThree.png";
 
 import { getGeocode } from '../../utils/Helpers';

@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import './../../App.css';
 import axios from 'axios';
 import PostParkingSpot from './../../components/FormPostParking/PostParking';
-import ViewParkingSpot from './../../components/ViewParking/ViewParkingSpot';
 import Popup from 'reactjs-popup';
 import { Redirect } from 'react-router-dom'
 import { resolve } from "url";
-import moment from "moment";
 import API from "../../utils/API"
 
+import PostedSpotCard from './Posted/PostedSpotCard';
+import RentedSpotCard from './Rented/RentedSpotCard';
 
 class UserSpot extends Component {
     constructor(props) {
@@ -21,13 +20,6 @@ class UserSpot extends Component {
             rentedspots: []
         };
     }
-
-    // componentDidMount() {
-    //     console.log("********", this.props.loggedIn);
-    //     this.setState({
-    //         loggedIn: this.props.loggedIn
-    //     })
-    // }
 
     componentDidMount() {
         this.loadPostedSpots();
@@ -49,16 +41,12 @@ class UserSpot extends Component {
     loadRentedSpots = () => {
         axios.get("/api/rentedspots")
             .then(response => {
-                console.log({
-                    loadRented: response.data.rentinfo
-                })
-
                 let eventPromises = [];
                 let spotPromises = [];
+
+                console.log({ rentinfo: response.data[0].rentinfo });
+
                 response.data[0].rentinfo.forEach(rentedSpot => {
-                    console.log({
-                        rentedSpot
-                    })
                     eventPromises.push(
                         axios.get('/api/event/' + rentedSpot.event, resolve)
                     );
@@ -76,8 +64,11 @@ class UserSpot extends Component {
                                     rentedspots:
                                         events.map((item, idx) => {
                                             item.data.address = spots[idx].data.streetaddress;
+                                            item.data._renterId = spots[idx].data.rentinfo[idx];
                                             return item.data;
                                         })
+                                }, () => {
+                                    console.log({ rentedSpot: this.state.rentedspots });
                                 })
                             })
                     })
@@ -149,48 +140,12 @@ class UserSpot extends Component {
                                         {/* START -> */}
                                         {this.state.postedspots.length ? (
                                             <div>
-                                                {this.state.postedspots.map(postedspot => (
-                                                    <section key={postedspot._id}>
-                                                        <div className="dashboard__user-item">
-                                                            <div className="dashboard__user-address">
-                                                                <span className="dashboard-heading--value">{postedspot.streetaddress}</span>
-                                                            </div>
-                                                            <div className="dashboard__user-buttons">
-                                                                <Link to={"/rentthisspot/" + postedspot._id}>
-                                                                    <div className="dashboard-card__button dashboard-card__button--link" >
-                                                                        <span className="spot--test"><i className="fas fa-home spot--icon"></i></span>
-                                                                    </div>
-                                                                </Link>
-                                                                <Popup trigger={
-                                                                    <div className="dashboard-card__button dashboard-card__button--view" onClick={() => this.viewPostedSpot(postedspot._id)}>
-                                                                        <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
-                                                                    </div>
-                                                                } modal>
-                                                                    {close => (
-                                                                        <div className="modal">
-                                                                            <a href="#" className="popup__close" onClick={close} >
-                                                                                &times;
-                                                                            </a>
-
-                                                                            <ViewParkingSpot renters={postedspot.renter} />
-                                                                            <button
-                                                                                className="button"
-                                                                                onClick={() => {
-                                                                                    console.log('Modal Closed')
-                                                                                    close()
-                                                                                }}
-                                                                            >
-                                                                            </button>
-                                                                        </div>
-                                                                    )}
-                                                                </Popup>
-
-                                                                <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deletePostedSpot(postedspot._id)}>
-                                                                    <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </section>
+                                                {this.state.postedspots.map(postedSpot => (
+                                                    <PostedSpotCard
+                                                        _id={postedSpot._id}
+                                                        address={postedSpot.streetaddress}
+                                                        renter={postedSpot.renter}
+                                                        deleteSpot={this.deletePostedSpot} />
                                                 ))}
                                             </div>
                                         ) : (
@@ -215,30 +170,14 @@ class UserSpot extends Component {
                                         {/* START -> */}
                                         {this.state.rentedspots.length ? (
                                             <div>
-                                                {this.state.rentedspots.map(rentedspot => (
-                                                    <section key={rentedspot._id}>
-                                                        <div className="dashboard__user-item">
-                                                            <div className="dashboard__user-address">
-                                                                <div className="row" style={{ color: "white" }}>
-                                                                    <div className="col-1-of-5">
-                                                                        <h2>{moment(rentedspot.date).format("hh:mm a")}</h2>
-                                                                    </div>
-                                                                    <div className="col-1-of-4">
-                                                                        <h2>{moment(rentedspot.date).format("MM-DD-YYYY")}</h2>
-                                                                    </div>
-                                                                    <div className="col-1-of-2">
-                                                                        <span className="dashboard-heading--value">{rentedspot.shortName}</span> <br></br>
-                                                                        <span className="dashboard-heading--value">{rentedspot.address}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="dashboard__user-buttons">
-                                                                <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => this.deleteRentedSpot(rentedspot._id)}>
-                                                                    <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </section>
+                                                {this.state.rentedspots.map((rentedSpot, idx) => (
+                                                    <RentedSpotCard
+                                                        _id={rentedSpot._renterId}
+                                                        date={rentedSpot.date}
+                                                        shortName={rentedSpot.shortName}
+                                                        address={rentedSpot.address}
+                                                        deleteRented={this.deleteRentedSpot}
+                                                    />
                                                 ))}
                                             </div>
                                         ) : (
