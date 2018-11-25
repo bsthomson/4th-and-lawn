@@ -149,7 +149,7 @@ class CardParkingSpot extends Component {
                                                             <span className="parking-card__title--icon"><i className="fas fa-dollar-sign margin-right"></i>{parkingspot.price}</span>
                                                             <hr className="card-break"></hr>
                                                             <span className="parking-card__title--value">Available spots:</span>
-                                                            <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold"}</span>
+                                                            <span className="parking-card__title--icon"><i className="fas fa-car margin-right"></i>{parkingspot.availablespots - parkingspot.renter.length > 0 ? parkingspot.availablespots - parkingspot.renter.length : "Sold Out"}</span>
                                                             <hr className="card-break"></hr>
                                                             <span className="parking-card__title--value">Distance from stadium:</span>
                                                             <span className="parking-card__title--icon"><i class="fas fa-walking margin-right"></i>{this.state.distance}</span>

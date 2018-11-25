@@ -96,7 +96,6 @@ module.exports = function (app) {
       Renter.findByIdAndDelete({ _id: req.params.id })
         .then(dbRenter => {
           User.findOneAndUpdate({ _id: req.session.passport.user }, { $pull: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec().then((user) => {
-
             res.json(dbRenter)
           })
             .catch(err => {

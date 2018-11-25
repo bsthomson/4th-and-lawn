@@ -21,12 +21,16 @@ const PostedSpotCard = props => {
                     </Link>
 
                     {/* Edit spot */}
-                    <PostedEdit spot={{ _id: props._id, renter: props.renter }} />
+                    <PostedEdit
+                        _id={props._id}
+                        address={props.address}
+                        renter={props.renter}
+                        updateSpot={props.updateSpot} />
 
                     {/* View renters */}
                     <PostedRenters spot={{ _id: props._id, renter: props.renter }} />
 
-                    {/* Remove spot or renters */}
+                    {/* Remove spot */}
                     <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => props.deleteSpot(props._id)}>
                         <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
                     </div>

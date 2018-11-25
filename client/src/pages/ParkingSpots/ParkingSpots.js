@@ -33,12 +33,18 @@ class ParkingSpots extends Component {
     };
 
     loadEvents() {
-        console.log('loadEvents');
         console.log(this.state);
         API.getEvents()
             .then(response => {
+                let upcomingEvents = []
+                
+                response.data.forEach(event => {
+                    if (moment(event.date) > moment())
+                        upcomingEvents.push(event);
+                });
+
                 this.setState({
-                    events: response.data
+                    events: upcomingEvents
                 });
             })
             .then(

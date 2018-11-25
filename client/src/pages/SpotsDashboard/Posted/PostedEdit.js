@@ -1,6 +1,7 @@
 import React from "react";
 import Popup from 'reactjs-popup';
-import ViewParkingSpot from '../../../components/ViewParking/ViewParkingSpot';
+
+import ParkingSpotForm from '../../../components/FormPostParking/ParkingSpotForm';
 
 const PostedEdit = props => {
     return (
@@ -15,15 +16,31 @@ const PostedEdit = props => {
                         &times;
                     </a>
 
-                    <ViewParkingSpot renters={props.spot.renter} />
-                    <button
+                    <ParkingSpotForm
+                        _id={props._id}
+                        formTitle={"Edit Parking Spot Details"}
+                        streetaddress={props.streetaddress}
+                        city={props.city}
+                        state={props.state}
+                        zipcode={props.zipcode}
+                        availableSpots={props.availablespots}
+                        price={props.price}
+                        instructions={props.instructions}
+                        events={props.events}
+
+                        handleChange={props.handleChange}
+                        handleSubmit={props.updateSpot}
+
+                        readOnly={true}
+                    />
+                    {/* <button
                         className="button"
                         onClick={() => {
                             console.log('Modal Closed')
                             close()
                         }}
                     >
-                    </button>
+                    </button> */}
                 </div>
             )}
         </Popup>

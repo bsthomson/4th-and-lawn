@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './../../App.css';
-import RentParkingSpot from "./../../components/Rent-Parking-Spot-Form";
+import RentSpotForm from "./RentSpotForm";
 import Popup from 'reactjs-popup';
 import Login from './../../components/FormLogin/Login';
 import GoogleMap from './../../components/GoogleMap/GoogleMap';
@@ -89,7 +89,7 @@ class RentThisSpot extends Component {
                                         <span className="renter--value">Available spots:</span>
                                         <span className="renter--icon">
                                             <i className="fas fa-car margin-right"></i>{
-                                                this.state.selectedSpot.availablespots
+                                                this.state.selectedSpot.availablespots.length - this.state.selectedSpot.renter.length
                                             }
                                         </span>
                                         <hr className="rent-break"></hr>
@@ -147,7 +147,9 @@ class RentThisSpot extends Component {
                                             <a href="#" className="popup__close" onClick={close}>
                                                 &times;
                                             </a>
-                                            <RentParkingSpot />
+
+                                            <RentSpotForm />
+
                                             <button
                                                 className="button"
                                                 onClick={() => {

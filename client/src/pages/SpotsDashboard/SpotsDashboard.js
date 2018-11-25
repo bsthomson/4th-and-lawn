@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './../../App.css';
 import axios from 'axios';
-import PostParkingSpot from './../../components/FormPostParking/PostParking';
+import PostParkingSpot from '../../components/FormPostParking/PostParking';
 import Popup from 'reactjs-popup';
 import { Redirect } from 'react-router-dom'
 import { resolve } from "url";
@@ -10,7 +10,7 @@ import API from "../../utils/API"
 import PostedSpotCard from './Posted/PostedSpotCard';
 import RentedSpotCard from './Rented/RentedSpotCard';
 
-class UserSpot extends Component {
+class SpotsDashboard extends Component {
     constructor(props) {
         super(props);
 
@@ -75,6 +75,12 @@ class UserSpot extends Component {
             })
             .catch(err => console.log(err));
     };
+
+    updatePostedSpot = id => {
+        API.updateParkingSpot(id)
+            .then(response => this.loadPostedSpots())
+            .catch(err => console.log(err));
+    }
 
     deletePostedSpot = id => {
         API.deleteParkingSpot(id)
@@ -145,7 +151,8 @@ class UserSpot extends Component {
                                                         _id={postedSpot._id}
                                                         address={postedSpot.streetaddress}
                                                         renter={postedSpot.renter}
-                                                        deleteSpot={this.deletePostedSpot} />
+                                                        deleteSpot={this.deletePostedSpot}
+                                                        updateSpot={this.updatePostedSpot} />
                                                 ))}
                                             </div>
                                         ) : (
@@ -202,4 +209,4 @@ class UserSpot extends Component {
     }
 }
 
-export default UserSpot;
+export default SpotsDashboard;

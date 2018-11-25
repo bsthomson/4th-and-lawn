@@ -26,6 +26,15 @@ export default {
     return axios.delete("/api/parkingSpots/" + id);
   },
 
+  // Deletes the parking spot with the given id
+  updateParkingSpot: (id, body) => {
+    console.log('client side parking spots update')
+    return axios.put(
+      "/api/parkingSpots/" + id,
+      body
+    );
+  },
+
   // Saves a parking spot to the database
   saveParkingSpot: parkingSpotData => {
     return axios.post("/api/parkingSpots", parkingSpotData);

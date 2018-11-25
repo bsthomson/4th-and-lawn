@@ -42,7 +42,7 @@ module.exports = function (app) {
         .catch(err => {
           res.json(err)
         })
-    });
+    })
 
   // routes that finds all of a users posted spots
   app.get('/api/postedspots', (req, res) => {
@@ -88,9 +88,14 @@ module.exports = function (app) {
         })
     })
     .put((req, res) => {
+      console.log({
+        _id: req.params.id,
+        body: req.body
+      })
+
       ParkingSpot.findByIdAndUpdate({ _id: req.params.id }, req.body)
-        .then(dbParkingSpot => {
-          res.json(dbParkingSpot)
+        .then(updatedSpot => {
+          res.json(updatedSpot)
         })
         .catch(err => {
           res.json(err)
