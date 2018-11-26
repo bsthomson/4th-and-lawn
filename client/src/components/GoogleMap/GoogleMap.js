@@ -32,10 +32,7 @@ class GoogleMap extends Component {
       .then(res => {
           const { lat, lng } = res;
 
-          this.setState({
-            lat,
-            lng
-          });
+          this.setState({lat, lng});
       })
       .catch(err => console.log(err))
   }

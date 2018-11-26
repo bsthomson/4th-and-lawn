@@ -26,11 +26,24 @@ export default {
     return axios.delete("/api/parkingSpots/" + id);
   },
 
-  // Deletes the parking spot with the given id
+  // Updates the parking spot with the given id
   updateParkingSpot: (id, body) => {
     console.log('client side parking spots update')
     return axios.put(
       "/api/parkingSpots/" + id,
+      body
+    );
+  },
+
+  // Deletes the parking spot with the given id
+  createParkingSpot: body => {
+    console.log({
+      message: 'client side parking spots create',
+      body
+    })
+    
+    return axios.post(
+      "/api/parkingSpots",
       body
     );
   },

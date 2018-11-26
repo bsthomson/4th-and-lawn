@@ -29,11 +29,7 @@ class RentThisSpot extends Component {
         axios.get("/api/" + window.location.pathname)
             .then(response => {
                 let selectedSpot = response.data;
-                this.setState({
-                    selectedSpot
-                }, () => {
-                    console.log({spot: this.state.selectedSpot})
-                });
+                this.setState({selectedSpot});
 
                 selectedSpot.address = `${selectedSpot.streetaddress}, ${selectedSpot.city}, ${selectedSpot.state} ${selectedSpot.zipcode}`;
 
@@ -64,6 +60,10 @@ class RentThisSpot extends Component {
     };
 
     render() {
+        console.log({
+            state: this.state
+        })
+
         return (
             <div>
                 <section className="section-renter">
@@ -89,7 +89,9 @@ class RentThisSpot extends Component {
                                         <span className="renter--value">Available spots:</span>
                                         <span className="renter--icon">
                                             <i className="fas fa-car margin-right"></i>{
-                                                this.state.selectedSpot.availablespots.length - this.state.selectedSpot.renter.length
+                                                this.state.selectedSpot ? 
+                                                    Math.abs(this.state.selectedSpot.availablespots - this.state.selectedSpot.renter.length) : 
+                                                    "No # Found"
                                             }
                                         </span>
                                         <hr className="rent-break"></hr>

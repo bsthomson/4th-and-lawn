@@ -28,13 +28,7 @@ class SpotsDashboard extends Component {
 
     loadPostedSpots = () => {
         axios.get("/api/postedspots")
-            .then(response => {
-                console.log({ response })
-
-                this.setState({
-                    postedspots: response.data
-                })
-            })
+            .then(response => this.setState({ postedspots: response.data }))
             .catch(err => console.log(err));
     };
 
@@ -76,6 +70,12 @@ class SpotsDashboard extends Component {
             .catch(err => console.log(err));
     };
 
+    createPostedSpot = body => {
+        API.createParkingSpot(body)
+            .then(response => this.loadPostedSpots())
+            .catch(err => console.log(err));
+    }
+
     updatePostedSpot = id => {
         API.updateParkingSpot(id)
             .then(response => this.loadPostedSpots())
@@ -96,10 +96,6 @@ class SpotsDashboard extends Component {
     }
 
     render() {
-        console.log({
-            state: this.state
-        });
-
         return (
             <section>
                 {/* <div className="section-header"></div> */}
@@ -127,7 +123,7 @@ class SpotsDashboard extends Component {
                                                     &times;
                                                 </a>
 
-                                                <PostParkingSpot />
+                                                <PostParkingSpot createSpot={this.createPostedSpot} />
                                                 <button
                                                     className="button"
                                                     onClick={() => {

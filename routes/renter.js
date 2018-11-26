@@ -11,7 +11,6 @@ module.exports = function (app) {
   // route for posting your rental information for renting a parking spot
   app.route('/api/rentthisspot/:id')
     .post((req, res) => {
-
       ParkingSpot.findById({ _id: req.params.id })
         .then(dbParkingSpot => {
           return event = dbParkingSpot.event

@@ -7,7 +7,14 @@ class ParkingSpotForm extends Component {
         super(props);
 
         this.state = {
-            events: []
+            streetaddress: '',
+            city: '',
+            state: '',
+            zipcode: '',
+            availablespots: '',
+            instructions: '',
+            event: '',
+            events: [],
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -15,17 +22,23 @@ class ParkingSpotForm extends Component {
     }
 
     handleChange(e) {
-        console.log({
-            SpotUpdateForm: this.state
-        })
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+        this.setState({[e.target.id]: e.target.value})
     }
 
-    handleSubmitForm() {
+    handleSubmitForm(event) {
+        event.preventDefault();
+
         if (!this.props.readOnly)
-            this.props.handleSubmit(this.props._id);
+            this.props.handleSubmit({
+                streetaddress: this.state.streetaddress,
+                city: this.state.city,
+                state: this.state.state,
+                zipcode: this.state.zipcode,
+                availablespots: this.state.availablespots,
+                price: this.state.price,
+                instructions: this.state.instructions,
+                event: this.state.event
+            });
         else
             API.updateParkingSpot(
                 this.props._id,
@@ -117,18 +130,20 @@ class ParkingSpotForm extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        {this.state.events.length ? (
+                        {this.props.events.length > 0 ? (
                             <div
                                 className="form__group">
                                 <select
+                                    id="event"
                                     name="event"
                                     className="form__input"
                                     style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
-                                    value={this.props.event} >
+                                    // value={this.state.event}
+                                    onChange={this.handleChange} >
                                     <option>
                                         Select an Event
                                     </option>
-                                    {this.state.events.map(event => (
+                                    {this.props.events.map(event => (
                                         <option
                                             key={event._id}
                                             id="event"

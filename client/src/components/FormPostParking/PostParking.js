@@ -7,88 +7,35 @@ import API from "../../utils/API"
 import ParkingSpotForm from './ParkingSpotForm';
 
 class PostParkingSpot extends Component {
-    constructor() {
-        super()
-        this.state = {
-            streetaddress: '',
-            city: '',
-            state: '',
-            zipcode: '',
-            availablespots: '',
-            instructions: '',
-            event: '',
-            events: [],
-            redirectTo: null
-        }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+    constructor(props) {
+        super(props);
+
+        this.noOldDates = this.noOldDates.bind(this);
     }
 
     componentDidMount() {
         this.noOldDates();
     }
 
-    noOldDates = () => {
+    noOldDates() {
         let parkingSpotArray = [];
         API.getEvents()
             .then(response => {
                 response.data.forEach(parkingSpot => {
-                        if (moment(parkingSpot.date) > moment()) {
-                            parkingSpotArray.push(parkingSpot)
-                        }
+                    if (moment(parkingSpot.date) > moment()) {
+                        parkingSpotArray.push(parkingSpot)
+                    }
                 })
             })
-            .then( () => {
-                this.setState(
-                    { events: parkingSpotArray }
-                )
-            })
-            .catch( err => {
-                console.log(err)
-            })
-    }
-
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    };
-
-    handleSubmit(event) {
-        event.preventDefault();
-
-        console.log(this.state)
-
-        axios.post('/api/parkingspots', {
-            streetaddress: this.state.streetaddress,
-            city: this.state.city,
-            state: this.state.state,
-            zipcode: this.state.zipcode,
-            availablespots: this.state.availablespots,
-            price: this.state.price,
-            instructions: this.state.instructions,
-            event: this.state.event
-        })
-        .then(response => {
-            console.log("parking spot info: ");
-            console.log(response.data);
-            if (response.status === 200) {
-                console.log("Post Sent")
-                this.setState({
-                    redirectTo: "/posted-spots"
-                })
-            }
-        }).catch(error => {
-            console.log("Post error: ");
-            console.log(error);
-        })
+            .then(() => this.setState({ events: parkingSpotArray }))
+            .catch(err => console.log(err))
     }
 
     render() {
         if (this.state.redirectTo) {
-            return <Redirect to ={{ pathname: this.state.redirectTo }} />
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
-            return (
+            let returnThis = this.state.events.length > 1 ? (
                 <ParkingSpotForm
                     formTitle={"Parking Spot Details"}
                     streetaddress={this.state.streetaddress}
@@ -101,9 +48,13 @@ class PostParkingSpot extends Component {
                     events={this.state.events}
 
                     handleChange={this.handleChange}
-                    handleSubmit={this.handleSubmit}
-                    />
-            )
+                    handleSubmit={this.props.createSpot}
+                />
+            ) : (
+                    <div>Events are loading...</div>
+                )
+
+            return returnThis;
         }
     }
 }
