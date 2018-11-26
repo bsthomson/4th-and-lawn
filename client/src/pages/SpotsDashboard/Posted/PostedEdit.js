@@ -26,7 +26,7 @@ const PostedEdit = props => {
                         availableSpots={props.availablespots}
                         price={props.price}
                         instructions={props.instructions}
-                        events={props.events}
+                        events={[]}
 
                         handleChange={props.handleChange}
                         handleSubmit={props.updateSpot}

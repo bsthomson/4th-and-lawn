@@ -10,6 +10,11 @@ class PostParkingSpot extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            redirectTo: '',
+            events: []
+        }
+
         this.noOldDates = this.noOldDates.bind(this);
     }
 
@@ -27,7 +32,7 @@ class PostParkingSpot extends Component {
                     }
                 })
             })
-            .then(() => this.setState({ events: parkingSpotArray }))
+            .then(() => this.setState({ events: parkingSpotArray }, () => console.log({ postParking: this.state })))
             .catch(err => console.log(err))
     }
 

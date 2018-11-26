@@ -6,6 +6,10 @@ class ParkingSpotForm extends Component {
     constructor(props) {
         super(props);
 
+        console.log({
+            ParkingSpotForm: this.props
+        })
+
         this.state = {
             streetaddress: '',
             city: '',
@@ -22,7 +26,7 @@ class ParkingSpotForm extends Component {
     }
 
     handleChange(e) {
-        this.setState({[e.target.id]: e.target.value})
+        this.setState({ [e.target.id]: e.target.value })
     }
 
     handleSubmitForm(event) {
