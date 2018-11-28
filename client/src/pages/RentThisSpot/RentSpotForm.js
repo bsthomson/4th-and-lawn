@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-class RentParkingSpot extends Component {
+class RentSpotForm extends Component {
     constructor() {
         super()
         this.state = {
@@ -37,7 +37,7 @@ class RentParkingSpot extends Component {
             if(response.status === 200) {
                 console.log("Post Sent")
                 this.setState({
-                    redirectTo: '/posted-spots'
+                    redirectTo: '/spots-dashboard'
                 })
             }
         }).catch(error => {
@@ -102,4 +102,4 @@ class RentParkingSpot extends Component {
     }
 }
 
-export default RentParkingSpot;
+export default RentSpotForm;

@@ -31,4 +31,16 @@ module.exports = function (app) {
           res.json(err)
         })
     })
+
+  app.route("/api/event/:id")
+    .get((req, res) => {
+      Event.findOne(
+        { _id: req.params.id })
+        .then(event => {
+          res.json(event)
+        })
+        .catch(err => {
+          res.json(err)
+        })
+    })
 }

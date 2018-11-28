@@ -26,20 +26,25 @@ class ParkingSpots extends Component {
     loadParkingSpots = () => {
         API.getParkingSpots()
             .then(response => {
-                console.log(response.data)
                 this.setState({ parkingspots: response.data })
             })
-            .then(console.log(this.state.parkingspots))
+            .then()
             .catch(err => console.log(err));
     };
 
     loadEvents() {
-        console.log('loadEvents');
         console.log(this.state);
         API.getEvents()
             .then(response => {
+                let upcomingEvents = []
+                
+                response.data.forEach(event => {
+                    if (moment(event.date) > moment())
+                        upcomingEvents.push(event);
+                });
+
                 this.setState({
-                    events: response.data
+                    events: upcomingEvents
                 });
             })
             .then(
@@ -49,9 +54,10 @@ class ParkingSpots extends Component {
     }
 
     handleChange = event => {
-        this.setState({
-            selectedEvent: event.target.value
-        });
+        let selectedId = event.target.options[event.target.options.selectedIndex].id;
+        let selectedEvent = this.state.events.find(event => event._id == selectedId);
+
+        this.setState({ selectedEvent }, () => this.forceUpdate());
     };
 
     render() {
@@ -60,7 +66,6 @@ class ParkingSpots extends Component {
                 {/* <div className="section-header">&nbsp;</div> */}
 
                 <div className="section-parking">
-
                     <div className="parking__container">
                         {/*  START PAGE HEADER -> */}
                         <section className="parking__header">
@@ -76,17 +81,18 @@ class ParkingSpots extends Component {
                                     <div className="form__filter-container" id="events">
                                         {this.state.events.length ? (
                                             <div className="form__group">
-                                                <select name="game" className="form__input" value={this.state.selectedEvent} onChange={this.handleChange}>
+                                                <select name="game" className="form__input" defaultValue={this.state.selectedEvent} onChange={this.handleChange}>
                                                     <option>
                                                         Filter By Event
                                                 </option>
                                                     {this.state.events.map(event => (
                                                         <option
                                                             key={event._id}
-                                                            id="event"
+                                                            id={event._id}
+                                                            location={event.location}
                                                             name="event"
                                                             placeholder="Event"
-                                                            value={event.location}>
+                                                        >
                                                             {moment(event.date).format("MM-DD-YYYY")} {event.shortName}
                                                         </option>
                                                     ))}
@@ -108,7 +114,6 @@ class ParkingSpots extends Component {
                         {/* ^ END PAGE HEADER ^ */}
 
                         <section className="parking__content">
-
                             {this.state.selectedEvent ?
                                 <CardParkingSpot event={this.state.selectedEvent} /> :
                                 <div style={{ color: "red", textAlign: "center" }} className="container-fluid">

@@ -15,24 +15,22 @@ const RenterSchema = new Schema({
     type: String,
     required: true
   },
-  user: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ],
+  user:
+  {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   parkingspot: [
     {
       type: Schema.Types.ObjectId,
       ref: "ParkingSpot"
     }
   ],
-  event: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Event"
-    }
-  ]
+  event:
+  {
+    type: Schema.Types.ObjectId,
+    ref: "Event"
+  }
 })
 
 const Renter = mongoose.model("Renter", RenterSchema);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './../../App.css';
-import RentParkingSpot from "./../../components/Rent-Parking-Spot-Form";
+import RentSpotForm from "./RentSpotForm";
 import Popup from 'reactjs-popup';
 import Login from './../../components/FormLogin/Login';
 import GoogleMap from './../../components/GoogleMap/GoogleMap';
@@ -28,11 +28,9 @@ class RentThisSpot extends Component {
     getParkingSpot() {
         axios.get("/api/" + window.location.pathname)
             .then(response => {
-                this.setState({
-                    selectedSpot: response.data
-                });
-
                 let selectedSpot = response.data;
+                this.setState({selectedSpot});
+
                 selectedSpot.address = `${selectedSpot.streetaddress}, ${selectedSpot.city}, ${selectedSpot.state} ${selectedSpot.zipcode}`;
 
                 getWalkingDistance(selectedSpot.address, selectedSpot.event[0].location)
@@ -48,15 +46,29 @@ class RentThisSpot extends Component {
                         selectedSpot.lng = lng;
                     })
                     .catch(err => console.log(err))
+
+                getGeocode(selectedSpot.event[0].location)
+                    .then(res => {
+                        selectedSpot.event[0].coords = {
+                            lat: res.lat,
+                            lng: res.lng
+                        }
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
     };
 
     render() {
+        console.log({
+            state: this.state
+        })
+
         return (
             <div>
                 <section className="section-renter">
                     <div className="renter-container">
+
                         <div className="col-1-of-3">
                             <div className="header-renter__title">
                                 <div className="header-renter__background">
@@ -77,7 +89,9 @@ class RentThisSpot extends Component {
                                         <span className="renter--value">Available spots:</span>
                                         <span className="renter--icon">
                                             <i className="fas fa-car margin-right"></i>{
-                                                this.state.selectedSpot.availablespots
+                                                this.state.selectedSpot ? 
+                                                    Math.abs(this.state.selectedSpot.availablespots - this.state.selectedSpot.renter.length) : 
+                                                    "No # Found"
                                             }
                                         </span>
                                         <hr className="rent-break"></hr>
@@ -98,7 +112,9 @@ class RentThisSpot extends Component {
                         <div className="col-2-of-3">
                             <div className="header-renter__map-box">
                                 <div className="header-renter__map">
-                                    {/* <GoogleMap markers={[this.state.selectedSpot]} /> */}
+                                    {this.state.selectedSpot.event ? 
+                                        <GoogleMap markers={[this.state.selectedSpot]} /> :
+                                            <h2>"Loading Map..."</h2>}
                                 </div>
                             </div>
                         </div>
@@ -133,7 +149,9 @@ class RentThisSpot extends Component {
                                             <a href="#" className="popup__close" onClick={close}>
                                                 &times;
                                             </a>
-                                            <RentParkingSpot />
+
+                                            <RentSpotForm />
+
                                             <button
                                                 className="button"
                                                 onClick={() => {

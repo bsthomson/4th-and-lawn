@@ -11,7 +11,6 @@ module.exports = function (app) {
   // route for posting your rental information for renting a parking spot
   app.route('/api/rentthisspot/:id')
     .post((req, res) => {
-
       ParkingSpot.findById({ _id: req.params.id })
         .then(dbParkingSpot => {
           return event = dbParkingSpot.event
@@ -71,6 +70,7 @@ module.exports = function (app) {
     User.find({ _id: req.session.passport.user })
       .populate("rentinfo")
       .then(dbRentedSpot => {
+        console.log({ dbRentedSpot });
         res.json(dbRentedSpot)
       })
       .catch(err => {
@@ -80,13 +80,26 @@ module.exports = function (app) {
 
   // route that deletes a renters info
   app.route('/api/rentedspots/:id')
+    // .get((req, res) => {
+    //   Renter.findOne(
+    //       { user: req.params.id })
+    //     .then(dbRenter => {
+    //       console.log(dbRenter)
+    //       res.json(dbRenter)
+    //     })
+    //     .catch(err => {
+    //       res.json(err)
+    //     })
+    // })
     .delete((req, res) => {
       Renter.findByIdAndDelete({ _id: req.params.id })
         .then(dbRenter => {
-          res.json(dbRenter)
-        })
-        .catch(err => {
-          res.json(err)
+          User.findOneAndUpdate({ _id: req.session.passport.user }, { $pull: { rentedspots: req.params.id, rentinfo: dbRenter._id } }).exec().then((user) => {
+            res.json(dbRenter)
+          })
+            .catch(err => {
+              res.json(err)
+            })
         })
     })
     .put((req, res) => {

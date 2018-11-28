@@ -89,7 +89,7 @@ class Navbar extends Component {
                                 </Link>
                             </li>
                             <li className="navigation__item">
-                                <Link to="/posted-spots" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}> 
+                                <Link to="/spots-dashboard" className="navigation__link" onClick={(e)=>{this.setState({menuOpen: false})}}> 
                                     <span>My Spots</span>
                                 </Link>
                             </li>

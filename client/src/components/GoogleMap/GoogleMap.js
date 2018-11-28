@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import HouseIcon from "./HouseDollarThree.png";
+
+import { getGeocode } from '../../utils/Helpers';
 
 
 const style = {
@@ -16,14 +18,26 @@ class GoogleMap extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      lat: undefined,
+      lng: undefined,
     };
 
     this.onMarkerClick = this.onMarkerClick.bind(this);
   }
 
-  onMarkerClick(props, marker, e) {
-    console.log(props);
+  componentDidMount()
+  {
+    console.log({location: this.props.markers[0].event[0].location})
+    getGeocode(this.props.markers[0].event[0].location)
+      .then(res => {
+          const { lat, lng } = res;
 
+          this.setState({lat, lng});
+      })
+      .catch(err => console.log(err))
+  }
+
+  onMarkerClick(props, marker, e) {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -39,33 +53,33 @@ class GoogleMap extends Component {
     //     })
     //   }
     // };
+
+    /*
+    // Use this and a DirectionsRoute object to center the map on a route
+    map.setCenter(route.bounds.getCenter());
+    */
   
     render() {
-      // console.log('GooleMap props',   this.props.markers)
-      // const initial = this.props.markers[0];
-      const initial = { lat: 38.964460, lng: -95.246237}
-      let markers = this.props.markers
-      return (
-        
+      let returnThis;
+
+      returnThis = this.state.lat ? (
         <Map 
           style = {style}
-          initialCenter = {initial}
+          initialCenter = {this.state.lat ? {lat: this.state.lat, lng: this.state.lng} : {}}
           google={this.props.google} 
-          zoom={16}>
+          zoom={14}>
    
-          {markers.map((m, i) => {
+          {this.props.markers.map((m, i) => {
             console.log(m, i);
             return (
-
               <Marker key={`marker-${i}`} onClick={this.onMarkerClick}
                 title={m.address}
-                position={m}
+                position={{lat: m.lat, lng: m.lng}}
                 icon={{
                   url: HouseIcon,
                   anchor: new this.props.google.maps.Point(32,32),
                   scaledSize: new this.props.google.maps.Size(80,80)
                 }}
-
               />
             )
           })
@@ -84,7 +98,12 @@ class GoogleMap extends Component {
             </div>
           </InfoWindow>
         </Map>    
-      );
+      ) : 
+      (
+        <div>Map is loading...</div>
+      )
+
+      return returnThis;
     }
   }
   

@@ -202,6 +202,14 @@
             );
         }
 
+        &--view {
+            background-image: linear-gradient(
+                120deg,
+                $color-grey-dark-2,
+                $color-grey-light
+            );
+        }
+
         &--link {
             background-image: linear-gradient(
                 120deg,

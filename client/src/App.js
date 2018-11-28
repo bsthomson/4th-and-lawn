@@ -9,7 +9,7 @@ import { BrowserRouter as
 import Navbar from './components/Navigation/Nav';
 import Home from './pages/Home';
 import ParkingSpots from './pages/ParkingSpots';
-import UserSpots from './pages/UserSpots';
+import SpotsDashboard from './pages/SpotsDashboard/SpotsDashboard';
 import NoMatch from './pages/NoMatch';
 import RentThisSpot from "./pages/RentThisSpot";
 import {
@@ -93,8 +93,8 @@ class App extends Component {
                     component={ParkingSpots}
                   />
                   <Route
-                    path="/posted-spots"
-                    component={UserSpots}
+                    path="/spots-dashboard"
+                    component={SpotsDashboard}
                   />
                   <Route component={NoMatch} />
                 </Switch>
