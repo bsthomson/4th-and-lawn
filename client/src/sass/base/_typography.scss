@@ -28,6 +28,18 @@ body {
     top: 12rem;
     margin-bottom: 3rem;
 
+    @include breakpoint(tab-land) {
+        width: 100%;
+        top: 8rem;
+        left: 5rem;
+    }
+
+    @include breakpoint(tab-port) {
+        width: 100%;
+        top: 8rem;
+        left: 5rem;
+    }
+
     @include breakpoint(phone) {
         width: 100%;
         top: 8rem;
@@ -37,20 +49,34 @@ body {
     &--main {
         display: block;
         width: 100%;
-        font-size: 6.25rem;
+        font-size: 7rem;
         font-weight: 900;
         text-align: left;
         animation: moveInTop 1.5s ease-out 1s;
         animation-fill-mode: backwards;
-        line-height: 6.75rem;
+        line-height: 7rem;
         letter-spacing: -.5px;
+
+        @include breakpoint(tab-land) {
+            letter-spacing: -.2rem;
+            font-size: 6.5rem;
+            line-height: 6rem;
+            margin-top: .75rem;
+            // text-align: center;
+        }
+
+        @include breakpoint(tab-port) {
+            letter-spacing: -.2rem;
+            font-size: 6.5rem;
+            line-height: 5.5rem;
+            margin-top: .75rem;
+        }
 
         @include breakpoint(phone) {
             letter-spacing: -.2rem;
             font-size: 6rem;
-            line-height: 5.5rem;
+            line-height: 5rem;
             margin-top: .75rem;
-            // text-align: center;
         }
     }
 }

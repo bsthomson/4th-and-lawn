@@ -25,7 +25,6 @@ class CardParkingSpot extends Component {
             distance: []
         };
     
-
     componentDidMount() {
         this.loadParkingSpots();
     }
@@ -101,7 +100,6 @@ class CardParkingSpot extends Component {
     //     })
     // }
 
-    
     render() {
             return (
                 

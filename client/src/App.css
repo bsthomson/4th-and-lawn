@@ -132,6 +132,16 @@ body {
   left: 11rem;
   top: 12rem;
   margin-bottom: 3rem; }
+  @media (max-width: 75em) {
+    .header-primary {
+      width: 100%;
+      top: 8rem;
+      left: 5rem; } }
+  @media (max-width: 56.25em) {
+    .header-primary {
+      width: 100%;
+      top: 8rem;
+      left: 5rem; } }
   @media only screen and (max-width: 37.5em) {
     .header-primary {
       width: 100%;
@@ -140,18 +150,30 @@ body {
   .header-primary--main {
     display: block;
     width: 100%;
-    font-size: 6.25rem;
+    font-size: 7rem;
     font-weight: 900;
     text-align: left;
     animation: moveInTop 1.5s ease-out 1s;
     animation-fill-mode: backwards;
-    line-height: 6.75rem;
+    line-height: 7rem;
     letter-spacing: -.5px; }
+    @media (max-width: 75em) {
+      .header-primary--main {
+        letter-spacing: -.2rem;
+        font-size: 6.5rem;
+        line-height: 6rem;
+        margin-top: .75rem; } }
+    @media (max-width: 56.25em) {
+      .header-primary--main {
+        letter-spacing: -.2rem;
+        font-size: 6.5rem;
+        line-height: 5.5rem;
+        margin-top: .75rem; } }
     @media only screen and (max-width: 37.5em) {
       .header-primary--main {
         letter-spacing: -.2rem;
         font-size: 6rem;
-        line-height: 5.5rem;
+        line-height: 5rem;
         margin-top: .75rem; } }
 
 .section-title {
@@ -832,7 +854,7 @@ select {
   width: 50% !important;
   z-index: 9000 !important;
   overflow: scroll !important;
-  height: 50rem !important; }
+  height: 60rem !important; }
   @media only screen and (max-width: 37.5em) {
     .popup-content {
       width: 100% !important;
@@ -1172,7 +1194,7 @@ select {
   height: 75rem;
   min-height: 70rem;
   background-image: url(img/background.jpg);
-  background-position: left center;
+  background-position: right;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative; }
@@ -1234,7 +1256,7 @@ select {
 .navigation__logo {
   font-size: 2.25rem;
   color: #fff;
-  font-weight: 800; }
+  font-weight: 900; }
 
 .navigation__logo-icon {
   color: #fff; }
@@ -1335,7 +1357,6 @@ select {
   display: inline-block;
   font-size: 1.4rem;
   font-weight: bold;
-  letter-spacing: .2px;
   color: #fff;
   text-decoration: none;
   cursor: pointer; }
@@ -1343,7 +1364,6 @@ select {
     display: inline-block;
     font-size: 1.4rem;
     font-weight: bold;
-    letter-spacing: .2px;
     line-height: 4rem;
     color: #fff;
     text-decoration: none; }
@@ -1452,9 +1472,12 @@ select {
       height: 80rem; } }
 
 .section-about {
-  height: 55rem;
+  height: 50rem;
   background-image: linear-gradient(180deg, #20b573, #20b573);
   position: relative; }
+  @media (max-width: 75em) {
+    .section-about {
+      height: 65rem; } }
   @media (max-width: 56.25em) {
     .section-about {
       height: 60rem; } }

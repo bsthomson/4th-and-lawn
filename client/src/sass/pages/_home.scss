@@ -19,13 +19,17 @@
  }
 .section-about {
     // background-color: $color-primary-dark;
-    height: 55rem;
+    height: 50rem;
     background-image: linear-gradient(
         180deg,
         $color-primary,
         $color-primary
     );
     position: relative;
+
+    @include breakpoint(tab-land) {
+        height: 65rem;
+    }
 
     @include breakpoint(tab-port) {
         height: 60rem;
