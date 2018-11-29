@@ -18,11 +18,13 @@ insertEvents = () => {
       eventController.getTeamSchedule('Kansas Jayhawks', events => {
         events.forEach(eventData => {
           Event.create(eventData)
+            .then(res => {
+              console.log('New event added!');
+            })
             .catch(err => {
               console.log(err);
             })
         })
-
       })
     })
     .then(() => Event.find().then(response => console.log(response)))

@@ -63,9 +63,9 @@ class Navbar extends Component {
             <section className="navigation">
                 <div className="navigation__nav-container">
 
-                <div class="navigation__logo-box">
+                <div className="navigation__logo-box">
                     <Link to="/" className="navigation__logo" onClick={(e)=>{this.setState({menuOpen: false})}}>
-                        <div class="navigation__logo"><i className="fas fa-car margin-right"></i>fourth&lawn</div>
+                        <div className="navigation__logo"><i className="fas fa-car margin-right"></i>fourth&lawn</div>
                     </Link>
                 </div>
 

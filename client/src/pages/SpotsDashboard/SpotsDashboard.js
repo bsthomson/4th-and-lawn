@@ -57,8 +57,10 @@ class SpotsDashboard extends Component {
                                 this.setState({
                                     rentedspots:
                                         events.map((item, idx) => {
-                                            item.data.address = spots[idx].data.streetaddress;
-                                            item.data._renterId = spots[idx].data.rentinfo[idx];
+                                            let spotInfo = spots[idx].data;
+                                            console.log({ rentedSpot: spotInfo })
+                                            item.data.address = spotInfo.streetaddress + " " + spotInfo.city + ", "+  spotInfo.state;
+                                            item.data._renterId = spotInfo.rentinfo[idx];
                                             return item.data;
                                         })
                                 }, () => {
@@ -144,6 +146,7 @@ class SpotsDashboard extends Component {
                                             <div>
                                                 {this.state.postedspots.map(postedSpot => (
                                                     <PostedSpotCard
+                                                        key={postedSpot._id}
                                                         _id={postedSpot._id}
                                                         address={postedSpot.streetaddress}
                                                         renter={postedSpot.renter}
@@ -175,6 +178,7 @@ class SpotsDashboard extends Component {
                                             <div>
                                                 {this.state.rentedspots.map((rentedSpot, idx) => (
                                                     <RentedSpotCard
+                                                        key={rentedSpot._id}
                                                         _id={rentedSpot._renterId}
                                                         date={rentedSpot.date}
                                                         shortName={rentedSpot.shortName}

@@ -6,7 +6,7 @@ const PostedRenters = props => {
     return (
         <Popup trigger={
             <div className="dashboard-card__button dashboard-card__button--view" onClick={() => props.viewPosted(props.spot._id)}>
-                <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
+                <span className="spot--test"><i className="far fa-eye spot--icon"></i></span>
             </div>
         } modal>
             {close => (

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import moment from "moment";
+import API from '../../../utils/API';
 
 const encodeMapURL = (parkingLocation, userLocation) => {
     console.log({ parkingLocation });
@@ -32,12 +32,12 @@ const RentedSpotCard = props => {
                 </div>
 
                 <div className="dashboard__user-buttons">
-                    <a href={encodeMapURL("Current Location", props.address)}>
+                    <a href={encodeMapURL("Current Location", props.address)} target="_blank">
                         <div className="dashboard-card__button dashboard-card__button--view" >
-                            <span className="spot--test"><i class="fas fa-map-marker-alt spot--icon"></i></span>
+                            <span className="spot--test"><i className="fas fa-map-marker-alt spot--icon"></i></span>
                         </div>
                     </a>
-                    <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => props.deleteRented(props._id)}>
+                    <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => API.deleteRentedSpot(props._id)}>
                         <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
                     </div>
                 </div>
