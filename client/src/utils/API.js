@@ -68,6 +68,10 @@ export default {
     return axios.get("/api/postedspots/" + id);
   },
 
+  deleteRenter: id => {
+    return axios.delete("/api/rentedspots/" + id);
+  },
+
   // Gets the rented spot with the given id
   getRentedSpot: id => {
     return axios.get("/api/rentedspots/" + id);

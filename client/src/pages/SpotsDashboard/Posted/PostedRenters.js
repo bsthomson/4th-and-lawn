@@ -15,7 +15,7 @@ const PostedRenters = props => {
                         &times;
                     </a>
 
-                    <ViewParkingSpot renters={props.spot.renter} />
+                    <ViewParkingSpot title="View Renter Information" renters={props.spot.renter} />
                     <button
                         className="button"
                         onClick={() => {

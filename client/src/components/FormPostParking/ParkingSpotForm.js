@@ -21,6 +21,11 @@ class ParkingSpotForm extends Component {
             events: [],
         }
 
+        this.formStyles = {
+            visibility: this.props.readOnly ? "hidden" : "visible",
+            position: this.props.readOnly ? "absolute" : "inherit"
+        }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
     }
@@ -73,7 +78,7 @@ class ParkingSpotForm extends Component {
                                 placeholder="Address"
                                 // value={this.props.streetaddress ? this.props.streetaddress : ""}
                                 onChange={this.handleChange}
-                                style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
+                                style={this.formStyles}
                             />
                         </div>
                         <div className="form__group">
@@ -84,7 +89,7 @@ class ParkingSpotForm extends Component {
                                 placeholder="Lawrence"
                                 // value={this.props.city ? this.props.city : ""}
                                 onChange={this.handleChange}
-                                style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
+                                style={this.formStyles}
                             />
                             <input className="form__input-xs"
                                 type="text"
@@ -93,7 +98,7 @@ class ParkingSpotForm extends Component {
                                 placeholder="KS"
                                 // value={this.props.state ? this.props.state : ""}
                                 onChange={this.handleChange}
-                                style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
+                                style={this.formStyles}
                             />
                             <input className="form__input-xs"
                                 type="text"
@@ -102,7 +107,7 @@ class ParkingSpotForm extends Component {
                                 placeholder="66044"
                                 // value={this.props.zipcode ? this.props.zipcode : ""}
                                 onChange={this.handleChange}
-                                style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
+                                style={this.formStyles}
                             />
                         </div>
                         <div className="form__group">
@@ -113,7 +118,7 @@ class ParkingSpotForm extends Component {
                                 placeholder="Number of spots"
                                 // value={this.props.availablespots ? this.props.availablespots : ""}
                                 onChange={this.handleChange}
-                                style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
+                                style={this.formStyles}
                             />
                             <input className="form__input-sm"
                                 type="number"
@@ -141,9 +146,9 @@ class ParkingSpotForm extends Component {
                                     id="event"
                                     name="event"
                                     className="form__input"
-                                    style={{ visibility: this.props.readOnly ? "hidden" : "visible" }}
+                                    style={this.formStyles}
                                     // value={this.state.event}
-                                    onChange={this.handleChange} >
+                                    onChange={this.handleChange}>
                                     <option>
                                         Select an Event
                                     </option>
@@ -161,7 +166,10 @@ class ParkingSpotForm extends Component {
                             </div>
                         ) : (
                                 <div className="form__group">
-                                    <select name="event" className="form__input">
+                                    <select
+                                        name="event"
+                                        className="form__input"
+                                        style={this.formStyles}>
                                         <option>
                                             No Events Available
                                 </option>

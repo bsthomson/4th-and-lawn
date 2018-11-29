@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import axios from "axios";
-import moment from "moment";
 import API from "../../utils/API"
-import { userInfo } from "os";
 
 class ViewParkingSpot extends Component {
     constructor(props) {
@@ -14,14 +10,14 @@ class ViewParkingSpot extends Component {
         }
 
         console.log({ ViewParkingSpot: this.props });
-        this.getRenterForSpot = this.getRenterForSpot.bind(this);
+        this.getRentersForSpot = this.getRentersForSpot.bind(this);
     }
 
     componentDidMount() {
-        this.getRenterForSpot();
+        this.getRentersForSpot();
     }
 
-    getRenterForSpot() {
+    getRentersForSpot() {
         this.props.renters.forEach(renter => {
             API.getUser(renter)
                 .then(userInfo => {
@@ -30,7 +26,7 @@ class ViewParkingSpot extends Component {
 
                     this.setState({
                         renters: tempRenters
-                    })
+                    }, () => console.log({ViewParkingSpot: this.state}))
 
                     this.forceUpdate();
                 })
@@ -42,6 +38,9 @@ class ViewParkingSpot extends Component {
 
         return (
             <div>
+                <h1 className="heading-primary">
+                    <span className="heading-primary--form center">{this.props.title}</span>
+                </h1>
                 {Object.keys(renters).length > 0 ? Object.keys(renters).map((id, idx) => (
                     <section key={idx}>
                         <div className="dashboard__user-item">
@@ -50,19 +49,19 @@ class ViewParkingSpot extends Component {
                                     <div className="col-1-of-3">
                                         <h2>{renters[id].user.firstName} {renters[id].user.lastName}</h2>
                                         <div className="row">
-                                            <h2>{renters[id].user.phoneNumber ? renters[id].user.phoneNumber : "(555) 555-5555"}</h2>
+                                            <h2>{renters[id].user.phoneNumber ? renters[id].user.phoneNumber : "Phone Number"}</h2>
                                         </div>
                                     </div>
                                     <div className="col-1-of-6">
-                                        <h2>{renters[id].user.carMake ? renters[id].user.carMake : "N/A"} / {renters[id].user.carModel ? renters[id].user.carModel : "N/A"}</h2>
+                                        <h2>{renters[id].user.carMake ? renters[id].user.carMake : "Make"} / {renters[id].user.carModel ? renters[id].user.carModel : "Model"}</h2>
                                         <div className="row">
-                                            <h2>{renters[id].user.licensePlate ? renters[id].user.licensePlate : "N/A"}</h2>
+                                            <h2>{renters[id].user.licensePlate ? renters[id].user.licensePlate : "License Plate"}</h2>
                                         </div>
                                     </div>
                                     <div className="col-1-of-5 fluid-container">
                                         <div className="dashboard__user-buttons">
-                                            <div className="dashboard-card__button dashboard-card__button--view">
-                                                <span className="spot--test"><i class="far fa-eye spot--icon"></i></span>
+                                            <div className="dashboard-card__button dashboard-card__button--delete" onClick={() => API.deleteRenter(this.props._id)}>
+                                                <span className="spot--test"><i className="fas fa-trash-alt spot--icon"></i></span>
                                             </div>
                                         </div>
                                     </div>
