@@ -15,7 +15,7 @@ var sendEmail = function() {
   var ownerNumber = "(816)462-3289"
 
   var subject = "4th and Lawn Reservation Confirmation";
-  var congrats ="<h1>Congrats " + name + " Your Reservation Was Succesful</h1><br>" + 
+  var congrats ="<h1>Congrats " + name + "! Your Reservation Was Successful</h1><br>" + 
   "<h3>You reserved a spot at " + address + " on " + date + " at " + time + "</h3><br>" + 
   "<h3>" + directions + "</h3><br>" + 
   "<h3>Owners Phone Number: " + ownerNumber + "</h3>";

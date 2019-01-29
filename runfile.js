@@ -39,7 +39,6 @@ dropDb = () => {
     .then(() => console.log("Database Dropped!"))
     .catch(err => console.log(err))
 }
-
 dropModels = () => {
   mongoose.connect(MONGODB_URI)
     .then(() => console.log("Mongodb connection successful"))
